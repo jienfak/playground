@@ -2,9 +2,11 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <stdio.h>
+#include <ctype.h>
 
 char msg[] = "Hello, World!\n";
-char buf[ sizeof(msg) ];
+char buf[1024];
+char red[1024];
 
 int main(int argc, char **argv){
 	int sock;
@@ -17,19 +19,22 @@ int main(int argc, char **argv){
 	}
 
 	addr.sin_family = AF_INET;
-	addr.sin_port = htons(3425);
+	addr.sin_port = htons( atoi(argv[2]) );
 
-	addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+	addr.sin_addr.s_addr = htonl( argv[1] );
 	if(  connect(sock, &addr, sizeof(addr) )  ){
 		perror("connect");
 		exit(2);
 	}
 
-	send(sock, msg, sizeof(msg), 0 );
-	recv(sock, buf, sizeof(msg), 0);
-	close(sock);
+	while(1){
+		scanf("%s\n", red);
+		send(sock, red, sizeof(msg), 0 );
 
-	printf(buf);
+		recv(sock, buf, sizeof(msg), 0);
+		printf("%s", buf);
+	}
+	close(sock);
 
 	return 0;
 
