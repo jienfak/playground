@@ -1,5 +1,4 @@
 #include <unistd.h>
-#include <stdio.h>
 
 int main(int argc, char *argv[]){
 	int fdr = open(argv[1], O_RDONLY);
