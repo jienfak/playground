@@ -1,3 +1,3 @@
-var numbers = "[0, 1, 2, 3]";
+var numbers = "{name:jason}";
 numbers = JSON.parse(numbers);
 console.log( numbers[1] );
