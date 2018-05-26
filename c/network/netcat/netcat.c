@@ -16,6 +16,8 @@ int main(int argc, char **argv){
 		printf("netcat: too few arguments");
 		exit(1);
 	}
+
+	printf("Program started.\n");
 	int sock, err;
 	struct sockaddr_in addr;
 	struct addrinfo *res;
@@ -40,36 +42,26 @@ int main(int argc, char **argv){
 		exit(EXIT_FAILURE);
 	}
 
-	for(res = result; res != NULL; res = res->ai_next){
-		char hostname[NI_MAXHOST];
-		err = getnameinfo(	
-				res->ai_addr, res->ai_addrlen, hostname, NI_MAXHOST,
-				NULL, 0, 0			
-		);
-
-		if(err) {
-			fprintf(stderr, "error in getnameinfo: %s\n", gai_strerror(err) );
-			continue;
-		}
-
-		if(*hostname != '\0'){
-			printf("hostname: '%s'\n", hostname);
-		}
-	}
-
-
 	addr.sin_addr.s_addr = htonl( ((struct sockaddr_in  *)result->ai_addr)->sin_addr.s_addr );
+	printf("Connecting to '%d'...\n", addr.sin_addr.s_addr);
 	if(  connect(sock, (struct sockaddr *)&addr, sizeof(addr) )  ){
 		perror("connect");
 		exit(2);
 	}
 
+	printf("before loop");
 	while(1){
+		printf("reading something: ");
 		scanf("%s\n", red);
-		send(sock, red, sizeof(msg), 0 );
+		send(sock, red, 1024, 0 );
+		printf("sended...\n");
 
-		recv(sock, buf, sizeof(msg), 0);
+
+		printf("reading...\n");
+		recv(sock, buf, 1024, 0);
+		printf("got msg...\n");
 		printf("%s\n", buf);
+
 	}
 	close(sock);
 

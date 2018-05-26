@@ -11,7 +11,7 @@ int main(void){
 	flags.bit2 = 1;
 	flags.bits = 0;
 	printf("Size of structure is '%d' \n", sizeof(flags) );
-	printf("flags are %x", flags);
+	printf("flags are '%d'\n", flags);
 
 	/* exit */
 	return 0;

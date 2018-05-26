@@ -9,6 +9,7 @@ sub Findf
 	my ($work) = shift;
 	my ($start)= &cwd;
 	chdir($work) or die "Error!:changing dir\n";
+	opendir DIR, $work;
 	my @names = readdir(DIR) or die "Error!:reading dir\n";
 	closedir(DIR);
 
@@ -30,7 +31,6 @@ sub Findf
 	}
 }
 
-say "dir = $ARGV[0]";
 &Findf($ARGV[0]);
 
 
