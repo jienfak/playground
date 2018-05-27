@@ -1,9 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <inttypes.h>
-#include <math.h>
-
 #include "../../str/str.h"
+#include "./types.h"
 
 char *itoa(char *dest, int num){
 	char *pbuf = dest;
@@ -21,6 +17,7 @@ char *itoa(char *dest, int num){
 		num = -num;
 	}
 
+	/* place to reverse a string */
 	char *torev = pbuf;
 	while(num){
 		*pbuf++ = (num%10) + '0';
@@ -31,13 +28,4 @@ char *itoa(char *dest, int num){
 	*pbuf='\0';
 
 	return pbufstart;
-}
-
-int main(int argc, char **argv){
-	char buf[1024];
-	int num = -256;
-	printf("'%s' = %d\n", itoa(buf, num), num);
-
-	/* default exit */
-	return 0;
 }
