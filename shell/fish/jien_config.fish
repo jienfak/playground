@@ -12,6 +12,9 @@ fish_vi_key_bindings
 set fish_greeting "FAK:Freedom Anarchy Knowledge"
 set EDITOR /usr/bin/vim
 
+#aliases
+alias less "less -Nr"
+
 # fish git prompt
 set __fish_git_prompt_showdirtystate 'yes'
 set __fish_git_prompt_showstashstate 'yes'

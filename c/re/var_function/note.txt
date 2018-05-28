@@ -1,0 +1,2 @@
+If variable is not used then compiler does not
+allocate memory for that.
