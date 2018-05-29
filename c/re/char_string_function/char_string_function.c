@@ -1,3 +1,3 @@
 void char_function(void){
-	char buf[] = "1234567890";
+	char buf[] = "123456789ABCDEF";
 }

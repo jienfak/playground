@@ -1,3 +1,3 @@
-var numbers = "{name:jason}";
+var numbers = '{ "name": "jason" }';
 numbers = JSON.parse(numbers);
-console.log( numbers[1] );
+console.log( numbers['name'] );
