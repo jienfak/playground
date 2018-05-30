@@ -9,8 +9,14 @@ end
 fish_vi_key_bindings 
 
 #vars
-set fish_greeting "FAK:Freedom Anarchy Knowledge"
-set EDITOR /usr/bin/vim
+	#greeting
+	set SHELL_VERSION (fish -v)
+	set fish_greeting "FAK->Freedom-> Anarchy <-Knowledge<-FAK
+Welcome to the system, $USER!
+Now you are using $SHELL_VERSION."
+
+	#editor for standard
+	set EDITOR /usr/bin/vim
 
 #aliases
 alias less "less -Nr"
