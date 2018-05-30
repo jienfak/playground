@@ -9,10 +9,13 @@ end
 fish_vi_key_bindings 
 
 #vars
+	set MACHINE_NAME (uname -a)
 	#greeting
 	set SHELL_VERSION (fish -v)
 	set fish_greeting "FAK->Freedom-> Anarchy <-Knowledge<-FAK
 Welcome to the system, $USER!
+You are on $MACHINE_NAME.
+	&
 Now you are using $SHELL_VERSION."
 
 	#editor for standard
