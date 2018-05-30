@@ -9,14 +9,16 @@ end
 fish_vi_key_bindings 
 
 #vars
-	set MACHINE_NAME (uname -a)
+	set MACHINE_NAME (uname -ormi)
 	#greeting
 	set SHELL_VERSION (fish -v)
-	set fish_greeting "FAK->Freedom-> Anarchy <-Knowledge<-FAK
+	set fish_greeting "
+Access granted...
+<FAK -> Freedom -> Anarchy <- Knowledge <- FAK>
 Welcome to the system, $USER!
 You are on $MACHINE_NAME.
-	&
-Now you are using $SHELL_VERSION."
+Now you are using $SHELL_VERSION.
+"
 
 	#editor for standard
 	set EDITOR /usr/bin/vim
@@ -42,6 +44,7 @@ function fish_prompt --description "Write out the prompt"
     set last_status $status
     set -l color_cwd
     set -l suffix
+    #to get know is that a root
     switch "$USER"
         case root toor
             if set -q fish_color_cwd_root
@@ -60,5 +63,5 @@ function fish_prompt --description "Write out the prompt"
 	echo -n -s (set_color $color_cwd)"$USER"\
 	(set_color normal) @ (set_color yellow)(prompt_hostname)\
 	' ' (set_color $color_cwd) (prompt_pwd) (set_color $color_suffix)\
-	( printf '%s ' (__fish_git_prompt) ) " $suffix" (set_color normal)
+	( printf '%s ' (__fish_git_prompt) ) " $suffix" "_" (set_color normal)
 end

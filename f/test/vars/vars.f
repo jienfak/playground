@@ -1,16 +1,18 @@
-        program numbers
+        program nums
                 implicit none
-                ! Variables
-
-                integer n,i,s
-
-                ! Body of numbers
+                integer n, i,s
 
                 s=0
-                write(*,*) 'Enter n'
+                write (*,*) 'Enter n'
                 read (*,*) n
-                if (n.le.0) then
-                        write(*,*)
+                if(n.le.0) then
+                        write (*,*) 'minus or something'
                 else
-                        do i = 1,n
+                        do i=1,n
+                        s=s+i
+                        end do
+                        write(*,*) 'sum=', s
+                end if
+        end
+
 
