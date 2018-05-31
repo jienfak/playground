@@ -9,12 +9,18 @@ end
 fish_vi_key_bindings 
 
 #vars
+	
 	set MACHINE_NAME (uname -ormi)
+	set ESC_COLOR_RED "\[\e[0;31;40m\]"
+	set ESC_COLOR_GREEN "\[\e[0;32;40m\]"
+	set ESC_COLOR_END "\[\e[00m\]"
 	#greeting
 	set SHELL_VERSION (fish -v)
 	set fish_greeting "
-Access granted...
+Access to the system granted.
+<--------------------------------------------->
 <FAK -> Freedom -> Anarchy <- Knowledge <- FAK>
+<--------------------------------------------->
 Welcome to the system, $USER!
 You are on $MACHINE_NAME.
 Now you are using $SHELL_VERSION.
