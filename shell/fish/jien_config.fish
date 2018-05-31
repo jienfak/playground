@@ -16,15 +16,7 @@ fish_vi_key_bindings
 	set ESC_COLOR_END "\[\e[00m\]"
 	#greeting
 	set SHELL_VERSION (fish -v)
-	set fish_greeting "
-Access to the system granted.
-<--------------------------------------------->
-<FAK -> Freedom -> Anarchy <- Knowledge <- FAK>
-<--------------------------------------------->
-Welcome to the system, $USER!
-You are on $MACHINE_NAME.
-Now you are using $SHELL_VERSION.
-"
+	set fish_greeting ""
 
 	#editor for standard
 	set EDITOR /usr/bin/vim
@@ -65,9 +57,42 @@ function fish_prompt --description "Write out the prompt"
 		set color_suffix white
             set suffix '$'
     end
-
 	echo -n -s (set_color $color_cwd)"$USER"\
 	(set_color normal) @ (set_color yellow)(prompt_hostname)\
 	' ' (set_color $color_cwd) (prompt_pwd) (set_color $color_suffix)\
 	( printf '%s ' (__fish_git_prompt) ) " $suffix" "_" (set_color normal)
 end
+
+
+set last_status $status
+set -l color_cwd
+set -l suffix
+#to get know is that a root
+#
+switch "$USER"
+case root toor
+    if set -q fish_color_cwd_root
+	set color_cwd $fish_color_cwd_root
+	set color_suffix white
+    else
+	set color_cwd $fish_color_cwd
+    end
+    set suffix '#'
+case '*'
+    set color_cwd $fish_color_cwd
+	set color_suffix white
+    set suffix '$'
+end
+
+echo \
+Access granted.\n\n\
+\<---------------------------------------------\>\n\
+\<(set_color red)F(set_color green)A(set_color blue)K(set_color normal)-\>\
+(set_color red)Freedom(set_color normal)-\>\
+(set_color green)Anarchy(set_color normal)\<-\
+(set_color blue)Knowledge(set_color normal)\<-\
+(set_color red)F(set_color green)A(set_color blue)K(set_color normal)\>\n\
+\<---------------------------------------------\>\n\n\
+Welcome to the system, (set_color $color_cwd)$USER(set_color normal)!\n\
+You are on (set_color yellow)$MACHINE_NAME(set_color normal).\n\
+Now you are using (set_color green)$SHELL_VERSION.\n
