@@ -24,6 +24,7 @@ fish_vi_key_bindings
 #aliases
 alias less "less -Nr"
 
+
 # fish git prompt
 set __fish_git_prompt_showdirtystate 'yes'
 set __fish_git_prompt_showstashstate 'yes'
@@ -60,7 +61,7 @@ function fish_prompt --description "Write out the prompt"
 	echo -n -s (set_color $color_cwd)"$USER"\
 	(set_color normal) @ (set_color yellow)(prompt_hostname)\
 	' ' (set_color $color_cwd) (prompt_pwd) (set_color $color_suffix)\
-	( printf '%s ' (__fish_git_prompt) ) " $suffix" "_" (set_color normal)
+	( printf '%s' (__fish_git_prompt) ) " $suffix" "_" (set_color normal)
 end
 
 
@@ -87,7 +88,7 @@ end
 echo \
 Access granted.\n\n\
 \<---------------------------------------------\>\n\
-\<(set_color red)F(set_color green)A(set_color blue)K(set_color normal)-\>\
+'   ' \<(set_color red)F(set_color green)A(set_color blue)K(set_color normal)-\>\
 (set_color red)Freedom(set_color normal)-\>\
 (set_color green)Anarchy(set_color normal)\<-\
 (set_color blue)Knowledge(set_color normal)\<-\
@@ -95,4 +96,4 @@ Access granted.\n\n\
 \<---------------------------------------------\>\n\n\
 Welcome to the system, (set_color $color_cwd)$USER(set_color normal)!\n\
 You are on (set_color yellow)$MACHINE_NAME(set_color normal).\n\
-Now you are using (set_color green)$SHELL_VERSION.\n
+Now you are using (set_color green)$SHELL_VERSION(set_color normal).\n
