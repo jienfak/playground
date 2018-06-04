@@ -24,6 +24,7 @@ fish_vi_key_bindings
 #aliases
 alias less "less -Nr"
 
+#functions-aliases
 
 # fish git prompt
 set __fish_git_prompt_showdirtystate 'yes'
