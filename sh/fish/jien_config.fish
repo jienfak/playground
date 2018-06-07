@@ -19,10 +19,11 @@ fish_vi_key_bindings
 	set fish_greeting ""
 
 	#editor for standard
-	set EDITOR /usr/bin/vim
+	set EDITOR /usr/bin/nvim
 
 #aliases
 alias less "less -Nr"
+alias ed $EDITOR
 
 #functions-aliases
 
