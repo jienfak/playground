@@ -8,9 +8,9 @@ sub Findf
 {
 	my ($work) = shift;
 	my ($start)= &cwd;
-	chdir($work) or die "Error!:changing dir\n";
+	chdir($work) or die "chdir: $!";
 	opendir DIR, $work;
-	my @names = readdir(DIR) or die "Error!:reading dir\n";
+	my @names = readdir(DIR) or die "readdir: $!";
 	closedir(DIR);
 
 	foreach my $name (@names){
