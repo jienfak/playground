@@ -43,7 +43,7 @@ int main(int argc, char **argv){
 	}
 
 	addr.sin_addr.s_addr = htonl( ((struct sockaddr_in  *)result->ai_addr)->sin_addr.s_addr );
-	printf("Connecting to '%d'...\n", addr.sin_addr.s_addr);
+	printf("Connecting to '0x%x'...\n", addr.sin_addr.s_addr);
 	if(  connect(sock, (struct sockaddr *)&addr, sizeof(addr) )  ){
 		perror("connect");
 		exit(2);

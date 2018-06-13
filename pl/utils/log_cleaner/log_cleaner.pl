@@ -5,7 +5,7 @@ use feature 'say';
 
 if(@ARGV != 2){
 	say 'Use:';
-	say 'perl logclean.pl source_file word';
+	say 'perl logclean.pl [source_file] [word]';
 	exit
 }
 
