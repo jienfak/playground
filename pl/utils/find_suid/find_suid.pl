@@ -31,6 +31,11 @@ sub Findf
 	}
 }
 
+if(@ARGV < 2){
+	say 'find_suid: Too few arguments.'
+	exit ;
+}
+
 &Findf($ARGV[0]);
 
 
