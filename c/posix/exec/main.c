@@ -11,5 +11,6 @@ int main(int argc, char **argv){
 	}
 
 	execve( argv[1], argv+2, NULL );
+	printf("Hello, World!\n");
 	return 0;
 }
