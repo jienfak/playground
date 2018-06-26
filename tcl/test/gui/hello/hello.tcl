@@ -2,7 +2,7 @@
 #
 package require Tk
 
-button .b			\
-	-text "Hello, world!"	\
-	-command {destroy .}
+button .b -text "Hello, world!"	-command {		\
+	puts "You clicked "				\
+};
 pack .b
