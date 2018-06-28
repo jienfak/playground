@@ -4,6 +4,7 @@
 class Person
 	#constructor of object
 	def initialize(name)
+		#object field example
 		@name = name
 	end
 
