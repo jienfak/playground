@@ -2,6 +2,7 @@
 
 using namespace std;
 
+//interface to implement
 class Shape{
 	public:
 		virtual int getArea() = 0;

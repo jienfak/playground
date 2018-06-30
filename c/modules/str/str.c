@@ -12,7 +12,7 @@ char *strrev(char *dest, char *str){
 
 	/* to escape zero end character */
 	--str;
-	for( ; len ; --len){
+	for(; len ; --len){
 		*pbuf++ = *str--;
 	}
 
@@ -21,6 +21,6 @@ char *strrev(char *dest, char *str){
 
 	free(pbufstart);
 
-	return dest;
+	return dest ;
 }
 

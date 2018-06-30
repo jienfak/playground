@@ -1,0 +1,69 @@
+!==============================================================================
+! XTerm 
+!==============================================================================
+!cirilica
+XTerm*utf8Title: true
+XTerm*faceName: Droid Sans Mono
+XTerm*faceSize: 11
+xterm*bolfFont: 
+xterm.vt100.scrollBar:        true
+xterm.alternateScroll:        true
+xterm.vt100.geometry:         80x30
+xterm*eightBitInput:    false
+xterm*metaSendsEscape:  true
+xterm*colorBDMode:      true
+xterm*boldMode:         on
+xterm*alwaysBoldMode:   false
+xterm*dynamicColors:    on
+xterm*colorMode:        on
+xterm*saveLines:        10000
+xterm*visualBell:       true
+XTerm.vt100.bellIsUrgent: true
+
+!==============================================================================
+! colors
+!==============================================================================
+xterm*colorBD:		#e6d51d
+xterm*background:	#000000
+xterm*foreground:	#ffffff
+xterm*cursorColor:	#ff0000
+! black
+xterm*color0:      #000000
+xterm*color8:      #555753
+! red
+xterm*color1:      red
+xterm*color9:      #ff6565
+! green
+xterm*color2:      #67E300
+xterm*color10:     #A9F16C
+! yellow
+xterm*color3:      yellow
+xterm*color11:     #e6d51d
+! blue
+xterm*color4:      blue
+xterm*color12:     #00d2ff
+! madgenta
+xterm*color5:      #FFB000
+xterm*color13:     #BF9330
+! cian
+xterm*color6:      cian
+xterm*color14:     #17ffff
+! white
+xterm*color7:      #ffffff
+xterm*color15:     #ffffff
+
+yeahconsole*term:xterm
+yeahconsole*consoleHeight:25
+yeahconsole*screenWidth:500
+yeahconsole*xOffset: 400
+yeahconsole*toggleKey:None+F12
+yeahconsole*background:black
+yeahconsole*foreground:white
+yeahconsole*restart:1
+yeahconsole*keyFull:None+F11
+yeahconsole*saveLines:500
+yeahconsole*keySmaller:Control+m
+yeahconsole*keyBigger:Control+n
+yeahconsole*aniDelay: 5
+yeahconsole*metaSendsEscape: true
+yeahconsole*scrollBar: true

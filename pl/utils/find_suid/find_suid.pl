@@ -32,8 +32,9 @@ sub Findf
 }
 
 if(@ARGV < 2){
-	say 'find_suid: Too few arguments.'
-	exit ;
+	say 'find_suid: Too few arguments.';
+	say 'Using: perl find_suid.pl [start_dir]';
+	exit
 }
 
 &Findf($ARGV[0]);
