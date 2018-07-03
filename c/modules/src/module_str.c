@@ -1,5 +1,5 @@
 
-#include "./str.h"
+#include <module_str.h>
 
 char *strrev(char *dest, char *str){
 	char *pbuf = malloc( sizeof(char) * strlen(str) );

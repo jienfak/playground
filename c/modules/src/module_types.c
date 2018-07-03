@@ -1,5 +1,5 @@
-#include "../../str/str.h"
-#include "./types.h"
+#include <module_types.h>
+#include <module_str.h>
 
 /* converting from 'int' to 'str'(ZERO-end string) */
 char *itoa(char *dest, int num){

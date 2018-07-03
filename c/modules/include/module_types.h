@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include <inttypes.h>
 #include <math.h>
-#include "../str/str.h"
 
 /* converting from integer to string */
 char 		*itoa(char *dest, int num);

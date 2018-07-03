@@ -5,9 +5,13 @@ if status --is-login
 	end
 end
 
+echo Access granted.\n
+
 #vi editor mode
+echo Setting Vi key mode...
 fish_vi_key_bindings 
 
+echo Setting vars...
 #vars
 	
 	set MACHINE_NAME (uname -ormi)
@@ -19,11 +23,21 @@ fish_vi_key_bindings
 	set fish_greeting ""
 
 	#editor for standard
-	set EDITOR /usr/bin/nvim
+	export EDITOR=/usr/bin/nvim
+
+	#gcc vars
+	export LIBRARY_PATH=".:$HOME/code/scripts/c/modules/lib:"
+	export C_INCLUDE_PATH=".:$HOME/code/scripts/c/modules/include:"
+	export LD_LIBRARY_PATH=$HOME/cod/escripts/c/modules/lib
+
+	set C_USR_MODULES $HOME/code/scripts/c/modules/lib
 
 #aliases
+echo Setting aliases...
 alias less "less -Nr"
 alias ed $EDITOR
+alias service systemctl
+
 
 #functions-aliases
 
@@ -62,8 +76,8 @@ function fish_prompt --description "Write out the prompt"
     end
 	echo -n -s (set_color $color_cwd)"$USER"\
 	(set_color normal) @ (set_color yellow)(prompt_hostname)\
-	' ' (set_color $color_cwd) (prompt_pwd) (set_color $color_suffix)\
-	( printf '%s' (__fish_git_prompt) ) " $suffix" "_" (set_color normal)
+	(set_color normal)':' (set_color $color_cwd) (prompt_pwd) (set_color $color_suffix)\
+	( printf '%s' (__fish_git_prompt) ) "$suffix" (set_color normal)
 end
 
 
@@ -87,8 +101,7 @@ case '*'
     set suffix '$'
 end
 
-echo \
-Access granted.\n\n\
+echo \n\
 \<---------------------------------------------\>\n\
 '   ' \<(set_color red)F(set_color green)A(set_color blue)K(set_color normal)-\>\
 (set_color red)Freedom(set_color normal)-\>\
