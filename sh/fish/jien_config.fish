@@ -81,6 +81,7 @@ function fish_prompt --description "Write out the prompt"
 end
 
 
+echo "Getting you permissions..."
 set last_status $status
 set -l color_cwd
 set -l suffix
@@ -100,6 +101,9 @@ case '*'
 	set color_suffix white
     set suffix '$'
 end
+
+echo "Setting 'Xresourses' via xrdb..."
+xrdb -merge ~/.Xresourses
 
 echo \n\
 \<---------------------------------------------\>\n\
