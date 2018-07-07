@@ -93,32 +93,6 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 " Only do this part when compiled with support for autocommands.
-if has("autocmd")
-
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  " Revert with ":filetype off".
-  filetype plugin indent on
-
-  " Put these in an autocmd group, so that you can revert them with:
-  " ":augroup vimStartup | au! | augroup END"
-  augroup vimStartup
-    au!
-
-    " When editing a file, always jump to the last known cursor position.
-    " Don't do it when the position is invalid, when inside an event handler
-    " (happens when dropping a file on gvim) and for a commit message (it's
-    " likely a different one than last time).
-    autocmd BufReadPost *
-      \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-      \ |   exe "normal! g`\""
-      \ | endif
-
-  augroup END
-
-endif " has("autocmd")
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
@@ -136,41 +110,13 @@ if has('langmap') && exists('+langremap')
   set nolangremap
 endif
 
+"vars
 set nowrap
 set nu
+set smartindent
+
+set foldenable 
+set foldmethod=indent
+set foldlevel=1
 
 colorscheme torte
-
-"autocmd BufRead, BufNewFile * syn match parens /[(){}]/ | hi parens ctermfg=yellow
-
-"set nocompatible
-
-
-"let g:SuperTabDefaultCompletionType = "context"
-
-"-------------------------------
-
-"filetype off  "обязательно!
-
-"set rtp+=~/.vim/bundle/vundle/
-
-"call vundle#rc()
-
-"filetype plugin indent on     
-
-"репозитории на github
-"Bundle 'tpope/vim-fugitive'
-"Bundle 'lokaltog/vim-easymotion'
-"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-"Bundle 'ervandew/supertab'
-
-"репозитории vim/scripts
-"Bundle 'L9'
-"Bundle 'FuzzyFinder'
-"Bundle 'rails.vim'
-
-"git репозитории (не на github)
-"Bundle 'git://git.wincent.com/command-t.git'
-
-"локальные git репозитории(если работаете над собственным плагином)
-"Bundle 'file:///Users/gmarik/path/to/plugin'

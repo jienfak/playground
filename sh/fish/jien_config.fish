@@ -81,7 +81,7 @@ function fish_prompt --description "Write out the prompt"
 end
 
 
-echo "Getting you permissions..."
+echo "Getting your permissions..."
 set last_status $status
 set -l color_cwd
 set -l suffix
