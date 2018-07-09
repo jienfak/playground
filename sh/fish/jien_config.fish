@@ -23,36 +23,32 @@ echo Setting vars...
 	set fish_greeting ""
 
 	#editor for standard
-	export EDITOR=/usr/bin/nvim
+	export EDITOR=(which nvim)
 
 	#gcc vars
-	export LIBRARY_PATH=".:$HOME/code/scripts/c/modules/lib:"
-	export C_INCLUDE_PATH=".:$HOME/code/scripts/c/modules/include:"
-	export LD_LIBRARY_PATH=$HOME/cod/escripts/c/modules/lib
-
 	set C_USR_MODULES $HOME/code/scripts/c/modules/lib
 
 #aliases
-echo Setting aliases...
-alias less "less -Nr"
-alias ed $EDITOR
-alias service systemctl
+	echo Setting aliases...
+	alias less "less -Nr"
+	alias ed $EDITOR
+	alias service systemctl
 
 
 #functions-aliases
 
 # fish git prompt
-set __fish_git_prompt_showdirtystate 'yes'
-set __fish_git_prompt_showstashstate 'yes'
-set __fish_git_prompt_showupstream 'yes'
-set __fish_git_prompt_color_branch yellow
+	set __fish_git_prompt_showdirtystate 'yes'
+	set __fish_git_prompt_showstashstate 'yes'
+	set __fish_git_prompt_showupstream 'yes'
+	set __fish_git_prompt_color_branch yellow
 
 # Status Chars
-set __fish_git_prompt_char_dirtystate '⚡'
-set __fish_git_prompt_char_stagedstate '→'
-set __fish_git_prompt_char_stashstate '↩'
-set __fish_git_prompt_char_upstream_ahead '↑'
-set __fish_git_prompt_char_upstream_behind '↓'
+	set __fish_git_prompt_char_dirtystate '⚡'
+	set __fish_git_prompt_char_stagedstate '→'
+	set __fish_git_prompt_char_stashstate '↩'
+	set __fish_git_prompt_char_upstream_ahead '↑'
+	set __fish_git_prompt_char_upstream_behind '↓'
  
 #my prompt
 function fish_prompt --description "Write out the prompt"
@@ -103,7 +99,7 @@ case '*'
 end
 
 echo "Setting 'Xresourses' via xrdb..."
-xrdb -merge ~/.Xresourses
+xrdb -merge ~/.Xresources
 
 echo \n\
 \<---------------------------------------------\>\n\

@@ -115,8 +115,8 @@ set nowrap
 set nu
 set smartindent
 
+"fold
 set foldenable 
 set foldmethod=indent
-set foldlevel=1
 
 colorscheme torte
