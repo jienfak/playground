@@ -32,7 +32,8 @@ echo Setting vars...
 	echo Setting aliases...
 	alias less "less -Nr"
 	alias ed $EDITOR
-	alias service systemctl
+	alias edsu "sudo $EDITOR"
+	alias service "sudo systemctl"
 
 
 #functions-aliases
