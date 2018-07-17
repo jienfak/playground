@@ -1,5 +1,3 @@
 #!/usr/bin/lua
-
-x=1 y=2 z=3
-
-print(x, y, z)
+a = 1 ; b = 2
+print(a..b)

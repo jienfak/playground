@@ -24,19 +24,48 @@ echo Setting vars...
 
 	#editor for standard
 	export EDITOR=(which nvim)
+	export VISUAL=(which nvim)
+
+	#pager
+	export PAGER="less -r"
+
 
 	#gcc vars
 	set C_USR_MODULES $HOME/code/scripts/c/modules/lib
 
 #aliases
 	echo Setting aliases...
-	alias less "less -Nr"
 	alias ed $EDITOR
 	alias edsu "sudo $EDITOR"
 	alias service "sudo systemctl"
-
+	alias pager "$PAGER"
 
 #functions-aliases
+function help -d 'Automaticaly gets help for a program'
+	which $argv
+	if test $status != 0
+		echo "help: Program '$argv' not found"
+		return 
+	end
+	
+	eval $argv -h
+	if test $status = 0
+		eval $argv -h | pager
+		return
+	end
+
+	eval $argv --help
+	if test $status = 0
+		eval $argv --help | pager
+		return
+	end
+
+	eval $argv -help 
+	if test $status = 0
+		eval $argv -help | pager
+		return
+	end
+end
 
 # fish git prompt
 	set __fish_git_prompt_showdirtystate 'yes'
@@ -71,10 +100,13 @@ function fish_prompt --description "Write out the prompt"
 		set color_suffix white
             set suffix '$'
     end
-	echo -n -s (set_color $color_cwd)"$USER"\
-	(set_color normal) @ (set_color yellow)(prompt_hostname)\
+    echo -n -s (set_color $color_cwd)"$USER"\
+    	(set_color normal) @ (set_color yellow)(prompt_hostname)\
 	(set_color normal)':' (set_color $color_cwd) (prompt_pwd) (set_color $color_suffix)\
-	( printf '%s' (__fish_git_prompt) ) "$suffix" (set_color normal)
+	( printf '%s' (__fish_git_prompt) )\
+	\( (set_color $color_cwd) $status (set_color normal) \)\
+	"$suffix"\
+	(set_color normal)
 end
 
 

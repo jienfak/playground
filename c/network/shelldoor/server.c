@@ -25,21 +25,20 @@ int readFile(char *file_name, char *buf, int buf_size){
 	return output_read_bytes ;
 }
 
-int sendFile(int sock, char *file_name){
-	char output[OUTPUT_SIZE];
+int sendFile(int sock, char *file_name, char *buf){
+	const uint32_t buf_size = 1024 ;
+	char output[];
 	int file_read_bytes;
 	do{
-		file_read_bytes = readFile(file_name, output, OUTPUT_SIZE-1);
+		file_read_bytes = readFile(file_name, output, buf_size) ;
 
 		if(file_read_bytes != -1){
 			send(sock, output, file_read_bytes, 0);
 		}
-	}while( file_read_bytes == OUTPUT_SIZE );
+	}while( file_read_bytes == buf_size );
 
-	if(file_read_bytes == -1){	
-		send(sock, COULD_NOT_OPEN_FILE_ERR,
-			strlen(COULD_NOT_OPEN_FILE_ERR), 0
-		);
+	if(file_read_bytes == -1){
+		return -1 ;
 	}
 	return 0 ;
 }
