@@ -48,23 +48,36 @@ function help -d 'Automaticaly gets help for a program'
 		return 
 	end
 	
-	eval $argv -h
+	eval $argv -h > /dev/null
 	if test $status = 0
 		eval $argv -h | pager
 		return
 	end
 
-	eval $argv --help
+	eval $argv --help > /dev/null
 	if test $status = 0
 		eval $argv --help | pager
 		return
 	end
 
-	eval $argv -help 
+	eval $argv -help > /dev/null
 	if test $status = 0
 		eval $argv -help | pager
 		return
 	end
+
+	eval $argv help > /dev/null
+	if test $status = 0
+		eval $argv help | pager
+		return
+	end
+
+	eval $argv > /dev/null
+	if test $status != 0
+		eval $argv | pager
+		return
+	end
+
 end
 
 # fish git prompt
