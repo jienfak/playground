@@ -2,26 +2,26 @@
 ! XTerm 
 !==============================================================================
 !cirilica
-XTerm*utf8Title: true
-XTerm*faceName: Droid Sans Mono
-XTerm*faceSize: 11
+XTerm*utf8Title:		true
+XTerm*faceName:			Droid Sans Mono
+XTerm*faceSize:			10
 xterm*bolfFont: 
-xterm.vt100.scrollBar:        true
-xterm.alternateScroll:        true
-xterm.vt100.geometry:         80x30
-xterm*eightBitInput:    false
-xterm*metaSendsEscape:  true
-xterm*colorBDMode:      true
-xterm*boldMode:         on
-xterm*alwaysBoldMode:   false
-xterm*dynamicColors:    on
-xterm*colorMode:        on
-xterm*saveLines:        10000
-xterm*visualBell:       true
-XTerm.vt100.bellIsUrgent: true
+xterm.vt100.scrollBar:		true
+xterm.alternateScroll:		true
+xterm.vt100.geometry:		80x30
+xterm*eightBitInput:		false
+xterm*metaSendsEscape:		true
+xterm*colorBDMode:		true
+xterm*boldMode:			on
+xterm*alwaysBoldMode:		false
+xterm*dynamicColors:		on
+xterm*colorMode:		on
+xterm*saveLines:		10000
+xterm*visualBell:		true
+XTerm.vt100.bellIsUrgent:	true
 
 !==============================================================================
-! colors
+! XTerm colors
 !==============================================================================
 xterm*colorBD:		#e6d51d
 xterm*background:	#000000
@@ -52,6 +52,9 @@ xterm*color14:     #17ffff
 xterm*color7:      #ffffff
 xterm*color15:     #ffffff
 
+!==========================================================================
+!			YeahConsole
+!==========================================================================
 yeahconsole*term:xterm
 yeahconsole*consoleHeight:25
 yeahconsole*screenWidth:500
@@ -67,3 +70,4 @@ yeahconsole*keyBigger:Control+n
 yeahconsole*aniDelay: 5
 yeahconsole*metaSendsEscape: true
 yeahconsole*scrollBar: true
+
