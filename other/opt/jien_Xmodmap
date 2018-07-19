@@ -1,0 +1,4 @@
+keycode  43 = h H Cyrillic_er Cyrillic_ER Left
+keycode  44 = j J Cyrillic_o Cyrillic_O Down
+keycode  45 = k K Cyrillic_el Cyrillic_EL Up
+keycode  46 = l L Cyrillic_de Cyrillic_DE Right

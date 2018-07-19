@@ -42,41 +42,43 @@ echo Setting vars...
 
 #functions-aliases
 function help -d 'Automaticaly gets help for a program'
-	which $argv
+	which $argv >/dev/null 2>&1
 	if test $status != 0
 		echo "help: Program '$argv' not found"
 		return 
 	end
 	
-	eval $argv -h > /dev/null
+	eval $argv -h > /dev/null 2>&1
 	if test $status = 0
 		eval $argv -h | pager
 		return
 	end
 
-	eval $argv --help > /dev/null
+	eval $argv --help > /dev/null 2>&1
 	if test $status = 0
 		eval $argv --help | pager
 		return
 	end
 
-	eval $argv -help > /dev/null
+	eval $argv -help > /dev/null 2>&1
 	if test $status = 0
 		eval $argv -help | pager
 		return
 	end
 
-	eval $argv help > /dev/null
+	eval $argv help > /dev/null 2>&1
 	if test $status = 0
 		eval $argv help | pager
 		return
 	end
 
-	eval $argv > /dev/null
+	eval $argv > /dev/null 2>&1
 	if test $status != 0
 		eval $argv | pager
 		return
 	end
+
+	echo "help: Could not get any help, try 'man $argv'"
 
 end
 
