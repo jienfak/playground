@@ -158,4 +158,5 @@ echo \n\
 \<---------------------------------------------\>\n\n\
 Welcome to the system, (set_color $color_cwd)$USER(set_color normal)!\n\
 You are on (set_color yellow)$MACHINE_NAME(set_color normal).\n\
-Now you are using (set_color green)$SHELL_VERSION(set_color normal).\n
+Now you are using (set_color green)$SHELL_VERSION(set_color normal).\n\
+Shell level is \'(set_color yellow)$SHLVL(set_color normal)\'.\n
