@@ -119,14 +119,13 @@ function fish_prompt --description "Write out the prompt"
     	(set_color normal) @ (set_color yellow)(prompt_hostname)\
 	(set_color normal)':' (set_color $color_cwd) (prompt_pwd) (set_color $color_suffix)\
 	( printf '%s' (__fish_git_prompt) )\
-	\( (set_color $color_cwd) $status (set_color normal) \)\
+	\( (set_color $color_cwd) $last_status (set_color normal) \)\
 	"$suffix"\
 	(set_color normal)
 end
 
 
 echo "Getting your permissions..."
-set last_status $status
 set -l color_cwd
 set -l suffix
 #to get know is that a root
