@@ -42,6 +42,12 @@ echo Setting vars...
 
 #functions-aliases
 function help -d 'Automaticaly gets help for a program'
+	man $argv
+
+	if test $status = 0
+		return
+	end
+
 	which $argv >/dev/null 2>&1
 	if test $status != 0
 		echo "help: Program '$argv' not found"
