@@ -3,6 +3,7 @@
 using namespace std;
 
 
+//function template example
 template<typename T>
 void sort(T array[], int size){
 	T t;
@@ -17,6 +18,7 @@ void sort(T array[], int size){
 	}
 }
 
+//object template example
 template<size_t ArrayLength, typename SomeValueType>class SomeClass{
 	SomeValueType SomeValue;
 	SomeValueType SomeArray[ArrayLength];
