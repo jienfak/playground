@@ -1,6 +1,17 @@
 #!/usr/bin/tclsh
 #
 
+set PROGRAM_NAME "ping_list"
+
+proc usage {} {
+	puts "usage: tclsh ping_list.tcl \[file_of_list\]"
+}
+
+if { $::argc < 1 } {
+	puts "$PROGRAM_NAME: Not enough arguments"
+	usage
+	exit
+}
 # add IP to the file
 proc addIp {file ip} {
 	set fd [open $file a]
@@ -26,4 +37,8 @@ proc delIp {file } {
 }
 
 # main
-set fd [open ]
+set fd [open $argv]
+while {![eof $fd]} {
+	set cur_ip [gets $fd]
+	exec "ping $cur_ip"
+}

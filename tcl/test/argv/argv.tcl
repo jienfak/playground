@@ -2,7 +2,7 @@
 if { $::argc > 0 } {
 	set i 1
 	foreach arg $::argv {
-		puts "argv\[$i\] = $arg"
+	puts "argv\[$i\] = $arg"
 		incr i
 	}
 } else {
