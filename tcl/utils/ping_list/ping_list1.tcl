@@ -1,7 +1,7 @@
 #!/usr/bin/tclsh
 #
 
-#add IP to the file
+# add IP to the file
 proc addIp {file ip} {
 	set fd [open $file a]
 	puts $fd $ip
@@ -24,3 +24,6 @@ proc delIp {file } {
 	}
 	close $fd
 }
+
+# main
+set fd [open ]
