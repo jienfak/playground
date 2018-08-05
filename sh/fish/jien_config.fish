@@ -7,7 +7,7 @@ end
 
 echo Access granted.\n
 
-#vi editor mode
+# vi editor mode
 echo Setting Vi key mode...
 fish_vi_key_bindings 
 
@@ -40,7 +40,7 @@ echo Setting vars...
 	alias service "sudo systemctl"
 	alias pager "$PAGER"
 
-#functions-aliases
+# functions-aliases
 function help -d 'Automaticaly gets help for a program'
 	man $argv
 
@@ -101,12 +101,12 @@ end
 	set __fish_git_prompt_char_upstream_ahead '↑'
 	set __fish_git_prompt_char_upstream_behind '↓'
  
-#my prompt
+# my prompt
 function fish_prompt --description "Write out the prompt"
     set last_status $status
     set -l color_cwd
     set -l suffix
-    #to get know is that a root
+    # to get know is that a root
     switch "$USER"
         case root toor
             if set -q fish_color_cwd_root
@@ -134,7 +134,7 @@ end
 echo "Getting your permissions..."
 set -l color_cwd
 set -l suffix
-#to get know is that a root
+# to get know is that a root
 #
 switch "$USER"
 case root toor
@@ -153,6 +153,21 @@ end
 
 echo "Setting 'Xresourses' via xrdb..."
 xrdb -merge ~/.Xresources
+
+echo "Setting '$PAGER' colors"
+
+	# default
+	export LESS_TERMCAP_md=(perl -e "print \"\033[0m\"")
+	export LESS_TERMCAP_me=(perl -e "print \"\033[0m\"")
+	#underlined
+	export LESS_TERMCAP_us=(perl -e "print \"\033[1;31m\";")
+	export LESS_TERMCAP_ue=(perl -e "print \"\033[0m\"; ")
+	#service info
+	export LESS_TERMCAP_so=(perl -e "print \"\033[1;33m\";")
+	export LESS_TERMCAP_se=(perl -e "print \"\033[0m\";")
+	#blinking color
+	export LESS_TERMCAP_mb=(perl -e "print \"\033[1;32m\";")
+	export LESS_TERMCAP_me=(perl -e "print \"\033[0m\";")
 
 echo \n\
 \<---------------------------------------------\>\n\

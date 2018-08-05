@@ -1,5 +1,4 @@
 #!/usr/bin/tclsh
-#
 
 set PROGRAM_NAME "ping_list"
 
@@ -38,7 +37,10 @@ proc delIp {file } {
 
 # main
 set fd [open $argv]
-while {![eof $fd]} {
+while { ![eof $fd] } {
 	set cur_ip [gets $fd]
-	exec "ping $cur_ip"
+	set out [exec ping $cur_ip -c 4]
+	puts $out
 }
+
+exit

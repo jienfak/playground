@@ -46,21 +46,18 @@ int main(void){
 	} ;
 
 	sort(iarr, 6);
-	for(int i=0 ; i<6 ; ++i){
+	for(int i=0 ; i<6 ; ++i)
 		cout<< iarr[i] <<" ";
-	}
 	cout<< endl;
 
 	sort(carr, 7);
-	for(int i=0 ; i<7 ; ++i){
+	for(int i=0 ; i<7 ; ++i)
 		cout<< carr[i] <<" ";
-	}
 	cout<< endl;
 
 	sort(darr, 4);
-	for(int i=0 ; i<4 ; ++i){
+	for(int i=0 ; i<4 ; ++i)
 		cout<< darr[i] <<" ";
-	}
 	cout<< endl;
 
 	// succesful exit
