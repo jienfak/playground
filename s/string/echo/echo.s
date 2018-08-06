@@ -86,6 +86,7 @@ global _start
 _start:;{
 	mov eax, dword [esp+4*2]
 	call print
+
 	;default exit
 	mov eax, 0 ;
 	call exit;
