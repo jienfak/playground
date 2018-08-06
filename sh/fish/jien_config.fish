@@ -157,10 +157,10 @@ xrdb -merge ~/.Xresources
 echo "Setting '$PAGER' colors"
 
 	# default
-	export LESS_TERMCAP_md=(perl -e "print \"\033[0m\"")
+	export LESS_TERMCAP_md=(perl -e "print \"\033[1;31m\"")
 	export LESS_TERMCAP_me=(perl -e "print \"\033[0m\"")
 	#underlined
-	export LESS_TERMCAP_us=(perl -e "print \"\033[1;31m\";")
+	export LESS_TERMCAP_us=(perl -e "print \"\033[1;32m\";")
 	export LESS_TERMCAP_ue=(perl -e "print \"\033[0m\"; ")
 	#service info
 	export LESS_TERMCAP_so=(perl -e "print \"\033[1;33m\";")
