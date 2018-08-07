@@ -12,5 +12,8 @@ int main(void){
 	s.at(3) = '\0' ;
 	cout<< s <<endl;
 
+	string s1 = "012345678" ;
+	cout<<s1.substr(2, 5)<<endl;
+
 	return 0;
 }

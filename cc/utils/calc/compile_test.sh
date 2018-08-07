@@ -1,3 +1,8 @@
 #!/usr/bin/sh
 
-g++ test.cc calc.cc -o test 
+echo First file...
+g++ test.cc -c
+echo Second file...
+g++ calc.cc -c
+echo Comiling exit file...
+g++ calc.o test.o -o test

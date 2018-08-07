@@ -4,8 +4,7 @@ use strict;
 use Cwd;
 use feature 'say';
 
-sub Findf
-{
+sub Findf {
 	my ($work) = shift;
 	my ($start)= &cwd;
 	chdir($work) or die "chdir: $!";

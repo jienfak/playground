@@ -95,7 +95,7 @@ end
 	set __fish_git_prompt_color_branch yellow
 
 # Status Chars
-	set __fish_git_prompt_char_dirtystate '⚡'
+	set __fish_git_prompt_char_dirtystate 'd'
 	set __fish_git_prompt_char_stagedstate '→'
 	set __fish_git_prompt_char_stashstate '↩'
 	set __fish_git_prompt_char_upstream_ahead '↑'
@@ -154,7 +154,7 @@ end
 echo "Setting 'Xresourses' via xrdb..."
 xrdb -merge ~/.Xresources
 
-echo "Setting '$PAGER' colors"
+echo "Setting '$PAGER' colors..."
 
 	# default
 	export LESS_TERMCAP_md=(perl -e "print \"\033[1;31m\"")
@@ -168,6 +168,10 @@ echo "Setting '$PAGER' colors"
 	#blinking color
 	export LESS_TERMCAP_mb=(perl -e "print \"\033[1;32m\";")
 	export LESS_TERMCAP_me=(perl -e "print \"\033[0m\";")
+
+echo "Setting fish colors..."
+	set fish_color_comment	yellow
+	set fish_color_error	grey
 
 echo \n\
 \<---------------------------------------------\>\n\

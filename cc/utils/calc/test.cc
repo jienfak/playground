@@ -8,7 +8,8 @@ int main(void){
 
 	string string_arr[] = {
 		"num?", "1234", "2356", "2342 3 4",
-		"words + other + words", "scuk\t12,fd"
+		"words + other + words", "scuk\t12,fd",
+		"+123", "-23", "234+3423-323", "23*34-23"
 	} ;
 	cout<<"isNum():"<<endl;
 	for( string str : string_arr ){
@@ -18,6 +19,20 @@ int main(void){
 	cout<<"delSpaces():"<<endl;
 	for( string str : string_arr){
 		cout<<"\t\""<< str <<"\" = \""<< Calc::delSpaces(str) <<"\""<<endl;
+	}
+
+	cout<<"findNextToken():"<<endl;
+	for( string str : string_arr){
+		cout<<"\t\""<< str <<"\" = "<< Calc::findNextToken(str) <<endl;
+	}
+
+	string string_arr1[] = {
+		"2 + 23 + 4", "12 - 16 * 8", "34234+32/124", "123"
+	} ;
+
+	cout<<"expr():"<<endl;
+	for( string str : string_arr1 ){
+		cout<<"\t\""<< str <<"\" = "<< Calc::expr(str) <<endl;
 	}
 	// Succesful exit
 	return 0 ;
