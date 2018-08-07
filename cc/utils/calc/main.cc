@@ -2,9 +2,11 @@
 
 int main(int argc, char **argv){
 	string input;
+	Calc calc = Calc () ;
 	while(true){
-		cout<<">"; cin>>input;
-		cout<< Calc::expr(input) <<endl;
+		cin>>input;
+		if( cin.eof() ){ break; }
+		cout<< calc.expr(input) <<endl;
 	}
 
 	// Succesful exit

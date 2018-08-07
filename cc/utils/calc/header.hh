@@ -10,22 +10,21 @@
 
 using namespace std ;
 
-namespace Calc {
-	double	calculate(string);
-	double	calculateToken(double, double, char);
-	string	delSpaces(string);
-	double 	expr(string);
-	bool	isNum(string);
-	bool	isDigit(char);
-	bool	hasOtherChars(string, string);
-	int	findNextToken(string);
+class Calc {
+	public:
+		double 	expr(string);
+	private:
+		static double	calculate(string);
+		static double	calculateToken(double, double, char);
+		static string	delSpaces(string);	
+		static bool	isNum(string);
+		static bool	isDigit(char);
+		static bool	hasOtherChars(string, string);
+		static int	findNextToken(string);
 
-	const map<char, int> tokens = {
-		{'+', 1}, {'-', 1},
-		{'*', 2}, {'/', 2}
-	} ;
-   
-	const string able_chars = "0123456789+-*/" ;
-}
+		static const map<char, int> tokens; 
+	   
+		static const string able_chars;
+};
 
 //*************************************************

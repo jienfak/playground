@@ -1,5 +1,12 @@
 #include "./header.hh"
 
+const map<char, int> Calc::tokens = {
+	{'+', 1}, {'-', 1},
+	{'*', 2}, {'/', 2}
+} ;
+
+const string Calc::able_chars = "0123456789+-*/" ;
+
 double Calc::expr(string expr){	
 	string expr_cleared = Calc::delSpaces(expr) ;
 	return Calc::calculate( expr_cleared ) ;
@@ -51,16 +58,12 @@ bool Calc::isNum(string expr){
 	char c;
 
 	int bias;
-	if( (expr.at(0)=='-') || (expr.at(0)=='+')){
-		bias = 1 ;
-	}else{
-		bias = 0 ;
-	}
+	if(  (expr.at(0)=='-') || (expr.at(0)=='+')  ){ bias = 1 ; }
+	else{ bias = 0 ; }
 
 	for( int i=bias ; i<expr.length() ; ++i ){
 		c = expr.at(i) ;
-		if(! isDigit(c) )
-			return false ;
+		if(! isDigit(c) ){ return false ; }
 	}
 
 	return true ;
@@ -76,12 +79,12 @@ int Calc::findNextToken(string expr){
 	char cur_token = '*' ;
 	for( int i=expr.length()-1 ; i>0 ; --i ){
 		char c = expr.at(i) ;
-		if(!( Calc::tokens.count(c) )){
+		if(!( tokens.count(c) )){
 			continue;
 		}
 
 		// If we have this token and it has more prior
-		if( Calc::tokens.at(c) <= Calc::tokens.at(cur_token) ){
+		if( tokens.at(c) <= tokens.at(cur_token) ){
 			cur_token_id = i ;
 			cur_token = c ;
 		}

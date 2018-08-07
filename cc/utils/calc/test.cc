@@ -1,9 +1,10 @@
 #include "./header.hh"
 
 int main(void){
+	Calc calc = Calc () ;
 	cout<<"isDigit():"<<endl;
 	for(char c='0' ; c<('9'+5) ; ++c){
-		cout<<"\t '"<< c <<"' = "<< Calc::isDigit(c) <<endl;
+		cout<<"\t '"<< c <<"' = "<< calc::isDigit(c) <<endl;
 	}
 
 	string string_arr[] = {
@@ -32,7 +33,7 @@ int main(void){
 
 	cout<<"expr():"<<endl;
 	for( string str : string_arr1 ){
-		cout<<"\t\""<< str <<"\" = "<< Calc::expr(str) <<endl;
+		cout<<"\t\""<< str <<"\" = "<< calc.expr(str) <<endl;
 	}
 	// Succesful exit
 	return 0 ;
