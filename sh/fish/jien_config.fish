@@ -12,8 +12,7 @@ echo Setting Vi key mode...
 fish_vi_key_bindings 
 
 echo Setting vars...
-#vars
-	
+#vars	
 	set MACHINE_NAME (uname -ormi)
 	set ESC_COLOR_RED "\[\e[0;31;40m\]"
 	set ESC_COLOR_GREEN "\[\e[0;32;40m\]"
@@ -23,13 +22,25 @@ echo Setting vars...
 	set fish_greeting ""
 
 	#editor for standard
-	export EDITOR=(which nvim)
-	export VISUAL=(which nvim)
+	which nvim
+	if test $status = 0
+		export EDITOR=(which nvim)
+
+	end
+	if test $status != 0
+		which vim
+		if test $status = 0
+			export EDITOR=(which vim)
+
+		end
+		if test $status != 0
+			export EDITOR=(which cat)
+		end
+	end
+	export VISUAL=(which gvim)
 
 	#pager
 	export PAGER="less -r"
-
-
 	#gcc vars
 	set C_USR_MODULES $HOME/code/scripts/c/modules/lib
 
@@ -43,7 +54,6 @@ echo Setting vars...
 # functions-aliases
 function help -d 'Automaticaly gets help for a program'
 	man $argv
-
 	if test $status = 0
 		return
 	end
@@ -56,31 +66,31 @@ function help -d 'Automaticaly gets help for a program'
 	
 	eval $argv -h > /dev/null 2>&1
 	if test $status = 0
-		eval $argv -h | pager
+		eval $argv -h | pager 2>&1
 		return
 	end
 
 	eval $argv --help > /dev/null 2>&1
 	if test $status = 0
-		eval $argv --help | pager
+		eval $argv --help | pager 2>&1
 		return
 	end
 
 	eval $argv -help > /dev/null 2>&1
 	if test $status = 0
-		eval $argv -help | pager
+		eval $argv -help | pager 2>&1
 		return
 	end
 
 	eval $argv help > /dev/null 2>&1
 	if test $status = 0
-		eval $argv help | pager
+		eval $argv help | pager 2>&1
 		return
 	end
 
 	eval $argv > /dev/null 2>&1
 	if test $status != 0
-		eval $argv | pager
+		eval $argv | pager 2>&1
 		return
 	end
 

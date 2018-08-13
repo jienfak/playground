@@ -10,6 +10,7 @@ OBJS	= $(SRCS:.c=.o);
 all:$(TARGET)
 
 $(TARGET): $(OBJS)
+	echo "Building " $(TARGET)
 	$(CC) -o $(TARGET) $(OBJS) $(CFLAGS)
 
 .c.o:

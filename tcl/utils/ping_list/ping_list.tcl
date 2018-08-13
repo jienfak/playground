@@ -39,8 +39,7 @@ proc delIp {file } {
 set fd [open $argv]
 while { ![eof $fd] } {
 	set cur_ip [gets $fd]
-	set out [exec ping $cur_ip -c 4]
-	puts $out
+	open [exec which "ping"] -c 4 $cur_ip
 }
 
 exit
