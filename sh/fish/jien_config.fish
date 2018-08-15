@@ -12,7 +12,7 @@ echo Setting Vi key mode...
 fish_vi_key_bindings 
 
 echo Setting vars...
-#vars	
+# Variables
 	set MACHINE_NAME (uname -ormi)
 	set ESC_COLOR_RED "\[\e[0;31;40m\]"
 	set ESC_COLOR_GREEN "\[\e[0;32;40m\]"
@@ -54,6 +54,11 @@ echo Setting vars...
 # functions-aliases
 function help -d 'Automaticaly gets help for a program'
 	man $argv
+	if test $status = 0
+		return
+	end
+
+	info $argv
 	if test $status = 0
 		return
 	end
@@ -104,7 +109,7 @@ end
 	set __fish_git_prompt_showupstream 'yes'
 	set __fish_git_prompt_color_branch yellow
 
-# Status Chars
+	# Status Chars
 	set __fish_git_prompt_char_dirtystate 'd'
 	set __fish_git_prompt_char_stagedstate '→'
 	set __fish_git_prompt_char_stashstate '↩'
@@ -113,26 +118,27 @@ end
  
 # my prompt
 function fish_prompt --description "Write out the prompt"
-    set last_status $status
-    set -l color_cwd
-    set -l suffix
-    # to get know is that a root
-    switch "$USER"
-        case root toor
-            if set -q fish_color_cwd_root
-                set color_cwd $fish_color_cwd_root
-		set color_suffix white
-            else
-                set color_cwd $fish_color_cwd
-            end
-            set suffix '#'
-        case '*'
-            set color_cwd $fish_color_cwd
-		set color_suffix white
-            set suffix '$'
-    end
-    echo -n -s (set_color $color_cwd)"$USER"\
-    	(set_color normal) @ (set_color yellow)(prompt_hostname)\
+	set last_status $status
+	set -l color_cwd
+	set -l suffix
+
+	# to get know is that a root
+	switch "$USER"
+		case root toor
+			if set -q fish_color_cwd_root
+				set color_cwd $fish_color_cwd_root
+				set color_suffix white
+			else
+				set color_cwd $fish_color_cwd
+			end
+			set suffix '#'
+		case '*'
+			set color_cwd $fish_color_cwd
+			set color_suffix white
+			set suffix '$'
+	end
+	echo -n -s (set_color $color_cwd)"$USER"\
+	(set_color normal) @ (set_color yellow)(prompt_hostname)\
 	(set_color normal)':' (set_color $color_cwd) (prompt_pwd) (set_color $color_suffix)\
 	( printf '%s' (__fish_git_prompt) )\
 	\( (set_color $color_cwd) $last_status (set_color normal) \)\
@@ -144,53 +150,56 @@ end
 echo "Getting your permissions..."
 set -l color_cwd
 set -l suffix
-# to get know is that a root
-#
+# To get know is that a root
 switch "$USER"
-case root toor
-    if set -q fish_color_cwd_root
-	set color_cwd $fish_color_cwd_root
-	set color_suffix white
-    else
-	set color_cwd $fish_color_cwd
-    end
-    set suffix '#'
-case '*'
-    set color_cwd $fish_color_cwd
-	set color_suffix white
-    set suffix '$'
+	case root toor
+		if set -q fish_color_cwd_root
+			set color_cwd $fish_color_cwd_root
+		set color_suffix white
+		else
+			set color_cwd $fish_color_cwd
+		end
+		set suffix '#'
+	case '*'
+		set color_cwd $fish_color_cwd
+			set color_suffix white
+			set suffix '$'
 end
 
 echo "Setting 'Xresourses' via xrdb..."
 xrdb -merge ~/.Xresources
 
-echo "Setting '$PAGER' colors..."
+# Colors
+	echo "Setting '$PAGER' colors..."
+		# Less colors
+		export LESS_TERMCAP_md=(perl -e "print \"\033[1;31m\"")
+		export LESS_TERMCAP_me=(perl -e "print \"\033[0m\"")
+			# Underlined
+		export LESS_TERMCAP_us=(perl -e "print \"\033[1;32m\";")
+		export LESS_TERMCAP_ue=(perl -e "print \"\033[0m\"; ")
+			# Service info
+		export LESS_TERMCAP_so=(perl -e "print \"\033[1;33m\";")
+		export LESS_TERMCAP_se=(perl -e "print \"\033[0m\";")
+			# Blinking color
+		export LESS_TERMCAP_mb=(perl -e "print \"\033[1;32m\";")
+		export LESS_TERMCAP_me=(perl -e "print \"\033[0m\";")
 
-	# default
-	export LESS_TERMCAP_md=(perl -e "print \"\033[1;31m\"")
-	export LESS_TERMCAP_me=(perl -e "print \"\033[0m\"")
-	#underlined
-	export LESS_TERMCAP_us=(perl -e "print \"\033[1;32m\";")
-	export LESS_TERMCAP_ue=(perl -e "print \"\033[0m\"; ")
-	#service info
-	export LESS_TERMCAP_so=(perl -e "print \"\033[1;33m\";")
-	export LESS_TERMCAP_se=(perl -e "print \"\033[0m\";")
-	#blinking color
-	export LESS_TERMCAP_mb=(perl -e "print \"\033[1;32m\";")
-	export LESS_TERMCAP_me=(perl -e "print \"\033[0m\";")
+	echo "Setting fish colors..."
+		# Fish colors
+		set fish_color_comment		yellow
+		set fish_color_error		grey
+		set fish_color_operator		$color_cwd
+		set fish_color_autosuggestion	"brgrey"
 
-echo "Setting fish colors..."
-	set fish_color_comment	yellow
-	set fish_color_error	grey
-
-echo \n\
-\<---------------------------------------------\>\n\
-'   ' \<(set_color red)F(set_color green)A(set_color blue)K(set_color normal)-\>\
-(set_color red)Freedom(set_color normal)-\>\
-(set_color green)Anarchy(set_color normal)\<-\
-(set_color blue)Knowledge(set_color normal)\<-\
-(set_color red)F(set_color green)A(set_color blue)K(set_color normal)\>\n\
-\<---------------------------------------------\>\n\n\
-Welcome to the system, (set_color $color_cwd)$USER(set_color normal)!\n\
-You are on (set_color yellow)$MACHINE_NAME(set_color normal).\n\
-Now you are using (set_color green)$SHELL_VERSION(set_color normal).\n
+echo \
+	# Start message
+	\<---------------------------------------------\>\n\
+	'   ' \<(set_color red)F(set_color green)A(set_color blue)K(set_color normal)-\>\
+	(set_color red)Freedom(set_color normal)-\>\
+	(set_color green)Anarchy(set_color normal)\<-\
+	(set_color blue)Knowledge(set_color normal)\<-\
+	(set_color red)F(set_color green)A(set_color blue)K(set_color normal)\>\n\
+	\<---------------------------------------------\>\n\n\
+	Welcome to the system, (set_color $color_cwd)$USER(set_color normal)!\n\
+	You are on (set_color yellow)$MACHINE_NAME(set_color normal).\n\
+	Now you are using (set_color green)$SHELL_VERSION(set_color normal).\n
