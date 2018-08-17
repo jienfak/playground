@@ -21,6 +21,9 @@ echo Setting vars...
 	set SHELL_VERSION (fish -v)
 	set fish_greeting ""
 
+	# Fast using
+	set S $HOME/code/scripts
+
 	#editor for standard
 	which nvim
 	if test $status = 0

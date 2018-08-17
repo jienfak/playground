@@ -119,6 +119,9 @@ set smartindent
 set foldenable 
 set foldmethod=indent
 
+" Cursorline
+set cursorline
+
 colorscheme slate
 
 augroup resCur
@@ -126,4 +129,10 @@ augroup resCur
   autocmd BufReadPost * call setpos(".", getpos("'\""))
 augroup END
 
-hi Folded	ctermbg=yellow	ctermfg=black
+hi Folded	ctermbg=yellow		ctermfg=black
+hi StatusLine	ctermbg=black		ctermfg=red
+hi StatusLineNC ctermbg=black		ctermfg=darkgrey
+hi ModeMsg	ctermbg=white		ctermfg=black
+hi LineNr	ctermbg=yellow		ctermfg=black
+hi VertSplit 	ctermbg=darkgrey 	ctermfg=darkgrey
+hi CursorLine	cterm=bold

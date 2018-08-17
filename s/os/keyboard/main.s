@@ -9,12 +9,13 @@ start:
 	push msg2
 	call printStrZ
 
-;void printStrZ(uint64_t pointer);
+	jmp $
+
 printStrZ:
 	push bp
 	mov bp, sp
 
-	lea si, [bp+4]
+	lea si, [bp+8]
 
 	cld
 
@@ -37,9 +38,9 @@ printStrZ:
 	ret
 
 msg1:
-	db "MSG1"
+	db "MSG1",0
 msg2:
-	db "MSG2"
+	db "MSG2",0
 
 finish:
 	times 0x1FE-finish+start db 0
