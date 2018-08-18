@@ -7,8 +7,6 @@
 " Except when Vim is run with "-u NONE" or "-C".
 " Individual settings can be reverted with ":set option&".
 " Other commands can be reverted as mentioned below.
-"syntax
-:syn match Function /\w\+\((\)\@=/
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -122,17 +120,20 @@ set foldmethod=indent
 " Cursorline
 set cursorline
 
-colorscheme slate
-
 augroup resCur
   autocmd!
   autocmd BufReadPost * call setpos(".", getpos("'\""))
 augroup END
 
-hi Folded	ctermbg=yellow		ctermfg=black
+colorscheme slate
+
+hi Folded	ctermbg=blue		ctermfg=black
 hi StatusLine	ctermbg=black		ctermfg=red
 hi StatusLineNC ctermbg=black		ctermfg=darkgrey
 hi ModeMsg	ctermbg=white		ctermfg=black
 hi LineNr	ctermbg=yellow		ctermfg=black
 hi VertSplit 	ctermbg=darkgrey 	ctermfg=darkgrey
 hi CursorLine	cterm=bold
+
+syn match parens /[(){}]/
+hi parens ctermfg=red

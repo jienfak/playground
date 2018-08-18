@@ -94,11 +94,28 @@ int main(){
 	params.DriverType = 	EDT_OPENGL ;
 	params.EventReceiver = 	&rec ; */
 
-	ICameraSceneNode *camera = smgr->addCameraSceneNode() ;
-	camera->setTarget( core::vector3df(75, 75, 75) );
-	camera->bindTargetAndRotation(true);
+	SKeyMap key_map[4];
+	key_map[0].Action = EKA_MOVE_FORWARD ;
+	key_map[0].KeyCode = KEY_KEY_W ;
 
-	scene::ISceneNode *node = smgr->addCubeSceneNode() ;
+	key_map[1].Action = EKA_MOVE_BACKWARD ;
+	key_map[1].KeyCode = KEY_KEY_S ;
+
+	key_map[2].Action = EKA_STRAFE_LEFT ;
+	key_map[2].KeyCode = KEY_KEY_A ;
+
+	key_map[3].Action = EKA_STRAFE_RIGHT ;
+	key_map[3].KeyCode = KEY_KEY_D ;
+	ICameraSceneNode *camera = smgr->addCameraSceneNodeFPS(
+		0, // Parent.
+		100, // Rotation speed.
+		0.5f, // Movement speed.
+		-1, // ID
+		key_map, // Key map.
+		4 // Size of key map.
+	) ;
+
+	scene::ISceneNode *node = smgr->addCubeSceneNode(50.f) ;
 	if( node ){
 		node->setPosition( core::vector3df(0, 0, 30) );
 		node->setMaterialFlag(video::EMF_LIGHTING, false);
@@ -129,67 +146,10 @@ int main(){
 		const f32 frameDeltaTime = (f32)(now-then) / 1000.f ;
 		then = now ;
 
-		vector3df view = getCurrentView(camera) ;
-
-		core::vector3df next_camera_rotation = camera->getRotation() ;
-		core::vector3df next_camera_position = camera->getPosition() ;
-		core::vector3df next_camera_target = camera->getTarget() ;
-	
-		// Arrows.
-		if( rec.IsKeyDown(irr::KEY_UP) ){
-			next_camera_rotation.X -= ROTATION_SPEED*frameDeltaTime ;
-			was_pressed = true ;
-		}if(rec.IsKeyDown(irr::KEY_DOWN)){
-			next_camera_rotation.X += ROTATION_SPEED*frameDeltaTime ;
-			was_pressed = true ;
-		}if(rec.IsKeyDown(irr::KEY_LEFT)){
-			next_camera_rotation.Y -= ROTATION_SPEED*frameDeltaTime ;
-			was_pressed = true ;
-		}if(rec.IsKeyDown(irr::KEY_RIGHT)){
-			next_camera_rotation.Y += ROTATION_SPEED*frameDeltaTime ;
-			was_pressed = true ;
-		}
-		camera->setRotation(next_camera_rotation);	
-
-		// WASD.
-		if(rec.IsKeyDown(irr::KEY_KEY_W)){
-			//next_camera_position += next_camera_target*frameDeltaTime*MOVEMENT_SPEED ;
-			next_camera_position += getCurrentView(camera) * MOVEMENT_SPEED * frameDeltaTime ;
-			was_pressed = true ;
-		}if(rec.IsKeyDown(irr::KEY_KEY_S)){
-			next_camera_position -= getCurrentView(camera) * MOVEMENT_SPEED * frameDeltaTime ;
-			was_pressed = true ;
-		}if(rec.IsKeyDown(irr::KEY_KEY_D)){	
-			vector3df vec; vec.X = view.Z ; vec.Z = -view.X ;
-			next_camera_position += vec*MOVEMENT_SPEED*frameDeltaTime ;
-		}if(rec.IsKeyDown(irr::KEY_KEY_A)){		
-			vector3df vec; vec.X = view.Z ; vec.Z = -view.X ;
-			next_camera_position -= vec*MOVEMENT_SPEED*frameDeltaTime ;
-		}
-		camera->setPosition(next_camera_position);
-
-		if(rec.IsKeyDown(irr::KEY_KEY_F)){
-			was_pressed = true ;
-		}
-
-		if( was_pressed ){
-			std::cout<<"-----------------------"<<std::endl
-				<<"X="<< next_camera_position.X <<":"\
-				<<"Y="<< next_camera_position.Y <<":"\
-				<<"Z="<< next_camera_position.Z <<std::endl
-				<<"^"<<std::endl
-				<<"X="<< next_camera_rotation.X <<":"\
-				<<"Y="<< next_camera_rotation.Y <<":"\
-				<<"Z="<< next_camera_rotation.Z <<std::endl
-				<<"^"<<std::endl
-				<<"X="<< next_camera_target.X <<":"\
-				<<"Y="<< next_camera_target.Y <<":"\
-				<<"Z="<< next_camera_target.Z <<std::endl;
-		;
-		}	
-		driver->beginScene( true, true, SColor(255, 113, 113, 113) );
-		smgr->drawAll();
+		driver->beginScene( true, true, SColor(0, 0, 0, 0) );
+		smgr->drawAll();	
 		driver->endScene();
+	
 	}
 	device->drop();// Stop the engine
 
