@@ -19,13 +19,13 @@ echo Setting vars...
 	set ESC_COLOR_END "\[\e[00m\]"
 	#greeting
 	set SHELL_VERSION (fish -v)
-	set fish_greeting ""
+	set fish_greeting " "
 
 	# Fast using
 	set S $HOME/code/scripts
 
 	#editor for standard
-	which nvim
+	which nvim > /dev/null 2>&1
 	if test $status = 0
 		export EDITOR=(which nvim)
 
@@ -150,7 +150,7 @@ function fish_prompt --description "Write out the prompt"
 end
 
 
-echo "Getting your permissions..."
+echo -n "Getting your permissions..."
 set -l color_cwd
 set -l suffix
 # To get know is that a root
@@ -158,19 +158,28 @@ switch "$USER"
 	case root toor
 		if set -q fish_color_cwd_root
 			set color_cwd $fish_color_cwd_root
-		set color_suffix white
+		set color_suffix white	
 		else
 			set color_cwd $fish_color_cwd
 		end
 		set suffix '#'
+		echo "root?!"
 	case '*'
 		set color_cwd $fish_color_cwd
-			set color_suffix white
-			set suffix '$'
+		set color_suffix white
+		set suffix '$'
+		echo
 end
 
-echo "Setting 'Xresourses' via xrdb..."
-xrdb -merge ~/.Xresources
+echo -n "Setting 'Xresourses' via xrdb..."
+which xrdb > /dev/null 2>&1
+if test $status = 0
+	xrdb -merge ~/.Xresources
+	echo
+else
+	echo 'Nope.'
+end
+
 
 # Colors
 	echo "Setting '$PAGER' colors..."
