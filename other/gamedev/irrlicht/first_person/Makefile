@@ -7,7 +7,7 @@ Target := first_person
 # List of source files, separated by spaces
 Sources := ./src/*
 # Path to Irrlicht directory, should contain include/ and lib/
-IrrlichtHome := $(HOME)/progs/irrlicht-1.8.4
+IrrlichtHome := $(HOME)/progs/irrlicht
 # Path for the executable. Note that Irrlicht.dll should usually also be there for win32 systems
 BinPath = ./bin/
 

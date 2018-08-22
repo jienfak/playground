@@ -141,7 +141,7 @@ function fish_prompt --description "Write out the prompt"
 			set suffix '$'
 	end
 	echo -n -s (set_color $color_cwd)"$USER"\
-	(set_color normal) @ (set_color yellow)(prompt_hostname)\
+	(set_color normal) @ (set_color yellow)(uname -n)\
 	(set_color normal)':' (set_color $color_cwd) (prompt_pwd) (set_color $color_suffix)\
 	( printf '%s' (__fish_git_prompt) )\
 	\( (set_color $color_cwd) $last_status (set_color normal) \)\
