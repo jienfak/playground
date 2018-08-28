@@ -66,7 +66,6 @@ int main(){
 	// This function starts first
 	//
 
-	float buf;
 	EventReceiver rec;
 
 	/* Start up the engine */
@@ -94,7 +93,8 @@ int main(){
 	params.DriverType = 	EDT_OPENGL ;
 	params.EventReceiver = 	&rec ; */
 
-	/*SKeyMap key_map[4];
+
+	SKeyMap key_map[4];
 	key_map[0].Action = EKA_MOVE_FORWARD ;
 	key_map[0].KeyCode = KEY_KEY_W ;
 
@@ -106,17 +106,20 @@ int main(){
 
 	key_map[3].Action = EKA_STRAFE_RIGHT ;
 	key_map[3].KeyCode = KEY_KEY_D ;
+
 	ICameraSceneNode *camera = smgr->addCameraSceneNodeFPS(
+		// Camera parameters.
 		0, // Parent.
 		100, // Rotation speed.
 		0.5f, // Movement speed.
 		-1, // ID
 		key_map, // Key map.
 		4 // Size of key map.
-	) ;*/
+	) ;
 
-	ICameraSceneNode *camera = smgr->addCameraSceneNode();
-	camera->bindTargetAndRotation(true);
+
+	/*ICameraSceneNode *camera = smgr->addCameraSceneNode();
+	camera->bindTargetAndRotation(true);*/
 
 	scene::ISceneNode *node = smgr->addCubeSceneNode(50.f) ;
 	if( node ){
@@ -132,9 +135,6 @@ int main(){
 
 	device->getCursorControl()->setVisible(false);
 	u32 then = device->getTimer()->getTime() ;
-
-	const f32 MOVEMENT_SPEED = 10.f ;
-	const f32 ROTATION_SPEED = 10.f ;
 
 	long iteration = 0 ;
 	//driver->beginScene( true, true, SColor(255, 113, 113, 113) );

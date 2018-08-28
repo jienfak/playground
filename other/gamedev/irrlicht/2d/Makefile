@@ -9,7 +9,7 @@ Sources := src/*
 # Path to Irrlicht directory, should contain include/ and lib/
 IrrlichtHome := $(HOME)/progs/irrlicht
 # Path for the executable. Note that Irrlicht.dll should usually also be there for win32 systems
-BinPath = ./bin/
+BinPath = ./bin/rls/
 
 # general compiler settings (might need to be set when compiling the lib, too)
 # preprocessor flags, e.g. defines and include paths
