@@ -7,7 +7,7 @@ end
 
 echo Access granted.\n
 
-# vi editor mode
+# Vi editor mode.
 echo Setting Vi key mode...
 fish_vi_key_bindings 
 
@@ -17,44 +17,43 @@ echo Setting vars...
 	set ESC_COLOR_RED "\[\e[0;31;40m\]"
 	set ESC_COLOR_GREEN "\[\e[0;32;40m\]"
 	set ESC_COLOR_END "\[\e[00m\]"
-	#greeting
+	# Greeting.
 	set SHELL_VERSION (fish -v)
-	set fish_greeting ""
+	set fish_greeting " "
 
-	# Fast using
+	# Fast using.
 	set S $HOME/code/scripts
 
-	#editor for standard
-	which nvim
+	# Editor for standard.
+	which nvim > /dev/null 2>&1
 	if test $status = 0
 		export EDITOR=(which nvim)
-
-	end
-	if test $status != 0
+	else
 		which vim
 		if test $status = 0
 			export EDITOR=(which vim)
-
-		end
-		if test $status != 0
+		else
 			export EDITOR=(which cat)
 		end
 	end
+
+	# GUI editor.
 	export VISUAL=(which gvim)
 
-	#pager
-	export PAGER="less -r"
-	#gcc vars
+	# Pager.
+	export PAGER=(which less)" -R"
+	export MANPAGER=(which less)" -R"
+	# GCC variables.
 	set C_USR_MODULES $HOME/code/scripts/c/modules/lib
 
-#aliases
-	echo Setting aliases...
+# Aliases.
+echo Setting aliases...
 	alias ed $EDITOR
 	alias edsu "sudo $EDITOR"
 	alias service "sudo systemctl"
 	alias pager "$PAGER"
 
-# functions-aliases
+# Functions-aliases.
 function help -d 'Automaticaly gets help for a program'
 	man $argv
 	if test $status = 0
@@ -102,11 +101,10 @@ function help -d 'Automaticaly gets help for a program'
 		return
 	end
 
-	echo "help: Could not get any help, try 'man $argv'"
-
+	echo "help: Could not get any help!"
 end
 
-# fish git prompt
+# Fish git prompt.
 	set __fish_git_prompt_showdirtystate 'yes'
 	set __fish_git_prompt_showstashstate 'yes'
 	set __fish_git_prompt_showupstream 'yes'
@@ -119,7 +117,7 @@ end
 	set __fish_git_prompt_char_upstream_ahead '↑'
 	set __fish_git_prompt_char_upstream_behind '↓'
  
-# my prompt
+# My prompt.
 function fish_prompt --description "Write out the prompt"
 	set last_status $status
 	set -l color_cwd
@@ -140,8 +138,9 @@ function fish_prompt --description "Write out the prompt"
 			set color_suffix white
 			set suffix '$'
 	end
-	echo -n -s (set_color $color_cwd)"$USER"\
-	(set_color normal) @ (set_color yellow)(prompt_hostname)\
+	echo -n -s \[ (set_color blue) $SHLVL (set_color normal) \] \
+	(set_color $color_cwd)"$USER"\
+	(set_color normal) @ (set_color yellow)(uname -n)\
 	(set_color normal)':' (set_color $color_cwd) (prompt_pwd) (set_color $color_suffix)\
 	( printf '%s' (__fish_git_prompt) )\
 	\( (set_color $color_cwd) $last_status (set_color normal) \)\
@@ -150,7 +149,7 @@ function fish_prompt --description "Write out the prompt"
 end
 
 
-echo "Getting your permissions..."
+echo -n "Getting your permissions..."
 set -l color_cwd
 set -l suffix
 # To get know is that a root
@@ -158,19 +157,28 @@ switch "$USER"
 	case root toor
 		if set -q fish_color_cwd_root
 			set color_cwd $fish_color_cwd_root
-		set color_suffix white
+		set color_suffix white	
 		else
 			set color_cwd $fish_color_cwd
 		end
 		set suffix '#'
+		echo "root?!"
 	case '*'
 		set color_cwd $fish_color_cwd
-			set color_suffix white
-			set suffix '$'
+		set color_suffix white
+		set suffix '$'
+		echo
 end
 
-echo "Setting 'Xresourses' via xrdb..."
-xrdb -merge ~/.Xresources
+echo -n "Setting 'Xresourses' via xrdb..."
+which xrdb > /dev/null 2>&1
+if test $status = 0
+	xrdb -merge ~/.Xresources
+	echo
+else
+	echo 'Nope.'
+end
+
 
 # Colors
 	echo "Setting '$PAGER' colors..."

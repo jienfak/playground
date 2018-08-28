@@ -10,6 +10,11 @@ cd $1
 	cd bin
 		mkdir dbg rls
 	cd ..
+
+	mkdir media
+	cd media
+		mkdir graphics audio
+	cd ..
 cd ..
 
 

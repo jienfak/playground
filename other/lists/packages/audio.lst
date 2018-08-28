@@ -1,0 +1,12 @@
+	# DAW.
+	"lmms" "ardour" "audacity"
+	# Sound converters.
+	"soundconverter"
+	# Players.
+	"audacious" "mpg123"
+	# Synth.
+	"amsynth" "bristol" "phasex" "zynaddsubfx"
+	# Virtual MIDI.
+	"vkeybd" "jack-keyboard" "vmpk"
+	# Sequencers.
+	"rosegarden"

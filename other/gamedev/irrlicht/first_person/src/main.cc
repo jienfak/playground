@@ -66,7 +66,6 @@ int main(){
 	// This function starts first
 	//
 
-	float buf;
 	EventReceiver rec;
 
 	/* Start up the engine */
@@ -94,6 +93,7 @@ int main(){
 	params.DriverType = 	EDT_OPENGL ;
 	params.EventReceiver = 	&rec ; */
 
+
 	SKeyMap key_map[4];
 	key_map[0].Action = EKA_MOVE_FORWARD ;
 	key_map[0].KeyCode = KEY_KEY_W ;
@@ -106,7 +106,9 @@ int main(){
 
 	key_map[3].Action = EKA_STRAFE_RIGHT ;
 	key_map[3].KeyCode = KEY_KEY_D ;
+
 	ICameraSceneNode *camera = smgr->addCameraSceneNodeFPS(
+		// Camera parameters.
 		0, // Parent.
 		100, // Rotation speed.
 		0.5f, // Movement speed.
@@ -114,6 +116,10 @@ int main(){
 		key_map, // Key map.
 		4 // Size of key map.
 	) ;
+
+
+	/*ICameraSceneNode *camera = smgr->addCameraSceneNode();
+	camera->bindTargetAndRotation(true);*/
 
 	scene::ISceneNode *node = smgr->addCubeSceneNode(50.f) ;
 	if( node ){
@@ -130,11 +136,8 @@ int main(){
 	device->getCursorControl()->setVisible(false);
 	u32 then = device->getTimer()->getTime() ;
 
-	const f32 MOVEMENT_SPEED = 10.f ;
-	const f32 ROTATION_SPEED = 50.f ;
-
 	long iteration = 0 ;
-	driver->beginScene( true, true, SColor(255, 113, 113, 113) );
+	//driver->beginScene( true, true, SColor(255, 113, 113, 113) );
 
 	while( device->run() ){
 		// Main cycle
@@ -143,13 +146,87 @@ int main(){
 		// Work out a frame delta time.	
 		bool was_pressed = false ;
 		const u32 now = device->getTimer()->getTime() ;
-		const f32 frameDeltaTime = (f32)(now-then) / 1000.f ;
+		const f32 frame_delta_time = (f32)(now-then) / 1000.f ;
 		then = now ;
+
+		vector3df Next_Camera_Position = camera->getPosition() ;
+		vector3df Next_Camera_Rotation = camera->getRotation() ;
+		vector3df Next_Camera_Target = camera->getTarget() ;	
+
+		if( rec.IsKeyDown(KEY_UP) ){
+			Next_Camera_Rotation += ( vector3df (0, 1, 0) )*ROTATION_SPEED*frame_delta_time ;
+			was_pressed = true ;
+		}if( rec.IsKeyDown(KEY_DOWN) ){
+			Next_Camera_Rotation -= (vector3df (0, 1, 0) )*ROTATION_SPEED*frame_delta_time ;
+			was_pressed = true ;
+		}if(rec.IsKeyDown(KEY_LEFT)){
+			Next_Camera_Rotation -= (vector3df (1, 0, 0) )*ROTATION_SPEED*frame_delta_time ;
+			was_pressed = true ;
+		}if(rec.IsKeyDown(KEY_RIGHT)){
+			Next_Camera_Rotation += (vector3df (1, 0, 0) )*ROTATION_SPEED*frame_delta_time ;
+			was_pressed = true ;
+		}
+
+		if( rec.IsKeyDown(KEY_SPACE) ){
+			Next_Camera_Position += vector3df(0, 1, 0)*MOVEMENT_SPEED*frame_delta_time ;
+			was_pressed = true ;
+		}if( rec.IsKeyDown(KEY_LSHIFT) ){
+			Next_Camera_Position -= vector3df(0, 1, 0)*MOVEMENT_SPEED*frame_delta_time ;
+			was_pressed = true ;
+		}
+
+		// WASD.
+		if(rec.IsKeyDown(KEY_KEY_W)){
+			// W.
+			Next_Camera_Position +=
+				getCurrentView(camera)* \
+				MOVEMENT_SPEED*frame_delta_time
+			;
+			was_pressed = true ;
+		}if(rec.IsKeyDown(KEY_KEY_S)){
+			// S.
+			Next_Camera_Position -=
+				getCurrentView(camera)* \
+				MOVEMENT_SPEED*frame_delta_time
+			;
+			was_pressed = true ;
+		}if(rec.IsKeyDown(KEY_KEY_A)){
+			// A.
+		}if(rec.IsKeyDown(KEY_KEY_D)){
+			// D.
+		}
+
+		/*if(rec.IsKeyDown(KEY_KEY_Y)){
+			Next_Camera_Target = \
+				Next_Camera_Rotation = Next_Camera_Position = vector3df ()
+			;
+		}*/
+
+
+		if(was_pressed){
+			cout<<"--------------"<<endl
+				<<"Target:"<<endl
+				<<"X="<<Next_Camera_Target.X<<":"\
+				<<"Y="<<Next_Camera_Target.Y<<":"\
+				<<"Z="<<Next_Camera_Target.Z<<endl
+				<<"Rotation:"<<endl
+				<<"X="<<Next_Camera_Rotation.X<<":"\
+				<<"Y="<<Next_Camera_Rotation.Y<<":"\
+				<<"Z="<<Next_Camera_Rotation.Z<<endl
+				<<"Position:"<<endl
+				<<"X="<<Next_Camera_Position.X<<":"\
+				<<"Y="<<Next_Camera_Position.Y<<":"\
+				<<"Z="<<Next_Camera_Position.Z<<endl
+			;
+		}
+
+		camera->setPosition(Next_Camera_Position);
+		camera->setTarget(Next_Camera_Target);
+		camera->setRotation(Next_Camera_Rotation);
 
 		driver->beginScene( true, true, SColor(0, 0, 0, 0) );
 		smgr->drawAll();	
-		driver->endScene();
-	
+		driver->endScene();	
 	}
 	device->drop();// Stop the engine
 
