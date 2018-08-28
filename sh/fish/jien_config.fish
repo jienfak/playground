@@ -28,15 +28,12 @@ echo Setting vars...
 	which nvim > /dev/null 2>&1
 	if test $status = 0
 		export EDITOR=(which nvim)
-		export PAGER="/usr/share/nvim/runtime/macros/less.sh"
 	else
 		which vim
 		if test $status = 0
 			export EDITOR=(which vim)
-			export PAGER="/usr/share/vim/vim81/macros/less.sh"
 		else
 			export EDITOR=(which cat)
-			export PAGER=(which less)
 		end
 	end
 
@@ -44,7 +41,7 @@ echo Setting vars...
 	export VISUAL=(which gvim)
 
 	# Pager.
-	export PAGER=(which ccat)" | "(which less)" -R"
+	export PAGER=(which less)" -R"
 	export MANPAGER=(which less)" -R"
 	# GCC variables.
 	set C_USR_MODULES $HOME/code/scripts/c/modules/lib
