@@ -10,3 +10,5 @@
 	"vkeybd" "jack-keyboard" "vmpk"
 	# Sequencers.
 	"rosegarden"
+	# JACK connections.
+	"patchage"

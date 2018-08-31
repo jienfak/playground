@@ -38,11 +38,13 @@ echo Setting vars...
 	end
 
 	# GUI editor.
-	export VISUAL=(which gvim)
+	export VISUAL=$EDITOR
 
 	# Pager.
 	export PAGER=(which less)" -R"
 	export MANPAGER=(which less)" -R"
+	# Path.
+	set PATH $HOME/code/scripts/other/my_utils $PATH
 	# GCC variables.
 	set C_USR_MODULES $HOME/code/scripts/c/modules/lib
 

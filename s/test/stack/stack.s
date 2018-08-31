@@ -28,6 +28,7 @@ _start:
 	push 1;
 	push 2 ;
 	push 3;
+	syscall
 	
 	call func
 
