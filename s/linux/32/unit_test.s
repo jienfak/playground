@@ -1,6 +1,12 @@
 
+org32
+
 print proc
 exit  proc
+
+SECTION .data
+
+SECTION .code
 
 _start:
 	push ebp
