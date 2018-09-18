@@ -1,3 +1,4 @@
+/* This program converts data from on to other one. */
 #include <stdio.h>
 #include <stdlib.h>
 
