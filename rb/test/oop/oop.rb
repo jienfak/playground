@@ -2,7 +2,9 @@
 #
 
 class Person
-	#constructor of object
+	# Testing class.
+	
+	# Constructor of objects.
 	def initialize(name)
 		#object field example
 		@name = name

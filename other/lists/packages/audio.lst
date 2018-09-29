@@ -11,6 +11,6 @@
 	# Sequencers.
 	"rosegarden"
 	# JACK connections.
-	"patchage" "qjackctl"
+	"patchage" "qjackctl" "cadence"
 	# Sound recording.
 	"audio-recorder"
