@@ -135,8 +135,8 @@ hi LineNr	ctermbg=yellow		ctermfg=black
 hi VertSplit 	ctermbg=darkgrey 	ctermfg=darkgrey
 hi CursorLine	cterm=bold
 
-syn match parens /[(){}]/
-hi parens ctermfg=red
+"syn match parens /[(){}]/
+"hi parens ctermfg=red
 
 "autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
