@@ -20,8 +20,8 @@ int main(int argc, char **argv){
 	printf("Program started.\n");
 	int sock, err;
 	struct sockaddr_in addr;
-	struct addrinfo *res;
-	struct addrinfo **result;
+	struct addrinfo res;
+	struct addrinfo *result;
 
 	sock = socket(AF_INET, SOCK_STREAM, 0);
 	if(sock<0){
@@ -42,7 +42,15 @@ int main(int argc, char **argv){
 		exit(EXIT_FAILURE);
 	}
 
-	addr.sin_addr.s_addr = htonl( ( (struct sockaddr_in  *)result )->sin_addr.s_addr );
+	addr.sin_addr.s_addr = htonl(
+		(
+			(struct sockaddr_in *)( (struct addrinfo *)result )
+				->
+			ai_addr  
+		)
+			->
+		sin_addr.s_addr
+	) ;
 	printf("Connecting to '0x%x'...\n", addr.sin_addr.s_addr);
 	if(  connect(sock, (struct sockaddr *)&addr, sizeof(addr) )  ){
 		perror("connect");

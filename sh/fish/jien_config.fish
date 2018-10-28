@@ -12,41 +12,39 @@ echo Setting Vi key mode...
 fish_vi_key_bindings 
 
 echo Setting vars...
-# Variables
+# Variables.
+
 	set MACHINE_NAME (uname -ormi)
-	set ESC_COLOR_RED "\[\e[0;31;40m\]"
-	set ESC_COLOR_GREEN "\[\e[0;32;40m\]"
-	set ESC_COLOR_END "\[\e[00m\]"
 	# Greeting.
 	set SHELL_VERSION (fish -v)
 	set fish_greeting " "
 
 	# Fast using.
-	set S $HOME/code/scripts
+	set -g S $HOME/code/scripts
 
 	# Editor for standard.
-	which nvim > /dev/null 2>&1
+	which vim > /dev/null 2>&1
 	if test $status = 0
-		export EDITOR=(which nvim)
+		set -g EDITOR (which vim)
 	else
-		which vim
+		which nvim
 		if test $status = 0
-			export EDITOR=(which vim)
+			set -g EDITOR (which nvim)
 		else
-			export EDITOR=(which cat)
+			set -g EDITOR (which cat)
 		end
 	end
 
 	# GUI editor.
-	export VISUAL=$EDITOR
+	set -g VISUAL $EDITOR
 
 	# Pager.
-	export PAGER=(which less)" -R"
-	export MANPAGER=(which less)" -R"
+	set -g PAGER (which less)" -R"
+	set -g MANPAGER (which less)" -R"
 	# Path.
-	set PATH $HOME/code/scripts/other/my_utils $PATH
+	# set -g PATH $HOME/code/scripts/other/my_utils $PATH
 	# GCC variables.
-	set C_USR_MODULES $HOME/code/scripts/c/modules/lib
+	set -g C_USR_MODULES "$HOME/code/scripts/c/modules/lib"
 
 # Aliases.
 echo Setting aliases...
@@ -55,18 +53,32 @@ echo Setting aliases...
 	alias service "sudo systemctl"
 	alias pager "$PAGER"
 
+	alias "py" "python"
+	alias "py2" "python2"
+	alias "py3" "python3"
+	alias "pl6" "perl6"
+	alias "pl"  "perl"
+	alias "rb"  "ruby"
+
+
 # Functions-aliases.
 function help -d 'Automaticaly gets help for a program'
+	# Check manual first.
 	man $argv
 	if test $status = 0
 		return
 	end
 
-	info $argv
-	if test $status = 0
-		return
+	# Check info.
+	info --version
+	if test $status = 0 
+		info $argv
+		if test $status = 0
+			return
+		end
 	end
-
+	
+	# Check 'help' options.
 	which $argv >/dev/null 2>&1
 	if test $status != 0
 		echo "help: Program '$argv' not found"

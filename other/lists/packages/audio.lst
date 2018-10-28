@@ -1,16 +1,17 @@
-	# DAW.
+# DAW.
 	"lmms" "ardour" "audacity"
-	# Sound converters.
+# Sound converters.
 	"soundconverter"
-	# Players.
+# Players.
 	"audacious" "mpg123"
-	# Synth.
-	"amsynth" "bristol" "phasex" "zynaddsubfx"
-	# Virtual MIDI.
+# Synth, VST, LADSPA, sound converting.
+	"amsynth" "bristol" "phasex" "zynaddsubfx" "helm" "drumkv1" "calf"\
+	"synthv1" "qsynth"  "qsampler" "guitarix2"
+# Virtual MIDI.
 	"vkeybd" "jack-keyboard" "vmpk"
-	# Sequencers.
+# Sequencers.
 	"rosegarden"
-	# JACK connections.
+# JACK connections. jack2-dbus
 	"patchage" "qjackctl" "cadence"
-	# Sound recording.
+# Sound recording.
 	"audio-recorder"
