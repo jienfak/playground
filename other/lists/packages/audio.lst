@@ -6,7 +6,7 @@
 	"audacious" "mpg123"
 # Synth, VST, LADSPA, sound converting.
 	"amsynth" "bristol" "phasex" "zynaddsubfx" "helm" "drumkv1" "calf"\
-	"synthv1" "qsynth"  "qsampler" "guitarix2"
+	"synthv1" "qsynth"  "qsampler" "guitarix2" "yoshimi"
 # Virtual MIDI.
 	"vkeybd" "jack-keyboard" "vmpk"
 # Sequencers.

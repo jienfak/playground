@@ -29,8 +29,8 @@ int main(int argc, char **argv){
 		exit(1);
 	}
 
-	addr.sin_family = AF_INET;
-	addr.sin_port = htons( atoi(argv[2]) );
+	addr.sin_family = AF_INET ;
+	addr.sin_port = htons(atoi(argv[2])) ;
 
 	err = getaddrinfo(argv[1], NULL, NULL, &result);
 	if( err ){
@@ -52,7 +52,7 @@ int main(int argc, char **argv){
 		sin_addr.s_addr
 	) ;
 	printf("Connecting to '0x%x'...\n", addr.sin_addr.s_addr);
-	if(  connect(sock, (struct sockaddr *)&addr, sizeof(addr) )  ){
+	if(  connect(sock, (struct sockaddr *)&addr, sizeof(addr))<0  ){
 		perror("connect");
 		exit(2);
 	}
