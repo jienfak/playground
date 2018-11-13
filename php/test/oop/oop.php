@@ -14,7 +14,7 @@ class Human {
 	}
 }
 
-$proto = new Human ('Samuel') ;
+var $proto = new Human ('Samuel') ;
 $proto->say('fuck you!');
 
 ?>
