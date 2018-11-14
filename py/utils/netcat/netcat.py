@@ -3,13 +3,19 @@
 import socket
 import sys
 
-s = socket.socket()
 
-host = sys.argv[1]
-port = sys.argv[2]
+if __name__ == "__main__" :
+	s = socket.socket()
 
-s.connect(host, port)
 
-while True :
-    string = input()
-    s.send(data.encode())
+	host = sys.argv[1]
+	port = sys.argv[2]
+
+	s.connect(  (host, int(port) )  )
+
+	while True :
+		string = input()
+		s.send(string.encode())
+		data = s.recv(1024)
+		print("'"+ data.decode() +"'") 
+

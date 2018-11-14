@@ -8,3 +8,5 @@ ln -s $HOME/audio/my/presets/amsynth $HOME/.amsynth/banks
 
 rm -rf $HOME/.hydrogen
 ln -s $HOME/audio/hydrogen/ $HOME/.hydrogen
+
+sudo ln -s $HOME/audio/my/presets/zynaddsubfx/* /usr/share/zynaddsubfx/banks/

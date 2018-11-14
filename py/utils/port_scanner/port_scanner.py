@@ -1,10 +1,8 @@
 #!/usr/bin/python3
 
 import sys
-import threading
 import socket
 import time
-from termcolor import colored 
 
 def scan_port(host, port):
     scan = socket.socket()
@@ -17,11 +15,11 @@ def scan_port(host, port):
         return True
 
 
-ports = [20, 21, 22, 23, 42, 43, 53, 67, 69, 80, 443]
-host = sys.argv[1]
+if __name__ == "__main__" :
+	ports = [20, 21, 22, 23, 42, 43, 53, 67, 69, 80, 443]
+	host = sys.argv[1]
 
-for port in ports:
-    if scan_port(host, port):
-        print(port)
-
-exit()
+	for port in ports:
+		if scan_port(host, port):
+			print(port)
+	exit()
