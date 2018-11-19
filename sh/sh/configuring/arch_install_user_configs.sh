@@ -1,7 +1,9 @@
 #!/bin/sh
 
 # Directories.
-mkdir ~/video ~/audio ~/docs ~/temps ~/imgs ~/shared
+mkdir ~/video ~/docs ~/temps ~/shared
+ln -s ~/MEGA/faksoc/imgs ~/
+ln -s ~/MEGA/audio ~/audio
 mv ~/.config/user-dir.dirs ~/.config/user-dir.dirs.backup
 ln -s ~/code/scripts/other/opt/jien_user-dir.dirs ~/.config/user-dir.dirs
 mkdir ~/code/ ~/progs ~/torrent ~/bluetooth
