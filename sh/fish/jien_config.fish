@@ -53,7 +53,8 @@ echo Setting aliases...
 	alias service "sudo systemctl"
 	alias pager "$PAGER"
 
-	alias "py" "python"
+	alias "ev" "eval"
+	alias "py"  "python"
 	alias "py2" "python2"
 	alias "py3" "python3"
 	alias "pl6" "perl6"
