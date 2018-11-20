@@ -7,7 +7,9 @@
 # Synth, VST, LADSPA, sound converting.
 	"amsynth" "bristol" "phasex" "zynaddsubfx" "helm" "drumkv1" "calf"\
 	"synthv1" "qsynth"  "qsampler" "guitarix2" "yoshimi" "samplv1" \
-	"oxe"
+	"oxe" "dpf-plugins" "lsp-plugins" "zam-plugins" \
+	# Arch only.
+		"vst-plugins" # Group of packages.
 # Virtual MIDI.
 	"vkeybd" "jack-keyboard" "vmpk"
 # Sequencers.
