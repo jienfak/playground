@@ -5,7 +5,7 @@ import sys
 
 
 if __name__ == "__main__" :
-	s = socket.socket()
+	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 
 	host = sys.argv[1]
@@ -13,7 +13,9 @@ if __name__ == "__main__" :
 
 	s.connect(  (host, int(port) )  )
 
+	print("Connected...")
 	while True :
+		print("Iteration...")
 		string = input()
 		s.send(string.encode())
 		data = s.recv(1024)

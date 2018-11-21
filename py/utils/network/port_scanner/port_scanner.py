@@ -33,6 +33,10 @@ def makeParser() :
 		nargs="+",
 		help="Hosts to scan ports in view like  '1.1.1.1,123.123.123.123 google.com '"
 	)
+	arg_parser.add_argument(
+		'-t', "--parse-form",
+		help="Output in view to parse, like 'host:port:+/-'."
+	)
 
 
 	return arg_parser
