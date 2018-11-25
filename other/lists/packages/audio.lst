@@ -4,11 +4,11 @@
 	"soundconverter"
 # Players.
 	"audacious" "mpg123"
-# Synth, VST, LADSPA, sound converting.
+# Synth, VST, LADSPA, sound converting, analyz...
 	"amsynth" "bristol" "phasex" "zynaddsubfx" "helm" "drumkv1" "calf"\
 	"synthv1" "qsynth"  "qsampler" "guitarix2" "yoshimi" "samplv1" \
 	"oxe" "dpf-plugins" "lsp-plugins" "zam-plugins" \
-	"eq10q" "wolf-shaper"
+	"eq10q" "wolf-shaper" "baudline"
 	# Arch only.
 		"vst-plugins" # Group of packages.
 # Virtual MIDI.

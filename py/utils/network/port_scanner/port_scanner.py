@@ -49,7 +49,7 @@ def makeParser() :
 			default = ['20', '21', '22', '23', '42', '43', '53', '67', '69', '80', '443'] ,
 		help=(
 			"""
-			Ports to scan in view like '1,2,3 34,5 21'.
+			Ports to scan in view like '1 2' or '1,2' or '1..80' for ranges.
 			Default ports are 20, 21, 22, 23, 42, 43, 53, 67, 69, 80, 443.
 			"""
 		)
@@ -61,9 +61,9 @@ def makeParser() :
 		help="Hosts to scan ports in view like  '1.1.1.1,123.123.123.123 google.com '"
 	)
 	arg_parser.add_argument(
-		'-t', "--for_parsing", action='store_const', dest='parsing',
+		'-t', "--for-parsing", action='store_const', dest='print_mode',
 		default=DEFAULT_MODE, const=PARSING_MODE,
-		help="Output in view to parse, like 'host:port:+/-'."
+		help="Output in view to parse, like 'time:host:port:+/-'."
 	)
 	arg_parser.add_argument(
 		'-o', "--output",
@@ -80,14 +80,18 @@ def main():
 	arg_parser = makeParser() 
 	args = arg_parser.parse_args()
 
-	# Ports to scan if no any choosed.
+	# Ports to scan.
 	ports = []
-	if args.ports :
-		ports = []
-		for portl in args.ports :
-			for portll in portl.split(",") :
-				if not (portll in ports) :
-					ports.append(int(portll))
+	for portl in args.ports :
+		for portll in portl.split(',') :
+			if '..' in portll :
+				# Getting port ranges.
+				port1, port2 = portll.split('..')
+				for x in range( int(port1), int(port2)+1 ) :
+					if not (x in ports) :
+						ports.append(int(x))
+			elif not (portll in ports) :
+				ports.append(int(portll))
 
 	# print(ports)
 
@@ -103,7 +107,7 @@ def main():
 	# print(hosts)
 
 	# Getting print mode.
-	print_mode = args.parsing
+	print_mode = args.print_mode
 
 	# Getting output.
 	if args.output :
@@ -111,13 +115,19 @@ def main():
 
 	for host in hosts :
 		for port in ports :
+			# Open thread for all ports.
 			t = threading.Thread (
 				target=printScannedPort,
-				args=(host, port, print_mode)
+				args=(host, port, print_mode),
+				daemon=True
 			)
 			t.start()
 
 
 
 if __name__ == "__main__" :
-	main()
+	try:
+		main()
+	except KeyboardInterrupt :
+		print("\rWe stopped. But why... (Ctrl-C)", file=sys.stderr)
+		sys.exit(1)

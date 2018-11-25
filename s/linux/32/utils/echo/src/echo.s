@@ -5,7 +5,24 @@
 strlen:
 	pushl %ebp
 	movl %esp, %ebp
+	# Save %ECX.
+	mov %ecx, -0x8(%ebp)
 
+	mov 0x8(%ebp),  %esi
+
+	
+strlen_zero_loop:
+	lodsb
+	test %al, %al
+	jz strlen_exit
+	inc %ecx
+	jmp strlen_zero_loop
+strlen_exit:
+	# Return counter.
+	mov %ecx, %eax
+
+	# Recover %ECX.
+	mov -0x8(%ebp), %ecx
 	leave
 	ret
 
@@ -32,7 +49,7 @@ exit:
 	movl %esp, %ebp
 
 	mov $1, %eax
-	mov -0x8(%ebp), %ebx
+	mov 0x8(%ebp), %ebx
 
 	int $0x80
 
@@ -41,13 +58,19 @@ exit:
 
 .globl _start
 _start:
-	mov 0x8(%esp), %eax ;
-	pushl %eax             ;
-	/*call print*/             ;
+	push %ebp
+	mov %esp, %ebp
+
+	mov 0x8(%ebp), %eax ;
+	mov %eax, -0x8(%esp)
+	call strlen
+	/* Call print.*/             ;
 
 	/* Default exit. */
-	pushl $0
+	pushl $1
 	movl $0, %eax           ;
 	call exit              ;
 
+	leave
+	ret
 	

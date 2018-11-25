@@ -15,6 +15,7 @@ sub Findf {
 	foreach my $name (@names){
 		next if($name eq '.');
 		next if($name eq '..');
+		say $name ;
 
 		if(-l $name){ next; }
 
@@ -30,7 +31,7 @@ sub Findf {
 	}
 }
 
-if(@ARGV < 2){
+if(@ARGV < 1){
 	say 'find_suid: Too few arguments.';
 	say 'Using: perl find_suid.pl [start_dir]';
 	exit
