@@ -8,7 +8,7 @@
 	"amsynth" "bristol" "phasex" "zynaddsubfx" "helm" "drumkv1" "calf"\
 	"synthv1" "qsynth"  "qsampler" "guitarix2" "yoshimi" "samplv1" \
 	"oxe" "dpf-plugins" "lsp-plugins" "zam-plugins" \
-	"eq10q" "wolf-shaper" "baudline"
+	"eq10q" "wolf-shaper" "baudline" "friture"
 	# Arch only.
 		"vst-plugins" # Group of packages.
 # Virtual MIDI.
@@ -19,3 +19,7 @@
 	"patchage" "qjackctl" "cadence" "carla"
 # Sound recording.
 	"audio-recorder"
+# DJ-ing.
+	"mixxx"
+# Sound analysis.
+	"sonic-visualiser"
