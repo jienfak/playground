@@ -35,6 +35,8 @@ def printScannedPort(host, port, mode):
 		else:
 			is_opened = '-'
 		print(time.asctime() +":"+ host +":"+ str(port) +":"+ is_opened)
+	else:
+		print("nothing")
 	
 
 def makeParser() :
@@ -93,7 +95,7 @@ def main():
 			elif not (portll in ports) :
 				ports.append(int(portll))
 
-	# print(ports)
+	print(ports)
 
 		
 
@@ -104,7 +106,7 @@ def main():
 			for hostll in hostl.split(",") :
 				if not (hostll in hosts) :
 					hosts.append(hostll)
-	# print(hosts)
+	print(hosts)
 
 	# Getting print mode.
 	print_mode = args.print_mode
@@ -122,6 +124,8 @@ def main():
 				daemon=True
 			)
 			t.start()
+
+	print("Exitting...")
 
 
 

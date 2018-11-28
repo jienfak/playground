@@ -3,6 +3,7 @@
 .text
 
 strlen:
+	# Returns length of C-string.
 	pushl %ebp
 	movl %esp, %ebp
 	# Save %ECX.
@@ -31,14 +32,61 @@ write:
 	pushl %ebp
 	movl %esp, %ebp
 
+	# Saving registers.
+	pushl %ebx
+	pushl %ecx
+	pushl %edx
 
+	# Num of write-call.
+	mov $4, %eax
+	# Descriptor.
+	mov 0x8(%ebp), %ebx
+	# Pointer.
+	mov 0xc(%ebp), %ecx
+	# Number of bytes.
+	mov 0x10(%ebp), %edx
+
+	# Syscall to write.
+	int $0x80
+
+	# Recovering registers.
+	popl %edx
+	popl %ecx
+	popl %ebx
+
+	# Returing value.
+
+	# Interrupting returned value to %EAX itself.
+
+	# Exiting.
 	leave
 	ret	
 
 print:
+	# Prints standard C-string to output.
 	pushl %ebp
 	movl %esp, %ebp
 
+	# Getting pointer.
+	movl 0x8(%ebp), %eax
+	pushl %eax
+
+	call strlen
+
+	# For the 'write' function.
+
+	# Length of string.
+	pushl %eax
+	
+
+	# Pushing pointer. 
+	movl 0x8(%ebp), %eax
+	pushl %eax
+
+	# Desc...
+	pushl $1
+
+	call write
 
 
 	leave
@@ -61,10 +109,10 @@ _start:
 	push %ebp
 	mov %esp, %ebp
 
-	mov 0x8(%ebp), %eax ;
-	mov %eax, -0x8(%esp)
-	call strlen
-	/* Call print.*/             ;
+	# Call print.
+	mov 0xc(%ebp), %eax ;
+	push %eax
+	call print
 
 	/* Default exit. */
 	pushl $1
