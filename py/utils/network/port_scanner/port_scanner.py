@@ -5,10 +5,13 @@ import socket
 import time
 import argparse
 import threading
+from colored import fg, bg, attr
 
 # Codes for scan-printing modes.
 DEFAULT_MODE = 0
 PARSING_MODE = 1
+
+Found_any_opened_port = False
 
 def isPortOpened(host, port):
     scan = socket.socket()
@@ -21,20 +24,24 @@ def isPortOpened(host, port):
         return True
 
 def printScannedPort(host, port, mode):
+	# Getting port status.
+	is_opened = isPortOpened(host, port)
+	# To show in the terminal.
+	is_opened_char = ''
+	if is_opened :
+		# It's valuable already.
+		is_opened_char = '+'
+	else:
+		is_opened_char = '-'
+
 	# Choosing mode to print.
 	if mode == DEFAULT_MODE :
-		if isPortOpened(host, port) :
-			print("[+] - '"+ host +"' - '"+ str(port) +"' opened.")
+		if is_opened :
+			print("["+ fg('green')+is_opened_char+attr('reset') +"] - '"+ host +"' - '"+ str(port) +"' opened!")
 		else:
-			print("[-] - '"+ host +"' - '"+ str(port) +"' closed.")
+			print("["+ fg('red')+is_opened_char+attr('reset') +"] - '"+ host +"' - '"+ str(port) +"' closed...")
 	elif mode == PARSING_MODE:
-		is_opened = '+'
-		if isPortOpened(host, port) :
-			# It's valuable already.
-			pass
-		else:
-			is_opened = '-'
-		print(time.asctime() +":"+ host +":"+ str(port) +":"+ is_opened)
+		print(time.asctime() +":"+ host +":"+ str(port) +":"+ is_opened_char)
 	else:
 		print("nothing")
 	
@@ -63,7 +70,7 @@ def makeParser() :
 		help="Hosts to scan ports in view like  '1.1.1.1,123.123.123.123 google.com '"
 	)
 	arg_parser.add_argument(
-		'-t', "--for-parsing", action='store_const', dest='print_mode',
+		'-p', "--parsing", action='store_const', dest='print_mode',
 		default=DEFAULT_MODE, const=PARSING_MODE,
 		help="Output in view to parse, like 'time:host:port:+/-'."
 	)
@@ -84,20 +91,21 @@ def main():
 
 	# Ports to scan.
 	ports = []
-	for portl in args.ports :
-		for portll in portl.split(',') :
-			if '..' in portll :
-				# Getting port ranges.
-				port1, port2 = portll.split('..')
-				for x in range( int(port1), int(port2)+1 ) :
-					if not (x in ports) :
-						ports.append(int(x))
-			elif not (portll in ports) :
-				ports.append(int(portll))
+	try:
+		for portl in args.ports :
+			for portll in portl.split(',') :
+				if '..' in portll :
+					# Getting port ranges.
+					port1, port2 = portll.split('..')	
+					for x in range( int(port1), int(port2)+1 ) :
+						if not (x in ports) :
+							ports.append(int(x))
+				elif not (portll in ports) :
+					ports.append(int(portll))
+	except ValueError :
+		print(sys.argv[0] +": Not right port choosed.", file=sys.stderr,)
+		exit(7)
 
-	print(ports)
-
-		
 
 	# Getting hosts to scan.
 	hosts = []
@@ -106,7 +114,6 @@ def main():
 			for hostll in hostl.split(",") :
 				if not (hostll in hosts) :
 					hosts.append(hostll)
-	print(hosts)
 
 	# Getting print mode.
 	print_mode = args.print_mode
@@ -115,9 +122,10 @@ def main():
 	if args.output :
 		sys.stdout = open(args.output[0], mode='w')
 
-	for host in hosts :
-		for port in ports :
-			# Open thread for all ports.
+	for port in ports :
+		# Scan port for all hosts.
+		for host in hosts :	
+			# Open thread for one port.
 			t = threading.Thread (
 				target=printScannedPort,
 				args=(host, port, print_mode),
@@ -125,13 +133,15 @@ def main():
 			)
 			t.start()
 
-	print("Exitting...")
-
-
+	# Wait while they scan.
+	while threading.activeCount() > 1:
+		  time.sleep(1);
 
 if __name__ == "__main__" :
 	try:
 		main()
+		# Success.
+		exit(0)
 	except KeyboardInterrupt :
 		print("\rWe stopped. But why... (Ctrl-C)", file=sys.stderr)
 		sys.exit(1)
