@@ -16,12 +16,23 @@ set smartindent
 set foldenable 
 set foldmethod=indent
 
-" Cursorline.
-set cursorline
+" Cursorline in GIU(It works too slow in CMD).
+if has("gui_running")
+	set cursorline
+endif
+
 
 " My colorscheme bad on 'slate'.
-colorscheme jien
-syntax on
+:colorscheme jien
+:syntax on
+
+
+" Syntax everywhere.
+" :syn match Function /\(new\s\+\)\@<=\w\+/
+" :syn match Operator /\(+\)\|\(-\)/
+
+" NerdTree.
+:nmap \nt :NERDTree . <enter>
 
 "hi Folded	ctermbg=blue		ctermfg=black
 "hi StatusLine	ctermbg=black		ctermfg=red
