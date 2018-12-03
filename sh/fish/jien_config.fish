@@ -23,13 +23,13 @@ echo Setting vars...
 	set -g S $HOME/code/scripts
 
 	# Editor for standard.
-	which vim > /dev/null 2>&1
+	which nvim > /dev/null 2>&1
 	if test $status = 0
-		set -g EDITOR (which vim)
+		set -g EDITOR (which nvim)
 	else
-		which nvim
+		which vim
 		if test $status = 0
-			set -g EDITOR (which nvim)
+			set -g EDITOR (which vim)
 		else
 			set -g EDITOR (which cat)
 		end
@@ -118,6 +118,10 @@ function help -d 'Automaticaly gets help for a program'
 	end
 
 	echo "help: Could not get any help!"
+end
+
+function manual -d 'Get help about programing languages.'
+		
 end
 
 # Fish git prompt.

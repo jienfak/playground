@@ -23,9 +23,13 @@ ln -s ~/code/scripts/other/opt/jien_xinitrc ~/.xinitrc
 # Editor.
 
 # Vim.
-mv ~/.vimrc ~/.vimrc.backup
+mv ~/.vimrc                                  ~/.vimrc.backup
 ln -s ~/code/scripts/vim/jien_vimrc          ~/.vimrc
+mv ~/.vim ~/.vim.backup
+ln -s ~/code/scripts/vim                     ~/.vim
 
 # Neovim.
-mkdir ~/.config/nvim
+mv ~/.config/nvim/ ~/.config/nvim.backup
+ln -s ~/code/scripts/vim/                 ~/.config/nvim
 ln -s ~/code/scripts/vim/jien_vimrc       ~/.config/nvim/init.vim
+
