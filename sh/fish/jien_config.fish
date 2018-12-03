@@ -36,7 +36,7 @@ echo Setting vars...
 	end
 
 	# GUI editor.
-	set -g VISUAL $EDITOR
+	set -g VISUAL (which gvim)
 
 	# Pager.
 	set -g PAGER (which less)" -R"
@@ -50,6 +50,8 @@ echo Setting vars...
 echo Setting aliases...
 	alias ed $EDITOR
 	alias edsu "sudo $EDITOR"
+	alias edg $VISUAL
+	alias edgsu "sudo $VISUAL"
 	alias service "sudo systemctl"
 	alias pager "$PAGER"
 

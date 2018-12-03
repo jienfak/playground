@@ -19,12 +19,12 @@ set foldmethod=indent
 " Cursorline in GIU(It works too slow in CMD).
 if has("gui_running")
 	set cursorline
+	colorscheme vividchalk
+else
+	" My colorscheme bad on 'slate'.
+	colorscheme jien
 endif
-
-
-" My colorscheme bad on 'slate'.
-:colorscheme jien
-:syntax on
+syntax on
 
 
 " Syntax everywhere.
