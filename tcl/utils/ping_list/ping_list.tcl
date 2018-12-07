@@ -11,14 +11,14 @@ if { $::argc < 1 } {
 	usage
 	exit
 }
-# add IP to the file
+# Add IP to the file.
 proc addIp {file ip} {
 	set fd [open $file a]
 	puts $fd $ip
 	close $fd
 }
 
-# deletes IP from the file with IPs
+# Deletes IP from the file with IPs
 proc delIp {file } {
 	set fd [open $file r]
 	while {![eof $fd]} {
@@ -35,11 +35,14 @@ proc delIp {file } {
 	close $fd
 }
 
-# main
+# Main.
+set which_file_name /bin/which
+set ping_file_name []
 set fd [open $argv]
+# Read while isn't end of file.
 while { ![eof $fd] } {
 	set cur_ip [gets $fd]
-	open [exec which "ping"] -c 4 $cur_ip
+	open [exec "which \"ping\""] -c 4 $cur_ip
 }
 
 exit
