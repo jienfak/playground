@@ -62,7 +62,7 @@ echo Setting aliases...
 	alias "pl6" "perl6"
 	alias "pl"  "perl"
 	alias "rb"  "ruby"
-	alias "tcl" "tlcsh"
+	alias "tcl" "tclsh"
 
 
 # Functions-aliases.
