@@ -1,6 +1,7 @@
 int main(void){
+	int i = 1 ;
 	while(1){
-		int i = 123;
+		++i;
 	}
 	return 0;
 }

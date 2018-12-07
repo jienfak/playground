@@ -41,3 +41,5 @@ SynLink diffSubname             PreProc
 
 delcommand SynColor
 delcommand SynLink
+
+syn match Operator /=/

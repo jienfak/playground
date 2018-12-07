@@ -11,14 +11,15 @@ if { $::argc < 1 } {
 	usage
 	exit
 }
-# add IP to the file
+
+# Add IP to the file.
 proc addIp {file ip} {
 	set fd [open $file a]
 	puts $fd $ip
 	close $fd
 }
 
-# deletes IP from the file with IPs
+# Deletes IP from the file with IPs.
 proc delIp {file } {
 	set fd [open $file r]
 	while {![eof $fd]} {
@@ -35,7 +36,7 @@ proc delIp {file } {
 	close $fd
 }
 
-# main
+# Main.
 set fd [open $argv]
 while { ![eof $fd] } {
 	set cur_ip [gets $fd]

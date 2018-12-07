@@ -149,60 +149,6 @@ int main(){
 		const f32 frame_delta_time = (f32)(now-then) / 1000.f ;
 		then = now ;
 
-		vector3df Next_Camera_Position = camera->getPosition() ;
-		vector3df Next_Camera_Rotation = camera->getRotation() ;
-		vector3df Next_Camera_Target = camera->getTarget() ;	
-
-		if( rec.IsKeyDown(KEY_UP) ){
-			Next_Camera_Rotation += ( vector3df (0, 1, 0) )*ROTATION_SPEED*frame_delta_time ;
-			was_pressed = true ;
-		}if( rec.IsKeyDown(KEY_DOWN) ){
-			Next_Camera_Rotation -= (vector3df (0, 1, 0) )*ROTATION_SPEED*frame_delta_time ;
-			was_pressed = true ;
-		}if(rec.IsKeyDown(KEY_LEFT)){
-			Next_Camera_Rotation -= (vector3df (1, 0, 0) )*ROTATION_SPEED*frame_delta_time ;
-			was_pressed = true ;
-		}if(rec.IsKeyDown(KEY_RIGHT)){
-			Next_Camera_Rotation += (vector3df (1, 0, 0) )*ROTATION_SPEED*frame_delta_time ;
-			was_pressed = true ;
-		}
-
-		if( rec.IsKeyDown(KEY_SPACE) ){
-			Next_Camera_Position += vector3df(0, 1, 0)*MOVEMENT_SPEED*frame_delta_time ;
-			was_pressed = true ;
-		}if( rec.IsKeyDown(KEY_LSHIFT) ){
-			Next_Camera_Position -= vector3df(0, 1, 0)*MOVEMENT_SPEED*frame_delta_time ;
-			was_pressed = true ;
-		}
-
-		// WASD.
-		if(rec.IsKeyDown(KEY_KEY_W)){
-			// W.
-			Next_Camera_Position +=
-				getCurrentView(camera)* \
-				MOVEMENT_SPEED*frame_delta_time
-			;
-			was_pressed = true ;
-		}if(rec.IsKeyDown(KEY_KEY_S)){
-			// S.
-			Next_Camera_Position -=
-				getCurrentView(camera)* \
-				MOVEMENT_SPEED*frame_delta_time
-			;
-			was_pressed = true ;
-		}if(rec.IsKeyDown(KEY_KEY_A)){
-			// A.
-		}if(rec.IsKeyDown(KEY_KEY_D)){
-			// D.
-		}
-
-		/*if(rec.IsKeyDown(KEY_KEY_Y)){
-			Next_Camera_Target = \
-				Next_Camera_Rotation = Next_Camera_Position = vector3df ()
-			;
-		}*/
-
-
 		if(was_pressed){
 			cout<<"--------------"<<endl
 				<<"Target:"<<endl

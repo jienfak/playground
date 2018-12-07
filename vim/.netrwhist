@@ -1,3 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =2
 let g:netrw_dirhist_1='/home/jien/code/scripts/c/convert/hex2ascii'
+let g:netrw_dirhist_2='/home/jien/code/scripts/py/utils/network/port_scanner'

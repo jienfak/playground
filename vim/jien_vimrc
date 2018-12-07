@@ -31,8 +31,9 @@ syntax on
 " :syn match Function /\(new\s\+\)\@<=\w\+/
 " :syn match Operator /\(+\)\|\(-\)/
 
+
 " NerdTree.
-:nmap \nt :NERDTree . <enter>
+nmap \nt :NERDTree . <enter>
 
 "hi Folded	ctermbg=blue		ctermfg=black
 "hi StatusLine	ctermbg=black		ctermfg=red
