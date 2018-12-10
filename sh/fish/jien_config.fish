@@ -48,23 +48,23 @@ echo Setting vars...
 
 # Aliases.
 echo Setting aliases...
-	alias ed $EDITOR
-	alias edsu "sudo $EDITOR"
-	alias edg $VISUAL
-	alias edgsu "sudo $VISUAL"
-	alias service "sudo systemctl"
-	alias pager "$PAGER"
+	alias ed $EDITOR # --description "Edit file."
+	alias edsu "sudo $EDITOR" # --description "Edit file like root."
+	alias edg $VISUAL # --description "Edit file with graphical text editor."
+	alias edgsu "sudo $VISUAL" # --description "Edit file with graphical text editor like root."
+	alias service "sudo systemctl" # --description "Alias for systemctl."
+	alias pager "$PAGER" # --description "Standard pager."
 
-	alias "ev" "eval"
-	alias "py"  "python"
-	alias "py2" "python2"
-	alias "py3" "python3"
-	alias "pl6" "perl6"
-	alias "pl"  "perl"
-	alias "rb"  "ruby"
-	alias "tcl" "tclsh"
-	alias "lsp" "clisp"
-	alias "f"   "gfortran"
+	alias "ev" "eval" # --description "Evaluate text."
+	alias "py"  "python" # --description "Python interpreter."
+	alias "py2" "python2" # --description "Python interpreter version 2."
+	alias "py3" "python3" # --description "Python interpreter version 3."
+	alias "pl6" "perl6" # --description "Perl6 interpreter."
+	alias "pl"  "perl" # --description "Perl5 interpreter."
+	alias "rb"  "ruby" # --description "Ruby interpreter."
+	alias "tcl" "tclsh" # --description "TCL interpreter."
+	alias "lsp" "clisp" # --description "LISP interpreter."
+	alias "f"   "gfortran" # --description "FORTRAN compiler."
 
 
 # Functions-aliases.
