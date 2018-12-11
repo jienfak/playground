@@ -35,6 +35,14 @@ syntax on
 " NerdTree.
 nmap \nt :NERDTree . <enter>
 
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal g`\"" |
+  \ endif
+
 "hi Folded	ctermbg=blue		ctermfg=black
 "hi StatusLine	ctermbg=black		ctermfg=red
 "hi StatusLineNC ctermbg=black		ctermfg=darkgrey
