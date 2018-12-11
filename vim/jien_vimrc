@@ -18,6 +18,7 @@ set foldmethod=indent
 
 " Cursorline in GIU(It works too slow in CMD).
 if has("gui_running")
+	hi CursorLine gui=bold
 	set cursorline
 	colorscheme vividchalk
 else

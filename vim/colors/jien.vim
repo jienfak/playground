@@ -13,7 +13,7 @@ hi Normal       guifg=White guibg=grey15
 hi Cursor       guibg=khaki guifg=slategrey ctermbg=white ctermfg=black
 hi TermCursor   cterm=reverse
 " :hi 
-hi CursorLine   gui=bold guibg=black  cterm=bold 
+hi CursorLine   gui=bold
 hi VertSplit    guibg=#c2bfa5 guifg=grey40 gui=none ctermfg=grey ctermbg=grey
 hi Folded       guibg=black guifg=grey40 ctermfg=black ctermbg=blue
 hi FoldColumn   guibg=black guifg=grey20 ctermfg=4 ctermbg=7
