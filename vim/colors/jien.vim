@@ -1,8 +1,8 @@
-"jien Vim color file.
+" Jien's VIM color file.
 " Jien: Jien FAK <jienfak@protonmail.com>.
 " (originally looked at slate.)
-:set background=dark
-":highlight clear
+set background=dark
+highlight clear
 
 	" ---------------------
 	" For checking folding.
@@ -31,19 +31,19 @@ hi Statement    guifg=CornflowerBlue ctermfg=red
 hi Visual       gui=none guifg=khaki guibg=olivedrab cterm=reverse
 hi WarningMsg   guifg=salmon ctermfg=1
 hi String       guifg=SkyBlue ctermfg=darkcyan
-hi Comment      term=bold ctermfg=11 guifg=grey40 ctermfg=yellow
-hi Constant     guifg=#ffa0a0 ctermfg=darkblue
-hi Special      guifg=darkkhaki ctermfg=brown
-hi Identifier   guifg=salmon ctermfg=LightGreen
-hi Include      guifg=red ctermfg=red
-hi PreProc      guifg=red guibg=white ctermfg=red
-hi Operator     guifg=Red ctermfg=magenta
-hi Define       guifg=gold gui=bold ctermfg=yellow
-hi Type         guifg=CornflowerBlue ctermfg=green
-hi Function     guifg=navajowhite ctermfg=brown
-hi Structure    guifg=green ctermfg=green
-hi LineNr       guifg=grey50 ctermfg=black ctermbg=yellow
-hi Ignore       guifg=grey40 cterm=bold ctermfg=7
+hi Comment      cterm=bold ctermfg=yellow
+hi Constant     ctermfg=darkblue
+hi Special      ctermfg=brown
+hi Identifier   ctermfg=LightGreen
+hi Include      ctermfg=red
+hi PreProc      ctermfg=red
+hi Operator                 ctermfg=magenta
+hi Define                   ctermfg=yellow
+hi Type                     ctermfg=green
+hi Function                 ctermfg=brown
+hi Structure                ctermfg=green
+hi LineNr                   ctermfg=black ctermbg=yellow
+hi Ignore       cterm=bold  ctermfg=7
 hi Todo         guifg=orangered guibg=yellow2
 hi Directory    ctermfg=darkcyan
 hi ErrorMsg     cterm=bold guifg=White guibg=Red cterm=bold ctermfg=7 ctermbg=1
