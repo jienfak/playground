@@ -2,19 +2,18 @@
 
 set PROGRAM_NAME "ping_list"
 
+# If not choosed list.
 proc usage {} {
 	puts "usage: tclsh ping_list.tcl \[file_of_list\]"
 }
 
+# Arguments checking.
 if { $::argc < 1 } {
 	puts "$PROGRAM_NAME: Not enough arguments"
 	usage
 	exit
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 714e378d8b4049f5a5dcef03c9f76e9c0ba32120
 # Add IP to the file.
 proc addIp {file ip} {
 	set fd [open $file a]
@@ -22,11 +21,7 @@ proc addIp {file ip} {
 	close $fd
 }
 
-<<<<<<< HEAD
-# Deletes IP from the file with IPs.
-=======
 # Deletes IP from the file with IPs
->>>>>>> 714e378d8b4049f5a5dcef03c9f76e9c0ba32120
 proc delIp {file } {
 	set fd [open $file r]
 	while {![eof $fd]} {
@@ -44,16 +39,20 @@ proc delIp {file } {
 }
 
 # Main.
-<<<<<<< HEAD
-=======
-set which_file_name /bin/which
-set ping_file_name []
->>>>>>> 714e378d8b4049f5a5dcef03c9f76e9c0ba32120
 set fd [open $argv]
-# Read while isn't end of file.
+
+# Read and ping while isn't end of file.
 while { ![eof $fd] } {
 	set cur_ip [gets $fd]
-	open [exec "which \"ping\""] -c 4 $cur_ip
+	if {$cur_ip ne ""} {
+		# Try to ping and print error if got it.
+		if { [catch { set re [exec ping $cur_ip -c 4] } err_msg ] } {
+				puts $err_msg
+		} else {
+			# If could ping it print output.
+			puts $re
+		}
+	}
 }
 
 exit
