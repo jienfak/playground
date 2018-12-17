@@ -21,6 +21,6 @@
 # Sound recording.
 	"audio-recorder"
 # DJ-ing.
-	"mixxx"
+	"mixxx" "luppp"
 # Sound analysis.
 	"sonic-visualiser"
