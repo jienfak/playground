@@ -4,8 +4,8 @@
 mkdir ~/video ~/docs ~/temps ~/shared
 ln -s ~/MEGA/faksoc/imgs ~/
 ln -s ~/MEGA/audio ~/audio
-mv ~/.config/user-dir.dirs ~/.config/user-dir.dirs.backup
-ln -s ~/code/scripts/other/opt/jien_user-dir.dirs ~/.config/user-dir.dirs
+mv ~/.config/user-dirs.dirs ~/.config/user-dirs.dirs.backup
+ln -s ~/code/scripts/other/opt/jien_user-dirs.dirs ~/.config/user-dirs.dirs
 mkdir ~/code/ ~/progs ~/torrent ~/bluetooth
 
 # X-es.

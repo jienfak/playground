@@ -23,7 +23,8 @@ if has("gui_running")
 	colorscheme vividchalk
 else
 	" My colorscheme bad on 'slate'.
-	colorscheme jien
+	" colorscheme jien
+	colorscheme torte
 endif
 syntax on
 

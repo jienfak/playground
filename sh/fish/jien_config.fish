@@ -46,6 +46,9 @@ echo Setting vars...
 	# GCC variables.
 	set -g C_USR_MODULES "$HOME/code/scripts/c/modules/lib"
 
+	# XDG.
+	set -g XDG_CONFIG_HOME "$HOME/.config/"
+
 # Aliases.
 echo Setting aliases...
 	alias ed $EDITOR # --description "Edit file."
@@ -65,6 +68,9 @@ echo Setting aliases...
 	alias "tcl" "tclsh" # --description "TCL interpreter."
 	alias "lsp" "clisp" # --description "LISP interpreter."
 	alias "f"   "gfortran" # --description "FORTRAN compiler."
+
+	alias "mnt"  "sudo mount"
+	alias "umnt" "sudo umount"
 
 
 # Functions-aliases.
