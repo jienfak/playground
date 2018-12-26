@@ -140,7 +140,7 @@ int main(){
 	//driver->beginScene( true, true, SColor(255, 113, 113, 113) );
 
 	while( device->run() ){
-		// Main cycle
+		// Main cycle.
 		//
 
 		// Work out a frame delta time.	
@@ -149,7 +149,7 @@ int main(){
 		const f32 frame_delta_time = (f32)(now-then) / 1000.f ;
 		then = now ;
 
-		if(was_pressed){
+		/*if(was_pressed){
 			cout<<"--------------"<<endl
 				<<"Target:"<<endl
 				<<"X="<<Next_Camera_Target.X<<":"\
@@ -164,11 +164,11 @@ int main(){
 				<<"Y="<<Next_Camera_Position.Y<<":"\
 				<<"Z="<<Next_Camera_Position.Z<<endl
 			;
-		}
+		}*/
 
-		camera->setPosition(Next_Camera_Position);
+		/*camera->setPosition(Next_Camera_Position);
 		camera->setTarget(Next_Camera_Target);
-		camera->setRotation(Next_Camera_Rotation);
+		camera->setRotation(Next_Camera_Rotation);*/
 
 		driver->beginScene( true, true, SColor(0, 0, 0, 0) );
 		smgr->drawAll();	
