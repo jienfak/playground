@@ -5,7 +5,12 @@ import socket
 import time
 import argparse
 import threading
-from colored import fg, bg, attr
+try:
+	from colored import fg, bg, attr
+except:
+	print("Install 'colored' module with pip.")
+	print("Use 'sudo pip3 install colored' for that.")
+	exit(4)
 
 # Codes for scan-printing modes.
 DEFAULT_MODE = 0
@@ -23,7 +28,7 @@ def isPortOpened(host, port):
     else:
         return True
 
-def printScannedPort(thread, host, port, mode):
+def printScannedPort(host, port, mode):
 	# Getting port status.
 	is_opened = isPortOpened(host, port)
 	# To show in the terminal.
@@ -42,9 +47,8 @@ def printScannedPort(thread, host, port, mode):
 			print("["+ fg('red')+is_opened_char+attr('reset') +"] - '"+ host +"' - '"+ str(port) +"' closed...")
 	elif mode == PARSING_MODE:
 		print(time.asctime() +":"+ host +":"+ str(port) +":"+ is_opened_char)
-	else:
-		print("nothing")
-	thread.exit()
+	else : raise ValueError("Not any right mode choosed.")
+
 	
 
 def makeParser() :
@@ -129,7 +133,7 @@ def main():
 			# Open thread for one port.
 			t = threading.Thread (
 				target=printScannedPort,
-				args=(t, host, port, print_mode),
+				args=(host, port, print_mode),
 				daemon=True
 			)
 			t.start()
