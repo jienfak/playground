@@ -102,15 +102,20 @@ int main(){
 			with the red channel modulated based on the time.
 			*/
 
-			// draw fire & dragons background world
+			// Draw fire & dragons background world.
 			driver->draw2DImage(images, core::position2d<s32>(50,50),
 				core::rect<s32>(0,0,342,224), 0,
 				video::SColor(255,255,255,255), true);
 
-			// draw flying imp
-			driver->draw2DImage(images, core::position2d<s32>(164,125),
-				(time/500 % 2) ? imp1 : imp2, 0,
-				video::SColor(255,255,255,255), true);
+			// Draw flying imp.
+			driver->draw2DImage(
+			   images,
+			   core::position2d<s32>(164,125),
+			   (time/500 % 2) ? imp1 : imp2,
+			   0,
+			   video::SColor(255,255,255,255),
+			   true
+			);
 
 			// draw second flying imp with colorcylce
 			driver->draw2DImage(images, core::position2d<s32>(270,105),

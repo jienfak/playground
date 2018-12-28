@@ -23,7 +23,7 @@ def isPortOpened(host, port):
     else:
         return True
 
-def printScannedPort(host, port, mode):
+def printScannedPort(thread, host, port, mode):
 	# Getting port status.
 	is_opened = isPortOpened(host, port)
 	# To show in the terminal.
@@ -44,6 +44,7 @@ def printScannedPort(host, port, mode):
 		print(time.asctime() +":"+ host +":"+ str(port) +":"+ is_opened_char)
 	else:
 		print("nothing")
+	thread.exit()
 	
 
 def makeParser() :
@@ -128,7 +129,7 @@ def main():
 			# Open thread for one port.
 			t = threading.Thread (
 				target=printScannedPort,
-				args=(host, port, print_mode),
+				args=(t, host, port, print_mode),
 				daemon=True
 			)
 			t.start()

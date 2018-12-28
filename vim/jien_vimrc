@@ -9,8 +9,11 @@ endif
 
 " Vars.
 set nowrap
-set nu
-set smartindent
+set number
+set autoindent
+set noexpandtab
+set tabstop=4
+set shiftwidth=4
 
 " Folding.
 set foldenable 
@@ -44,6 +47,9 @@ autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
   \   exe "normal g`\"" |
   \ endif
+
+" Encoding.
+set encoding=utf-8
 
 "hi Folded	ctermbg=blue		ctermfg=black
 "hi StatusLine	ctermbg=black		ctermfg=red
