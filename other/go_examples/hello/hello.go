@@ -18,7 +18,7 @@ package main
 
 import (
 	"fmt"
-
+	// From Internet import?! Awesome thing!
 	"github.com/golang/example/stringutil"
 )
 
