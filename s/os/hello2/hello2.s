@@ -48,24 +48,24 @@ pm_entry:
 	mov ds, ax
 	mov es, ax
 
-	mov edi, 0xB8000		; Start of video-memory.
-	mov esi, msg			; Message for outputting.
+	mov edi, 0xB8000       ; Start of video-memory.
+	mov esi, msg           ; Message for outputting.
 	cld
 
 .loop
 	; Outputting cycle.
 	;
 
-	lodsb				; Read next char.
+	lodsb                  ; Read next char.
 
 	; Stop if meet '\0'.
 	test al, al		
 	jz .exit
 
 	; Else we put current char
-	;and his attribute to the video-memory.
+	; and his attribute to the video-memory.
 	stosb
-	mov al, 7
+	mov al, 6
 	stosb
 
 	jmp .loop

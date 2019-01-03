@@ -1,4 +1,6 @@
 #!/usr/bin/tclsh
+#
+# Program which ping file with list of sites. Logic.
 
 set PROGRAM_NAME "ping_list"
 
@@ -47,7 +49,8 @@ while { ![eof $fd] } {
 	if {$cur_ip ne ""} {
 		# Try to ping and print error if got it.
 		if { [catch { set re [exec ping $cur_ip -c 4] } err_msg ] } {
-				puts $err_msg
+			# Got an error.
+			puts $err_msg
 		} else {
 			# If could ping it print output.
 			puts $re

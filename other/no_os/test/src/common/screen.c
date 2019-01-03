@@ -10,7 +10,7 @@ static unsigned char curr_col = 0 ;
 static unsigned char curr_row = 0 ;
 
 #define PUT(c) (  ((unsigned short *) (DEF_VRAM_BASE)) \
-	[](curr_row * MAX_COL) + curr_col = (GREEN<<8) | (c)  )
+	[(curr_row * MAX_COL) + curr_col] = (GREEN<<8) | (c)  )
 
 static void con_putc(int c){
 	switch( c ){
@@ -25,7 +25,7 @@ static void con_putc(int c){
 		break;
 
 		case '\n' :
-			++cur_row;
+			++curr_row;
 			if( curr_row >= MAX_ROW ){
 				curr_row = 0 ;
 			}
@@ -53,8 +53,7 @@ static void con_putc(int c){
 }
 
 void putchar(int c){
-	if( c == '\n' ){ cons_putc('\r'); }
-	cons_putc(c);
+	if( c == '\n' ){ cons_putc('\r'); } cons_putc(c);
 }
 
 void clear_screen(void){
