@@ -12,9 +12,11 @@ if __name__ == "__main__" :
 	port = sys.argv[2]
 
 	s.connect(  (host, int(port) )  )
+	
 
 	print("Connected...")
-	while True :
+	string = True 
+	while string :
 		print("Iteration...")
 		string = input()
 		s.send(string.encode())
