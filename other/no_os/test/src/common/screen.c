@@ -12,7 +12,7 @@ static unsigned char curr_row = 0 ;
 #define PUT(c) (  ((unsigned short *) (DEF_VRAM_BASE)) \
 	[(curr_row * MAX_COL) + curr_col] = (GREEN<<8) | (c)  )
 
-static void con_putc(int c){
+static void cons_putc(int c){
 	switch( c ){
 		case '\t' :
 			do{
@@ -34,7 +34,7 @@ static void con_putc(int c){
 		case '\b' :
 			if( curr_col > 0 ){
 				--curr_col;
-				put(' ');
+				PUT(' ');
 			}
 		break;
 

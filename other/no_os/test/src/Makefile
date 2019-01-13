@@ -1,6 +1,7 @@
-CC = gcc
-CFLAGS = -Wall -fno-builtin -nostdinc -nostdlib
-LD = ld
+CC      = gcc
+CFLAGS  = -Wall -fno-builtin -nostdinc -nostdlib -fno-stack-protector
+LD      = ld
+LDFLAGS = 
 
 OBJFILES = \
 	loader.o \
@@ -55,7 +56,7 @@ rebuild: clean all
 	$(CC) -Iinclude $(CFLAGS) -o $@ -c $<
 
 kernel.bin: $(OBJFILES)
-	$(LD) -T linker.ld -o $@ $^
+	$(LD) -T linker.ld -o $@ $^ $(LDFLAGS)
 
 clean:
 	rm -f $(OBJFILES) hdd.img kernel.bin

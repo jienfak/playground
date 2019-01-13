@@ -178,6 +178,10 @@ function fish_prompt --description "Write out the prompt"
 	(set_color normal)
 end
 
+# Right prompt.
+function fish_right_prompt
+	echo (set_color yellow)"["(set_color normal)(date +%R)(set_color yellow)"]" (set_color normal)
+end
 
 echo -n "Getting your permissions..."
 set -l color_cwd
