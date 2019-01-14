@@ -41,6 +41,7 @@ std::string LineWork::getParagraph(std::vector<std::string> &lines, const uint64
 		/* Adding to returned in the future to paragraph
 		 * current line without tabs at start. */
 		paragraph_ret += LineWork::deleteStartTabs(cur_line) + "\n" ;
+		std::cout<<"Added line to paragraph..."<<std::endl;
 	}
 	
 	// Deleting last char(it's '\n').

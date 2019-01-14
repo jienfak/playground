@@ -1,3 +1,7 @@
+/*
+ * Unit test for line_work.cc.
+ */
+
 #include "header.hh"
 
 int main(int cli_argc, char **cli_argv){
