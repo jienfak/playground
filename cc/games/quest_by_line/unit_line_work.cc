@@ -28,6 +28,15 @@ int main(int cli_argc, char **cli_argv){
 		std::cout<<"getParagraph("<< i <<") = '"<< LineWork::getParagraph(lines, i) <<"' ;"<<std::endl;
 	}
 
+	std::cout<<"Function isLineEmpty checking..."<<std::endl;
+	for( auto line : lines){
+		std::cout<<"isLineEmpty('"<< line <<"' = '"<< LineWork::isLineEmpty(line) <<"' ;" << std::endl ;
+	}
+
+	std::cout<<"Function  nextNonEmpty checking..."<<std::endl;
+	for( int i=0 ; i<lines.size() ; ++i){
+		std::cout<<"nextNonEmpty("<< i <<") = "<< LineWork::nextNonEmpty(lines, i) <<std::endl; }
+
 	// Succesful exit.
 	return 0 ;
 }

@@ -24,23 +24,26 @@ echo Setting vars...
 
 	# Editor for standard.
 	which nvim > /dev/null 2>&1
-	if test $status = 0
+	if test $status = 0 # Neovim is here.
 		set -g EDITOR (which nvim)
+		set -g PAGER /usr/share/nvim/runtime/macros/less.sh
 	else
 		which vim
-		if test $status = 0
+		if test $status = 0 # Vim is here.
 			set -g EDITOR (which vim)
-		else
+			set -g PAGER /usr/share/vim/vim81/macros/less.sh
+		else # Standard utils if found nothing.
 			set -g EDITOR (which cat)
+			set -g PAGER (which less)
 		end
 	end
 
 	# GUI editor.
 	set -g VISUAL (which gvim)
 
-	# Pager.
-	set -g PAGER (which less)" -R"
-	set -g MANPAGER (which less)" -R"
+	# Manpager.
+	# set -g PAGER (which less)" -R"
+	set -g MANPAGER $PAGER
 	# Path.
 	# set -g PATH $HOME/code/scripts/other/my_utils $PATH
 	# GCC variables.
@@ -48,6 +51,8 @@ echo Setting vars...
 
 	# XDG.
 	set -g XDG_CONFIG_HOME "$HOME/.config/"
+
+	set last_status
 
 # Aliases.
 echo Setting aliases...
@@ -68,6 +73,8 @@ echo Setting aliases...
 	alias "tcl" "tclsh" # --description "TCL interpreter."
 	alias "lsp" "clisp" # --description "LISP interpreter."
 	alias "f"   "gfortran" # --description "FORTRAN compiler."
+	alias "c"   "cc"
+	alias "cc"  "g++"
 
 	alias "mnt"  "sudo mount"
 	alias "umnt" "sudo umount"
@@ -180,6 +187,9 @@ end
 
 # Right prompt.
 function fish_right_prompt
+	if test $last_status -ne 0
+		echo -n (set_color red) =\( (set_color normal)
+	end
 	echo (set_color yellow)"["(set_color normal)(date +%R)(set_color yellow)"]" (set_color normal)
 end
 
@@ -231,20 +241,21 @@ end
 
 	echo "Setting fish colors..."
 		# Fish colors
-		set fish_color_comment		yellow
-		set fish_color_error		grey
-		set fish_color_operator		$color_cwd
-		set fish_color_autosuggestion	"brgrey"
+		set fish_color_comment           yellow
+		set fish_color_error             grey
+		set fish_color_operator          $color_cwd
+		set fish_color_autosuggestion    "brgrey"
+		set fish_color_command           "--bold"
 
 echo \
 	# Start message
-	\<---------------------------------------------\>\n\
-	'   ' \<(set_color red)F(set_color green)A(set_color blue)K(set_color normal)-\>\
-	(set_color red)Freedom(set_color normal)-\>\
-	(set_color green)Anarchy(set_color normal)\<-\
-	(set_color blue)Knowledge(set_color normal)\<-\
-	(set_color red)F(set_color green)A(set_color blue)K(set_color normal)\>\n\
-	\<---------------------------------------------\>\n\n\
-	Welcome to the system, (set_color $color_cwd)$USER(set_color normal)!\n\
-	You are on (set_color yellow)$MACHINE_NAME(set_color normal).\n\
-	Now you are using (set_color green)$SHELL_VERSION(set_color normal).\n
+\<-------------------------------------------------\>\n\
+'|   ' \<(set_color red)F(set_color green)A(set_color blue)K(set_color normal)-\>\
+"|"(set_color red)Freedom(set_color normal)-\>\
+(set_color green)Anarchy(set_color normal)\<-\
+(set_color blue)Knowledge(set_color normal)\<-"|"\
+(set_color red)F(set_color green)A(set_color blue)K(set_color normal)\>"    |"\n\
+\<-------------------------------------------------\>\n\n\
+Welcome to the system, (set_color $color_cwd)$USER(set_color normal)!\n\
+You are on (set_color yellow)$MACHINE_NAME(set_color normal).\n\
+Now you are using (set_color green)$SHELL_VERSION(set_color normal).\n

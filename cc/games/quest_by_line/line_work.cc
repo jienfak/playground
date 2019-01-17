@@ -41,7 +41,6 @@ std::string LineWork::getParagraph(std::vector<std::string> &lines, const uint64
 		/* Adding to returned in the future to paragraph
 		 * current line without tabs at start. */
 		paragraph_ret += LineWork::deleteStartTabs(cur_line) + "\n" ;
-		std::cout<<"Added line to paragraph..."<<std::endl;
 	}
 	
 	// Deleting last char(it's '\n').
@@ -50,3 +49,31 @@ std::string LineWork::getParagraph(std::vector<std::string> &lines, const uint64
 }
 
 
+bool LineWork::isLineEmpty(std::string &line){
+	// Returns is line empty or space-chars only filled.
+
+	// Checking for "NULL" line.
+	if( line == "" ){
+		return true ;
+	}
+
+	for( auto c : line ){
+		if( c!=' ' && c!='\t' ){
+			// Found non-space character - it's not empty.
+			return false ;
+		}
+	}
+
+	// Not found any non-space characters.
+	return true ;
+}
+
+uint64_t LineWork::nextNonEmpty(std::vector<std::string> &lines, const uint64_t start_line_id){
+	// Returns ID of next non space-only and non empty string in line array.
+	uint64_t i = start_line_id ;
+	while(  isLineEmpty( lines.at(i) )  ){
+		++i ;
+	}
+
+	return i ;
+}
