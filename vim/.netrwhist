@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/home/jien/code/scripts/c/convert/hex2ascii'
 let g:netrw_dirhist_2='/home/jien/code/scripts/py/utils/network/port_scanner'
 let g:netrw_dirhist_3='/var/log/lightdm'
+let g:netrw_dirhist_4='/home/jien/code/scripts/sh/fish/completions'

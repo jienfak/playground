@@ -1,1 +1,1 @@
-/root/code/scripts/vim
+/home/jien/code/scripts/vim

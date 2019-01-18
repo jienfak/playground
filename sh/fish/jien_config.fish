@@ -60,7 +60,7 @@ echo Setting aliases...
 	alias edsu "sudo $EDITOR" # --description "Edit file like root."
 	alias edg $VISUAL # --description "Edit file with graphical text editor."
 	alias edgsu "sudo $VISUAL" # --description "Edit file with graphical text editor like root."
-	alias service "sudo systemctl" # --description "Alias for systemctl."
+	alias sctl "sudo systemctl" # --description "Alias for systemctl."
 	alias pager "$PAGER" # --description "Standard pager."
 
 	alias "ev" "eval" # --description "Evaluate text."
@@ -81,7 +81,7 @@ echo Setting aliases...
 
 
 # Functions-aliases.
-function help -d 'Automaticaly gets help for a program'
+function helpa -d 'Automaticaly gets help for a program'
 	# Check manual first.
 	man $argv
 	if test $status = 0

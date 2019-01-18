@@ -1,0 +1,1 @@
+jien_config.fish

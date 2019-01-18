@@ -13,7 +13,9 @@ ln -s ~/code/scripts/other/opt/jien_Xmodmap	~/.Xmodmap
 ln -s ~/code/scripts/other/opt/jien_Xresources	~/.Xresources
 
 # Fish shell. 
-ln -s ~/code/scripts/sh/fish/jien_config.fish ~/.config/fish/config.fish
+mv ~/.config/fish ~/.config/fish.backup
+ln -s ~/code/scripts/sh/fish/ ~/.config/fish
+# ln -s ~/code/scripts/sh/fish/jien_config.fish ~/.config/fish/config.fish
 
 # sudo cp ~/code/scripts/sh/fish/completions/* /usr/share/fish/completions/
 
