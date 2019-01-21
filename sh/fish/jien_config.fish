@@ -43,7 +43,7 @@ echo Setting vars...
 
 	# Manpager.
 	# set -g PAGER (which less)" -R"
-	set -g MANPAGER $PAGER
+	set -g MANPAGER (which less)" -r"
 	# Path.
 	# set -g PATH $HOME/code/scripts/other/my_utils $PATH
 	# GCC variables.
@@ -62,6 +62,7 @@ echo Setting aliases...
 	alias edgsu "sudo $VISUAL" # --description "Edit file with graphical text editor like root."
 	alias sctl "sudo systemctl" # --description "Alias for systemctl."
 	alias pager "$PAGER" # --description "Standard pager."
+	alias manpager "$MANPAGER"
 
 	alias "ev" "eval" # --description "Evaluate text."
 	alias "py"  "python" # --description "Python interpreter."
@@ -106,31 +107,31 @@ function helpa -d 'Automaticaly gets help for a program'
 	
 	eval $argv -h > /dev/null 2>&1
 	if test $status = 0
-		eval $argv -h | pager 2>&1
+		eval $argv -h | manpager 2>&1
 		return
 	end
 
 	eval $argv --help > /dev/null 2>&1
 	if test $status = 0
-		eval $argv --help | pager 2>&1
+		eval $argv --help | manpager 2>&1
 		return
 	end
 
 	eval $argv -help > /dev/null 2>&1
 	if test $status = 0
-		eval $argv -help | pager 2>&1
+		eval $argv -help | manpager 2>&1
 		return
 	end
 
 	eval $argv help > /dev/null 2>&1
 	if test $status = 0
-		eval $argv help | pager 2>&1
+		eval $argv help | manpager 2>&1
 		return
 	end
 
 	eval $argv > /dev/null 2>&1
 	if test $status != 0
-		eval $argv | pager 2>&1
+		eval $argv | manpager 2>&1
 		return
 	end
 

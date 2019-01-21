@@ -3,7 +3,7 @@
 # Directories.
 mkdir ~/video ~/docs ~/temps ~/shared
 ln -s ~/MEGA/faksoc/imgs ~/
-ln -s ~/MEGA/audio ~/audio
+ln -s ~/MEGA/faksoc/audio ~/audio
 mv ~/.config/user-dirs.dirs ~/.config/user-dirs.dirs.backup
 ln -s ~/code/scripts/other/opt/jien_user-dirs.dirs ~/.config/user-dirs.dirs
 mkdir ~/code/ ~/progs ~/torrent ~/bluetooth
@@ -35,3 +35,6 @@ mv ~/.config/nvim/ ~/.config/nvim.backup
 ln -s ~/code/scripts/vim/                 ~/.config/nvim
 ln -s ~/code/scripts/vim/jien_vimrc       ~/.config/nvim/init.vim
 
+# Git.
+git config --global  user.email $(whoami)@protonmail.com
+git config --global user.name $(whoami)
