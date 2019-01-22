@@ -17,9 +17,9 @@ if __name__ == "__main__" :
 	print("Connected...")
 	string = True 
 	while string :
-		print("Iteration...")
-		string = input()
+		# print("Iteration...")
+		string = input() 
 		s.send(string.encode())
 		data = s.recv(1024)
-		print("'"+ data.decode() +"'") 
+		print( data.decode()) 
 
