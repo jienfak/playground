@@ -17,6 +17,10 @@ mv ~/.config/fish ~/.config/fish.backup
 ln -s ~/code/scripts/sh/fish/ ~/.config/fish
 # ln -s ~/code/scripts/sh/fish/jien_config.fish ~/.config/fish/config.fish
 
+# Zsh shell.
+mv ~/.zshrc ~/.zshrc.backup
+ln -s ~/code/scripts/sh/zsh/jien_zshrc ~/.zshrc
+
 # sudo cp ~/code/scripts/sh/fish/completions/* /usr/share/fish/completions/
 
 # Xinit.

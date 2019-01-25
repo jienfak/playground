@@ -1,6 +1,6 @@
 #include "header.hh"
 
-int8_t handleParagraph.cc(
+bool handleParagraph(
 	std::vector<std::string> &lines,
 	const uint64_t paragraph_line_id
 ){
@@ -12,7 +12,6 @@ int8_t handleParagraph.cc(
 	std::cout<<cur_paragraph<<"\n\n";
 
 	// Moving current line through paragraph.
-	cur_line_id += cur_paragraph.size() + 2 ;
 	// Not it's on next paragraph.
 
 	// Getting questions and printing them.
@@ -35,5 +34,4 @@ int8_t handleParagraph.cc(
 		// Moving line to the next paragraph.
 		cur_line_id += cur_paragraph.size() + 2 ;
 	}
-
 }

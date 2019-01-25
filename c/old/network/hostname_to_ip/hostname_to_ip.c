@@ -10,7 +10,7 @@ int hostname_to_ip(char *hostname, char *ip);
 
 int main(int argc, char **argv){
 	if( argc<2 ){
-		printf("Usage: %s [hostname1] .. [hostnameN] ;");
+		printf("Usage: %s [hostname1] .. [hostnameN] ;", argv[0]);
 		exit(1);
 	}
 

@@ -21,12 +21,17 @@ Found_any_opened_port = False
 def isPortOpened(host, port):
     scan = socket.socket()
     scan.settimeout(0.1)
-    try:
-        scan.connect( (host, port) )
-    except socket.error:
-        return False
-    else:
-        return True
+    connected = False
+    while not connected :
+        try:
+            scan.connect( (host, port) )
+        except socket.error :
+            return False
+        except OSError :
+            connected = True 
+            continue
+        else:
+            return True
 
 def printScannedPort(host, port, mode):
 	# Getting port status.

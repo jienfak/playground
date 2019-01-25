@@ -2,7 +2,7 @@
 CC      = g++
 TARGET	= quest_by_line
 PREFIX	= /usr/local/bin
-SRCS    = fs.cc main.cc line_work.cc
+SRCS    = fs.cc main.cc line_work.cc handle_paragraph.cc
 OBJS	= $(SRCS:.cc=.o);
 CFLAGS  = 
 LINE_WORK_SRCS = line_work.cc unit_line_work.cc fs.cc

@@ -70,10 +70,27 @@ bool LineWork::isLineEmpty(std::string &line){
 
 uint64_t LineWork::nextNonEmpty(std::vector<std::string> &lines, const uint64_t start_line_id){
 	// Returns ID of next non space-only and non empty string in line array.
-	uint64_t i = start_line_id ;
-	while(  isLineEmpty( lines.at(i) )  ){
-		++i ;
+
+	for( uint64_t i=start_line_id ; i<lines.size() ; ++i ){
+		if( !LineWork::isLineEmpty(lines.at(i)) ){ return i; }
+	}
+	return 0 ;
+}
+
+uint64_t LineWork::nextParagraph(std::vector<std::string> &lines, const uint64_t start_line_id){
+	/*
+	 * Returns id of first line of next paragraph.
+	 */
+
+	uint64_t par_tabs = numOfStartTabs(line.at(start_line_id)) ;
+
+	for( std::string line, uint64_t i=0 ; line=lines.at(i), i<lines.size() ; ++i ){
+		if( isLineEmpty(lines.at(i)) ){// If we have empty line.
+			return nextNonEmpty(lines, i) ;
+		}else if( numOfStartTabs(line)!= ){// Not empty line, but it has diff num of tabs.
+		}
 	}
 
-	return i ;
+	// Found nothing.
+	return 0 ;
 }

@@ -19,6 +19,7 @@ namespace LineWork {
 	std::string getParagraph(std::vector<std::string> &lines, const uint64_t start_line_id);
 	bool isLineEmpty(std::string &line);
 	uint64_t nextNonEmpty(std::vector<std::string> &lines, const uint64_t start_line_id);
+	bool handleParagraph(std::vector<std::string> &lines, const uint64_t start_line_id);
 }
 
 
