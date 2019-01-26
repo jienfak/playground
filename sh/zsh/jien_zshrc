@@ -47,9 +47,78 @@ fi
 
 S="$HOME/code/scripts"
 
+# Variables.
+echo "Setting variables..."
+export PAGER=`which less`
+export MANPAGER=$PAGER
+
 # Aliases.
+echo "Setting aliases..."
 alias "ls"="ls --color=always"
+alias "la"="ls -al --color=always"
+alias "ll"="ls --color -l"
 alias "sctl"="sudo systemctl"
+alias "manpager"=$MANPAGER
+
+# Functions.
+echo "Setting functions..."
+
+function helpa {
+	# Check manual first.
+	man $argv
+	echo $status
+	if test $status -eq 0 ; then
+		return
+	fi
+
+	# Check info.
+	info --version
+	if test $status -eq 0  ; then
+		info $argv
+		if test $status = 0; then
+			return
+		fi
+	fi
+	
+	# Check 'help' options.
+	which $argv >/dev/null 2>&1
+	if test $status -ne 0 ; then
+		echo "help: Program '$argv' not found"
+		return 
+	fi
+	
+	eval $argv -h > /dev/null 2>&1
+	if test $status -eq 0 ; then 
+		eval $argv -h | manpager 2>&1
+		return
+	fi
+
+	eval $argv --help > /dev/null 2>&1
+	if test $status -eq 0 ; then
+		eval $argv --help | manpager 2>&1
+		return
+	fi
+
+	eval $argv -help > /dev/null 2>&1
+	if test $status -eq 0 ; then
+		eval $argv -help | manpager 2>&1
+		return
+	fi
+
+	eval $argv help > /dev/null 2>&1
+	if test $status -eq 0 ; then
+		eval $argv help | manpager 2>&1
+		return
+	fi
+
+	eval $argv > /dev/null 2>&1
+	if test $status -ne 0 ; then
+		eval $argv | manpager 2>&1
+		return
+	fi
+
+	echo "helpa: Could not get any help!"
+}
 
 echo  FAK::Freedom:Anarchy:Knowledge::FAK
 echo 'FAKYOU... why are you using zsh? Fish is better.'
