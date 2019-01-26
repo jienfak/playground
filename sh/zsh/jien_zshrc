@@ -34,7 +34,12 @@ else
 		fi
 	fi
 fi
-alias ed=$EDITOR
+alias ed="$EDITOR"
+alias edsu="sudo $EDITOR"
+
+export VISUAL=$(which gvim)
+alias edg="$VISUAL"
+alias edgsu="$VISUAL"
 highlight_plugin="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 echo "Trying to get highlighting plugin..."
