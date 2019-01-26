@@ -8,13 +8,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <inttypes.h>
 
 #define IS_DBG
-
-char msg[] = "Hello, World!\n";
-char red[1024];
-
-
+#define BUF_SIZE 256
 
 int hostnameToIp(char *hostname, char *ip){
 	struct hostent *he;
@@ -50,12 +47,20 @@ int createSocket(char *hostname, int port, struct sockaddr_in **sockaddr){
 	}
 
 	struct sockaddr_in *addr = malloc(sizeof(struct sockaddr_in)) ;
-	addr->sin_family = AF_INET ;
-	addr->sin_port   = port    ;
 
 	char host_ip[1024];
+	uint32_t ip;
 	hostnameToIp(hostname, host_ip);
+	#ifdef IS_DBG
+	printf("host_ip = '%s'\n", host_ip);
+	#endif
 	inet_pton( AF_INET, host_ip, &(addr->sin_addr) );
+	/*addr->sin_addr = htonl(addr->sin_addr) ;
+	memcpy(addr->sin_addr, ,sizeof(ip));*/
+	
+	#ifdef IS_DBG
+	printf("addr->sin_addr = '%x'\n", addr->sin_addr);
+	#endif
 
 	*sockaddr = addr ;
 	#ifdef IS_DBG
@@ -71,14 +76,26 @@ int createConnection(char *hostname, int port){
 	printf("addr = '%x'\n", addr);
 	printf("sock = '%d'\n", sock);
 	#endif
-	if(  connect(sock, (struct sockaddr *)addr, sizeof(addr))<0  ){
+	if(  connect(sock, (struct sockaddr *)addr, sizeof(*addr))<0  ){
 		#ifdef IS_DBG
 		printf("Could not connect...\n");
 		#endif
 		return -1 ;
 	}
 
+	printf("Succesful connection...\n");
 	return sock ;
+}
+
+int readLine(char *buf){
+	char *pbuf = buf ;
+	char c; 
+	while( (c = getchar()) != '\n'){
+		*pbuf++ = c ;
+	}
+	*pbuf = '\0' ;
+
+	return  pbuf - buf ;
 }
 
 int main(int argc, char **argv){
@@ -92,7 +109,8 @@ int main(int argc, char **argv){
 	#endif /* IS_DBG. */
 
 	int sock = createConnection(argv[1], atoi(argv[2])) ;
-	char buf[1024];
+	char *buf = malloc(sizeof(char) * BUF_SIZE ) ;
+	char *red = malloc(sizeof(char) * BUF_SIZE ) ;
 
 	printf("%d\n", sock);
 	
@@ -122,16 +140,36 @@ int main(int argc, char **argv){
 	) ; */
 
 	#ifdef IS_DBG
-	printf("before loop");
+	printf("Before loop...\n");
 	#endif
 
+	ssize_t bytes = 0 ;
 	while(1){
-		scanf("%s\n", red);
-		send(sock, red, 1024, 0 );
+		#ifdef IS_DBG
+		printf("Inputing:");
+		#endif
+		readLine(red);
+		#ifdef IS_DBG
+		printf("Read to the buf '%s', sending now...\n", red);
+		#endif
+		send(sock, red, 1024, MSG_NOSIGNAL );
+		#ifdef IS_DBG
+		puts("Sended! Recieving now...");
+		#endif
 		recv(sock, buf, 1024, 0);
-		printf("%s", buf);
+		#ifdef IS_DBG
+		printf("Printing:\n");
+		#endif
+		printf("%s\n", buf);
 	}
+
+	#ifdef IS_DBG
+	puts("Before closing socket right now...");
+	#endif
 	close(sock);
+	#ifdef IS_DBG
+	puts("Closed socket...");
+	#endif
 
 	return 0;
 }
