@@ -1,3 +1,4 @@
+#include <arpa/inet.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -6,12 +7,79 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
 #define IS_DBG
 
 char msg[] = "Hello, World!\n";
-char buf[1024];
 char red[1024];
+
+
+
+int hostnameToIp(char *hostname, char *ip){
+	struct hostent *he;
+	struct in_addr **addr_list;
+	int i;
+	if(  !( he = gethostbyname(hostname) )  ){
+		/* Get the host info. */
+		herror("gethostbyname");
+		return 1 ;
+	}
+
+	addr_list = (struct in_addr **)he->h_addr_list ;
+
+	for( i=0 ; addr_list[i] ; ++i ){
+		/* Return the first one. */
+		strcpy( ip, inet_ntoa(*addr_list[i]) );
+		return 0 ;
+	}
+
+	return 1 ;
+}
+
+int createSocket(char *hostname, int port, struct sockaddr_in **sockaddr){
+	/*
+	 * Frontend for all socket operations.
+	 * Returns socket's descriptor or negative value if the error.
+	 */
+	
+	int sock = socket(AF_INET, SOCK_STREAM, 0) ;
+	if(sock<0){
+		/* Could not create socket for some reason. */
+		return sock;
+	}
+
+	struct sockaddr_in *addr = malloc(sizeof(struct sockaddr_in)) ;
+	addr->sin_family = AF_INET ;
+	addr->sin_port   = port    ;
+
+	char host_ip[1024];
+	hostnameToIp(hostname, host_ip);
+	inet_pton( AF_INET, host_ip, &(addr->sin_addr) );
+
+	*sockaddr = addr ;
+	#ifdef IS_DBG
+	printf("addr = '%x'\n", addr);
+	#endif
+	return sock ;
+}
+
+int createConnection(char *hostname, int port){
+	struct sockaddr_in *addr;
+	int sock = createSocket(hostname, port, &addr) ;
+	#ifdef IS_DBG
+	printf("addr = '%x'\n", addr);
+	printf("sock = '%d'\n", sock);
+	#endif
+	if(  connect(sock, (struct sockaddr *)addr, sizeof(addr))<0  ){
+		#ifdef IS_DBG
+		printf("Could not connect...\n");
+		#endif
+		return -1 ;
+	}
+
+	return sock ;
+}
 
 int main(int argc, char **argv){
 	if(argc<3){
@@ -23,21 +91,17 @@ int main(int argc, char **argv){
 	printf("Program started.\n");
 	#endif /* IS_DBG. */
 
-	int sock, err;
-	struct sockaddr_in addr;
-	struct addrinfo res;
-	struct addrinfo *result;
+	int sock = createConnection(argv[1], atoi(argv[2])) ;
+	char buf[1024];
 
-	sock = socket(AF_INET, SOCK_STREAM, 0);
-	if(sock<0){
-		perror("socket");
-		exit(1);
-	}
+	printf("%d\n", sock);
+	
+	/*struct addrinfo res;
+	struct addrinfo *result;*/
 
-	addr.sin_family = AF_INET ;
-	addr.sin_port = htons(atoi(argv[2])) ;
-
-	err = getaddrinfo(argv[1], NULL, NULL, &result);
+	/* IP getting. */
+	
+	/*err = getaddrinfo(argv[1], NULL, NULL, &result);
 	if( err ){
 		if(err == EAI_SYSTEM){
 			perror("getaddrinfo");
@@ -55,28 +119,17 @@ int main(int argc, char **argv){
 		)
 			->
 		sin_addr.s_addr
-	) ;
-	printf("Connecting to '0x%x'...\n", addr.sin_addr.s_addr);
-	if(  connect(sock, (struct sockaddr *)&addr, sizeof(addr))<0  ){
-		perror("connect");
-		exit(2);
-	}
+	) ; */
 
 	#ifdef IS_DBG
 	printf("before loop");
-	#endif IS_DBG
+	#endif
 
 	while(1){
-		printf("reading something: ");
 		scanf("%s\n", red);
 		send(sock, red, 1024, 0 );
-		printf("sended...\n");
-
-
-		printf("reading...\n");
 		recv(sock, buf, 1024, 0);
-		printf("got msg...\n");
-		printf("%s\n", buf);
+		printf("%s", buf);
 	}
 	close(sock);
 

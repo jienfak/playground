@@ -35,7 +35,21 @@ else
 	fi
 fi
 alias ed=$EDITOR
+highlight_plugin="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
-S=$HOME/code/scipts
-echo  'FAK::Freedom:Anarchy:Knowledge::FAK'
+echo "Trying to get highlighting plugin..."
+if [ -f $highlight_plugin ]; then
+	echo "Got it."
+	source $highlight_plugin
+else
+	echo "Could not get plugin."
+fi
+
+S="$HOME/code/scripts"
+
+# Aliases.
+alias "ls"="ls --color=always"
+alias "sctl"="sudo systemctl"
+
+echo  FAK::Freedom:Anarchy:Knowledge::FAK
 echo 'FAKYOU... why are you using zsh? Fish is better.'
