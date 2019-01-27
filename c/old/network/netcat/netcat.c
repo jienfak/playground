@@ -76,11 +76,12 @@ int createConnection(char *hostname, int port){
 	printf("addr = '%x'\n", addr);
 	printf("sock = '%d'\n", sock);
 	#endif
-	if(  connect(sock, (struct sockaddr *)addr, sizeof(*addr))<0  ){
+	int con_ret ;
+	if(  con_ret=connect(sock, (struct sockaddr *)addr, sizeof(*addr))<0  ){
 		#ifdef IS_DBG
 		printf("Could not connect...\n");
 		#endif
-		return -1 ;
+		return con_ret ;
 	}
 
 	printf("Succesful connection...\n");
@@ -107,8 +108,14 @@ int main(int argc, char **argv){
 	#ifdef IS_DBG
 	printf("Program started.\n");
 	#endif /* IS_DBG. */
+	struct sockaddr_in *addr;
+	int sock = createSocket(argv[1], atoi(argv[2]), &addr) ;
 
-	int sock = createConnection(argv[1], atoi(argv[2])) ;
+	if( connect(sock, (struct sockaddr *)addr, sizeof(*addr)) ){
+		perror("connect");
+		return 1 ;
+	}
+
 	char *buf = malloc(sizeof(char) * BUF_SIZE ) ;
 	char *red = malloc(sizeof(char) * BUF_SIZE ) ;
 
@@ -152,7 +159,7 @@ int main(int argc, char **argv){
 		#ifdef IS_DBG
 		printf("Read to the buf '%s', sending now...\n", red);
 		#endif
-		send(sock, red, 1024, MSG_NOSIGNAL );
+		send(sock, red, 1024, 0/*MSG_NOSIGNAL*/ );
 		#ifdef IS_DBG
 		puts("Sended! Recieving now...");
 		#endif
