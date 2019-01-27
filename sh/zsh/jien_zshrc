@@ -4,13 +4,14 @@ compinit
 promptinit
 zstyle ':completion:*' menu select
 setopt correct
-setopt PROMPT_SUBST
+
 
 shpwd() {
-  echo ${${:-/${(j:/:)${(M)${(s:/:)${(D)PWD:h}}#(|.)[^.]}}/${PWD:t}}//\/~/\~} 
+  echo ${${:-/${(j:/:)${(M)${(s:/:)${(D)PWD:h}}#(|.)[^.]}}/${PWD:t}}//\/~/\~}
 }
 
-PROMPT="%F{yellow}%f%F{red}%n%f@%F{blue}%m%f:%F{yellow}$(shpwd)%f%(!.#.$)"
+setopt PROMPT_SUBST
+PROMPT="%F{yellow}%f%F{red}%n%f@%F{blue}%m%f:%F{yellow}%~%f%(!.#.$)"
 RPROMPT="%F{red}[%f%F{brgreen}%T%f%F{red}]%f[%F{yellow}%?%f,%F{blue}%L%f]"
 
 #source ~/path/to/fsh/fast-syntax-highlighting.plugin.zsh
@@ -43,6 +44,31 @@ fi
 alias ed="$EDITOR"
 alias edsu="sudo $EDITOR"
 
+# Git status.
+git_custom_status(){
+}
+
+# Vi Mode.
+bindkey -v
+
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
+
+EPS1=$RPROMPT
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+	RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}($(git_custom_status))$EPS1"
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+export KEYTIMEOUT=1
+
 export VISUAL=$(which gvim)
 alias edg="$VISUAL"
 alias edgsu="$VISUAL"
@@ -56,6 +82,11 @@ else
 	echo "Could not get plugin."
 fi
 
+#vi_mode_plugin="~/code/scripts/sh/zsh/plugins/vi-mode.plugin.zsh"
+#if [ -f $vi_mode_plugin ] ; then
+#	source $vi_mode_plugin
+#fi
+
 S="$HOME/code/scripts"
 
 # Variables.
@@ -64,17 +95,25 @@ export PAGER=`which less`
 export MANPAGER=$PAGER
 	echo "Setting '$PAGER' colors..."
 		# Less colors
-		export LESS_TERMCAP_md=$(perl -e "print \"\033[1;31m\"")
-		export LESS_TERMCAP_me=$(perl -e "print \"\033[0m\"")
+		export LESS_TERMCAP_md=$'\E[01;31m'
+		#export LESS_TERMCAP_md=$(perl -e "print \"\\033[1;31m\"")
+		#export LESS_TERMCAP_me=$(perl -e "print \"\\033[0m\"")
+		export LESS_TERMCAP_me=$'\E[0m'
 			# Underlined
-		export LESS_TERMCAP_us=$(perl -e "print \"\033[1;32m\";")
-		export LESS_TERMCAP_ue=(perl -e "print \"\033[0m\"; ")
+		#export LESS_TERMCAP_us=$(perl -e "print \"\\033[1;32m\";")
+		#export LESS_TERMCAP_ue=(perl -e "print \"\033[0m\"; ")
+		export LESS_TERMCAP_us=$'\E[01;32m'
+		export LESS_TERMCAP_ue=$'\E[0m'
 			# Service info
-		export LESS_TERMCAP_so=$(perl -e "print \"\033[1;33m\";")
-		export LESS_TERMCAP_se=$(perl -e "print \"\033[0m\";")
+		#export LESS_TERMCAP_so=$(perl -e "print \"\\033[1;33m\";")
+		#export LESS_TERMCAP_se=$(perl -e "print \"\\033[0m\";")
+		export LESS_TERMCAP_so=$'\E[01;33m'
+		export LESS_TERMCAP_se=$'\E[0m'
 			# Blinking color
-		export LESS_TERMCAP_mb=$(perl -e "print \"\033[1;32m\";")
-		export LESS_TERMCAP_me=$(perl -e "print \"\033[0m\";")
+		#export LESS_TERMCAP_mb=$(perl -e "print \"\\033[1;32m\";")
+		#export LESS_TERMCAP_me=$(perl -e "print \"\\033[0m\";")
+		export LESS_TERMCAP_mb=$'\E[1;34m'
+		export LESS_TERMCAP_me=$'\E[0m'
 
 # Aliases.
 echo "Setting aliases..."
@@ -87,56 +126,63 @@ alias "manpager"=$MANPAGER
 # Functions.
 echo "Setting functions..."
 
-function helpa {
+helpa(){
 	# Check manual first.
-	man $argv
-	echo $status
-	if test $status -eq 0 ; then
+	man $argv >/dev/null 2>&1
+	if [ $status = 0 ] ; then
+		man $argv
+		echo "Got manual, for $argv."
 		return
 	fi
 
 	# Check info.
 	info --version
-	if test $status -eq 0  ; then
-		info $argv
-		if test $status = 0; then
+	if [ $status = 0 ]  ; then
+		echo "Got info page for $argv."
+		info $argv	
+		if [ $status = 0 ] ; then
 			return
 		fi
 	fi
 	
 	# Check 'help' options.
-	which $argv >/dev/null 2>&1
-	if test $status -ne 0 ; then
-		echo "help: Program '$argv' not found"
+	which $argv > /dev/null 2>&1
+	if [ $status != 0 ] ; then
+		echo "helpa: Program '$argv' not found."
 		return 
 	fi
 	
 	eval $argv -h > /dev/null 2>&1
-	if test $status -eq 0 ; then 
+	if [ $status = 0 ] ; then 
+		echo "helpa: Worked with '-h' option."
 		eval $argv -h | manpager 2>&1
 		return
 	fi
 
 	eval $argv --help > /dev/null 2>&1
-	if test $status -eq 0 ; then
+	if [ $status = 0 ] ; then
+		echo "helpa: Worked with '--help' option."
 		eval $argv --help | manpager 2>&1
 		return
 	fi
 
 	eval $argv -help > /dev/null 2>&1
-	if test $status -eq 0 ; then
+	if [ $status = 0 ] ; then
+		echo "helpa: Worked with '-help' option"
 		eval $argv -help | manpager 2>&1
 		return
 	fi
 
 	eval $argv help > /dev/null 2>&1
-	if test $status -eq 0 ; then
+	if [ $status = 0 ] ; then
+		echo "helpa: Worked with 'help' option."
 		eval $argv help | manpager 2>&1
 		return
 	fi
 
 	eval $argv > /dev/null 2>&1
-	if test $status -ne 0 ; then
+	if [ $status = 0 ] ; then
+		echo "helpa: Worked without any options."
 		eval $argv | manpager 2>&1
 		return
 	fi
