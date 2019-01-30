@@ -35,7 +35,13 @@ int main(int cli_argc, char **cli_argv){
 
 	std::cout<<"Function  nextNonEmpty checking..."<<std::endl;
 	for( int i=0 ; i<lines.size() ; ++i){
-		std::cout<<"nextNonEmpty("<< i <<") = "<< LineWork::nextNonEmpty(lines, i) <<std::endl; }
+		std::cout<<"nextNonEmpty("<< i <<") = "<< LineWork::nextNonEmpty(lines, i) <<std::endl;
+	}
+
+	std::cout<<"Function nextParagraph checking.."<<std::endl;
+	for( int i=0 ; i<lines.size() ; ++i){
+		std::cout<<"nextParagraph("<< i <<") = "<< LineWork::nextParagraph(lines, i) <<std:endl;
+	}
 
 	// Succesful exit.
 	return 0 ;

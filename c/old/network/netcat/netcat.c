@@ -1,182 +1,123 @@
-#include <arpa/inet.h>
+#include <stdio.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
-#include <stdio.h>
-#include <ctype.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
-#include <inttypes.h>
+#include <unistd.h>
 
-#define IS_DBG
-#define BUF_SIZE 256
-
-int hostnameToIp(char *hostname, char *ip){
-	struct hostent *he;
-	struct in_addr **addr_list;
-	int i;
-	if(  !( he = gethostbyname(hostname) )  ){
-		/* Get the host info. */
-		herror("gethostbyname");
-		return 1 ;
-	}
-
-	addr_list = (struct in_addr **)he->h_addr_list ;
-
-	for( i=0 ; addr_list[i] ; ++i ){
-		/* Return the first one. */
-		strcpy( ip, inet_ntoa(*addr_list[i]) );
-		return 0 ;
-	}
-
-	return 1 ;
+void error(char *msg, int exit_code){
+	perror(msg);
+	exit(0);
 }
 
-int createSocket(char *hostname, int port, struct sockaddr_in **sockaddr){
-	/*
-	 * Frontend for all socket operations.
-	 * Returns socket's descriptor or negative value if the error.
-	 */
-	
-	int sock = socket(AF_INET, SOCK_STREAM, 0) ;
-	if(sock<0){
-		/* Could not create socket for some reason. */
-		return sock;
+int crtSocket(char *host, int portno, struct sockaddr_in **psrv_addr){
+	/* Create socket to the host routine. */
+	int sockfd;
+	struct hostent *srv;
+	struct sockaddr_in *srv_addr = malloc(sizeof(struct sockaddr_in)) ;
+
+	sockfd =  socket(AF_INET, SOCK_STREAM, 0) ;
+	if( sockfd<0 ){
+		return sockfd ;
 	}
 
-	struct sockaddr_in *addr = malloc(sizeof(struct sockaddr_in)) ;
+	srv = gethostbyname(host) ;
+	if(!srv){
+		printf("Could not find host.\n");
+	}
 
-	char host_ip[1024];
-	uint32_t ip;
-	hostnameToIp(hostname, host_ip);
-	#ifdef IS_DBG
-	printf("host_ip = '%s'\n", host_ip);
-	#endif
-	inet_pton( AF_INET, host_ip, &(addr->sin_addr) );
-	/*addr->sin_addr = htonl(addr->sin_addr) ;
-	memcpy(addr->sin_addr, ,sizeof(ip));*/
-	
-	#ifdef IS_DBG
-	printf("addr->sin_addr = '%x'\n", addr->sin_addr);
-	#endif
+	/* Clearing addr_in structure to do not get errors. */
+	bzero((char *)srv_addr, sizeof(srv_addr));
+	/* Settting address family. */
+	srv_addr->sin_family = AF_INET ;
+	/* Copying bin IP-address to the out sockaddr_in structure for socket. */
+	bcopy((char *)srv->h_addr,
+		(char *)&srv_addr->sin_addr.s_addr,
+		srv->h_length
+	);
+	/* Port setting. */
+	srv_addr->sin_port = htons(portno) ;
+	/* Returning our structure created to continue work with that. */
+	*psrv_addr = srv_addr ;
 
-	*sockaddr = addr ;
-	#ifdef IS_DBG
-	printf("addr = '%x'\n", addr);
-	#endif
-	return sock ;
+	return sockfd ;
 }
 
-int createConnection(char *hostname, int port){
-	struct sockaddr_in *addr;
-	int sock = createSocket(hostname, port, &addr) ;
-	#ifdef IS_DBG
-	printf("addr = '%x'\n", addr);
-	printf("sock = '%d'\n", sock);
-	#endif
-	int con_ret ;
-	if(  con_ret=connect(sock, (struct sockaddr *)addr, sizeof(*addr))<0  ){
-		#ifdef IS_DBG
-		printf("Could not connect...\n");
-		#endif
-		return con_ret ;
+int crtConnection(char *host, int port){
+	/* Create socket connect to the host, return error if could not. */
+	struct sockaddr_in *srv_addr;
+	int sockfd = crtSocket(host, port, &srv_addr) ;
+	if(sockfd<0){
+		return sockfd ;
 	}
 
-	printf("Succesful connection...\n");
-	return sock ;
+	int c; /* Connect return.  */
+	if( (c = connect(sockfd, (struct sockaddr *)srv_addr, sizeof(*srv_addr)) ) < 0 ){
+		return c ;
+	}
+
+	return sockfd ;
 }
 
-int readLine(char *buf){
-	char *pbuf = buf ;
-	char c; 
-	while( (c = getchar()) != '\n'){
-		*pbuf++ = c ;
+void readEOF(char *buf){
+	char c;
+	while( (c=getchar())!=EOF){
+		*buf++ = c ;
 	}
-	*pbuf = '\0' ;
-
-	return  pbuf - buf ;
+	*buf = '\0' ;
 }
 
 int main(int argc, char **argv){
+	int sockfd, portno, n;
+	struct sockaddr_in *srv_addr;
+
+	char buf[1024];
 	if(argc<3){
-		printf("netcat: too few arguments");
-		exit(1);
+		fprintf(stderr, "usage %s hostname port", argv[0]);
+		exit(0);
+	}	
+
+	sockfd = crtConnection(argv[1], atoi(argv[2])) ;
+	if(sockfd<0){
+		error("socket", 1);
 	}
 
-	#ifdef IS_DBG
-	printf("Program started.\n");
-	#endif /* IS_DBG. */
-	struct sockaddr_in *addr;
-	int sock = createSocket(argv[1], atoi(argv[2]), &addr) ;
-
-	if( connect(sock, (struct sockaddr *)addr, sizeof(*addr)) ){
-		perror("connect");
-		return 1 ;
+	/*portno = atoi(argv[2]) ;
+	sockfd = socket(AF_INET, SOCK_STREAM, 0) ;
+	if(sockfd<0){
+		error("socket");
 	}
+	srv = gethostbyname(argv[1]) ;
 
-	char *buf = malloc(sizeof(char) * BUF_SIZE ) ;
-	char *red = malloc(sizeof(char) * BUF_SIZE ) ;
+	bzero((char *)&srv_addr, sizeof(srv_addr));
+	srv_addr.sin_family = AF_INET ;
+	bcopy((char *)srv->h_addr,
+		(char *)&srv_addr.sin_addr.s_addr,
+		srv->h_length
+	);
+	srv_addr.sin_port = htons(portno) ;*/
 
-	printf("%d\n", sock);
-	
-	/*struct addrinfo res;
-	struct addrinfo *result;*/
 
-	/* IP getting. */
-	
-	/*err = getaddrinfo(argv[1], NULL, NULL, &result);
-	if( err ){
-		if(err == EAI_SYSTEM){
-			perror("getaddrinfo");
-		}else{
-			fprintf( stderr, "error int getaddinfo: %s\n", gai_strerror(err) );
-		}
-		exit(EXIT_FAILURE);
-	}
-
-	addr.sin_addr.s_addr = ntohl(
-		(
-			(struct sockaddr_in *)( (struct addrinfo *)result )
-				->
-			ai_addr  
-		)
-			->
-		sin_addr.s_addr
-	) ; */
-
-	#ifdef IS_DBG
-	printf("Before loop...\n");
-	#endif
-
-	ssize_t bytes = 0 ;
+	/*printf("Message:");*/
+	n = 1 ; /* For start. */
+	char rbuf[1024];
 	while(1){
-		#ifdef IS_DBG
-		printf("Inputing:");
-		#endif
-		readLine(red);
-		#ifdef IS_DBG
-		printf("Read to the buf '%s', sending now...\n", red);
-		#endif
-		send(sock, red, 1024, 0/*MSG_NOSIGNAL*/ );
-		#ifdef IS_DBG
-		puts("Sended! Recieving now...");
-		#endif
-		recv(sock, buf, 1024, 0);
-		#ifdef IS_DBG
-		printf("Printing:\n");
-		#endif
-		printf("%s\n", buf);
+		bzero(buf, sizeof(buf));
+		bzero(rbuf, sizeof(rbuf));
+		readEOF(buf);
+
+		n = send(sockfd, buf, strlen(buf), 0);
+		if(n<0){
+			error("send", 3);
+		}
+		while(n){
+			n = recv(sockfd, rbuf, sizeof(rbuf), 0);
+			printf("%s", rbuf);
+		}	
+		
 	}
 
-	#ifdef IS_DBG
-	puts("Before closing socket right now...");
-	#endif
-	close(sock);
-	#ifdef IS_DBG
-	puts("Closed socket...");
-	#endif
-
-	return 0;
+	return 0 ;
 }

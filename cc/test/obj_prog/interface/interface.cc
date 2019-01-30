@@ -43,7 +43,10 @@ int main(void){
 	r.setWidth(4); r.setHeight(4);
 	cout <<"S(r) = "<< r.getArea() << endl;
 
-
+	/*
+	Shape s = Triangle () ;
+	cout <<"S[Shape] = "<<s.getArea() << endl;
+	*/
 	// succesful exit
 	return 0;
 }

@@ -10,9 +10,13 @@ As always, I include the header files, use the irr namespace,
 and tell the linker to link with the .lib file.
 */
 #include <irrlicht.h>
-#include "driverChoice.h"
+#include <iostream>
+#include <vector>
+#include "driverChoice.h" // Choosing driver.
 
 using namespace irr;
+
+typedef core::position2d<s32> sposition2d ;
 
 #ifdef _MSC_VER
 #pragma comment(lib, "Irrlicht.lib")
@@ -22,19 +26,152 @@ using namespace irr;
 At first, we let the user select the driver type, then start up the engine, set
 a caption, and get a pointer to the video driver.
 */
+
+// Example event receiver.
+class MyEventReceiver : public IEventReceiver {
+	public:
+		// This is the one method that we have to implement
+		virtual bool OnEvent(const SEvent& event)
+		{
+			// Remember whether each key is down or up
+			if (event.EventType == irr::EET_KEY_INPUT_EVENT)
+				KeyIsDown[event.KeyInput.Key] = event.KeyInput.PressedDown;
+
+			/*
+			Always return false by default. If you return true you tell the engine
+			that you handled this event completely and the Irrlicht should not
+			process it any further. So for example if you return true for all 
+			EET_KEY_INPUT_EVENT events then Irrlicht would not pass on key-events
+			to it's GUI system.
+			*/
+			return false;
+		}
+
+		// This is used to check whether a key is being held down
+		virtual bool IsKeyDown(EKEY_CODE keyCode) const
+		{
+			return KeyIsDown[keyCode];
+		}
+		
+		MyEventReceiver()
+		{
+			for (u32 i=0; i<KEY_KEY_CODES_COUNT; ++i)
+				KeyIsDown[i] = false;
+		}
+	private:
+		// We use this array to store the current state of each key
+		bool KeyIsDown[KEY_KEY_CODES_COUNT];
+};
+
+class Camera {
+	/*
+	 * Class camera, which moves in negative
+	 * vector than all objects, it creates an illsuion
+	 * that camera moves. 
+	 */
+	public:
+		Camera(sposition2d position){
+			this->position = position ;
+		};
+		void setPosition(sposition2d position){
+			this->position = position ;
+		};
+		sposition2d getPosition(void){
+			return this->position ;
+		};
+	protected:
+	private:
+		sposition2d position;
+};
+
+class IObject {// Class for all objects.
+	public: 
+		// This function will be called every frame.
+		virtual void onFrame(const f32 frame_delta_time){
+			std::cout<<"You have to override 'onFrame' method right now."<<std::endl;
+		}
+		// This function will be called when one time when object created.
+		virtual void onStart(void){
+			std::cout<<"You have to override 'onStart' method right now."<<std::endl;
+		}
+		// Change position of object.
+		virtual void move(sposition2d vector){
+			this->setPosition(this->getPosition() + vector);
+		}
+		// Change position with camera position.
+		virtual void moveCameraDepends(void){
+			this->position -= this->camera->getPosition() ;
+		}
+
+		// Position.
+		virtual void setPosition(sposition2d position){ this->position = position ; }
+		sposition2d getPosition(void){	return position ; }
+	protected:
+		// Object position in 2D area.
+		sposition2d position;
+	private:
+		Camera         *camera;
+		IEventReceiver *event_receiver;
+};
+
+class AnimatedObject : IObject {
+	public:
+		void nextAnimation();
+	protected:
+	private:
+};
+
+class MainHero : AnimatedObject {
+	void onFrame(const f32 frame_delta_time ){
+	};
+};
+
+class ObjectsHandler {
+	public:
+		ObjectsHandler(Camera *proto_camera, IEventReceiver *event_receiver){
+			this->event_receiver = event_receiver ;
+			this->proto_camera   = proto_camera   ;
+		};
+
+		void mainLoopCycle(void){	
+			u32 then = device->getTimer()->getTime() ;
+			// This loops does function onFrame of every existing object.
+			for( auto object : this->objects ){
+				// Getting difference between frames.
+				const u32 now = this->device->getTimer()->getTime() ;
+				const f32 frame_delta_time = (f32)(now-then)/1000.f ;
+
+				// Calling function you should realize for every object.
+				object.onFrame(frame_delta_time);
+				object.moveCameraDepends();
+			}
+		};
+	protected:
+	private:
+		std::vector<IObject> objects;
+
+		IEventReceiver *event_receiver;
+		IrrlichtDevice *device;
+		Camera         *proto_camera;
+};
+
 int main(){
-	// ask user for driver
+	// Ask user for driver.
 	video::E_DRIVER_TYPE driverType=driverChoiceConsole();
 	if (driverType==video::EDT_COUNT)
 		return 1;
 
-	// create device
-
+	// Create device.
+	//
+	MyEventReceiver receiver;
 	IrrlichtDevice *device = createDevice(driverType,
-		core::dimension2d<u32>(512, 384));
+		core::dimension2d<u32>(512, 384), 16,
+		false, false, false, &receiver);
 
 	if (device == 0)
-		return 1; // could not create selected driver.
+		return 1; // Could not create selected driver.
+
+	
 
 	device->setWindowCaption(L"Irrlicht Engine - 2D Graphics Demo");
 
@@ -67,7 +204,7 @@ int main(){
 	gui::IGUIFont* font2 =
 		device->getGUIEnvironment()->getFont("../../media/fonthaettenschweiler.bmp");
 
-	core::rect<s32> imp1(349,15,385,78);
+	core::rect<s32> imp1(348,14,385,78);
 	core::rect<s32> imp2(387,15,423,78);
 
 	/*
@@ -83,14 +220,22 @@ int main(){
 	graphics. Just try it out, and draw some 3d vertices or set up a scene
 	with the scene manager and draw it.
 	*/
-	while(device->run() && driver)
-	{
-		if (device->isWindowActive())
-		{
+	core::position2d<s32> camera_position(0, 0);
+	while(device->run() && driver) {
+		if( device->isWindowActive() ){
 			u32 time = device->getTimer()->getTime();
 
 			driver->beginScene(true, true, video::SColor(255,120,102,136));
 
+			if(       receiver.IsKeyDown(irr::KEY_KEY_S) ){
+				camera_position.Y += 2 ;
+			}if( receiver.IsKeyDown(irr::KEY_KEY_W) ){
+				camera_position.Y -= 2 ;
+			}if( receiver.IsKeyDown(irr::KEY_KEY_D) ){
+				camera_position.X += 2 ;
+			}if( receiver.IsKeyDown(irr::KEY_KEY_A)){
+				camera_position.X -= 2 ;
+			}
 			/*
 			First, we draw 3 sprites, using the alpha channel we
 			created with makeColorKeyTexture. The last parameter
@@ -103,22 +248,22 @@ int main(){
 			*/
 
 			// Draw fire & dragons background world.
-			driver->draw2DImage(images, core::position2d<s32>(50,50),
+			driver->draw2DImage(images, core::position2d<s32>(50,50)-camera_position,
 				core::rect<s32>(0,0,342,224), 0,
 				video::SColor(255,255,255,255), true);
 
 			// Draw flying imp.
 			driver->draw2DImage(
 			   images,
-			   core::position2d<s32>(164,125),
+			   core::position2d<s32>(164,125)-camera_position,
 			   (time/500 % 2) ? imp1 : imp2,
 			   0,
 			   video::SColor(255,255,255,255),
 			   true
 			);
 
-			// draw second flying imp with colorcylce
-			driver->draw2DImage(images, core::position2d<s32>(270,105),
+			// Draw second flying imp with colorcylce
+			driver->draw2DImage(images, core::position2d<s32>(20,105)-camera_position,
 				(time/500 % 2) ? imp1 : imp2, 0,
 				video::SColor(255,(time) % 255,255,255), true);
 
@@ -152,7 +297,7 @@ int main(){
 			/*
 			Finally draw a half-transparent rect under the mouse cursor.
 			*/
-			core::position2d<s32> m = device->getCursorControl()->getPosition();
+			core::position2d<s32> m = device->getCursorControl()->getPosition() ;
 			driver->draw2DRectangle(video::SColor(100,255,255,255),
 				core::rect<s32>(m.X-20, m.Y-20, m.X+20, m.Y+20));
 
@@ -164,7 +309,3 @@ int main(){
 
 	return 0;
 }
-
-/*
-That's all. I hope it was not too difficult.
-**/
