@@ -22,6 +22,8 @@ typedef core::position2d<s32> sposition2d ;
 #pragma comment(lib, "Irrlicht.lib")
 #endif
 
+class MapObjectsHandler;
+
 /*
 At first, we let the user select the driver type, then start up the engine, set
 a caption, and get a pointer to the video driver.
@@ -63,96 +65,141 @@ class MyEventReceiver : public IEventReceiver {
 		bool KeyIsDown[KEY_KEY_CODES_COUNT];
 };
 
-class Camera {
-	/*
-	 * Class camera, which moves in negative
-	 * vector than all objects, it creates an illsuion
-	 * that camera moves. 
-	 */
+class ICamera {
 	public:
-		Camera(sposition2d position){
+		ICamera(sposition2d position){
 			this->position = position ;
-		};
-		void setPosition(sposition2d position){
+		}
+		virtual void setPosition(sposition2d position){
 			this->position = position ;
-		};
-		sposition2d getPosition(void){
+		}
+		virtual sposition2d getPosition(void){
 			return this->position ;
-		};
+		}
+		virtual void move(sposition2d vector){
+			this->position ;
+		}
 	protected:
-	private:
+	private:	
 		sposition2d position;
 };
 
 class IObject {// Class for all objects.
 	public: 
 		// This function will be called every frame.
-		virtual void onFrame(const f32 frame_delta_time){
+		virtual void onFrame(const f32 frame_delta_time) = 0;
+
+		/*{
 			std::cout<<"You have to override 'onFrame' method right now."<<std::endl;
-		}
+		}*/
+
 		// This function will be called when one time when object created.
-		virtual void onStart(void){
+		virtual void onStart(void) = 0 ;
+		virtual void Draw(void) = 0 ;
+		
+		/*{
 			std::cout<<"You have to override 'onStart' method right now."<<std::endl;
-		}
-		// Change position of object.
-		virtual void move(sposition2d vector){
-			this->setPosition(this->getPosition() + vector);
-		}
-		// Change position with camera position.
-		virtual void moveCameraDepends(void){
-			this->position -= this->camera->getPosition() ;
-		}
+		}*/
 
 		// Position.
 		virtual void setPosition(sposition2d position){ this->position = position ; }
 		sposition2d getPosition(void){	return position ; }
+
+		void setDriver(Demo){
+		}
 	protected:
 		// Object position in 2D area.
 		sposition2d position;
+		MapObjectsHandler *handler;
+
 	private:
-		Camera         *camera;
-		IEventReceiver *event_receiver;
 };
 
-class AnimatedObject : IObject {
+class IMapObject : public IObject {
+	// Change position with camera position.
 	public:
-		void nextAnimation();
+		IMapObject(sposition2d position=sposition2d()){
+			this->setPosition(position);
+		}
+		virtual void onFrame(const f32 frame_delta_time){
+			//std::cout<<"You have to override 'onFrame' method right now."<<std::endl;
+		}
+		virtual void onStart(void){
+		}
+		virtual void moveCameraDepends(void){
+			this->position -= this->camera->getPosition() ;
+		}
 	protected:
 	private:
 };
 
-class MainHero : AnimatedObject {
-	void onFrame(const f32 frame_delta_time ){
-	};
+class IMobObject : public IMapObject {
+	public:	
+		// Change position of object.
+		virtual void move(sposition2d vector){
+			this->setPosition(this->getPosition()+vector) ;
+		}
+	protected:
+		// All characteristics mobs have.
+		s32 health_points;
+		s32 movement_speed;
+	private:
 };
 
-class ObjectsHandler {
+class ImpObject : IMobObject {
+	
+};
+
+class IBuildingObject : IMapObject {
 	public:
-		ObjectsHandler(Camera *proto_camera, IEventReceiver *event_receiver){
+		void AnimationLoop(){
+		}
+	protected:
+	private:
+};
+
+class MapObjectsHandler {
+	/*
+	 * This is class to handle everything in loop.
+	 * It's main handler of engine, it calls onFrame
+	 * of all objects we can see right now.
+	 */
+	public:
+		MapObjectsHandler(IrrlichtDevice *device, IEventReceiver *event_receiver){
+			this->device         = device ;
 			this->event_receiver = event_receiver ;
-			this->proto_camera   = proto_camera   ;
+			this->proto_camera   = ICamera() ;
+			this->driver         = device->getVideoDriver() ;
 		};
 
 		void mainLoopCycle(void){	
-			u32 then = device->getTimer()->getTime() ;
+			u32 then = this->device->getTimer()->getTime() ;
 			// This loops does function onFrame of every existing object.
-			for( auto object : this->objects ){
+			for( auto object : this->map_objects ){
 				// Getting difference between frames.
 				const u32 now = this->device->getTimer()->getTime() ;
 				const f32 frame_delta_time = (f32)(now-then)/1000.f ;
 
 				// Calling function you should realize for every object.
-				object.onFrame(frame_delta_time);
-				object.moveCameraDepends();
+				object->onFrame(frame_delta_time);
+				object->moveCameraDepends();
+				driver->endScene();
 			}
 		};
-	protected:
-	private:
-		std::vector<IObject> objects;
 
-		IEventReceiver *event_receiver;
-		IrrlichtDevice *device;
-		Camera         *proto_camera;
+		void addMapObject(IMapObject *object){
+			// Adding new object to handle on the map.
+			this->map_objects.push_back(object);
+		}
+	protected:
+		std::vector<IMapObject *> map_objects;
+
+		IEventReceiver      *event_receiver;
+		ICamera             *proto_camera;
+		IrrlichtDevice      *device;
+		video::IVideoDriver *driver;
+
+	private:
 };
 
 int main(){
@@ -273,35 +320,37 @@ int main(){
 			*/
 
 			// draw some text
-			if (font)
+			/*if (font)
 				font->draw(L"This demo shows that Irrlicht is also capable of drawing 2D graphics.",
 					core::rect<s32>(130,10,300,50),
-					video::SColor(255,255,255,255));
+					video::SColor(255,255,255,255));*/
 
 			// draw some other text
-			if (font2)
+			/*if (font2)
 				font2->draw(L"Also mixing with 3d graphics is possible.",
 					core::rect<s32>(130,20,300,60),
-					video::SColor(255,time % 255,time % 255,255));
+					video::SColor(255,time % 255,time % 255,255));*/
 
-			/*
-			Next, we draw the Irrlicht Engine logo (without
+			
+			/*Next, we draw the Irrlicht Engine logo (without
 			using a color or an alpha channel). Since we slightly scale
 			the image we use the prepared filter mode.
 			*/
-			driver->enableMaterial2D();
+			/*driver->enableMaterial2D();
 			driver->draw2DImage(images, core::rect<s32>(10,10,108,48),
 				core::rect<s32>(354,87,442,118));
 			driver->enableMaterial2D(false);
+			*/
 
 			/*
 			Finally draw a half-transparent rect under the mouse cursor.
 			*/
-			core::position2d<s32> m = device->getCursorControl()->getPosition() ;
+			/*core::position2d<s32> m = device->getCursorControl()->getPosition() ;
 			driver->draw2DRectangle(video::SColor(100,255,255,255),
 				core::rect<s32>(m.X-20, m.Y-20, m.X+20, m.Y+20));
+				*/
 
-			driver->endScene();
+			//driver->endScene();
 		}
 	}
 
