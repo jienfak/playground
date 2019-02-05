@@ -12,6 +12,7 @@ and tell the linker to link with the .lib file.
 #include <irrlicht.h>
 #include <iostream>
 #include <vector>
+#include <new>
 #include "driverChoice.h" // Choosing driver.
 
 using namespace irr;
@@ -67,7 +68,7 @@ class MyEventReceiver : public IEventReceiver {
 
 class ICamera {
 	public:
-		ICamera(sposition2d position){
+		ICamera(sposition2d position=sposition2d()){
 			this->position = position ;
 		}
 		virtual void setPosition(sposition2d position){
@@ -86,6 +87,12 @@ class ICamera {
 
 class IObject {// Class for all objects.
 	public: 
+		IObject(MapObjectsHandler *handler, sposition2d position=sposition2d()){
+			this->handler  = handler  ;
+			this->position = position ;
+			this->onStart();
+		}
+
 		// This function will be called every frame.
 		virtual void onFrame(const f32 frame_delta_time) = 0;
 
@@ -94,7 +101,7 @@ class IObject {// Class for all objects.
 		}*/
 
 		// This function will be called when one time when object created.
-		virtual void onStart(void) = 0 ;
+		virtual void onStart(void){};
 		virtual void Draw(void) = 0 ;
 		
 		/*{
@@ -104,9 +111,6 @@ class IObject {// Class for all objects.
 		// Position.
 		virtual void setPosition(sposition2d position){ this->position = position ; }
 		sposition2d getPosition(void){	return position ; }
-
-		void setDriver(Demo){
-		}
 	protected:
 		// Object position in 2D area.
 		sposition2d position;
@@ -118,27 +122,37 @@ class IObject {// Class for all objects.
 class IMapObject : public IObject {
 	// Change position with camera position.
 	public:
-		IMapObject(sposition2d position=sposition2d()){
-			this->setPosition(position);
+		// Move by vector.
+		virtual void move(sposition2d vector){
+			this->setPosition(this->getPosition()+vector) ;
 		}
 		virtual void onFrame(const f32 frame_delta_time){
 			//std::cout<<"You have to override 'onFrame' method right now."<<std::endl;
 		}
-		virtual void onStart(void){
-		}
+		virtual void onStart(void){}
 		virtual void moveCameraDepends(void){
-			this->position -= this->camera->getPosition() ;
+			this->position -= this->handler->camera->getPosition() ;
 		}
 	protected:
 	private:
 };
 
-class IMobObject : public IMapObject {
+class IAnimatedObject : IMapObject{
+	public:
+		// Objects with animation interface.
+		void onFrame(const s32 frame_delta_time){	
+		}
+
+		// This function gets to draw animation.
+		virtual void Animate(const f32 frame_delta_time) = 0 ;
+		virtual void AnimateRealisation();
+	protected:
+	private:
+};
+
+class IMobObject : IAnimatedObject {
 	public:	
 		// Change position of object.
-		virtual void move(sposition2d vector){
-			this->setPosition(this->getPosition()+vector) ;
-		}
 	protected:
 		// All characteristics mobs have.
 		s32 health_points;
@@ -146,14 +160,14 @@ class IMobObject : public IMapObject {
 	private:
 };
 
-class ImpObject : IMobObject {
-	
+class ImpObject : IMobObject {	
+	public:
+	protected:
+	private:
 };
 
 class IBuildingObject : IMapObject {
 	public:
-		void AnimationLoop(){
-		}
 	protected:
 	private:
 };
@@ -168,22 +182,26 @@ class MapObjectsHandler {
 		MapObjectsHandler(IrrlichtDevice *device, IEventReceiver *event_receiver){
 			this->device         = device ;
 			this->event_receiver = event_receiver ;
-			this->proto_camera   = ICamera() ;
+			this->camera         = new ICamera() ;
 			this->driver         = device->getVideoDriver() ;
 		};
 
 		void mainLoopCycle(void){	
-			u32 then = this->device->getTimer()->getTime() ;
-			// This loops does function onFrame of every existing object.
-			for( auto object : this->map_objects ){
-				// Getting difference between frames.
-				const u32 now = this->device->getTimer()->getTime() ;
-				const f32 frame_delta_time = (f32)(now-then)/1000.f ;
+			while(this->device->run() && this->driver){
 
-				// Calling function you should realize for every object.
-				object->onFrame(frame_delta_time);
-				object->moveCameraDepends();
-				driver->endScene();
+				u32 then = this->device->getTimer()->getTime() ;
+				// This loops does function onFrame of every existing object.
+				for( auto object : this->map_objects ){
+					// Getting difference between frames.
+					const u32 now = this->device->getTimer()->getTime() ;
+					const f32 frame_delta_time = (f32)(now-then)/1000.f ;
+
+					// Calling function you should realize for every object.
+					object->onFrame(frame_delta_time);
+					object->moveCameraDepends();
+					object->Draw();
+					driver->endScene();
+				}
 			}
 		};
 
@@ -191,14 +209,13 @@ class MapObjectsHandler {
 			// Adding new object to handle on the map.
 			this->map_objects.push_back(object);
 		}
-	protected:
 		std::vector<IMapObject *> map_objects;
 
 		IEventReceiver      *event_receiver;
-		ICamera             *proto_camera;
+		ICamera             *camera;
 		IrrlichtDevice      *device;
 		video::IVideoDriver *driver;
-
+	protected:
 	private:
 };
 

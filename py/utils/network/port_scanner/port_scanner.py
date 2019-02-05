@@ -19,19 +19,22 @@ PARSING_MODE = 1
 Found_any_opened_port = False
 
 def isPortOpened(host, port):
-    scan = socket.socket()
-    scan.settimeout(0.1)
-    connected = False
-    while not connected :
+    scan = False
+    while not scan:
         try:
-            scan.connect( (host, port) )
-        except socket.error :
-            return False
+            scan = socket.socket()
         except OSError :
-            connected = True 
+            # Can be opened to many file descriptors.
             continue
-        else:
-            return True
+    # Time to answer us on needed port.
+    scan.settimeout(0.1)
+    try:
+        scan.connect( (host, port) )
+        # If could to connect.
+        return True
+    except socket.error :
+        # Could not connect.
+        return False
 
 def printScannedPort(host, port, mode):
 	# Getting port status.

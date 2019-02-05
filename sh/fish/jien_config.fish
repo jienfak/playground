@@ -65,17 +65,17 @@ echo Setting aliases...
 	alias manpager "$MANPAGER"
 
 	alias "ev" "eval" # --description "Evaluate text."
-	alias "py"  "python" # --description "Python interpreter."
-	alias "py2" "python2" # --description "Python interpreter version 2."
-	alias "py3" "python3" # --description "Python interpreter version 3."
-	alias "pl6" "perl6" # --description "Perl6 interpreter."
-	alias "pl"  "perl" # --description "Perl5 interpreter."
-	alias "rb"  "ruby" # --description "Ruby interpreter."
-	alias "tcl" "tclsh" # --description "TCL interpreter."
-	alias "lsp" "clisp" # --description "LISP interpreter."
-	alias "f"   "gfortran" # --description "FORTRAN compiler."
-	alias "c"   "cc"
-	alias "cc"  "g++"
+	alias "py"  (which "python") # --description "Python interpreter."
+	alias "py2" (which "python2") # --description "Python interpreter version 2."
+	alias "py3" (which "python3") # --description "Python interpreter version 3."
+	alias "pl6" (which "perl6") # --description "Perl6 interpreter."
+	alias "pl"  (which "perl") # --description "Perl5 interpreter."
+	alias "rb"  (which "ruby") # --description "Ruby interpreter."
+	alias "tcl" (which "tclsh") # --description "TCL interpreter."
+	alias "lsp" (which "clisp") # --description "LISP interpreter."
+	alias "f"   (which "gfortran") # --description "FORTRAN compiler."
+	alias "c"   (which "cc")
+	alias "cc"  (which "g++")
 
 	alias "mnt"  "sudo mount"
 	alias "umnt" "sudo umount"
