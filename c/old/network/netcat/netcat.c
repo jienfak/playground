@@ -61,12 +61,13 @@ int crtConnection(char *host, int port){
 	return sockfd ;
 }
 
-void readEOF(char *buf){
+void readEOF(char *buf, ssize_t size){
 	char c;
-	while( (c=getchar())!=EOF){
-		*buf++ = c ;
+	char *pbuf = buf ;
+	while( (c=getchar())!=EOF && (pbuf-buf)<size){
+		*pbuf++ = c ;
 	}
-	*buf = '\0' ;
+	*pbuf = '\0' ;
 }
 
 int main(int argc, char **argv){
@@ -106,7 +107,8 @@ int main(int argc, char **argv){
 	while(1){
 		bzero(buf, sizeof(buf));
 		bzero(rbuf, sizeof(rbuf));
-		readEOF(buf);
+		readEOF(buf, sizeof(buf));
+		strcat(buf, "\n");
 
 		n = send(sockfd, buf, strlen(buf), 0);
 		if(n<0){
@@ -115,8 +117,7 @@ int main(int argc, char **argv){
 		while(n){
 			n = recv(sockfd, rbuf, sizeof(rbuf), 0);
 			printf("%s", rbuf);
-		}	
-		
+		}		
 	}
 
 	return 0 ;

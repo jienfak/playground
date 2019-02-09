@@ -1,6 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/home/jien/code/scripts/py/old/test/gui/gtk'
 let g:netrw_dirhist_2='/home/jien/code/scripts/py/old/test/gui/gtk/example'
 let g:netrw_dirhist_3='/home/jien/.config/fish.backup'
 let g:netrw_dirhist_4='/home/jien/.config/fish'
+let g:netrw_dirhist_5='/home/jien/code/scripts/other/perl6_examples/categories/cookbook/01strings'

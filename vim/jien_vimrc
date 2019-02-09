@@ -10,8 +10,8 @@ endif
 " Vars.
 set nowrap
 set number
-set autoindent
-set noexpandtab
+set smartindent
+"set noexpandtab
 set tabstop=4
 set shiftwidth=4
 

@@ -80,6 +80,12 @@ echo Setting aliases...
 	alias "mnt"  "sudo mount"
 	alias "umnt" "sudo umount"
 
+	alias "sudo" 'sudo -p "\$->#_"'
+	alias "info" 'info --vi-keys'
+	alias "ipython"  "ipython --TerminalInteractiveShell.editing_mode=vi"
+	alias "ipython2" "ipython2 --TerminalInteractiveShell.editing_mode=vi"
+	alias "ipython3" "ipython3 --TerminalInteractiveShell.editing_mode=vi"
+
 
 # Functions-aliases.
 function helpa -d 'Automaticaly gets help for a program'
