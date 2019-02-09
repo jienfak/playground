@@ -12,9 +12,9 @@ class Human {
 	function __construct(string $name){
 		$this->$fullname = $name ;
 	}
-}
+};
 
-var $proto = new Human ('Samuel') ;
+$proto = new Human ('Samuel') ;
 $proto->say('fuck you!');
 
 ?>
