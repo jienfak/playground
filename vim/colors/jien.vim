@@ -32,13 +32,13 @@ hi Visual       gui=none guifg=khaki guibg=olivedrab cterm=reverse
 hi WarningMsg   guifg=salmon ctermfg=1
 hi String       guifg=SkyBlue ctermfg=darkcyan
 hi Comment      cterm=bold ctermfg=yellow
-hi Constant     ctermfg=blue
+hi Constant     ctermfg=red
 hi Special      ctermfg=brown
 hi Identifier   ctermfg=LightGreen
 hi Include      ctermfg=red
 hi PreProc      ctermfg=red
 hi Operator                 ctermfg=magenta
-hi Define                   ctermfg=yellow
+hi Define                   ctermfg=lightblue
 hi Type                     ctermfg=green
 hi Function                 ctermfg=brown
 hi Structure                ctermfg=green
@@ -56,4 +56,4 @@ hi DiffText     cterm=bold ctermbg=1
 hi Underlined   cterm=underline ctermfg=5
 hi Error        cterm=bold ctermfg=7 ctermbg=1
 hi SpellErrors  cterm=bold ctermfg=7 ctermbg=1
-hi Special      ctermfg=blue
+hi Special      ctermfg=red
