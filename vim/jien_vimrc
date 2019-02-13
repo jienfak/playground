@@ -17,18 +17,19 @@ set shiftwidth=4
 " List.
 set list
 set listchars=tab:\|.,trail:.
+nmap \nl :if &cursorline==1<enter>set nocursorline<enter>else<enter>set cursorline<enter>endif<enter><enter>
 
 " Folding.
 set foldenable 
 set foldmethod=indent
 
+hi CursorLine gui=bold cterm=bold
 " Cursorline in GIU(It works too slow in CMD).
 if has("gui_running")
-	hi CursorLine gui=bold
 	set cursorline
 	colorscheme vividchalk
 else
-	" My colorscheme bad on 'slate'.
+	" My colorscheme based on 'slate'.
 	 colorscheme jien
 	"colorscheme torte
 endif

@@ -12,19 +12,19 @@ let colors_name = "jien"
 hi Normal       guifg=White guibg=grey15
 hi Cursor       guibg=khaki guifg=slategrey ctermbg=white ctermfg=black
 hi TermCursor   cterm=reverse
-" :hi 
-hi CursorLine   gui=bold
+" :hi
+hi CursorLine   gui=bold cterm=bold
 hi VertSplit    guibg=#c2bfa5 guifg=grey40 gui=none ctermfg=grey ctermbg=grey
 hi Folded       guibg=black guifg=grey40 ctermfg=white ctermbg=blue
 hi FoldColumn   guibg=black guifg=grey20 ctermfg=4 ctermbg=7
 hi IncSearch    guifg=green guibg=black cterm=none ctermfg=yellow ctermbg=green
 hi ModeMsg      guifg=goldenrod cterm=none ctermfg=black ctermbg=yellow
 hi MoreMsg      guifg=SeaGreen ctermfg=darkgreen
-hi NonText      guifg=RoyalBlue guibg=grey15 cterm=bold ctermfg=darkred
+hi NonText      guifg=RoyalBlue guibg=grey15 cterm=bold ctermfg=yellow
 hi Question     guifg=springgreen ctermfg=green
 hi Search       guibg=peru guifg=wheat cterm=none ctermfg=black ctermbg=yellow
 hi SpecialKey   guifg=yellowgreen ctermfg=darkgreen
-hi StatusLine   guibg=#c2bfa5 guifg=black gui=none cterm=none ctermfg=black ctermbg=red
+hi StatusLine   guibg=#c2bfa5 guifg=black gui=none cterm=none ctermfg=white ctermbg=red
 hi StatusLineNC guibg=#c2bfa5 guifg=grey40 gui=none cterm=reverse
 hi Title        guifg=gold gui=bold cterm=bold ctermfg=yellow
 hi Statement    guifg=CornflowerBlue ctermfg=red
