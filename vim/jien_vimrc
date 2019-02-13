@@ -14,6 +14,9 @@ set smartindent
 "set noexpandtab
 set tabstop=4
 set shiftwidth=4
+" List.
+set list
+set listchars=tab:\|.,trail:.
 
 " Folding.
 set foldenable 
@@ -26,8 +29,8 @@ if has("gui_running")
 	colorscheme vividchalk
 else
 	" My colorscheme bad on 'slate'.
-	" colorscheme jien
-	colorscheme torte
+	 colorscheme jien
+	"colorscheme torte
 endif
 syntax on
 

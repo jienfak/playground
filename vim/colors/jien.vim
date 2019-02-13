@@ -15,12 +15,12 @@ hi TermCursor   cterm=reverse
 " :hi 
 hi CursorLine   gui=bold
 hi VertSplit    guibg=#c2bfa5 guifg=grey40 gui=none ctermfg=grey ctermbg=grey
-hi Folded       guibg=black guifg=grey40 ctermfg=black ctermbg=blue
+hi Folded       guibg=black guifg=grey40 ctermfg=white ctermbg=blue
 hi FoldColumn   guibg=black guifg=grey20 ctermfg=4 ctermbg=7
 hi IncSearch    guifg=green guibg=black cterm=none ctermfg=yellow ctermbg=green
 hi ModeMsg      guifg=goldenrod cterm=none ctermfg=black ctermbg=yellow
 hi MoreMsg      guifg=SeaGreen ctermfg=darkgreen
-hi NonText      guifg=RoyalBlue guibg=grey15 cterm=bold ctermfg=blue
+hi NonText      guifg=RoyalBlue guibg=grey15 cterm=bold ctermfg=darkred
 hi Question     guifg=springgreen ctermfg=green
 hi Search       guibg=peru guifg=wheat cterm=none ctermfg=black ctermbg=yellow
 hi SpecialKey   guifg=yellowgreen ctermfg=darkgreen
@@ -32,7 +32,7 @@ hi Visual       gui=none guifg=khaki guibg=olivedrab cterm=reverse
 hi WarningMsg   guifg=salmon ctermfg=1
 hi String       guifg=SkyBlue ctermfg=darkcyan
 hi Comment      cterm=bold ctermfg=yellow
-hi Constant     ctermfg=darkblue
+hi Constant     ctermfg=blue
 hi Special      ctermfg=brown
 hi Identifier   ctermfg=LightGreen
 hi Include      ctermfg=red

@@ -1,0 +1,80 @@
+# Compiler and program name
+TARGET          = target
+CC              = cc
+SYS_LIB_DIR     = /usr/lib
+INCLUDE_DIR     = ./include
+PROGRAM_DIR     = ./bin/rls
+LIB_DIR         = ./bin/lib
+SRC_DIR         = ./src
+OBJ_DIR         = ./bin/obj
+SRC_LIB_DIR     = ./src/lib
+SRC_MODULES_DIR = ./src/modules
+
+IN_EXT          = c
+OUT_EXT         = o
+INCLUDE_EXT     = h
+
+INCLUDE_DIR_FLAG= -I
+LIB_DIR_FLAG    = -L
+LIB_NAMES_FLAG  = -l
+LIB_CFLAGS      = -shared
+
+
+
+LIB_EXT         = so
+LIB_SUF         =
+LIB_PRE         = lib
+
+
+SRCS            = $(wildcard $(SRC_DIR)/*.$(IN_EXT))\
+                  		$(wildcard $(SRC_MODULES_DIR)/*.$(IN_EXT))
+OBJS            = $(SRCS:.$(IN_EXT)=.$(OUT_EXT))
+INCLUDES        = $(wildcard $(INCLUDE_DIR)/*.$(INCLUDE_EXT))
+
+# Library things.
+LIB_SRCS        = $(wildcard ./src/lib/*.$(IN_EXT))
+
+LIB_OBJS        = $(LIB_SRCS:.$(IN_EXT)=.$(OUT_EXT))
+LIBS            = $(notdir $(LIB_SRCS:.$(IN_EXT)=))
+LIB_S_OBJS      = $(addprefix $(LIB_PRE), $(addsuffix $(LIB_SUF).$(LIB_EXT), $(LIBS)))
+
+CFLAGS = $(LIB_NAMES_FLAG) $(LIBS) $(LIB_DIR_FLAG) $(LIB_DIR) $(INCLUDE_DIR_FLAG) $(INCLUDE_DIR)
+
+all:DBG $(TARGET)
+
+install_libs:
+	install $(LIB_DIR)/$(LIBS) $(SYS_LIB_DIR)/
+
+libs:$(LIB_S_OBJS)
+
+objs:$(OBJS)
+
+DBG:
+	@echo Program sources      - \'$(SRCS)\'
+	@echo Program object files - \'$(OBJS)\'
+	@echo Library sources      - \'$(LIB_SRCS)\'
+	@echo Library object files - \'$(LIB_OBJS)\'
+	@echo Library shared object files - \'$(LIB_S_OBJS)\'
+	@echo Libraries = \'$(LIBS)\'
+
+$(TARGET): $(OBJS)  $(LIB_S_OBJS)
+	$(CC) $(CFLAGS) $(OBJ_DIR)/$(notdir $(OBJS))  -o $(TARGET)
+
+# Compiling to object file.
+$(OBJS): $(SRCS)
+	$(CC) $(CFLAGS) -c  $< -o $(OBJ_DIR)/$(notdir $@)
+
+# Make of just object file shared thing.
+$(LIB_S_OBJS):$(LIB_OBJS)
+	@echo "Making shared library object..."
+	$(CC) $(LIB_CFLAGS) $(OBJ_DIR)/$(notdir $<) -o $(LIB_DIR)/$(notdir $@)
+
+$(LIB_OBJS):$(LIB_SRCS)
+	@echo "Making library object..."
+	$(CC) -c $< -o $(OBJ_DIR)/$(notdir $@)
+
+#$(LIB_S_OBJS):
+#	$(CC) $(LIB_CFLAGS) $< -o $(LIB_DIR)/$(notdir $@)
+#.$(OUT_EXT).$(LIB_EXT):
+#$(CC) $(LIB_CFLAGS) $(OBJ_DIR)/$< -o $(LIB_DIR)/$@
+
