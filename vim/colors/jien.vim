@@ -27,7 +27,7 @@ hi SpecialKey   guifg=yellowgreen ctermfg=darkgreen
 hi StatusLine   guibg=#c2bfa5 guifg=black gui=none cterm=none ctermfg=white ctermbg=red
 hi StatusLineNC guibg=#c2bfa5 guifg=grey40 gui=none cterm=reverse
 hi Title        guifg=gold gui=bold cterm=bold ctermfg=yellow
-hi Statement    guifg=CornflowerBlue ctermfg=red
+hi Statement    guifg=CornflowerBlue ctermfg=blue
 hi Visual       gui=none guifg=khaki guibg=olivedrab cterm=reverse
 hi WarningMsg   guifg=salmon ctermfg=1
 hi String       guifg=SkyBlue ctermfg=darkcyan
@@ -56,4 +56,4 @@ hi DiffText     cterm=bold ctermbg=1
 hi Underlined   cterm=underline ctermfg=5
 hi Error        cterm=bold ctermfg=7 ctermbg=1
 hi SpellErrors  cterm=bold ctermfg=7 ctermbg=1
-hi Special      ctermfg=red
+hi Special      ctermfg=blue

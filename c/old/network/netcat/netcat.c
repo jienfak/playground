@@ -117,7 +117,7 @@ int main(int argc, char **argv){
 		while(n){
 			n = recv(sockfd, rbuf, sizeof(rbuf), 0);
 			printf("%s", rbuf);
-		}		
+		}
 	}
 
 	return 0 ;
