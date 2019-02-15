@@ -60,13 +60,16 @@ DBG:
 	@echo Library shared object files - \'$(LIB_S_OBJ)\'
 	@echo Libraries = \'$(LIB)\'
 
-$(TARGET): $(OBJS)  $(LIB_S_OBJ)
+$(TARGET): $(LIB_S_OBJ) $(OBJS)
 	@echo "Making target...[$(TARGET)]"
 	$(CC) $(CFLAGS) $(OBJS)  -o $(TARGET)
 
 # Compiling to object file.
 $(OBJ_DIR)/%.o : $(LIB_SRC_DIR)%.c
 	$(CC) $(CFLAGS) -c  $< -o $@
+
+$(OBJS): %.o: %.c
+	$CC
 
 
 

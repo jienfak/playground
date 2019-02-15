@@ -8,6 +8,7 @@ if( has('mouse') )
 endif
 
 " Vars.
+
 set nowrap
 set number
 set smartindent
@@ -33,8 +34,9 @@ else
 	 colorscheme jien
 	"colorscheme torte
 endif
-syntax on
 
+
+syntax on
 
 " Syntax everywhere.
 " :syn match Function /\(new\s\+\)\@<=\w\+/
