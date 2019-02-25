@@ -9,10 +9,17 @@ ln -s ~/code/scripts/other/opt/jien_user-dirs.dirs ~/.config/user-dirs.dirs
 mkdir ~/code/ ~/progs ~/torrent ~/bluetooth
 
 # X-es.
+mv ~/.Xmodmap ~/.Xmodmap.backup
+mv ~/.Xresources ~/.Xresources.backup
 ln -s ~/code/scripts/other/opt/jien_Xmodmap	~/.Xmodmap
 ln -s ~/code/scripts/other/opt/jien_Xresources	~/.Xresources
 
-# Fish shell. 
+# Awesome!
+mkdir ~/.config/awesome
+mv ~/.config/awesome/rc.lua  ~/.config/awesome/rc.lua.backup
+ln -s ~/code/scripts/other/opt/jien_awesome_rc.lua ~/.config/awesome/rc.lua
+
+# Fish shell.
 mv ~/.config/fish ~/.config/fish.backup
 ln -s ~/code/scripts/sh/fish/ ~/.config/fish
 # ln -s ~/code/scripts/sh/fish/jien_config.fish ~/.config/fish/config.fish

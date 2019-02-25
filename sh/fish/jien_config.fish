@@ -1,11 +1,16 @@
-# start X at login
+#!/usr/bin/fish
+#=====================================
+# Jien's RC for fish.
+#=====================================
+# Start X at login.
 if status --is-login
 	if test -z "$DISPLAY" -a $XDG_VTNR -eq 1
 		exec startx -- -keeptty
 	end
 end
 
-echo Access granted.\n
+echo Access granted.
+echo Starting \'The FISHell\'
 
 # Vi editor mode.
 echo Setting Vi key mode...
@@ -47,7 +52,7 @@ echo Setting vars...
 	# Path.
 	# set -g PATH $HOME/code/scripts/other/my_utils $PATH
 	# GCC variables.
-	set -g C_USR_MODULES "$HOME/code/scripts/c/modules/lib"
+	# Bla-bla-bla...
 
 	# XDG.
 	set -g XDG_CONFIG_HOME "$HOME/.config/"
@@ -224,10 +229,28 @@ end
 echo -n "Setting 'Xresourses' via xrdb..."
 which xrdb > /dev/null 2>&1
 if test $status = 0
-	xrdb -merge ~/.Xresources
-	echo
+	xrdb -load ~/.Xresources
+	echo 'Could set it.'
 else
 	echo 'Nope.'
+end
+
+echo -n "Setting X-keyboard repeating speed..."
+which xrdb > /dev/null 2>&1
+if test $status = 0
+	echo "Okay."
+	xset r rate 300 57
+else
+	echo "Nope."
+end
+
+echo -n "Setting Virtual-terminal repeating speed..."
+which kbdrate > /dev/null 2>&1
+if test $status = 0
+	kbdrate -d 300 -r 60
+	echo "Okay."
+else
+	echo "Nope."
 end
 
 

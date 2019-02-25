@@ -18,22 +18,22 @@ RPROMPT="%F{red}[%f%F{brgreen}%T%f%F{red}]%f[%F{yellow}%?%f,%F{blue}%L%f]"
 #zplugin light zdharma/fast-syntax-highlighting
 
 echo "Trying to get any editor..."
-which nvim > /dev/null
 echo "Checking Neovim..."
+which nvim > /dev/null
 if test $status = 0 ; then
 	# Neovim.
 	echo "Got Neovim."
 	export EDITOR=$(which nvim)
 else
 	# Vim.
-	which vim > /dev/null
 	echo "Checking Vim..."
+	which vim > /dev/null
 	if test $status = 0 ; then
 		export EDITOR=$(which vim)
 	else
 		# Nano.
-		which nano > /dev/null
 		echo "Checking nano..."
+		which nano > /dev/null
 		if test $status = 0 ;then
 			export EDITOR=$(which nano)
 		else

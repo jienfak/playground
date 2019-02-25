@@ -2,36 +2,38 @@
 ! XTerm 
 !==============================================================================
 !cirilica
-XTerm*utf8Title:		true
-XTerm*faceName:			Droid Sans Mono
-XTerm*faceSize:			10
-xterm*bolfFont: 
-xterm.vt100.scrollBar:		true
-xterm.alternateScroll:		true
-xterm.vt100.geometry:		80x30
-xterm*eightBitInput:		false
-xterm*metaSendsEscape:		true
-xterm*colorBDMode:		true
-xterm*boldMode:			on
-xterm*alwaysBoldMode:		false
-xterm*dynamicColors:		on
-xterm*colorMode:		on
-xterm*saveLines:		10000
-xterm*visualBell:		true
-XTerm.vt100.bellIsUrgent:	true
+XTerm*utf8Title:            true
+XTerm*faceName:             Droid Sans Mono
+XTerm*faceSize:             10
+!xterm*boldFont:             Bold Droid Sans Mono
+xterm.vt100.scrollBar:      false
+xterm.alternateScroll:      false
+xterm.vt100.geometry:       80x30
+xterm*eightBitInput:        true
+xterm*metaSendsEscape:      true
+!xterm*colorBDMode:          true
+xterm*boldMode:             on
+!xterm*alwaysBoldMode:       false
+xterm*dynamicColors:        on
+xterm*colorMode:            on
+xterm*saveLines:            10000
+xterm*visualBell:           true
+xterm.vt100.bellIsUrgent:   true
+xterm.vt100.metaSendsEscape:true
 
 !==============================================================================
 ! XTerm colors
 !==============================================================================
-xterm*colorBD:		#e6d51d
-xterm*background:	#000000
-xterm*foreground:	#ffffff
-xterm*cursorColor:	#ff0000
+!xterm*colorBD:     white
+xterm*background:  #000000
+xterm*foreground:  #ffffff
+xterm*cursorColor: #ff0000
 ! black
 xterm*color0:      #000000
-xterm*color8:      #555753
+xterm*color8:      #333333
+!#555753
 ! red
-xterm*color1:      red
+xterm*color1:      #FF0000
 xterm*color9:      #ff6565
 ! green
 xterm*color2:      #67E300
@@ -49,11 +51,14 @@ xterm*color13:     #BF9330
 xterm*color6:      cian
 xterm*color14:     #17ffff
 ! white
-xterm*color7:      #ffffff
-xterm*color15:     #ffffff
+xterm*color7:      #FFFFFF
+xterm*color15:     #CCCCCC
+!==========================================================================
+!<---XTerm End;
+!==========================================================================
 
 !==========================================================================
-!			YeahConsole
+!--->YeahConsole
 !==========================================================================
 yeahconsole*term:xterm
 yeahconsole*consoleHeight:25
