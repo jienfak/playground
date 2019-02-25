@@ -171,29 +171,39 @@ local taglist_buttons = awful.util.table.join(
 ;
 
 local tasklist_buttons = awful.util.table.join(
-					 awful.button({ }, 1, function (c)
-											  if c == client.focus then
-												  c.minimized = true
-											  else
-												  -- Without this, the following
-												  -- :isvisible() makes no sense
-												  c.minimized = false
-												  if not c:isvisible() and c.first_tag then
-													  c.first_tag:view_only()
-												  end
-												  -- This will also un-minimize
-												  -- the client, if needed
-												  client.focus = c
-												  c:raise()
-											  end
-										  end),
-					 awful.button({ }, 3, client_menu_toggle_fn()),
-					 awful.button({ }, 4, function ()
-											  awful.client.focus.byidx(1)
-										  end),
-					 awful.button({ }, 5, function ()
-											  awful.client.focus.byidx(-1)
-										  end))
+		awful.button(
+			{}, 1,
+			function (c)
+				if c == client.focus then
+					c.minimized = true
+				else
+					-- Without this, the following
+					-- :isvisible() makes no sense
+					c.minimized = false
+					if not c:isvisible() and c.first_tag then
+						c.first_tag:view_only()
+					end
+					-- This will also un-minimize
+					-- the client, if needed
+					client.focus = c
+					c:raise()
+				end
+			end
+		),
+		awful.button( {}, 3, client_menu_toggle_fn() ),
+		awful.button(
+			{}, 4,
+			function()
+				awful.client.focus.byidx(1)
+			end
+		),
+		awful.button(
+			{}, 5,
+			function ()
+				awful.client.focus.byidx(-1)
+			end)
+	)
+;
 
 local function set_wallpaper(s)
 	-- Wallpaper
@@ -402,27 +412,31 @@ clientkeys = awful.util.table.join(
 -- Be careful: we use keycodes to make it works on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
 for i = 1, 9 do
-	globalkeys = awful.util.table.join(globalkeys,
-		-- View tag only.
-		awful.key({ modkey }, "#" .. i + 9,
-				  function ()
-						local screen = awful.screen.focused()
-						local tag = screen.tags[i]
-						if tag then
-						   tag:view_only()
-						end
-				  end,
-				  {description = "view tag #"..i, group = "tag"}),
-		-- Toggle tag display.
-		awful.key({ modkey, "Control" }, "#" .. i + 9,
-				  function ()
-					  local screen = awful.screen.focused()
-					  local tag = screen.tags[i]
-					  if tag then
-						 awful.tag.viewtoggle(tag)
-					  end
-				  end,
-				  {description = "toggle tag #" .. i, group = "tag"}),
+	globalkeys = awful.util.table.join(
+			globalkeys,
+			-- View tag only.
+			awful.key(
+				{ modkey }, "#" .. i + 9,
+				function ()
+					local screen = awful.screen.focused()
+					local tag = screen.tags[i]
+					if tag then
+						tag:view_only()
+					end
+				end,
+				{ description = "view tag #"..i, group = "tag" }
+			),
+			-- Toggle tag display.
+			awful.key(
+				{ modkey, "Control" }, "#" .. i + 9,
+				function()
+					local screen = awful.screen.focused()
+					local tag = screen.tags[i]
+					if tag then
+						awful.tag.viewtoggle(tag)
+					end
+				end,
+				{description = "toggle tag #" .. i, group = "tag"}),
 		-- Move client to tag.
 		awful.key({ modkey, "Shift" }, "#" .. i + 9,
 				  function ()

@@ -20,7 +20,7 @@ hi FoldColumn   guibg=black guifg=grey20 ctermfg=4 ctermbg=7
 hi IncSearch    guifg=green guibg=black cterm=none ctermfg=yellow ctermbg=green
 hi ModeMsg      guifg=goldenrod cterm=none ctermfg=black ctermbg=yellow
 hi MoreMsg      guifg=SeaGreen ctermfg=darkgreen
-hi NonText      guifg=RoyalBlue guibg=grey15 cterm=bold ctermfg=yellow
+hi NonText      guifg=RoyalBlue guibg=grey15 cterm=bold ctermfg=darkgrey
 hi Question     guifg=springgreen ctermfg=green
 hi Search       guibg=peru guifg=wheat cterm=none ctermfg=black ctermbg=yellow
 hi SpecialKey   guifg=yellowgreen ctermfg=darkgreen
