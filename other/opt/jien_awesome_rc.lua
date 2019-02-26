@@ -1,3 +1,6 @@
+-- Vars.
+local keyboard_repeat_delay = 300
+local keyaboard_repeat_rate = 57
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -626,5 +629,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Autostart section.
+awful.util.spawn_with_shell("xset r rate "..tostring(keyboard_repeat_delay).." "..tostring(keyaboard_repeat_rate))
 --awful.util.spawn_with_shell("nm-applet")
 --awful.util.spawn_with_shell("xfce4-panel")

@@ -235,14 +235,14 @@ else
 	echo 'Nope.'
 end
 
-echo -n "Setting X-keyboard repeating speed..."
-which xrdb > /dev/null 2>&1
-if test $status = 0
-	echo "Okay."
-	xset r rate 300 57
-else
-	echo "Nope."
-end
+#echo -n "Setting X-keyboard repeating speed..."
+#which xrdb > /dev/null 2>&1
+#if test $status = 0
+#	echo "Okay."
+#	xset r rate 300 57
+#else
+#	echo "Nope."
+#end
 
 echo -n "Setting Virtual-terminal repeating speed..."
 which kbdrate > /dev/null 2>&1
