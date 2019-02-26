@@ -48,6 +48,7 @@ beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
+file_manager = "xfe"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -328,7 +329,15 @@ globalkeys = awful.util.table.join(
 		),
 	-- Standard program.
 	awful.key({ modkey, }, "Return", function() awful.spawn(terminal) end,
-		{description = " - Open a terminal.", group = "launcher"}),
+		{description = " - Open a terminal.", group = "launcher"}
+	),
+	awful.key(
+		{modkey,}, "e",
+		function()
+			awful.spawn(file_manager)
+		end,
+		{description = " - Open file manager.", group = "launcher"}
+	),
 	awful.key({ modkey, "Control" }, "r", awesome.restart,
 		{description = " - Reload awesome.", group = "awesome"}),
 	awful.key({ modkey, "Shift"   }, "q", awesome.quit,
@@ -630,5 +639,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Autostart section.
 awful.util.spawn_with_shell("xset r rate "..tostring(keyboard_repeat_delay).." "..tostring(keyaboard_repeat_rate))
+awful.util.spawn_with_shell("xrdb -load ~/.Xresources")
 --awful.util.spawn_with_shell("nm-applet")
 --awful.util.spawn_with_shell("xfce4-panel")

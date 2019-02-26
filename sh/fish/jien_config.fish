@@ -226,14 +226,14 @@ switch "$USER"
 		echo
 end
 
-echo -n "Setting 'Xresourses' via xrdb..."
-which xrdb > /dev/null 2>&1
-if test $status = 0
-	xrdb -load ~/.Xresources
-	echo 'Could set it.'
-else
-	echo 'Nope.'
-end
+#echo -n "Setting 'Xresourses' via xrdb..."
+#which xrdb > /dev/null 2>&1
+#if test $status = 0
+#	xrdb -load ~/.Xresources
+#	echo 'Could set it.'
+#else
+#	echo 'Nope.'
+#end
 
 #echo -n "Setting X-keyboard repeating speed..."
 #which xrdb > /dev/null 2>&1
