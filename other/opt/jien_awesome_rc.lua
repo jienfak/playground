@@ -2,6 +2,8 @@
 local keyboard_repeat_delay = 300
 local keyaboard_repeat_rate = 57
 local xkb_layout            = "us, ru"
+
+local config_file = "~/.config/awesome/rc.lua"
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -16,7 +18,7 @@ local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 
 -- Load Debian menu entries
-require("debian.menu")
+-- require("debian.menu")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -51,7 +53,7 @@ beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
 terminal     = "xterm"
 file_manager = "xfe"
 xres         = "~/.Xresources"
-editor = os.getenv("EDITOR") or "editor"
+editor = os.getenv("VISUAL") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -107,19 +109,21 @@ myawesomemenu = {
 		end
 	},
 	{
-		"manual",
+		"Manual",
 		terminal .. " -e man awesome"
 	},
 	{
-		"edit config",
-		editor_cmd .. " " .. awesome.conffile
+		"Edit config",
+		function()
+			awful.util.spawn_with_shell(editor_cmd .." ".. config_file)  --awesome.conffile
+		end
 	},
 	{
-		"restart",
+		"Restart",
 		awesome.restart
 	},
 	{
-		"quit",
+		"Quit WM",
 		function()
 			awesome.quit()
 		end
@@ -130,7 +134,7 @@ mymainmenu = awful.menu(
 		{
 			items = {
 				{ "awesome", myawesomemenu, beautiful.awesome_icon },
-				{ "Debian", debian.menu.Debian_menu.Debian },
+				-- { "Debian", debian.menu.Debian_menu.Debian },
 				{ "open terminal", terminal }
 			}
 		}
@@ -340,6 +344,42 @@ globalkeys = awful.util.table.join(
 		end,
 		{description = " - Open file manager.", group = "launcher"}
 	),
+	-- Move mouse without mouse.
+
+	-- Up.
+	awful.key(
+		{modkey, "z"}, "k",
+		function()
+			awful.util.spawn_with_shell("xdotool mousemove_relative -- 0 -15")
+		end,
+		{description = " - Move mouse up.", group="Moves"}
+	),
+	-- Down.
+	awful.key(
+		{modkey, "z"}, "j",
+		function()
+			awful.util.spawn_with_shell("xdotool mousemove_relative 0 15")
+		end,
+		{description = " - Move mouse down.", group="Moves"}
+	),
+	-- Left.
+	awful.key(
+		{modkey, "z"}, "h",
+		function()
+			awful.util.spawn_with_shell("xdotool mousemove_relative -- -15 0")
+		end,
+		{description = " - Move mouse left.", group="Moves"}
+	),
+	-- Right.
+	awful.key(
+		{modkey, "z"}, "l",
+		function()
+			awful.util.spawn_with_shell("xdotool mousemove_relative 15 0")
+		end,
+		{description = " - Move mouse right.", group="Moves"}
+	),
+	-- End 'mouse without mouse'.
+
 	awful.key({ modkey, "Control" }, "r", awesome.restart,
 		{description = " - Reload awesome.", group = "awesome"}),
 	awful.key({ modkey, "Shift"   }, "q", awesome.quit,
