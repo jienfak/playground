@@ -1,0 +1,9 @@
+# Maintainer: Jien Fak(jienfak@protonmail.com)
+pkgname =fakgen
+pkgver=1.0
+pkgrel=1
+pkgdesc="Program for generating individual password lists by keywords."
+url="http://www.archlinux.org"
+arch=('any')
+license=('GPLv3')
+depends=('')
