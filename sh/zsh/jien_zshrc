@@ -60,9 +60,9 @@ bindkey '^r' history-incremental-search-backward
 
 EPS1=$RPROMPT
 function zle-line-init zle-keymap-select {
-    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+	VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
 	RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}($(git_custom_status))$EPS1"
-    zle reset-prompt
+	zle reset-prompt
 }
 
 zle -N zle-line-init
@@ -72,14 +72,20 @@ export KEYTIMEOUT=1
 export VISUAL=$(which gvim)
 alias edg="$VISUAL"
 alias edgsu="$VISUAL"
-highlight_plugin="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+highlight_plugin1="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+highlight_plugin2="/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
-echo "Trying to get highlighting plugin..."
-if [ -f $highlight_plugin ]; then
-	echo "Got it."
-	source $highlight_plugin
+echo "Trying to get highlighting plugin from first dir..."
+if [ -f $highlight_plugin1 ]; then
+	echo "Got it from first."
+	source $highlight_plugin1
 else
-	echo "Could not get plugin."
+	if [ -f $highlight_plugin2 ]; then
+		echo  "Got it from second"
+		source $highlight_plugin2
+	else
+		echo "Could not get plugin."
+	fi
 fi
 
 #vi_mode_plugin="~/code/scripts/sh/zsh/plugins/vi-mode.plugin.zsh"
