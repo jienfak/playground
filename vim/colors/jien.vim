@@ -15,8 +15,8 @@ hi TermCursor   cterm=reverse
 " :hi
 hi CursorLine   gui=bold cterm=bold
 hi VertSplit    guibg=#c2bfa5 guifg=grey40 gui=none ctermfg=grey ctermbg=grey
-hi Folded       guibg=black guifg=grey40 ctermfg=white ctermbg=blue
-hi FoldColumn   guibg=black guifg=grey20 ctermfg=4 ctermbg=7
+hi Folded       guibg=black guifg=grey40 ctermfg=black ctermbg=yellow
+hi FoldColumn   guibg=black guifg=grey20 ctermfg=black ctermbg=white
 hi IncSearch    guifg=green guibg=black cterm=none ctermfg=yellow ctermbg=green
 hi ModeMsg      guifg=goldenrod cterm=none ctermfg=black ctermbg=yellow
 hi MoreMsg      guifg=SeaGreen ctermfg=darkgreen

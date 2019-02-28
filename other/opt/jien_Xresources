@@ -47,8 +47,8 @@ xterm*color12:     #00d2ff
 ! madgenta
 xterm*color5:      #FFB000
 xterm*color13:     #BF9330
-! cian
-xterm*color6:      cian
+! Cyan
+xterm*color6:      cyan
 xterm*color14:     #17ffff
 ! white
 xterm*color7:      #FFFFFF
