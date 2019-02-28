@@ -715,7 +715,7 @@ client.connect_signal(
 	"mouse::enter",
 	function(c)
 		if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
-			and awful.client.focus.filter(c) then
+				and awful.client.focus.filter(c) then
 			client.focus = c
 		end
 	end
@@ -729,6 +729,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 awful.util.spawn_with_shell("xset r rate "..tostring(keyboard_repeat_delay).." "..tostring(keyaboard_repeat_rate))
 awful.util.spawn_with_shell("xrdb -load "..xres)
 awful.util.spawn_with_shell("setxkbmap -layout "..xkb_layout.." -option grp:alt_shit_toogle")
-awful.util.spawn_with_shell("localectl set-locale "..locale)
+--awful.util.spawn_with_shell("localectl set-locale "..locale)
 --awful.util.spawn_with_shell("nm-applet")
 --awful.util.spawn_with_shell("xfce4-panel")

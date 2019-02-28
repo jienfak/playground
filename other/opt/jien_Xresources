@@ -34,25 +34,26 @@ xterm*cursorColor: #ff0000
 xterm*color0:      #000000
 xterm*color8:      #333333
 !#555753
-! red
-xterm*color1:      #FF0000
-xterm*color9:      #ff6565
-! green
+! Red.
+xterm*color1:      #DD2222
+xterm*color9:      #FF0000
+
+! Green.
 xterm*color2:      #67E300
 xterm*color10:     #A9F16C
-! yellow
-xterm*color3:      yellow
-xterm*color11:     #e6d51d
-! blue
-xterm*color4:      blue
-xterm*color12:     #00d2ff
-! madgenta
-xterm*color5:      #FFB000
-xterm*color13:     #BF9330
-! Cyan
+! Yellow.
+xterm*color3:      #F7FF00
+xterm*color11:     #EBF22C
+! Blue.
+xterm*color4:      #5190D0
+xterm*color12:     #346AA1
+! Madgenta.
+xterm*color5:      #FF6E00
+xterm*color13:     #DE6000
+! Cyan.
 xterm*color6:      cyan
 xterm*color14:     #17ffff
-! white
+! White.
 xterm*color7:      #FFFFFF
 xterm*color15:     #CCCCCC
 !==========================================================================
