@@ -3,6 +3,8 @@
 !==============================================================================
 !cirilica
 XTerm*utf8Title:            true
+XTerm*utf8:                 1
+Xterm*locale:               true
 XTerm*faceName:             Droid Sans Mono
 XTerm*faceSize:             10
 !xterm*boldFont:             Bold Droid Sans Mono

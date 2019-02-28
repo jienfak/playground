@@ -25,38 +25,50 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config).
 if awesome.startup_errors then
-	naughty.notify({ preset = naughty.config.presets.critical,
-					 title = "Oops, there were errors during startup!",
-					 text = awesome.startup_errors })
+	naughty.notify(
+		{
+			preset = naughty.config.presets.critical,
+			title = "Oops, there were errors during startup!",
+			text = awesome.startup_errors
+		}
+	)
 end
 
 -- Handle runtime errors after startup.
 do
 	local in_error = false
-	awesome.connect_signal("debug::error", function (err)
-		-- Make sure we don't go into an endless error loop.
-		if in_error then return end
-		in_error = true
+	awesome.connect_signal(
+		"debug::error",
+		function(err)
+			-- Make sure we don't go into an endless error loop.
+			if in_error then return end
+			in_error = true
 
-		naughty.notify({ preset = naughty.config.presets.critical,
-						 title = "Oops, an error happened!",
-						 text = tostring(err) })
-		in_error = false
-	end)
+			naughty.notify(
+				{
+					preset = naughty.config.presets.critical,
+					title = "Oops, an error happened!",
+					text = tostring(err)
+				}
+			)
+			in_error = false
+		end
+	)
 end
 -- }}}
 
 -- {{{ Variable definitions.
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
+beautiful.init(awful.util.get_themes_dir().."default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal     = "xterm"
-file_manager = "xfe"
-xres         = "~/.Xresources"
-editor = os.getenv("EDITOR") or "editor"
-editor_cmd = terminal .. " -e " .. editor
-editor_gui = "gvim"
+local sys_stat_program = "htop"
+local terminal     = "xterm"
+local file_manager = "xfe"
+local xres         = "~/.Xresources"
+local editor = os.getenv("EDITOR") or "editor"
+local editor_cmd = terminal .. " -e " .. editor
+local editor_gui = "gvim"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -90,7 +102,7 @@ awful.layout.layouts = {
 local function client_menu_toggle_fn()
 	local instance = nil
 
-	return function ()
+	return function()
 		if instance and instance.wibox.visible then
 			instance:hide()
 			instance = nil
@@ -129,14 +141,20 @@ myawesomemenu = {
 		editor_gui
 	},
 	{
-		"Quit WM",
+		"Sys. Stat.",
 		function()
-			awesome.quit()
+			awful.util.spawn_with_shell(terminal.." -e "..sys_stat_program)
 		end
 	},
 	{
 		"Restart",
 		awesome.restart
+	},
+	{
+		"Quit WM",
+		function()
+			awesome.quit()
+		end
 	}
 }
 
@@ -711,6 +729,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 awful.util.spawn_with_shell("xset r rate "..tostring(keyboard_repeat_delay).." "..tostring(keyaboard_repeat_rate))
 awful.util.spawn_with_shell("xrdb -load "..xres)
 awful.util.spawn_with_shell("setxkbmap -layout "..xkb_layout.." -option grp:alt_shit_toogle")
---awful.util.spawn_with_shell("localectl set-locale "..locale)
+awful.util.spawn_with_shell("localectl set-locale "..locale)
 --awful.util.spawn_with_shell("nm-applet")
 --awful.util.spawn_with_shell("xfce4-panel")
