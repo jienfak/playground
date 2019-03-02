@@ -147,7 +147,7 @@ myawesomemenu = {
 		end
 	},
 	{
-		"Restart",
+		"Restart WM",
 		awesome.restart
 	},
 	{
