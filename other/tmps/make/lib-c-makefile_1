@@ -1,0 +1,32 @@
+TARGET  =
+SRCS    = lib.cc
+OBJS    =
+LIB     = lib
+LIBOBJS = lib.o
+LIBSOBJS= libfoo.so
+LIB_DIR = /usr/lib
+CFLAGS  = 
+CC      = g++
+
+
+all:$(LIBSOBJS)
+
+install_lib:
+	sudo install $(LIBSOBJS) $(LIB_DIR)
+remove_lib:
+	sudo rm -i $(LIB_DIR)/$(LIBSOBJS)
+
+$(TARGET): $(OBJS) $(LIBSOBJS)
+	$(CC) -Wall -fPIC -o $(TARGET) -l $(LIB) -L$(shell pwd) $(OBJS)
+
+$(LIBSOBJS): $(LIBOBJS)
+	$(CC) -shared -o $@ $<
+
+.c.o:
+	$(CC) -c -Wall -Werror -fpic $< -o $@
+
+.o.so:
+	$(CC) -shared -o $@ $<
+
+delete_all:
+	rm -rf *.o *.so $(TARGET) 

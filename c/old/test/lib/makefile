@@ -21,15 +21,13 @@ LIB_DIR_FLAG    = -L
 LIB_NAMES_FLAG  = -l
 LIB_CFLAGS      = -shared
 
-
-
 LIB_EXT         = so
 LIB_SUF         =
 LIB_PRE         = lib
 
 
 SRCS            = $(wildcard $(SRC_DIR)/*.$(IN_EXT))\
-                  		$(wildcard $(SRC_MODULES_DIR)/*.$(IN_EXT))
+		$(wildcard $(SRC_MODULES_DIR)/*.$(IN_EXT))
 OBJS            = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.$(IN_EXT)=.$(OUT_EXT))))
 INCLUDES        = $(wildcard $(INCLUDE_DIR)/*.$(INCLUDE_EXT))
 
@@ -77,6 +75,8 @@ $(OBJS): %.o: %.c
 $(LIB_S_OBJ): $(LIB_OBJS)
 	@echo "Making shared library object...[$(LIB_S_OBJ)]"
 	$(CC) $(LIB_CFLAGS) $(LIB_OBJS) -o $(LIB_S_OBJ)
+.c:
+	@echo nothing.
 
 #$(LIB_OBJS): $(LIB_SRCS)
 #	@echo "Making library object...[]"
