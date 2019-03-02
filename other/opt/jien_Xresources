@@ -68,14 +68,14 @@ yeahconsole*consoleHeight:25
 yeahconsole*screenWidth:500
 yeahconsole*xOffset: 400
 yeahconsole*toggleKey:None+F12
-yeahconsole*background:black
-yeahconsole*foreground:white
+!yeahconsole*background:black
+!yeahconsole*foreground:white
 yeahconsole*restart:1
 yeahconsole*keyFull:None+F11
-yeahconsole*saveLines:500
+!yeahconsole*saveLines:500
 yeahconsole*keySmaller:Control+m
 yeahconsole*keyBigger:Control+n
 yeahconsole*aniDelay: 5
 yeahconsole*metaSendsEscape: true
-yeahconsole*scrollBar: true
+!yeahconsole*scrollBar: true
 
