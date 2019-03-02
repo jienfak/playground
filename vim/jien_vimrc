@@ -22,7 +22,7 @@ match NonText /\t/
 nmap \nl :if &cursorline==1<enter>set nocursorline<enter>else<enter>set cursorline<enter>endif<enter><enter>
 
 " Folding.
-set foldenable 
+set foldenable
 set foldmethod=indent
 
 hi CursorLine gui=bold cterm=bold
@@ -67,4 +67,4 @@ set encoding=utf-8
 " hi CursorLine	cterm=bold
 
 
-
+":exe "!ls " . shellescape(expand("%"))

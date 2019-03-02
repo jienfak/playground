@@ -2,7 +2,7 @@
 local keyboard_repeat_delay = 300
 local keyaboard_repeat_rate = 57
 local xkb_layout            = "us,ru"
-local locale                = "LANG=en_US.UTF-8"
+local locale                = "en_US.UTF-8"
 
 local config_file = "~/.config/awesome/rc.lua"
 -- Standard awesome library.
@@ -63,7 +63,7 @@ beautiful.init(awful.util.get_themes_dir().."default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 local sys_stat_program = "htop"
-local terminal     = "xterm"
+local terminal     = "uxterm"
 local file_manager = "xfe"
 local xres         = "~/.Xresources"
 local editor = os.getenv("EDITOR") or "editor"
@@ -729,6 +729,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 awful.util.spawn_with_shell("xset r rate "..tostring(keyboard_repeat_delay).." "..tostring(keyaboard_repeat_rate))
 awful.util.spawn_with_shell("xrdb -load "..xres)
 awful.util.spawn_with_shell("setxkbmap -layout "..xkb_layout.." -option grp:alt_shit_toogle")
---awful.util.spawn_with_shell("localectl set-locale "..locale)
+awful.util.spawn_with_shell("localectl set-locale LANG="..locale)
 --awful.util.spawn_with_shell("nm-applet")
 --awful.util.spawn_with_shell("xfce4-panel")

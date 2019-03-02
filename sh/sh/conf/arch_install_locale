@@ -1,2 +1,4 @@
 #!/bin/sh
-sudo cp ~/code/scripts/other/opt/jien_locale /etc/default/locale 
+
+sudo mv /etc/default/locale /etc/default/locale.backup
+sudo ln -s /home/jien/code/scripts/other/opt/jien_locale /etc/default/locale

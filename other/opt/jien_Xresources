@@ -2,60 +2,60 @@
 ! XTerm 
 !==============================================================================
 !cirilica
-XTerm*utf8Title:            true
-XTerm*utf8:                 1
-Xterm*locale:               true
-XTerm*faceName:             Droid Sans Mono
-XTerm*faceSize:             10
+*utf8Title:            true
+*utf8:                 2
+*locale:               true
+*faceName:             Droid Sans Mono
+*faceSize:             10
 !xterm*boldFont:             Bold Droid Sans Mono
-xterm.vt100.scrollBar:      false
-xterm.alternateScroll:      false
-xterm.vt100.geometry:       80x30
-xterm*eightBitInput:        true
-xterm*metaSendsEscape:      true
+*.vt100.scrollBar:      false
+*.alternateScroll:      false
+*.vt100.geometry:       80x30
+*eightBitInput:        true
+*metaSendsEscape:      true
 !xterm*colorBDMode:          true
 xterm*boldMode:             on
 !xterm*alwaysBoldMode:       false
-xterm*dynamicColors:        on
-xterm*colorMode:            on
-xterm*saveLines:            10000
-xterm*visualBell:           true
-xterm.vt100.bellIsUrgent:   true
-xterm.vt100.metaSendsEscape:true
+*dynamicColors:        on
+*colorMode:            on
+*saveLines:            10000
+*visualBell:           true
+*.vt100.bellIsUrgent:   true
+*.vt100.metaSendsEscape:true
 
 !==============================================================================
 ! XTerm colors
 !==============================================================================
 !xterm*colorBD:     white
-xterm*background:  #000000
-xterm*foreground:  #ffffff
-xterm*cursorColor: #ff0000
+*background:  #000000
+*foreground:  #ffffff
+*cursorColor: #ff0000
 ! black
-xterm*color0:      #000000
-xterm*color8:      #333333
+*color0:      #000000
+*color8:      #333333
 !#555753
 ! Red.
-xterm*color1:      #DD2222
-xterm*color9:      #FF0000
+*color1:      #DD2222
+*color9:      #FF0000
 
 ! Green.
-xterm*color2:      #67E300
-xterm*color10:     #A9F16C
+*color2:      #67E300
+*color10:     #A9F16C
 ! Yellow.
-xterm*color3:      #F7FF00
-xterm*color11:     #EBF22C
+*color3:      #F7FF00
+*color11:     #EBF22C
 ! Blue.
-xterm*color4:      #5190D0
-xterm*color12:     #346AA1
+*color4:      #5190D0
+*color12:     #346AA1
 ! Madgenta.
-xterm*color5:      #FF6E00
-xterm*color13:     #DE6000
+*color5:      #FF6E00
+*color13:     #DE6000
 ! Cyan.
-xterm*color6:      cyan
-xterm*color14:     #17ffff
+*color6:      cyan
+*color14:     #17ffff
 ! White.
-xterm*color7:      #FFFFFF
-xterm*color15:     #CCCCCC
+*color7:      #FFFFFF
+*color15:     #CCCCCC
 !==========================================================================
 !<---XTerm End;
 !==========================================================================

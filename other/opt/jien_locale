@@ -1,3 +1,4 @@
 # Jien's locale.
-LANG=ru_RU.UTF-8
-LANGUAGE=ru_RU:ru
+LANG=en_US.UTF-8
+LANGUAGE=en_US:en
+LC_ALL=en_US.UTF-8
