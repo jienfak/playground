@@ -746,7 +746,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Autostart section.
 awful.util.spawn_with_shell("xset r rate "..tostring(keyboard_repeat_delay).." "..tostring(keyaboard_repeat_rate))
-awful.util.spawn_with_shell("xrdb -load "..xres)
+awful.util.spawn_with_shell("xrdb -load "..xresources)
 awful.util.spawn_with_shell("setxkbmap -layout "..xkb_layout.." -option grp:alt_shit_toogle")
 awful.util.spawn_with_shell("localectl set-locale LANG="..locale)
 --awful.util.spawn_with_shell("nm-applet")
