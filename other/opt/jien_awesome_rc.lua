@@ -5,6 +5,7 @@ local xkb_layout            = "us,ru"
 local locale                = "en_US.UTF-8"
 
 local config_file = "~/.config/awesome/rc.lua"
+
 -- Standard awesome library.
 local gears = require("gears")
 local awful = require("awful")
@@ -59,6 +60,7 @@ end
 
 -- {{{ Variable definitions.
 -- Themes define colours, icons, font and wallpapers.
+-- xresources, zenburn, default, sky
 beautiful.init(awful.util.get_themes_dir().."xresources/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
@@ -188,6 +190,22 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- {{{ Wibar.
 -- Create a textclock widget.
 mytextclock = wibox.widget.textclock()
+
+-- Create battery widget.
+--[[
+batterywidget = wibox.widget.textbox()
+batterywidget:set_text("|Battery|")
+batterywidgettimer = timer({timeout = 5})
+batterywidgettimer:connect_signal(
+	"timeout",
+	function()
+		fh = assert(io.popen("acpi | cut -d, -f 2,3 -", "r")) ;
+		batterywidget:set_text(fh:read("*1").."%")
+		fh.close()
+	end
+)
+batterywidgettimer:start()
+--]]
 
 -- Create a wibox for each screen and add it.
 local taglist_buttons = awful.util.table.join(
@@ -424,19 +442,19 @@ globalkeys = awful.util.table.join(
 
 	awful.key({ modkey, }, "l", function() awful.tag.incmwfact( 0.05) end,
 		{description = " - Increase master width factor.", group = "layout"}),
-	awful.key({ modkey, }, "h", function () awful.tag.incmwfact(-0.05)		  end,
+	awful.key({ modkey, }, "h", function() awful.tag.incmwfact(-0.05) end,
 		{description = " - Decrease master width factor.", group = "layout"}),
-	awful.key({ modkey, "Shift"   }, "h",	 function () awful.tag.incnmaster( 1, nil, true) end,
+	awful.key({ modkey, "Shift"   }, "h", function() awful.tag.incnmaster( 1, nil, true) end,
 		{description = " - Increase the number of master clients.", group = "layout"}),
-	awful.key({ modkey, "Shift"   }, "l",	 function () awful.tag.incnmaster(-1, nil, true) end,
+	awful.key({ modkey, "Shift"   }, "l", function() awful.tag.incnmaster(-1, nil, true) end,
 		{description = " - Decrease the number of master clients.", group = "layout"}),
-	awful.key({ modkey, "Control" }, "h",	 function () awful.tag.incncol( 1, nil, true)	end,
+	awful.key({ modkey, "Control" }, "h", function() awful.tag.incncol( 1, nil, true)	end,
 		{description = " - Increase the number of columns.", group = "layout"}),
-	awful.key({ modkey, "Control" }, "l",	 function () awful.tag.incncol(-1, nil, true)	end,
+	awful.key({ modkey, "Control" }, "l", function() awful.tag.incncol(-1, nil, true)	end,
 		{description = " - Decrease the number of columns.", group = "layout"}),
-	awful.key({ modkey, }, "space", function () awful.layout.inc( 1)				end,
+	awful.key({ modkey, }, "space", function() awful.layout.inc(1) end,
 		{description = " - Select next.", group = "layout"}),
-	awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)				end,
+	awful.key({ modkey, "Shift"   }, "space", function() awful.layout.inc(-1) end,
 		{description = " - Select previous.", group = "layout"}),
 
 	awful.key({ modkey, "Control" }, "n",
@@ -455,15 +473,15 @@ globalkeys = awful.util.table.join(
 			  {description = " - Run prompt.", group = "launcher"}),
 
 	awful.key({ modkey }, "x",
-			function ()
+			function()
 				awful.prompt.run {
 					prompt       = "Run Lua code: ",
 					textbox      = awful.screen.focused().mypromptbox.widget,
 					exe_callback = awful.util.eval,
 					history_path = awful.util.get_cache_dir() .. "/history_eval"
-				  }
-			  end,
-			  {description = " - Lua execute prompt.", group = "awesome"}),
+				}
+			end,
+			{description = " - Lua execute prompt.", group = "awesome"}),
 	-- Menubar
 	awful.key({ modkey }, "p", function() menubar.show() end,
 			  {description = " - Show the menubar.", group = "launcher"})
@@ -703,7 +721,8 @@ client.connect_signal(
 				awful.titlebar.widget.stickybutton(c),
 				awful.titlebar.widget.ontopbutton(c),
 				awful.titlebar.widget.closebutton(c),
-				layout = wibox.layout.fixed.horizontal()
+				layout = wibox.layout.fixed.horizontal(),
+				-- batterywidget
 			},
 			layout = wibox.layout.align.horizontal
 		}
