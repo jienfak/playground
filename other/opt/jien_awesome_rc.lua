@@ -61,7 +61,7 @@ end
 -- {{{ Variable definitions.
 -- Themes define colours, icons, font and wallpapers.
 -- xresources, zenburn, default, sky
-beautiful.init(awful.util.get_themes_dir().."xresources/theme.lua")
+beautiful.init(awful.util.get_themes_dir().."zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 local sys_stat_program = "htop"
