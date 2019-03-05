@@ -3,6 +3,7 @@ local keyboard_repeat_delay = 300
 local keyaboard_repeat_rate = 57
 local xkb_layout            = "us,ru"
 local locale                = "en_US.UTF-8"
+local xresources            = "~/.Xresources"
 
 local config_file = "~/.config/awesome/rc.lua"
 
