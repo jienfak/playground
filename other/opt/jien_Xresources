@@ -1,14 +1,17 @@
 !==============================================================================
-! XTerm 
+! XTerm, URxvt
 !==============================================================================
 !cirilica
 *utf8Title:            true
 *utf8:                 2
 *locale:               true
 *faceName:             Droid Sans Mono
+URxvt*font:            8x13
 *faceSize:             10
+*fontSize:             10
 !xterm*boldFont:             Bold Droid Sans Mono
-*.vt100.scrollBar:      false
+!vt100
+*.scrollBar:      false
 *.alternateScroll:      false
 *.vt100.geometry:       80x30
 *eightBitInput:        true
@@ -20,8 +23,11 @@ xterm*boldMode:             on
 *colorMode:            on
 *saveLines:            10000
 *visualBell:           true
-*.vt100.bellIsUrgent:   true
-*.vt100.metaSendsEscape:true
+*cursorBlink:          true
+!vt100
+*.bellIsUrgent:   true
+!vt100
+*..metaSendsEscape:true
 
 !==============================================================================
 ! XTerm colors

@@ -2,7 +2,7 @@
 " Jien: Jien FAK <jienfak@protonmail.com>.
 " (originally looked at slate.)
 set background=dark
-highlight clear
+" highlight clear
 
 	" ---------------------
 	" For checking folding.
@@ -56,4 +56,4 @@ hi DiffText     cterm=bold ctermbg=1
 hi Underlined   cterm=underline ctermfg=5
 hi Error        cterm=bold ctermfg=7 ctermbg=1
 hi SpellErrors  cterm=bold ctermfg=7 ctermbg=1
-"hi Special      ctermfg=red
+hi CircleScobs  cterm=bold ctermfg=red

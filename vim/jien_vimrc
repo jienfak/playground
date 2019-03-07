@@ -15,6 +15,12 @@ set smartindent
 "set noexpandtab
 set tabstop=4
 set shiftwidth=4
+set showcmd
+set showmatch
+set ignorecase
+set autowrite
+set hlsearch
+" set term=ansi
 " List.
 set list
 set listchars=tab:\|.,trail:.
@@ -24,6 +30,8 @@ nmap \nl :if &cursorline==1<enter>set nocursorline<enter>else<enter>set cursorli
 " Folding.
 set foldenable
 set foldmethod=indent
+
+let mysyntaxfile = "~/.vim/syntax/mysyn.vim"
 
 hi CursorLine gui=bold cterm=bold
 " Cursorline in GIU(It works too slow in CMD).
@@ -68,3 +76,6 @@ set encoding=utf-8
 
 
 ":exe "!ls " . shellescape(expand("%"))
+
+
+syn keyword CircleScobs asdf1234
