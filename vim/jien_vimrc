@@ -31,7 +31,7 @@ nmap \nl :if &cursorline==1<enter>set nocursorline<enter>else<enter>set cursorli
 set foldenable
 set foldmethod=indent
 
-let mysyntaxfile = "~/.vim/syntax/mysyn.vim"
+"let mysyntaxfile = "~/.vim/syntax/mysyn.vim"
 
 hi CursorLine gui=bold cterm=bold
 " Cursorline in GIU(It works too slow in CMD).
@@ -78,4 +78,4 @@ set encoding=utf-8
 ":exe "!ls " . shellescape(expand("%"))
 
 
-syn keyword CircleScobs asdf1234
+"syn keyword CircleScobs asdf1234

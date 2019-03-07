@@ -9,42 +9,41 @@ set background=dark
 	" ---------------------
 
 let colors_name = "jien"
-hi Normal       guifg=White guibg=grey15
-hi Cursor       guibg=khaki guifg=slategrey ctermbg=white ctermfg=black
+hi Normal       cterm=none        ctermfg=white  ctermbg=none
+hi Cursor                         ctermfg=black  ctermbg=red 
 hi TermCursor   cterm=reverse
 " :hi
 hi CursorLine   cterm=bold
 hi VertSplit    ctermfg=grey ctermbg=grey
-hi Folded       ctermfg=black ctermbg=yellow
-hi FoldColumn   ctermfg=black ctermbg=white
-hi IncSearch    cterm=none ctermfg=yellow ctermbg=green
-hi ModeMsg      cterm=none ctermfg=black ctermbg=yellow
-hi MoreMsg      ctermfg=darkgreen
-hi NonText      cterm=bold ctermfg=darkgrey
+hi Folded                         ctermfg=black ctermbg=yellow
+hi FoldColumn                     ctermfg=black ctermbg=white
+hi IncSearch    cterm=none        ctermfg=yellow ctermbg=green
+hi ModeMsg      cterm=none        ctermfg=black ctermbg=yellow
+hi MoreMsg                        ctermfg=darkgreen
+hi NonText      cterm=bold        ctermfg=darkgrey
 hi Question     ctermfg=green
-hi Search       cterm=none ctermfg=black ctermbg=yellow
+hi Search       cterm=none        ctermfg=black ctermbg=yellow
 hi SpecialKey   ctermfg=darkgreen
-hi StatusLine   cterm=none ctermfg=white ctermbg=red
+hi StatusLine   cterm=none        ctermfg=white ctermbg=red
 hi StatusLineNC cterm=reverse
-hi Title        cterm=bold  ctermfg=yellow
-hi Statement    cterm=bold  ctermfg=cyan
+hi Title        cterm=bold        ctermfg=yellow
+hi Statement    cterm=bold        ctermfg=cyan
 hi Visual       cterm=reverse
 hi WarningMsg                     ctermfg=1
 hi String                         ctermfg=darkcyan
 hi Comment                        ctermfg=yellow
-hi Constant                       ctermfg=red cterm=bold
+hi Constant     cterm=bold        ctermfg=red
 hi Special                        ctermfg=brown
 hi Identifier                     ctermfg=LightGreen
 hi Include                        ctermfg=red
-hi PreProc                  ctermfg=red
-hi Operator                 ctermfg=lightblue
-hi Define                   ctermfg=lightblue
-hi Type                     ctermfg=green
-hi Function                 ctermfg=magenta
-hi Structure                ctermfg=green
-hi LineNr                   ctermfg=black ctermbg=yellow
+hi PreProc                        ctermfg=red
+hi Operator                       ctermfg=lightblue
+hi Define                         ctermfg=lightblue
+hi Type                           ctermfg=green
+hi Function                       ctermfg=magenta
+hi Structure                      ctermfg=green
+hi LineNr                         ctermfg=black ctermbg=yellow
 hi Ignore       cterm=bold  ctermfg=7
-"hi Todo         guifg=orangered guibg=yellow2
 hi Directory    ctermfg=darkcyan
 hi ErrorMsg     cterm=bold         ctermfg=7 ctermbg=1
 hi VisualNOS    cterm=bold,underline
@@ -56,4 +55,4 @@ hi DiffText     cterm=bold ctermbg=1
 hi Underlined   cterm=underline ctermfg=5
 hi Error        cterm=bold ctermfg=7 ctermbg=1
 hi SpellErrors  cterm=bold ctermfg=7 ctermbg=1
-hi CircleScobs  cterm=bold ctermfg=red
+"hi CircleScobs  cterm=bold ctermfg=red
