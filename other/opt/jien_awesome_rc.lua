@@ -69,6 +69,10 @@ local sys_stat_program = "htop"
 local terminal         = "uxterm"
 local second_terminal  = "urxvt"
 local file_manager     = "xfe"
+local inet_browser     = "midori"
+local second_inet_browser =
+                         "chromium"
+
 local xres             = "~/.Xresources"
 local editor = os.getenv("EDITOR") or "editor"
 local editor_cmd = terminal .. " -e " .. editor
@@ -403,7 +407,7 @@ globalkeys = awful.util.table.join(
 			end,
 			{description = " - Go back.", group = "client"}
 		),
-		-- Standard program.
+		-- Standard terminal.
 		awful.key(
 			{ modkey, }, "Return", function() awful.spawn(terminal) end,
 			{description = " - Open a terminal.", group = "launcher"}
@@ -413,6 +417,15 @@ globalkeys = awful.util.table.join(
 			{modkey, "Shift"}, "Return", function() awful.spawn(second_terminal) end,
 			{description = " - Open another terminal.", group = "launcher"}
 		),
+		awful.key(
+			{modkey, }, "b", function() awful.spawn(inet_browser) end,
+			{description=" - Open standard broswer.", group = "launcher"}
+		),
+		awful.key(
+			{modkey, "Shift"}, "b", function() awful.spawn(second_inet_browser) end,
+			{description=" - Open another browser.", group = "launcher"}
+		),
+		-- File manager.
 		awful.key(
 			{modkey,}, "e",
 			function()
