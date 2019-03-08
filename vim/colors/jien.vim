@@ -32,24 +32,24 @@ hi SpecialKey   ctermfg=darkgreen
 hi StatusLine   cterm=none        ctermfg=black ctermbg=red
 hi StatusLineNC cterm=reverse
 hi Title        cterm=bold        ctermfg=yellow
-hi Statement    cterm=none        ctermfg=cyan
-hi Visual       cterm=reverse
+hi Statement    cterm=none        ctermfg=blue
+hi Visual       cterm=none        ctermfg=black ctermbg=yellow
 hi WarningMsg                     ctermfg=1
 hi String                         ctermfg=darkcyan
 hi Comment                        ctermfg=yellow
 hi Constant     cterm=bold        ctermfg=red
-hi Special                        ctermfg=brown
+hi Special                        ctermfg=red
 hi Identifier                     ctermfg=lightgreen
 hi Include                        ctermfg=red
 hi PreProc                        ctermfg=red
 hi Operator                       ctermfg=lightblue
-hi Define                         ctermfg=lightblue
+hi Define                         ctermfg=red
 hi Type                           ctermfg=green
 hi Function                       ctermfg=darkmagenta
 hi Structure                      ctermfg=green
 hi LineNr                         ctermfg=black ctermbg=yellow
 hi Ignore       cterm=bold        ctermfg=7
-hi Directory    ctermfg=darkcyan
+hi Directory                      ctermfg=darkcyan
 hi ErrorMsg     cterm=bold        ctermfg=7 ctermbg=1
 hi VisualNOS    cterm=bold,underline
 hi WildMenu                       ctermfg=black ctermbg=yellow
