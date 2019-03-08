@@ -33,7 +33,7 @@ hi StatusLine   cterm=none        ctermfg=black ctermbg=red
 hi StatusLineNC cterm=reverse
 hi Title        cterm=bold        ctermfg=yellow
 hi Statement    cterm=none        ctermfg=blue
-hi Visual       cterm=none        ctermfg=black ctermbg=yellow
+hi Visual       cterm=none        ctermfg=black ctermbg=red
 hi WarningMsg                     ctermfg=1
 hi String                         ctermfg=darkcyan
 hi Comment                        ctermfg=yellow
