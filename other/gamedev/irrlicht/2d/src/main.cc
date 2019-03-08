@@ -140,12 +140,10 @@ class IMapObject : public IObject {
 class IAnimatedObject : IMapObject{
 	public:
 		// Objects with animation interface.
-		void onFrame(const s32 frame_delta_time){	
+		virtual void onFrame(const s32 frame_delta_time){	
 		}
 
 		// This function gets to draw animation.
-		virtual void Animate(const f32 frame_delta_time) = 0 ;
-		virtual void AnimateRealisation();
 	protected:
 	private:
 };
@@ -185,17 +183,17 @@ class MapObjectsHandler {
 			this->camera         = new ICamera() ;
 			this->driver         = device->getVideoDriver() ;
 		};
-
+		
 		void mainLoopCycle(void){	
 			while(this->device->run() && this->driver){
-
+				
 				u32 then = this->device->getTimer()->getTime() ;
 				// This loops does function onFrame of every existing object.
 				for( auto object : this->map_objects ){
 					// Getting difference between frames.
 					const u32 now = this->device->getTimer()->getTime() ;
 					const f32 frame_delta_time = (f32)(now-then)/1000.f ;
-
+					
 					// Calling function you should realize for every object.
 					object->onFrame(frame_delta_time);
 					object->moveCameraDepends();
@@ -204,13 +202,13 @@ class MapObjectsHandler {
 				}
 			}
 		};
-
+		
 		void addMapObject(IMapObject *object){
 			// Adding new object to handle on the map.
 			this->map_objects.push_back(object);
 		}
 		std::vector<IMapObject *> map_objects;
-
+		
 		IEventReceiver      *event_receiver;
 		ICamera             *camera;
 		IrrlichtDevice      *device;
