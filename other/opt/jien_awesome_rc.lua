@@ -69,7 +69,7 @@ local sys_stat_program = "htop"
 local terminal         = "uxterm"
 local second_terminal  = "urxvt"
 local file_manager     = "xfe"
-local inet_browser     = "uzbl"
+local inet_browser     = "uzbl-tabbed"
 local second_inet_browser =
                          "chromium"
 
