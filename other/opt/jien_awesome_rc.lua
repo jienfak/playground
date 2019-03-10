@@ -178,6 +178,8 @@ mymainmenu = awful.menu(
 	)
 ;
 
+myseparator = wibox.widget.textbox(',') ;
+
 mylauncher = awful.widget.launcher(
 		{
 			image = beautiful.awesome_icon,
@@ -331,8 +333,12 @@ awful.screen.connect_for_each_screen(
 			{ -- Right widgets.
 				layout = wibox.layout.fixed.horizontal,
 				mykeyboardlayout,
+				myseparator,
+				awful.widget.watch('bash -c \'acpi -b | awk "/.*/ { print \\$4 \\$3}"\'', 15),
 				wibox.widget.systray(),
 				mytextclock,
+				-- wibox.widget.textbox(' | '),
+				myseparator,
 				s.mylayoutbox,
 			},
 		}
