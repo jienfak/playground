@@ -37,8 +37,8 @@ xterm*boldMode:             on
 *foreground:  #ffffff
 *cursorColor: #ff0000
 ! black
-*color0:      #000000
-*color8:      #333333
+*color0:      #333333
+*color8:      #555555
 !#555753
 ! Red.
 *color1:      #DD2222
