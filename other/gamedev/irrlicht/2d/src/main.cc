@@ -126,9 +126,9 @@ class IMapObject : public IObject {
 		virtual void move(sposition2d vector){
 			this->setPosition(this->getPosition()+vector) ;
 		}
-		virtual void onFrame(const f32 frame_delta_time){
+		virtual void onFrame(const f32 frame_delta_time){}
 			//std::cout<<"You have to override 'onFrame' method right now."<<std::endl;
-		}
+		//}
 		virtual void onStart(void){}
 		virtual void moveCameraDepends(void){
 			this->position -= this->handler->camera->getPosition() ;
@@ -139,10 +139,12 @@ class IMapObject : public IObject {
 
 class IAnimatedObject : IMapObject{
 	public:
+		virtual void Animate(const s32 frame_delta_time){}
 		// Objects with animation interface.
-		virtual void onFrame(const s32 frame_delta_time){	
+		virtual void onFrame(const s32 frame_delta_time){
+			Animate();
 		}
-
+		
 		// This function gets to draw animation.
 	protected:
 	private:
@@ -150,7 +152,8 @@ class IAnimatedObject : IMapObject{
 
 class IMobObject : IAnimatedObject {
 	public:	
-		// Change position of object.
+		void onFrame(const s32 frame_delta_time){
+		}
 	protected:
 		// All characteristics mobs have.
 		s32 health_points;
@@ -217,7 +220,7 @@ class MapObjectsHandler {
 	private:
 };
 
-int main(){
+int main(int argc, char **argv){
 	// Ask user for driver.
 	video::E_DRIVER_TYPE driverType=driverChoiceConsole();
 	if (driverType==video::EDT_COUNT)
