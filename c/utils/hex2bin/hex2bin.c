@@ -20,12 +20,35 @@ char hex2char(char a, char b){
 	return a_ret | b_ret ;
 }
 
+int isChrInStr(char c, char *str){
+	while(*str){
+		if(c==*str++){
+			return 1 ;
+		}
+	}
+	return 0 ;
+}
 
 int main(int argc, char **argv){
-	char c1, c2;
-	while((c1=getchar())!=EOF && (c2=getchar())!=EOF){
+	char *hex_chars = "0123456789ABCDEF" ;
+	char c1=1, c2=1;
+	for(;;){
+		do{
+			c1 = getchar() ;
+			if(c1==EOF){
+				goto EXIT;
+			}
+		}while(! isChrInStr(c1, hex_chars) );
+
+		do{
+			c2 = getchar() ;
+			if(c2==EOF){
+				goto EXIT;
+			}
+		}while(! isChrInStr(c2, hex_chars));
 		printf("%c", hex2char(c1, c2));
 	}
 	/* Succesful exit. */
+EXIT:
 	return 0 ;
 }
