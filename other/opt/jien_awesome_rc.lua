@@ -365,11 +365,25 @@ globalkeys = awful.util.table.join(
 		awful.key({ modkey, }, "Escape", awful.tag.history.restore,
 				{description = " - Go back.", group = "tag"}),
 		awful.key(
+			{ modkey, }, "f",
+			function()
+				awful.client.focus.byidx( 1)
+			end,
+			{description = " - Focus next by index.", group = "client"}
+		),
+		awful.key(
 			{ modkey, }, "j",
 			function()
 				awful.client.focus.byidx( 1)
 			end,
 			{description = " - Focus next by index.", group = "client"}
+		),
+		awful.key(
+			{ modkey, }, "d",
+			function()
+				awful.client.focus.byidx(-1)
+			end,
+			{description = " - Focus previous by index.", group = "client"}
 		),
 		awful.key(
 			{ modkey, }, "k",
@@ -553,7 +567,7 @@ globalkeys = awful.util.table.join(
 
 clientkeys = awful.util.table.join(
 	awful.key(
-		{ modkey,		   }, "f",
+		{ modkey,		   }, "v",
 		function(c)
 			c.fullscreen = not c.fullscreen
 			c:raise()
@@ -811,7 +825,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- Autostart section.
 awful.util.spawn_with_shell("xset r rate "..tostring(keyboard_repeat_delay).." "..tostring(keyaboard_repeat_rate))
 awful.util.spawn_with_shell("xrdb -load "..xresources)
-awful.util.spawn_with_shell("setxkbmap -layout "..xkb_layout.." -option grp:alt_shit_toggle")
+awful.util.spawn_with_shell("setxkbmap -layout "..xkb_layout.." -option grp:alt_shift_toggle")
 awful.util.spawn_with_shell("localectl set-locale LANG="..locale)
 --awful.util.spawn_with_shell("nm-applet")
 --awful.util.spawn_with_shell("xfce4-panel")
