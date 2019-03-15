@@ -579,7 +579,7 @@ clientkeys = awful.util.table.join(
 		end,
 		{description = " - Close currently targeted window.", group = "client"}),
 	awful.key(
-		{ modkey, "Control" }, "space",  awful.client.floating.toggle,
+		{ modkey, }, "a",  awful.client.floating.toggle,
 		{description = " - Toggle floating.", group = "client"}
 	),
 	awful.key(
