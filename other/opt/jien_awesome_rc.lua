@@ -7175,6 +7175,7 @@ globalkeys = awful.util.table.join(
 			{ modkey, }, "f",
 			function()
 				awful.client.focus.byidx( 1)
+				awful.util.spawn_with_shell("xdotool mousemove --window $(xdotool getactivewindow) 20 20")
 			end,
 			{description = " - Focus next by index.", group = "client"}
 		),
@@ -7182,6 +7183,7 @@ globalkeys = awful.util.table.join(
 			{ modkey, }, "j",
 			function()
 				awful.client.focus.byidx( 1)
+				-- awful.util.spawn_with_shell("xdotool mousemove --window $(xdotool getactivewindow) 20 20")
 			end,
 			{description = " - Focus next by index.", group = "client"}
 		),
@@ -7189,6 +7191,7 @@ globalkeys = awful.util.table.join(
 			{ modkey, }, "d",
 			function()
 				awful.client.focus.byidx(-1)
+				awful.util.spawn_with_shell("xdotool mousemove --window $(xdotool getactivewindow) 20 20")
 			end,
 			{description = " - Focus previous by index.", group = "client"}
 		),
@@ -7196,6 +7199,7 @@ globalkeys = awful.util.table.join(
 			{ modkey, }, "k",
 			function()
 				awful.client.focus.byidx(-1)
+				-- awful.util.spawn_with_shell("xdotool mousemove --window $(xdotool getactivewindow) 20 20")
 			end,
 			{description = " - Focus previous by index.", group = "client"}
 		),
