@@ -164,6 +164,10 @@ myawesomemenu = {
 			function()
 				awesome.quit()
 			end
+		},
+		{
+			"Switch user",
+			"/usr/bin/dm-tool switch-to-greeter"
 		}
 	}
 ;
