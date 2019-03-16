@@ -24,6 +24,7 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 
 -- Load Debian menu entries.
 -- require("debian.menu")
+local xdotool_mouse_move = false
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -7174,15 +7175,17 @@ globalkeys = awful.util.table.join(
 		awful.key(
 			{ modkey, }, "f",
 			function()
-				awful.client.focus.byidx( 1)
+				awful.client.focus.byidx(1)
+				xdotool_mouse_move = true
 				awful.util.spawn_with_shell("xdotool mousemove --window $(xdotool getactivewindow) 20 20")
+				xdotool_mouse_move = false
 			end,
 			{description = " - Focus next by index.", group = "client"}
 		),
 		awful.key(
 			{ modkey, }, "j",
 			function()
-				awful.client.focus.byidx( 1)
+				awful.client.focus.byidx(1)
 				-- awful.util.spawn_with_shell("xdotool mousemove --window $(xdotool getactivewindow) 20 20")
 			end,
 			{description = " - Focus next by index.", group = "client"}
@@ -7191,7 +7194,9 @@ globalkeys = awful.util.table.join(
 			{ modkey, }, "d",
 			function()
 				awful.client.focus.byidx(-1)
+				xdotool_mouse_move = true
 				awful.util.spawn_with_shell("xdotool mousemove --window $(xdotool getactivewindow) 20 20")
+				xdotool_mouse_move = false
 			end,
 			{description = " - Focus previous by index.", group = "client"}
 		),
@@ -7209,11 +7214,11 @@ globalkeys = awful.util.table.join(
 		),
 		-- Layout manipulation
 		awful.key(
-			{ modkey, "Shift"		 }, "j", function() awful.client.swap.byidx(		1)	end,
+			{ modkey, "Shift"}, "j", function() awful.client.swap.byidx(		1)	end,
 			{description = " - Swap with next client by index.", group = "client"}
 		),
 		awful.key(
-			{ modkey, "Shift"		 }, "k", function() awful.client.swap.byidx( -1)	end,
+			{ modkey, "Shift" }, "k", function() awful.client.swap.byidx( -1)	end,
 			{description = " - Swap with previous client by index.", group = "client"}
 		),
 		awful.key(
@@ -7622,9 +7627,11 @@ client.connect_signal(
 client.connect_signal(
 	"mouse::enter",
 	function(c)
-		if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
-				and awful.client.focus.filter(c) then
-			client.focus = c
+		if not xdotool_mouse_move then
+			if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
+					and awful.client.focus.filter(c) then
+				client.focus = c
+			end
 		end
 	end
 )
