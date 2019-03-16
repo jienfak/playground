@@ -19,6 +19,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
+-- local xdg_menu= require("archmenu")
 
 -- Load Debian menu entries.
 -- require("debian.menu")
@@ -124,52 +125,75 @@ end
 -- {{{ Menu.
 -- Create a launcher widget and a main menu.
 myawesomemenu = {
-	{
-		"Hotkeys",
-		function()
-			return false, hotkeys_popup.show_help
-		end
-	},
-	{
-		"Manual",
-		terminal .. " -e man awesome"
-	},
-	{
-		"Edit config",
-		function()
-			awful.util.spawn_with_shell(editor_cmd .." ".. config_file)  --awesome.conffile
-		end
-	},
-	{
-		"CLI editor",
-		editor_cmd
-	},
-	{
-		"GUI editor",
-		editor_gui
-	},
-	{
-		"Sys. Stat.",
-		function()
-			awful.util.spawn_with_shell(terminal.." -e "..sys_stat_program)
-		end
-	},
-	{
-		"Restart WM",
-		awesome.restart
-	},
-	{
-		"Quit WM",
-		function()
-			awesome.quit()
-		end
+		{
+			"Hotkeys",
+			function()
+				return false, hotkeys_popup.show_help
+			end
+		},
+		{
+			"Manual",
+			terminal .. " -e man awesome"
+		},
+		{
+			"Edit config",
+			function()
+				awful.util.spawn_with_shell(editor_cmd .." ".. config_file)  --awesome.conffile
+			end
+		},
+		{
+			"CLI editor",
+			editor_cmd
+		},
+		{
+			"GUI editor",
+			editor_gui
+		},
+		{
+			"Sys. Stat.",
+			function()
+				awful.util.spawn_with_shell(terminal.." -e "..sys_stat_program)
+			end
+		},
+		{
+			"Restart WM",
+			awesome.restart
+		},
+		{
+			"Quit WM",
+			function()
+				awesome.quit()
+			end
+		}
 	}
-}
+;
+
+mymachinemenu = {
+		{
+			"Shutdown",
+			function()
+				awful.util.spawn_with_shell("shutdown --poweroff now")
+			end
+		},{
+			"Reboot",
+			function()
+				awful.util.spawn_with_shell("shutdown --reboot now")
+			end
+		},{
+			"Halt",
+			function()
+				awful.util.spawn_with_shell("shutdown --halt now")
+			end
+		}
+	}
+;
 
 mymainmenu = awful.menu(
 		{
 			items = {
 				{ "Main menu", myawesomemenu, beautiful.awesome_icon },
+				{ "PC menu", mymachinemenu },
+				{ "Apps", xdg_menu},
 				-- { "Debian", debian.menu.Debian_menu.Debian },
 				{ "Terminal", terminal },
 				{ "File manager", file_manager}
