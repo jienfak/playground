@@ -127,7 +127,7 @@ alias "ls"="ls --color=always"
 alias "la"="ls -al --color=always"
 alias "ll"="ls --color -l"
 alias "sctl"="sudo systemctl"
-alias "manpager"=$MANPAGER
+alias "manpager"="$MANPAGER -R"
 
 # Functions.
 echo "Setting functions..."

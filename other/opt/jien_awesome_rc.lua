@@ -20,6 +20,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
+require("awful.hotkeys_popup.keys")
 -- local xdg_menu= require("archmenu")
 
 -- Load Debian menu entries.
@@ -2027,7 +2028,7 @@ exploitationmenu = {
   { "search1337", terminal.."  -e 'search1337 ; "..shell.."'" },
   { "sensepost-xrdp", terminal.."  -e 'sensepost-xrdp -h ; "..shell.."'" },
   { "serialbrute", terminal.."  -e 'serialbrute -h ; "..shell.."'" },
-  { "setoolkit", terminal.."  -e 'setoolkit ; "..shell.."'" },
+  { "setoolkit", terminal.."  -e 'sudo setoolkit ; "..shell.."'" },
   { "shellen", terminal.."  -e 'shellen ; "..shell.."'" },
   { "shellme", terminal.."  -e 'shellme -h ; "..shell.."'" },
   { "shellnoob", terminal.."  -e 'shellnoob -h ; "..shell.."'" },
@@ -2774,7 +2775,7 @@ hardwaremenu = {
 }
 
 honeypotmenu = {
-  { "artillery", terminal.."  -e 'artillery ; "..shell.."'" },
+  { "artillery", terminal.."  -e 'sudo artillery ; "..shell.."'" },
   { "beeswarm", terminal.."  -e 'beeswarm ; "..shell.."'" },
   { "bluepot", terminal.."  -e 'bluepot ; "..shell.."'" },
   { "conpot", terminal.."  -e 'conpot --help ; "..shell.."'" },
@@ -7164,11 +7165,11 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-		awful.key({ modkey, }, "s",			hotkeys_popup.show_help,
+		awful.key({ modkey, }, "s",hotkeys_popup.show_help,
 				{description=" - Show help.", group="awesome"}),
-		awful.key({ modkey, }, "Left",		 awful.tag.viewprev,
+		awful.key({ modkey, }, "Left", awful.tag.viewprev,
 				{description = " - View previous.", group = "tag"}),
-		awful.key({ modkey, }, "Right",		awful.tag.viewnext,
+		awful.key({ modkey, }, "Right",awful.tag.viewnext,
 				{description = " - View next.", group = "tag"}),
 		awful.key({ modkey, }, "Escape", awful.tag.history.restore,
 				{description = " - Go back.", group = "tag"}),
@@ -7340,11 +7341,11 @@ globalkeys = awful.util.table.join(
 		),
 		awful.key({ modkey, }, "space", function() awful.layout.inc(1) end,
 			{description = " - Select next.", group = "layout"}),
-		awful.key({ modkey, "Shift"		 }, "space", function() awful.layout.inc(-1) end,
+		awful.key({ modkey, "Shift" }, "space", function() awful.layout.inc(-1) end,
 			{description = " - Select previous.", group = "layout"}
 		),
 		awful.key(
-			{ modkey, "Control" }, "n",
+			{ modkey, "Shift" }, "n",
 			function()
 				local c = awful.client.restore()
 				-- Focus restored client
@@ -7355,9 +7356,20 @@ globalkeys = awful.util.table.join(
 			end,
 			{description = " - Restore minimized.", group = "client"}
 		),
+		awful.key(
+			{modkey, "Shift"}, "g",
+			function()
+				local c =awful.client.restore()
+				if c then
+					client.focus = c
+					c:raise()
+				end
+			end,
+			{description = " - Resotre minimized.", group = "client"}
+		),
 		-- Prompt
 		awful.key(
-			{ modkey }, "r", function() awful.screen.focused().mypromptbox:run() end,
+			{ modkey, }, "r", function() awful.screen.focused().mypromptbox:run() end,
 			{description = " - Run prompt.", group = "launcher"}
 		),
 		
@@ -7365,8 +7377,8 @@ globalkeys = awful.util.table.join(
 			{ modkey }, "x",
 			function()
 				awful.prompt.run {
-					prompt						 = "Run Lua code: ",
-					textbox						= awful.screen.focused().mypromptbox.widget,
+					prompt = "Run Lua code: ",
+					textbox= awful.screen.focused().mypromptbox.widget,
 					exe_callback = awful.util.eval,
 					history_path = awful.util.get_cache_dir() .. "/history_eval"
 				}
@@ -7383,19 +7395,19 @@ globalkeys = awful.util.table.join(
 
 clientkeys = awful.util.table.join(
 	awful.key(
-		{ modkey,				 }, "v",
+		{ modkey,}, "v",
 		function(c)
 			c.fullscreen = not c.fullscreen
 			c:raise()
 		end,
 		{description = " - Toggle fullscreen.", group = "client"}),
-	awful.key({ modkey, "Shift"		 }, "c",
+	awful.key({ modkey, "Shift"}, "c",
 		function(c)
 			c:kill()
 		end,
 		{description = " - Close currently targeted window.", group = "client"}),
 	awful.key(
-		{ modkey, }, "a",		awful.client.floating.toggle,
+		{ modkey, }, "a", awful.client.floating.toggle,
 		{description = " - Toggle floating.", group = "client"}
 	),
 	awful.key(
@@ -7424,6 +7436,13 @@ clientkeys = awful.util.table.join(
 		function(c)
 			-- The client currently has the input focus, so it cannot be
 			-- minimized, since minimized clients can't have the focus.
+			c.minimized = true
+		end,
+		{description = " - Minimize current window.", group = "client"}
+	),
+	awful.key(
+		{modkey, }, "g",
+		function(c)
 			c.minimized = true
 		end,
 		{description = " - Minimize current window.", group = "client"}
