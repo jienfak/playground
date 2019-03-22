@@ -26,7 +26,7 @@ function Module.printStruct(t, n)
 	--]]
 	local tab = n or 0
 	for key, word in pairs(t) do
-		print(string.rep("\t", tab), tostring(key)..":", word)
+		print(string.rep("\t", tab), tostring(key)..":"..tostring(word))
 		if type(word) == "table" then
 			Module.printStruct(word, tab + 1)
 		end
