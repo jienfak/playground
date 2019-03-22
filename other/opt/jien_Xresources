@@ -11,13 +11,13 @@ URxvt*font:            8x13
 *fontSize:             10
 !xterm*boldFont:             Bold Droid Sans Mono
 !vt100
-*.scrollBar:      false
-*.alternateScroll:      false
-*.vt100.geometry:       80x30
+*.scrollBar:           false
+*.alternateScroll:     false
+*.vt100.geometry:      80x30
 *eightBitInput:        true
 *metaSendsEscape:      true
 !xterm*colorBDMode:          true
-xterm*boldMode:             on
+xterm*boldMode:        on
 !xterm*alwaysBoldMode:       false
 *dynamicColors:        on
 *colorMode:            on
@@ -25,9 +25,9 @@ xterm*boldMode:             on
 *visualBell:           true
 *cursorBlink:          true
 !vt100
-*.bellIsUrgent:   true
+*.bellIsUrgent:        true
 !vt100
-*..metaSendsEscape:true
+*..metaSendsEscape:    true
 
 !==============================================================================
 ! XTerm colors
@@ -37,7 +37,9 @@ xterm*boldMode:             on
 *foreground:  #ffffff
 *cursorColor: #ff0000
 ! black
-*color0:      #333333
+! #333333
+! #555555
+*color0:      #000000
 *color8:      #555555
 !#555753
 ! Red.
