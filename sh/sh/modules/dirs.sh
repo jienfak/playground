@@ -1,0 +1,2 @@
+
+scripts=$HOME/code/scripts

@@ -1,14 +1,9 @@
 #!/bin/sh
 
 # Directories.
-scripts="$HOME/code/scripts"
-ask () {
-	echo -n $1
-	read answer
-	if [ $answer = y ]; then return 0 ;fi
-	if [ $answer = Y ]; then return 0 ;fi
-	return 1
-}
+source $HOME/code/scripts/sh/sh/modules/dirs.sh
+source $scripts/sh/sh/modules/ask.sh
+
 if ask "Should I created directories in '\$HOME'\n\
  and change 'user-dirs.dirs' for my?[yn]:"; then
 mkdir $HOME/video $HOME/docs $HOME/temps $HOME/shared \
@@ -58,7 +53,7 @@ fi
 
 
 
-# Editor.
+# Editor. Vim. Neovim.
 if ask "Should I link your editor files?(vimrc, init.vim(neovim etc)[yn]:"; then
 	# Vim.
 	mv $HOME/.vimrc                                  $HOME/.vimrc.backup
@@ -69,6 +64,12 @@ if ask "Should I link your editor files?(vimrc, init.vim(neovim etc)[yn]:"; then
 	mv $HOME/.config/nvim/ $HOME/.config/nvim.backup
 	ln -s $HOME/code/scripts/vim/                 $HOME/.config/nvim
 	ln -s $HOME/code/scripts/vim/jien_vimrc       $HOME/.config/nvim/init.vim
+fi
+
+# Vifm.
+if ask "Should I link you vifm file manager files?(~/.vifm)[yn]"; then
+	mv $HOME/.vifm $HOME/.vifm.backup
+	ln -s $scripts/vim $HOME/.vifm
 fi
 
 if ask "Should I link your uzbl config files?(config etc):"; then
