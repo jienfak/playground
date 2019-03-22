@@ -59,7 +59,7 @@ fi
 
 
 # Editor.
-if ask "Should I link your editor files?(vimrc, init.vim(neovim) etc)[yn]:"; then
+if ask "Should I link your editor files?(vimrc, init.vim(neovim etc)[yn]:"; then
 	# Vim.
 	mv $HOME/.vimrc                                  $HOME/.vimrc.backup
 	ln -s $HOME/code/scripts/vim/jien_vimrc          $HOME/.vimrc
@@ -69,6 +69,10 @@ if ask "Should I link your editor files?(vimrc, init.vim(neovim) etc)[yn]:"; the
 	mv $HOME/.config/nvim/ $HOME/.config/nvim.backup
 	ln -s $HOME/code/scripts/vim/                 $HOME/.config/nvim
 	ln -s $HOME/code/scripts/vim/jien_vimrc       $HOME/.config/nvim/init.vim
+fi
+
+if ask "Should I link your uzbl config files?(config etc):"; then
+	ln -s  $scripts/other/opt/jien_uzbl_config ~/.config/uzbl/config
 fi
 
 # Git.
