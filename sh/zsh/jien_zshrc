@@ -44,6 +44,12 @@ fi
 alias ed="$EDITOR"
 alias edsu="sudo $EDITOR"
 
+my-backward-delete-word() {
+    local WORDCHARS=${WORDCHARS/\//}
+    zle backward-delete-word
+}
+
+
 # Git status.
 git_custom_status(){
 }
@@ -55,7 +61,9 @@ bindkey '^P' up-history
 bindkey '^N' down-history
 bindkey '^?' backward-delete-char
 bindkey '^h' backward-delete-char
-bindkey '^w' backward-kill-word
+#bindkey '^w' backward-kill-word
+zle -N my-backward-delete-word
+bindkey '^W' my-backward-delete-word
 bindkey '^r' history-incremental-search-backward
 
 EPS1=$RPROMPT
