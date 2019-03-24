@@ -19,7 +19,9 @@ while( $data =~ m{
 		}gx
 	){
 	#say $1 ;
-	push @hcats, $1 ;
+	my $hcat = $1 ;
+	$hcat =~ s/blackarch-?//g ;
+	push @hcats, $hcat ;
 }
 
 # Utils.
@@ -34,7 +36,7 @@ while( $data =~ m{
 
 # For chomp.
 $/ = ' ' ;
-for(my $i=0 ; $i<@utils ; ++$i ){	
+for(my $i=0 ; $i<@utils ; ++$i ){
 	my $string = $utils[$i]." ".$hcats[$i] ;
 	chomp $string;
 	say $string ;
