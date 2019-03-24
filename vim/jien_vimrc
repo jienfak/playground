@@ -2,7 +2,7 @@
 
 " In many terminal emulators the mouse works just fine.
 " By enabling it you can position the cursor,
-" VIsually select and scroll with the mouse.
+" Visually select and scroll with the mouse.
 if( has('mouse') )
   set mouse=a
 endif
@@ -24,6 +24,8 @@ set hlsearch
 " List.
 set list
 set listchars=tab:\|.,trail:.
+" Spell checking.
+set spell
 match NonText /\t/
 nmap \nl :if &cursorline==1<enter>set nocursorline<enter>else<enter>set cursorline<enter>endif<enter><enter>
 
@@ -31,10 +33,8 @@ nmap \nl :if &cursorline==1<enter>set nocursorline<enter>else<enter>set cursorli
 set foldenable
 set foldmethod=indent
 
-"let mysyntaxfile = "~/.vim/syntax/mysyn.vim"
-
 hi CursorLine gui=bold cterm=bold
-" Cursorline in GIU(It works too slow in CMD).
+" Cursor line in GUI(It works too slow in terminal).
 if has("gui_running")
 	set cursorline
 	colorscheme vividchalk
@@ -52,12 +52,12 @@ syntax on
 " :syn match Operator /\(+\)\|\(-\)/
 
 
-" NerdTree.
+" Nerd-Tree.
 nmap \nt :NERDTree . <enter>
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
-" (happens when dropping a file on gvim).
+" (happens when dropping a file on "gvim").
 autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
   \   exe "normal g`\"" |
@@ -65,17 +65,3 @@ autocmd BufReadPost *
 
 " Encoding.
 set encoding=utf-8
-
-"hi Folded	ctermbg=blue		ctermfg=black
-"hi StatusLine	ctermbg=black		ctermfg=red
-"hi StatusLineNC ctermbg=black		ctermfg=darkgrey
-" hi ModeMsg	ctermbg=white		ctermfg=black
-"hi LineNr	ctermbg=yellow		ctermfg=black
-"hi VertSplit 	ctermbg=darkgrey 	ctermfg=darkgrey
-" hi CursorLine	cterm=bold
-
-
-":exe "!ls " . shellescape(expand("%"))
-
-
-"syn keyword CircleScobs asdf1234
