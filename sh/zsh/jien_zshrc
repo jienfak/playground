@@ -54,17 +54,25 @@ export KEYTIMEOUT=1
 
 
 # Highlight plugin.
-highlight_plugin1="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-highlight_plugin2="/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-if [ -f $highlight_plugin1 ]; then
+plugin_dir1="/usr/share/zsh/plugins"
+plugin_dir2="/usr/share"
+if [ -f $plugin_dir1/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
 	echo "Got it from first."
-	source $highlight_plugin1
+	source $plugin_dir1/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 else
-	if [ -f $highlight_plugin2 ]; then
+	if [ -f $plugin_dir2/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
 		echo  "Got it from second"
-		source $highlight_plugin2
+		source $plugin_dir2/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 	else
 		echo "Could not get plugin."
+	fi
+fi
+
+if [ -f $plugin_dir1/zsh-autosuggestions/zsh-autosuggestions.zsh ] ; then
+	source $plugin_dir1/zsh-autosuggestions/zsh-autosuggestions.zsh
+else
+	if [ -f $plugin_dir2/zsh-autosuggestions/zsh-autosuggestions.zsh ] ; then
+		source $plugin_dir2/zsh-autosuggestions/zsh-autosuggesions.zsh
 	fi
 fi
 
@@ -108,7 +116,7 @@ alias "manpager"="$MANPAGER -R"
 	alias "ipython3"="ipython3 --TerminalInteractiveShell.editing_mode=vi"
 
 # Functions.
-#source $S/sh/sh/modules/helpa.sh
+source $S/sh/sh/modules/helpa.sh
 
 echo  FAK::Freedom:Anarchy:Knowledge::FAK
 echo 'FAKYOU... why are you using zsh? Fish is better.'
