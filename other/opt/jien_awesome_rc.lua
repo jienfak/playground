@@ -22,6 +22,7 @@ local editor_gui = os.getenv("VISUAL") or "gvim"
 local music_player = terminal.." -e cmus"
 local heavy_music_player = "audacious"
 local max_menu_items = 65
+local dvorak = false
 
 -- My library.
 package.path = package.path..";"..os.getenv("HOME").."/code/scripts/lua/modules/?.lua" ;
@@ -405,11 +406,13 @@ awful.screen.connect_for_each_screen(
 -- }}}
 
 -- {{{ Mouse bindings
-root.buttons(awful.util.table.join(
-	awful.button({ }, 3, function () mymainmenu:toggle() end),
-	awful.button({ }, 4, awful.tag.viewnext),
-	awful.button({ }, 5, awful.tag.viewprev)
-))
+root.buttons(
+	awful.util.table.join(
+		awful.button({ }, 3, function () mymainmenu:toggle() end),
+		awful.button({ }, 4, awful.tag.viewnext),
+		awful.button({ }, 5, awful.tag.viewprev)
+	)
+)
 -- }}}
 
 -- {{{ Key bindings
@@ -457,6 +460,20 @@ globalkeys = awful.util.table.join(
 				-- awful.util.spawn_with_shell("xdotool mousemove --window $(xdotool getactivewindow) 20 20")
 			end,
 			{description = " - Focus previous by index.", group = "client"}
+		),
+		-- Dvorak.
+		awful.key(
+			{modkey, "Shift"}, "d",
+			function()
+				if dvorak then
+					awful.util.spawn_with_shell("setxkbmap -layout "..xkb_layout.." -option grp:alt_shift_toggle")
+					dvorak = false
+				else
+					awful.util.spawn_with_shell("setxkbmap -layout "..xkb_layout.." -variant dvorak, -option grp:alt_shift_toggle")
+					dvorak = true
+				end
+			end,
+			{description = "- Switch to dvorak.", group = "keyboard"}
 		),
 		--[[
 		awful.key(
