@@ -1,2 +1,0 @@
-
-scripts=$HOME/code/scripts
