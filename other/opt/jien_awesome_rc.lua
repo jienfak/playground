@@ -11,14 +11,17 @@ local add_blackarch_menu = true
 local sys_stat_program = "htop"
 local terminal = os.getenv("TERM") or "uxterm"
 local second_terminal = "urxvt"
-local file_manager = terminal.." -e '".."vifm".."'"
+local file_manager = terminal.." -e '".."lf".."'"
 local heavy_file_manager = "xfe"
 local browser = "uzbl-tabbed"
+
 local heavy_browser = "chromium"
 local xresources = "~/.Xresources"
 local editor = os.getenv("EDITOR") or "vim"
 local editor_cmd = terminal .. " -e " .. editor
 local editor_gui = os.getenv("VISUAL") or "gvim"
+local music_player = terminal.." -e cmus"
+local heavy_music_player = "audacious"
 local max_menu_items = 65
 
 -- My library.
@@ -167,12 +170,6 @@ myawesomemenu = {
 			editor_gui
 		},
 		{
-			"Sys. Stat.",
-			function()
-				awful.util.spawn_with_shell(terminal.." -e "..sys_stat_program)
-			end
-		},
-		{
 			"Restart WM",
 			awesome.restart
 		},
@@ -209,27 +206,41 @@ mymachinemenu = {
 	}
 ;
 
+mypersonmenu = {
+		-- { "Debian", debian.menu.Debian_menu.Debian },
+		{ "Terminal", terminal },
+		{ "Second terminal", second_terminal},
+		{ "File manager", file_manager},
+		{ "H. file manager", heavy_file_manager},
+		{ "Browser", browser},
+		{ "H. browser", heavy_browser},
+		{
+			"Sys. Stat.",
+			function()
+				awful.util.spawn_with_shell(terminal.." -e "..sys_stat_program)
+			end
+		},
+		{
+			"Mus. Player",
+			music_player
+		},
+		{
+			"H.Mus.Player",
+			heavy_music_player
+		}
+	}
+;
+
 mymainmenu = awful.menu(
 		{
 			items = {
-				{ "Main menu", myawesomemenu, beautiful.awesome_icon },
-				{ "PC menu", mymachinemenu },
-				{ "BlackArch", blackarchmenu },
-				-- { "Debian", debian.menu.Debian_menu.Debian },
-				{ "Terminal", terminal },
-				{ "Second terminal", second_terminal},
-				{ "File manager", file_manager},
-				{ "H. file manager", heavy_file_manager},
-				{ "Browser", browser},
-				{ "H. browser", heavy_browser},
-				{"Suck", {
-						{ "Die", {"4321", "4321"}},
-						{ "Die2", {"1234", "1234"}}
-					}
-				}
+				{ "Person", mypersonmenu},
+				{ "Awesome", myawesomemenu, beautiful.awesome_icon },
+				{ "Machine", mymachinemenu },
+				{ "Blackarch", blackarchmenu },
 			}
 		}
-	)
+	)	
 ;
 
 myseparator = wibox.widget.textbox(',') ;
@@ -242,7 +253,7 @@ mylauncher = awful.widget.launcher(
 	)
 ;
 
--- Menubar configuration.
+-- Menu bar configuration.
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it.
 -- }}}
 
@@ -250,7 +261,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar.
--- Create a textclock widget.
+-- Create a text clock widget.
 mytextclock = wibox.widget.textclock()
 
 -- Create battery widget.
@@ -516,7 +527,7 @@ globalkeys = awful.util.table.join(
 		),
 		awful.key(
 			{modkey, "Shift"}, "b", function() awful.spawn(heavy_browser) end,
-			{description=" - Open another browser.", group = "launcher"}
+			{description=" - Open heavy browser.", group = "launcher"}
 		),
 		-- File manager.
 		awful.key(
@@ -532,7 +543,23 @@ globalkeys = awful.util.table.join(
 			function()
 				awful.spawn(heavy_file_manager)
 			end,
-			{description = " - Open heavier file manager.", group = "launcher"}
+			{description = " - Open heavy file manager.", group = "launcher"}
+		),
+		-- Music player.
+		awful.key(
+			{modkey, }, "m",
+			function()
+				awful.spawn(music_player)
+			end,
+			{description = " - Open music player.", group="launcher"}
+
+		),
+		awful.key(
+			{modkey, "Shift"}, "m",
+			function()
+				awful.spawn(heavy_music_player)
+			end,
+			{description = " - Open heavy music player.", group="launcher"}
 		),
 		-- Move mouse without mouse.
 		--[[
@@ -712,7 +739,7 @@ clientkeys = awful.util.table.join(
 		{description = " - Minimize current window.", group = "client"}
 	),
 	awful.key(
-		{ modkey, }, "m",
+		{ modkey, "Ctrl"}, "m",
 		function (c)
 			c.maximized = not c.maximized
 			c:raise()
@@ -722,7 +749,7 @@ clientkeys = awful.util.table.join(
 )
 
 -- Bind all key numbers to tags.
--- Be careful: we use keycodes to make it works on any keyboard layout.
+-- Be careful: we use key codes to make it works on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
 for i = 1, 9 do
 	globalkeys = awful.util.table.join(
@@ -860,7 +887,7 @@ client.connect_signal(
 	end
 )
 
--- Add a titlebar if titlebars_enabled is set to true in the rules.
+-- Add a title bar if "titlebars_enabled" is set to true in the rules.
 client.connect_signal(
 	"request::titlebars",
 	function(c)
