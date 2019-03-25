@@ -4,8 +4,8 @@ local keyaboard_repeat_rate = 57
 local xkb_layout = "us,ru"
 local locale = "en_US.UTF-8"
 local xresources = "~/.Xresources"
-local config_file = "~/.config/awesome/rc.lua"
-local shell = os.getenv("SHELL") or "/usr/bin/zsh"
+local config_file = (os.getenv("XDG_CONFIG_HOME") or os.getenv("HOME").."/.config").."/awesome/rc.lua"
+local shell = os.getenv("SHELL")-- or "/usr/bin/zsh"
 local add_blackarch_menu = true
 -- This is used later as the default terminal and editor to run.
 local sys_stat_program = "htop"
@@ -14,7 +14,6 @@ local second_terminal = "urxvt"
 local file_manager = terminal.." -e '".."lf".."'"
 local heavy_file_manager = "xfe"
 local browser = "uzbl-tabbed"
-
 local heavy_browser = "chromium"
 local xresources = "~/.Xresources"
 local editor = os.getenv("EDITOR") or "vim"
@@ -162,14 +161,6 @@ myawesomemenu = {
 			end
 		},
 		{
-			"CLI editor",
-			editor_cmd
-		},
-		{
-			"GUI editor",
-			editor_gui
-		},
-		{
 			"Restart WM",
 			awesome.restart
 		},
@@ -212,6 +203,8 @@ mypersonmenu = {
 		{ "Second terminal", second_terminal},
 		{ "File manager", file_manager},
 		{ "H. file manager", heavy_file_manager},
+		{ "CLI editor", editor_cmd },
+		{ "GUI editor", editor_gui },
 		{ "Browser", browser},
 		{ "H. browser", heavy_browser},
 		{
@@ -545,6 +538,22 @@ globalkeys = awful.util.table.join(
 			end,
 			{description = " - Open heavy file manager.", group = "launcher"}
 		),
+		-- Editor.
+		awful.key(
+			{modkey, }, "i",
+			function()
+				awful.spawn(editor_cmd)
+			end,
+			{description = " - Open editor.", group = "launcher"}
+		),
+		-- Heavy editor.
+		awful.key(
+			{modkey, "Shift"}, "i",
+			function()
+				awful.spawn(editor_gui)
+			end,
+			{description = " - Open heavy editor.", group = "launcher"}
+		),
 		-- Music player.
 		awful.key(
 			{modkey, }, "m",
@@ -554,6 +563,7 @@ globalkeys = awful.util.table.join(
 			{description = " - Open music player.", group="launcher"}
 
 		),
+		-- Heavy music player.
 		awful.key(
 			{modkey, "Shift"}, "m",
 			function()

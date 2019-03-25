@@ -1,2 +1,53 @@
+# Path to scripts directory.
 export S=$HOME/code/scripts
-export XDG_CONFIG=$HOME/.config
+# Config files directory.
+export XDG_CONFIG_HOME=$HOME/.config
+
+# Default console editor.
+export EDITOR=$(which cat) # Not found any editor.
+for editor in nvim vim vi nano ex; do
+	if which $editor > /dev/null ; then
+		export EDITOR=$( which $editor )
+		break
+	fi
+done
+
+# Pagers.
+export PAGER=$(which more) # Not found any pager
+for pager in most less ; do
+	if which $pager > /dev/null ; then
+		export PAGER=$(which $pager)
+		break;
+	fi
+done
+export MANPAGER=$PAGER
+
+# Less colors
+export LESS_TERMCAP_md=$'\E[01;31m'
+#export LESS_TERMCAP_md=$(perl -e "print \"\\033[1;31m\"")
+#export LESS_TERMCAP_me=$(perl -e "print \"\\033[0m\"")
+export LESS_TERMCAP_me=$'\E[0m'
+	# Underlined
+#export LESS_TERMCAP_us=$(perl -e "print \"\\033[1;32m\";")
+#export LESS_TERMCAP_ue=(perl -e "print \"\033[0m\"; ")
+export LESS_TERMCAP_us=$'\E[01;32m'
+export LESS_TERMCAP_ue=$'\E[0m'
+	# Service info
+#export LESS_TERMCAP_so=$(perl -e "print \"\\033[1;33m\";")
+#export LESS_TERMCAP_se=$(perl -e "print \"\\033[0m\";")
+export LESS_TERMCAP_so=$'\E[01;33m'
+export LESS_TERMCAP_se=$'\E[0m'
+	# Blinking color
+#export LESS_TERMCAP_mb=$(perl -e "print \"\\033[1;32m\";")
+#export LESS_TERMCAP_me=$(perl -e "print \"\\033[0m\";")
+export LESS_TERMCAP_mb=$'\E[1;34m'
+export LESS_TERMCAP_me=$'\E[0m'
+
+# GUI/Visual editor.
+export VISUAL=$(which gedi) # Not found any.
+for visual in gvim notepadqq leafpad mousepad adie ; do
+	if which $visual > /dev/null ; then
+		export VISUAL=$(which $visual)
+		break;
+	fi
+done

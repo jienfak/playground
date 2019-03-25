@@ -39,7 +39,7 @@ xterm*boldMode:        on
 ! black
 ! #333333
 ! #555555
-*color0:      #333333
+*color0:      #000000
 *color8:      #555555
 !#555753
 ! Red.

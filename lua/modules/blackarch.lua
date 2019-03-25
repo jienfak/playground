@@ -1,10 +1,11 @@
 #!/usr/bin/lua
 local Module = {} ;
 
-local shell = "zsh"
-local pager = "less -R"
+local shell = os.getenv("SHELL")
+local pager = (os.getenv("PAGER") or "less")
+local manpager = os.getenv("MANPAGER")
 local terminal = "uxterm"
-local ba_script= os.getenv("HOME").."/code/scripts/sh/sh/blackarch/exec_util.sh"
+local ba_script= (os.getenv("S") or os.getenv("HOME").."/code/scripts").."/sh/sh/blackarch/exec_util.sh"
 Module.awesome = {}
 
 local mystring = require("mystring") ;
