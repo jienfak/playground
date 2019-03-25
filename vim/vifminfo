@@ -1,6 +1,10 @@
 # You can edit this file by hand, but it's recommended not to do that.
 
 # Marks:
+'a
+	/home/jien/audio/ardour/projects/overmuse/export
+	overmuse_session.wav
+1553449147
 'b
 	/home/jien/bin/
 	..
@@ -9,6 +13,10 @@
 	/home/jien/
 	..
 1553294641
+'s
+	/home/jien/audio/ardour/projects/overmuse/analysis
+	..
+1553449154
 
 # Bookmarks:
 
@@ -22,21 +30,219 @@ l2
 r2
 
 # Left window history (oldest to newest):
+d/home/jien/code/scripts/other
+	..
+0
+d/home/jien/code/scripts
+	..
+0
+d/home/jien/code
+	..
+0
+d/home/jien
+	Audio
+2
+d/home/jien/Audio
+	..
+0
+d/home/jien
+	Audio
+2
 d/home/jien/code/scripts/other/opt
+	..
+0
+d/home/jien/code/scripts/other
+	..
+0
+d/home/jien/code/scripts
+	cc
+3
+d/home/jien/code/scripts/cc
+	..
+0
+d/home/jien/code/scripts
+	php
+14
+d/home/jien/code/scripts/php
+	test
+1
+d/home/jien/code/scripts/php/test
+	oop
+2
+d/home/jien/code/scripts/php/test/oop
+	..
+0
+d/home/jien/code/scripts/php/test
+	oop
+2
+d/home/jien/code/scripts/php/test/oop
+	..
+0
+d/home/jien/code/scripts/php/test
+	..
+0
+d/home/jien/code/scripts/php
+	..
+0
+d/home/jien/code/scripts
+	..
+0
+d/home/jien/code
+	..
+0
+d/home/jien
+	audio
+6
+d/home/jien/audio
+	ardour
+1
+d/home/jien/audio/ardour
+	projects
+1
+d/home/jien/audio/ardour/projects
+	maybe_will_make
+3
+d/home/jien/audio/ardour/projects/maybe_will_make
+	overme
+21
+d/home/jien/audio/ardour/projects/maybe_will_make/overme
+	..
+0
+d/home/jien/audio/ardour/projects/maybe_will_make
+	..
+0
+d/home/jien/audio/ardour/projects
+	overmuse
+4
+d/home/jien/audio/ardour/projects/overmuse
+	export
+3
+d/home/jien/audio/ardour/projects/overmuse/export
+	..
+0
+d/home/jien/audio/ardour/projects/overmuse
+	export
+3
+d/home/jien/audio/ardour/projects/overmuse/export
+	..
+0
+d/home/jien/audio/ardour/projects/overmuse
+	export
+3
+d/home/jien/audio/ardour/projects/overmuse/export
+	..
+0
+d/home/jien/audio/ardour/projects/overmuse
+	export
+3
+d/home/jien/audio/ardour/projects/overmuse/export
+	..
+0
+d/home/jien/audio/ardour/projects/overmuse
+	export
+3
+d/home/jien/audio/ardour/projects/overmuse/export
+	..
+0
+d/home/jien/audio/ardour/projects/overmuse
+	export
+3
+d/home/jien/audio/ardour/projects/overmuse/export
+	overmuse_session.wav
+1
+d/home/jien/audio/ardour/projects/overmuse
+	export
+3
+d/home/jien/audio/ardour/projects/overmuse/export
+	..
+0
+d/home/jien/audio/ardour/projects/overmuse
+	analysis
+1
+d/home/jien/audio/ardour/projects/overmuse/analysis
+	..
+0
+d/home/jien/audio/ardour/projects/overmuse
+	analysis
+1
+d/home/jien/audio/ardour/projects/overmuse/analysis
+	..
+0
+d/home/jien/audio/ardour/projects/overmuse/export
 	..
 0
 d
 
 # Right window history (oldest to newest):
 D/home/jien/code/scripts/other/opt
-	jien_locale
-4
+	..
+0
+D/home/jien/code/scripts/other
+	opt
+19
+D/home/jien/code/scripts/other/opt
+	..
+0
+D/home/jien/code/scripts/other
+	crackmes
+7
+D/home/jien/code/scripts
+	other
+13
+D/home/jien/code
+	scripts
+2
+D/home/jien/code/scripts
+	other
+13
+D/home/jien/code
+	scripts
+2
+D/home/jien/code/scripts
+	other
+13
+D/home/jien/code/scripts/other
+	lua_embedding
+14
+D/home/jien/code/scripts
+	other
+13
+D/home/jien/code
+	scripts
+2
+D/home/jien/code/scripts
+	other
+13
+D/home/jien/code/scripts/other
+	lua_embedding
+14
+D/home/jien/code/scripts/other/lua_embedding
+	example1
+1
+D/home/jien/code/scripts/other
+	lua_embedding
+14
+D/home/jien/code/scripts
+	php
+14
 D
 
 # Command line history (oldest to newest):
+:!ls
+:tabnew
+:help
+:acpi
+:!acpi
 :q
 
 # Search history (oldest to newest):
+/java
+/cc
+/old
+/aud
+/ar
+/over
+/overmuse
 
 # Prompt history (oldest to newest):
 

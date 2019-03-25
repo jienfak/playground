@@ -6,7 +6,7 @@ highlight Socket        cterm=bold                 ctermfg=magenta   ctermbg=bla
 highlight Device        cterm=bold                 ctermfg=red       ctermbg=black
 highlight Fifo          cterm=bold                 ctermfg=cyan      ctermbg=black
 highlight Executable    cterm=bold                 ctermfg=green     ctermbg=black
-highlight Selected      cterm=bold                 ctermfg=magenta   ctermbg=red
+highlight Selected      cterm=bold                 ctermfg=black   ctermbg=red
 highlight CurrLine      cterm=bold                 ctermfg=black     ctermbg=yellow
 highlight TopLine       cterm=none                 ctermfg=black     ctermbg=white
 highlight TopLineSel    cterm=bold                 ctermfg=black     ctermbg=none
