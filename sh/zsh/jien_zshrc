@@ -68,6 +68,7 @@ else
 	fi
 fi
 
+# Autosuggestion plugin.
 if [ -f $plugin_dir1/zsh-autosuggestions/zsh-autosuggestions.zsh ] ; then
 	source $plugin_dir1/zsh-autosuggestions/zsh-autosuggestions.zsh
 else
@@ -75,6 +76,8 @@ else
 		source $plugin_dir2/zsh-autosuggestions/zsh-autosuggesions.zsh
 	fi
 fi
+ZSH_AUTOSUGGEST_STRATEGY="history"
+bindkey '^ ' autosuggest-accept
 
 #vi_mode_plugin="~/code/scripts/sh/zsh/plugins/vi-mode.plugin.zsh"
 #if [ -f $vi_mode_plugin ] ; then
