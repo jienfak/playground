@@ -4,8 +4,10 @@ autoload -Uz compinit promptinit
 compinit
 promptinit
 zstyle ':completion:*' menu select
+#zstyle ':completion:*:manuals'   separate-sections true
+#zstyle ':completion:*:manuals.*' insert-sections true
+#zstyle ':completion:*:man:*'     menu yes select
 setopt correct
-
 
 shpwd() {
   echo ${${:-/${(j:/:)${(M)${(s:/:)${(D)PWD:h}}#(|.)[^.]}}/${PWD:t}}//\/~/\~}
@@ -94,7 +96,7 @@ alias "ls"="ls --color=always"
 alias "la"="ls -al --color=always"
 alias "ll"="ls --color -l"
 alias "sctl"="sudo systemctl"
-alias "manpager"="$MANPAGER -R"
+alias "manpager"="$MANPAGER"
 
 	alias "ev"="eval" # --description "Evaluate text."
 	alias "py"=$(which "python") # --description "Python interpreter."
