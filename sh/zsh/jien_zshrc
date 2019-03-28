@@ -123,5 +123,9 @@ alias "manpager"="$MANPAGER"
 # Functions.
 source $S/sh/sh/modules/helpa.sh
 
+which kbdrate > /dev/null 2>&1
+if test $status = 0 ; then
+	kbdrate -d 300 -r 60
+fi
 echo  FAK::Freedom:Anarchy:Knowledge::FAK
 echo 'FAKYOU... why are you using zsh? Fish is better.'
