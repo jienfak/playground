@@ -142,7 +142,7 @@ class IAnimatedObject : IMapObject{
 		virtual void Animate(const s32 frame_delta_time){}
 		// Objects with animation interface.
 		virtual void onFrame(const s32 frame_delta_time){
-			Animate();
+			this->Animate(frame_delta_time);
 		}
 		
 		// This function gets to draw animation.
