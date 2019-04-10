@@ -475,6 +475,19 @@ globalkeys = awful.util.table.join(
 			end,
 			{description = "- Switch to dvorak.", group = "keyboard"}
 		),
+		awful.key(
+			{modkey, "Shift"}, "u",
+			function()
+				if dvorak then
+					awful.util.spawn_with_shell("setxkbmap -layout "..xkb_layout.." -option grp:alt_shift_toggle")
+					dvorak = false
+				else
+					awful.util.spawn_with_shell("setxkbmap -layout "..xkb_layout.." -variant dvorak, -option grp:alt_shift_toggle")
+					dvorak = true
+				end
+			end,
+			{description = "- Switch to dvorak.", group = "keyboard"}
+		),
 		--[[
 		awful.key(
 			{modkey, "Alt"}, "h",
