@@ -1,9 +1,24 @@
 # Maintainer: Jien Fak(jienfak@protonmail.com)
-pkgname =fakgen
+pkgname=fakgen
 pkgver=1.0
 pkgrel=1
 pkgdesc="Program for generating individual password lists by keywords."
 url="http://www.archlinux.org"
 arch=('any')
 license=('GPLv3')
-depends=('')
+#depends=('')
+#makedepends=('')
+#optdepends=('')
+provides=('fakgen')
+source=("git://github.com/jienfak/fakgen.git")
+sha256sums=('SKIP')
+
+build() {
+	cd "${pkgname}"
+	make
+}
+
+package() {
+	cd "${pkgname}"
+	make install
+}
