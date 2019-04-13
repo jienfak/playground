@@ -41,7 +41,11 @@ proc delIp {file } {
 }
 
 # Main.
-set fd [open $argv]
+if { [file exists [lindex $::argv 0] ] == 1} {
+	set fd [open [lindex $::argv 0] ]
+} else {
+	exit 1
+}
 
 # Read and ping while isn't end of file.
 while { ![eof $fd] } {
