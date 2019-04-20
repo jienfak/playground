@@ -27,7 +27,6 @@ set listchars=tab:\|.,trail:.
 " Spell checking.
 "set spell
 match NonText /\t/
-nmap \nl :if &cursorline==1<enter>set nocursorline<enter>else<enter>set cursorline<enter>endif<enter><enter>
 
 " Folding.
 set foldenable
@@ -51,9 +50,19 @@ syntax on
 " :syn match Function /\(new\s\+\)\@<=\w\+/
 " :syn match Operator /\(+\)\|\(-\)/
 
-
-" Nerd-Tree.
-nmap \nt :NERDTree . <enter>
+" Maps.
+	" Nerd-Tree.
+	nmap \nt :NERDTree . <enter>
+	" Disable highlight.
+	nmap \nl :if &cursorline==1<enter>set nocursorline<enter>else<enter>set cursorline<enter>endif<enter><enter>
+	nmap \nh :nohlsearch<enter>
+	" Better than ESC.
+	imap <M-a> <Esc>
+	" Emacs-like keys.
+	imap <C-b> <Left>
+	imap <C-f> <Right>
+	imap <C-n> <Down>
+	imap <C-p> <Up>
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
@@ -65,3 +74,14 @@ autocmd BufReadPost *
 
 " Encoding.
 set encoding=utf-8
+"
+"function s:myFoldText()
+"	let nblines = v:foldend - v:foldstart + 1
+"	let w = winwidth(0) - &foldcolumn - (&number ? 8:0)
+"	let line = getline(v:foldstart)
+"	let comment = "Comment" " substitute(line, '/\*\|\*\|{{{\d=', '', 'g')
+"	let expansion_string = repeat("!", w - strwidth(nblines.comment.'"'))
+"	let txt  = "'" " . comment . expansion_string . nblines
+"	return txt
+"endfunction
+"set foldtext=s:myFoldText()
