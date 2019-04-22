@@ -1,0 +1,30 @@
+/* Add a black background te the top navigation. */
+.topnav {
+	background-color : #333 ;
+	overflow         : hidden ;
+}
+/* Style the links inside the navigation bar. */
+.topnav a{
+	float           : left ;
+	display         : block ;
+	color           : #F2F2F2 ;
+	text-align      : center ;
+	padding         : 14px 16px ;
+	text-decoration : none ;
+	font-size       : 17px ;
+}
+
+.topnav a:hover {
+	background-color : #DDD  ;
+	color            : black ;
+}
+
+/* Add an active class te hightlight the current page. */
+.active {
+	background-color : #4CAF50 ;
+	color            : white   ;
+}
+
+.topnav .icon {
+	display : none ;
+}

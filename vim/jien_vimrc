@@ -58,6 +58,7 @@ syntax on
 	nmap \nh :nohlsearch<enter>
 	" Better than ESC.
 	imap <M-a> <Esc>
+	" nmap <M-a> <Esc>
 	" Emacs-like keys.
 	imap <C-b> <Left>
 	imap <C-f> <Right>

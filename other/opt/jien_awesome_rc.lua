@@ -419,12 +419,14 @@ root.buttons(
 globalkeys = awful.util.table.join(
 		awful.key({ modkey, }, "s",hotkeys_popup.show_help,
 				{description=" - Show help.", group="awesome"}),
+		--[[
 		awful.key({ modkey, }, "Left", awful.tag.viewprev,
 				{description = " - View previous.", group = "tag"}),
 		awful.key({ modkey, }, "Right",awful.tag.viewnext,
 				{description = " - View next.", group = "tag"}),
 		awful.key({ modkey, }, "Escape", awful.tag.history.restore,
 				{description = " - Go back.", group = "tag"}),
+		--]]
 		awful.key(
 			{ modkey, }, "f",
 			function()
@@ -636,6 +638,26 @@ globalkeys = awful.util.table.join(
 			{description = " - Move mouse right.", group="Moves"}
 		),
 		-- End 'mouse without mouse'.
+		--]]
+		--[-[
+		awful.key(
+			{modkey, }, "[",
+			function()
+				awful.util.spawn_with_shell("xdotool keyup Super")
+				awful.util.spawn_with_shell("xdotool key Left")
+				awful.util.spawn_with_shell("xdotool keydown Super")
+			end,
+			{description=" - Left button on keyboard.", group="move"}
+			
+		),
+		awful.key(
+			{modkey, }, "]",
+			function()
+				awful.util.spawn_with_shell("xdotool keyup Super")
+				awful.util.spawn_with_shell("xdotool key Right")
+			end,
+			{description = " - Right button on keyboard.", group="move"}
+		),
 		--]]
 
 		awful.key(

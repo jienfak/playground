@@ -37,6 +37,11 @@ entry:
 	; Load into CS:EIP entry point to protected mode.
 o32 jmp 00001000b:pm_entry
 
+func_wait:
+	mov ecx, 500
+	loop func_wait
+	ret
+
 ; 32-bit addressation.
 use32
 pm_entry:
@@ -49,31 +54,52 @@ pm_entry:
 	mov es, ax
 
 	mov edi, 0xB8000       ; Start of video-memory.
-	mov esi, msg           ; Message for outputting.
+	mov esi, chr           ; Message for outputting.
 	cld
 
+	mov ah, 0
 .loop
 	; Outputting cycle.
 	;
 
-	lodsb                  ; Read next char.
+	; Read next char.
+	;lodsb
 
 	; Stop if meet '\0'.
-	test al, al		
-	jz .exit
+	;test al, al
+	;jz .exit
 
 	; Else we put current char
 	; and his attribute to the video-memory.
+
+	; Divide video memory and get residual.
+	mov eax, edi
+	sub eax, 0xB7FFF
+	mov bl, 24
+	div bl
+
+
+	cmp dx, 0
+	jnz .not_zero
+	mov edi, 0xB8000
+	jmp .loop
+.not_zero
+	inc byte [chr]
+	mov al, [chr]
 	stosb
+
 	mov al, 6
 	stosb
 
+	;call func_wait
 	jmp .loop
 .exit
 
 	; Infinite cycle.
 	jmp $
 
+chr:
+	db 0
 msg:
 	db 'Hello, World', 0
 

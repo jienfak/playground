@@ -69,7 +69,7 @@ int main(int argc, char **argv){
 		if( optind < argc ){
 			printf("Non-option ARGV-elements: ");
 			while( optind < argc ){
-				printf("%s ", argv[optind]);
+				printf("%s ", argv[optind++]);
 			}
 			putchar('\n');
 		}
