@@ -39,7 +39,7 @@ fi
 if ask "Should I link your 'awesome' and configs?(rc.lua etc)[yn]:"; then
 	mkdir $XDG_CONFIG_HOME/awesome 2>$nil
 	backup $XDG_CONFIG_HOME/awesome/rc.lua
-	ln -s $HOME/code/S/other/opt/jien_awesome_rc.lua $XDG_CONFIG_HOME/awesome/rc.lua
+	ln -s $S/other/opt/jien_awesome_rc.lua $XDG_CONFIG_HOME/awesome/rc.lua
 fi
 
 # Profile.
