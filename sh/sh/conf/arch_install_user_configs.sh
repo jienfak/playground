@@ -100,6 +100,12 @@ if ask "Should I link your uzbl config files?(config etc)[yn]:"; then
 	ln -s  $S/other/opt/jien_uzbl_config $XDG_CONFIG_HOME/uzbl/config
 fi
 
+if ask "Should I link you luakit config files?(userconf.lua etc)[yn]:"; then
+	mkdir $XDG_CONFIG_HOME/luakit 2> $nil
+	backup $XDG_CONFIG_HOME/luakit/userconf.lua
+	ln -s $S/other/opt/jien_luakit_userconf.lua $XDG_CONFIG_HOME/luakit/userconf.lua
+fi
+
 # Tmux.
 if ask "Should I link your tmux config files?(~/.tmux.conf)[yn]:"; then
 	backup $HOME/.tmux.conf

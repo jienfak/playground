@@ -81,8 +81,8 @@ pm_entry:
 
 	cmp dx, 0
 	jnz .not_zero
-	mov edi, 0xB8000
-	jmp .loop
+	;mov edi, 0xB8000
+	jmp .exit
 .not_zero
 	inc byte [chr]
 	mov al, [chr]

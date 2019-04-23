@@ -23,6 +23,7 @@ local music_player = terminal.." -e cmus"
 local heavy_music_player = "audacious"
 local max_menu_items = 65
 local dvorak = false
+local dvorak_l = false
 
 -- My library.
 package.path = package.path..";"..os.getenv("HOME").."/code/scripts/lua/modules/?.lua" ;
@@ -470,12 +471,29 @@ globalkeys = awful.util.table.join(
 				if dvorak then
 					awful.util.spawn_with_shell("setxkbmap -layout "..xkb_layout.." -option grp:alt_shift_toggle")
 					dvorak = false
+					dvorak_l = false
 				else
 					awful.util.spawn_with_shell("setxkbmap -layout "..xkb_layout.." -variant dvorak, -option grp:alt_shift_toggle")
 					dvorak = true
+					dvorak_l = false
 				end
 			end,
 			{description = "- Switch to dvorak.", group = "keyboard"}
+		),
+		-- Dvorak-l.
+		awful.key(
+			{modkey, "Shift"}, "y",
+			function()
+				if dvorak_l then
+					awful.util.spawn_with_shell("setxkbmap -layout "..xkb_layout.." -option grp:alt_shift_toggle")
+					dvorak_l = false
+					dvorak   = false
+				else
+					awful.util.spawn_with_shell("setxkbmap -layout "..xkb_layout.." -variant dvorak-l, -option grp:alt_shift_toggle")
+					dvorak_l = true
+					dvorak   = false
+				end
+			end
 		),
 		awful.key(
 			{modkey, "Shift"}, "u",
