@@ -1,0 +1,9 @@
+[Added Associations]
+[Removed Associations]
+[Defalut Applications]
+image/jpeg=vimiv.desktop
+video/H264=vlc.desktop
+text/plain=gvim.desktop
+text/x-csrc=gvim.desktop
+image/x-xcf=gimp.desktop
+audio/mpeg=audacious.desktop

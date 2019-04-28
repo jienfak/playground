@@ -51,3 +51,32 @@ for visual in gvim notepadqq leafpad mousepad adie ; do
 		break;
 	fi
 done
+
+# Shell.
+export SHELL=$(which sh) # Not found any.
+for shell in zsh bash dash ; do
+	if which $shell > /dev/null ; then
+		export SHELL=$(which $shell)
+		break;
+	fi
+done
+
+# Browser.
+if [ -n $DISPLAY ] ; then
+	# No display.
+	export BROWSER=$(which lynx)
+	for browser in links2 links ; do
+		if which $browser > /dev/null ; then
+			export BROWSER=$(which $browser)
+			break;
+		fi
+	done
+else
+	# Have X.
+	for browser in luakit chromium firefox ; do
+		if which $browser > /dev/null ; then
+			export BROWSER=$(which $browser)
+			break;
+		fi
+	done
+fi

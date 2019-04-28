@@ -28,8 +28,12 @@ fi
 if ask "Should I link you X config files?(Xmodmap, Xresources etc)[yn]:"; then
 	backup $HOME/.Xmodmap
 	backup $HOME/.Xresources
+	backup $XDG_CONFIG_HOME/awesome-mimeapps.list
+	backup $XDG_CONFIG_HOME/mimeapps.list
 	ln -s $S/other/opt/jien_Xmodmap          $HOME/.Xmodmap
 	ln -s $S/other/opt/jien_Xresources       $HOME/.Xresources
+	ln -s $S/other/opt/jien_awesome-mimeapps.list    $XDG_CONFIG_HOME/awesome-mimeapps.list
+	ln -s $S/other/opt/jien_awesome-mimeapps.list    $XDG_CONFIG_HOME/mimeapps.list
 	# Xinit.
 	backup $HOME/.xinitrc
 	ln -s $S/other/opt/jien_xinitrc          $HOME/.xinitrc
@@ -90,9 +94,12 @@ if ask "Should I link your editor files?(vimrc, init.vim(neovim etc)[yn]:"; then
 fi
 
 # Vifm.
-if ask "Should I link you vifm file manager files?(~/.vifm)[yn]"; then
+if ask "Should I link you vifm(lf) file manager files?(~/.vifm)[yn]"; then
 	backup $HOME/.vifm
+	mkdir -p $XDG_CONFIG_HOME/lf
+	backup $XDG_CONFIG_HOME/lf/lfrc
 	ln -s $S/vim $HOME/.vifm
+	ln -s $S/other/opt/jien_lfrc $XDG_CONFIG_HOME/lf/lfrc
 fi
 
 if ask "Should I link your uzbl config files?(config etc)[yn]:"; then

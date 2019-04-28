@@ -60,7 +60,7 @@ syntax on
 	imap <M-a> <Esc>
 	" nmap <M-a> <Esc>
 	" Emacs-like keys.
-	" imap <C-b> <Left>
+	imap <C-b> <Left>
 	" imap <C-f> <Right>
 	" imap <C-n> <Down>
 	" imap <C-p> <Up>
