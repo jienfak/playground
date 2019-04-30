@@ -1,4 +1,4 @@
--- Vars.
+-- User vars.
 local keyboard_repeat_delay = 300
 local keyaboard_repeat_rate = 57
 local xkb_layout = "us,ru"
@@ -7,7 +7,6 @@ local xresources = "~/.Xresources"
 local config_file = (os.getenv("XDG_CONFIG_HOME") or os.getenv("HOME").."/.config").."/awesome/rc.lua"
 local shell = os.getenv("SHELL")-- or "/usr/bin/zsh"
 local add_blackarch_menu = true
--- This is used later as the default terminal and editor to run.
 local sys_stat_program = "htop"
 local terminal = os.getenv("TERM") or "uxterm"
 local second_terminal = "urxvt"
@@ -20,8 +19,11 @@ local editor = os.getenv("EDITOR") or "vim"
 local editor_cmd = terminal .. " -e " .. editor
 local editor_gui = os.getenv("VISUAL") or "gvim"
 local music_player = terminal.." -e cmus"
-local heavy_music_player = "audacious"
+local heavy_music_player = "vlc"
+local video_player = "vlc"
 local max_menu_items = 65
+
+-- Status vars.
 local dvorak = false
 local dvorak_l = false
 
@@ -771,7 +773,15 @@ clientkeys = awful.util.table.join(
 			c.fullscreen = not c.fullscreen
 			c:raise()
 		end,
-		{description = " - Toggle fullscreen.", group = "client"}),
+		{description = " - Toggle fullscreen.", group = "client"}
+	),
+	awful.key(
+		{ modkey, "Shift"}, "v",
+		function()
+			awful.util.spawn_with_shell(video_player)
+		end,
+		{description = " - Launch video player.", group="launcher"}
+	),
 	awful.key({ modkey, "Shift"}, "c",
 		function(c)
 			c:kill()
