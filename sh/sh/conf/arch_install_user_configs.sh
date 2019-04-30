@@ -8,6 +8,21 @@ backup(){
 	mv $1 $1.backup 2>$nil
 }
 
+
+
+# Profile.
+if ask "Should I link you profile files(~/.bash_profile, ~/.zprofile, ~/.profile etc)?[yn]:"; then
+	backup $HOME/.profile
+	ln -s $S/other/opt/jien_profile $HOME/.profile
+
+	backup $HOME/.bash_profile
+	ln -s $S/other/opt/jien_profile $HOME/.bash_profile
+
+	backup $HOME/.zprofile
+	ln -s $S/other/opt/jien_profile $HOME/.zprofile
+	source $HOME/.profile
+fi
+
 if ask "Should I created directories in '\$HOME'\
  and change 'user-dirs.dirs' for my?[yn]:"; then
 	mkdir $HOME/video $HOME/docs $HOME/temps $HOME/shared \
@@ -46,17 +61,6 @@ if ask "Should I link your 'awesome' and configs?(rc.lua etc)[yn]:"; then
 	ln -s $S/other/opt/jien_awesome_rc.lua $XDG_CONFIG_HOME/awesome/rc.lua
 fi
 
-# Profile.
-if ask "Should I link you profile files(~/.bash_profile, ~/.zprofile, ~/.profile etc)?[yn]:"; then
-	backup $HOME/.profile
-	ln -s $S/other/opt/jien_profile $HOME/.profile
-
-	backup $HOME/.bash_profile
-	ln -s $S/other/opt/jien_profile $HOME/.bash_profile
-
-	backup $HOME/.zprofile
-	ln -s $S/other/opt/jien_profile $HOME/.zprofile
-fi
 
 if ask "Should I link your mostrc file?(~/.mostc)[yn]"; then
 	backup $HOME/.mostrc
