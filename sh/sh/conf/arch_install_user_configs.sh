@@ -106,11 +106,20 @@ if ask "Should I link you vifm(lf) file manager files?(~/.vifm)[yn]"; then
 	ln -s $S/other/opt/jien_lfrc $XDG_CONFIG_HOME/lf/lfrc
 fi
 
+# Xfe.
+if ask "Should I create your xfe rc(s)?[yn]"; then
+	mkdir -p $XDG_CONFIG_HOME
+	backup $XDG_CONFIG_HOME/xfe/xferc
+	ln -s $S/other/opt/jien_xferc $XDG_CONFIG_HOME/xfe/xferc
+fi
+
+# Uzbl.
 if ask "Should I link your uzbl config files?(config etc)[yn]:"; then
 	backup $XDG_CONFIG_HOME/uzbl/config
 	ln -s  $S/other/opt/jien_uzbl_config $XDG_CONFIG_HOME/uzbl/config
 fi
 
+# Luakit.
 if ask "Should I link you luakit config files?(userconf.lua etc)[yn]:"; then
 	mkdir $XDG_CONFIG_HOME/luakit 2> $nil
 	backup $XDG_CONFIG_HOME/luakit/userconf.lua
