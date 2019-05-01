@@ -1,8 +1,8 @@
-# Template for simple C programs.
-TARGET	= a.out
-PREFIX	= /usr/local/bin
-SRCS	= $(wildcard ./src/*.c)
-OBJS	= $(SRCS:.c=.o)
+# Simple local sniffer.
+TARGET  = a.out
+PREFIX  = /usr/local/bin
+SRCS    = $(wildcard ./src/*.c) $(S)/c/modules/dbg/hexdump/hexdump.c
+OBJS    = $(SRCS:.c=.o)
 CFLAGS  =
 
 .PHONY: all clean install uninstall

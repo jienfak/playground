@@ -1,3 +1,5 @@
+#define __MAIN_FUNC
+
 #include <stdio.h>        /* For standart things. */
 #include <stdlib.h>       /* malloc */
 #include <string.h>       /* memset */
@@ -7,6 +9,7 @@
 #include <sys/socket.h>          /* IP  header declaration. */
 #include <arpa/inet.h>           /*                         */
 #include <unistd.h>
+#include <dbg/hexdump.h>         /* hexdump. (My module)    */
 
 #define ICMP_PROTO 1
 #define IGMP_PROTO 2
@@ -25,7 +28,6 @@ void printIpHeader(unsigned char *, int);
 void printTcpPacket(unsigned char *, int);
 void printUdpPacket(unsigned char *, int);
 void printIcmpPacket(unsigned char *, int);
-void printData(unsigned char *, int);
 
 int sock_raw;
 FILE *logfile;
@@ -129,7 +131,7 @@ void printTcpPacket(unsigned char * buf, int size){
 
 	struct tcphdr *tcph = (struct tcphdr *)(buf + iphdrlen) ;
 
-	fprintf(logfile, "\n\n**************TCP packet**************\n");
+	fprintf(logfile, "\n\nTCP packet:\n");
 	printIpHeader(buf, size);
 	fprintf(logfile, "\n");
 	fprintf(logfile, "    |-Source port          : %u\n", ntohs(tcph->source));
@@ -147,15 +149,14 @@ void printTcpPacket(unsigned char * buf, int size){
 	fprintf(logfile, "    |-Urgent pointer       : %d\n", tcph->urg_ptr);
 	fprintf(logfile, "\n");
 	fprintf(logfile, "              DATA DUMP             ");
-	fprintf(logfile, "IP header");
-	printData(buf, iphdrlen);
+	fprintf(logfile, "IP header:");
+	fhexdump(logfile, buf, iphdrlen);
 
-	fprintf(logfile, "TCP header");
-	printData(buf+iphdrlen, tcph->doff*4 );
+	fprintf(logfile, "TCP header:");
+	fhexdump(logfile, buf+iphdrlen, tcph->doff*4 );
 
-	fprintf(logfile, "\nData payload");
-	printData(buf + iphdrlen + tcph->doff*4, (size - tcph->doff*4 - iph->ihl*4 ));
-	fprintf(logfile, "\n################################\n");
+	fprintf(logfile, "\nData payload:");
+	fhexdump(logfile, buf + iphdrlen + tcph->doff*4, (size - tcph->doff*4 - iph->ihl*4 ));
 }
 
 void printUdpPacket(unsigned char *buf, int size){
@@ -174,15 +175,14 @@ void printUdpPacket(unsigned char *buf, int size){
 	fprintf(logfile, "    |-UDP checksum      : %d\n", ntohs(udph->check));
 
 	fprintf(logfile, "\n");
-	fprintf(logfile, "IP header\n");
-	printData(buf, iphdrlen);
+	fprintf(logfile, "IP header:\n");
+	fhexdump(logfile, buf, iphdrlen);
 
 	fprintf(logfile, "UDP header:\n");
-	printData(buf+iphdrlen, sizeof(udph));
+	fhexdump(logfile, buf+iphdrlen, sizeof(udph));
 
-	fprintf(logfile, "\nData payload\n");
-	printData(buf + iphdrlen + sizeof(udph), (size - sizeof(udph) - iph->ihl*4 ));
-	fprintf(logfile, "##############################################################");
+	fprintf(logfile, "\nData payload:\n");
+	fhexdump(logfile, buf + iphdrlen + sizeof(udph), (size - sizeof(udph) - iph->ihl*4 ));
 }
 
 void printIcmpPacket(unsigned char *buf, int size){
@@ -193,42 +193,20 @@ void printIcmpPacket(unsigned char *buf, int size){
 
 	struct icmphdr *icmph = (struct icmphdr *)(buf + iphdrlen) ;
 
-	fprintf(logfile, "\n\n******************* ICMP packet **************************\n");
+	fprintf(logfile, "\n\nICMP packet:\n");
 	printIpHeader(buf, size);
 
-	fprintf(logfile, "ICMP header");
+	fprintf(logfile, "ICMP header:");
 	fprintf(logfile, "    |-Code          : %d\n", (unsigned int)icmph->code);
 	fprintf(logfile, "    |-Checksum      : %d\n", ntohs(icmph->checksum));
 	/*fprintf(logfile, "    |-ID            : %d\n", ntohs(icmph->id)); */
 	fprintf(logfile, "\n");
 	fprintf(logfile, "IP header:\n");
-	printData(buf, iphdrlen);
+	fhexdump(logfile, buf, iphdrlen);
 	fprintf(logfile, "UDP header:\n");
-	printData(buf + iphdrlen, sizeof(icmph));
+	fhexdump(logfile, buf + iphdrlen, sizeof(icmph));
 	fprintf(logfile, "Data payload:\n");
-	printData(buf + iphdrlen + sizeof(icmph), (size - sizeof(icmph) - iph->ihl*4 ));
+	fhexdump(logfile, buf + iphdrlen + sizeof(icmph), (size - sizeof(icmph) - iph->ihl*4 ));
 	fprintf(logfile, "\n###############################333333####################");
 }
 
-
-void printData(unsigned char *data, int size){
-	printdbg("\nIn 'printData'\n");
-	fprintf(logfile, "\n");
-	for( int i=0 ; i<size ; ++i){ /* Hex. */
-		int ibuf;
-		for( int j=i ; j<i+16 && j<size ; ++j ){
-			fprintf(logfile, "%2x ", data[j]);
-			ibuf=j;
-		}
-		for( int j=i ; j<i+16 && j<size ; ++j ){/* Chars. */
-			if( isprint(data[j])){
-				fprintf(logfile, "%c", data[j]);
-			}else{
-				fprintf(logfile, ".");
-			}
-		}
-
-		i = ibuf ;
-		fprintf(logfile, "\n");
-	}
-}

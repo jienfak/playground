@@ -80,3 +80,6 @@ else
 		fi
 	done
 fi
+
+# GCC.
+export C_INCLUDE_PATH="$S/c/modules/"
