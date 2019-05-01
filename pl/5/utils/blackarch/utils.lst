@@ -69,6 +69,7 @@ apt2  automation
 aquatone  recon
 arachni  webapp
 aranea  spoof
+archivebox  misc
 arduino  hardware
 argon2  crypto
 argus  networking
@@ -416,6 +417,7 @@ dirbuster-ng  webapp
 directorytraversalscan  windows
 dirhunt  webapp
 dirscanner  scanner
+dirscraper  webapp
 dirsearch  webapp
 disitool  forensic
 dislocker  crypto
@@ -423,7 +425,7 @@ dissector  binary
 distorm  disassembler
 dizzy  fuzzer
 dkmc  exploitation
-dmg2img  misc
+dmg2img  forensic
 dmitry  scanner
 dnmap  scanner
 dns-parallel-prober  recon
@@ -493,6 +495,7 @@ dumpusers  windows
 dumpzilla  forensic
 dutas  binary
 dvcs-ripper  scanner
+dwarf  binary
 eapeak  wireless
 eaphammer  wireless
 eapmd5pass  cracker
@@ -584,6 +587,7 @@ fimap  exploitation
 find-dns  scanner
 findmyhash  crypto
 findmyiphone  mobile
+findomain  scanner
 findsploit  automation
 firecat  networking
 firefox-security-toolkit  misc
@@ -1378,11 +1382,13 @@ powerfuzzer  fuzzer
 powerops  windows
 powersploit  exploitation
 powerstager  binary
+pown  webapp
 ppee  windows
 ppscan  scanner
 pr0cks  proxy
 prads  scanner
 praeda  scanner
+preeny  exploitation
 pret  exploitation
 princeprocessor  misc
 procdump  binary
@@ -1420,6 +1426,7 @@ pwdump  windows
 pwnat  networking
 pwndbg  debugger
 pwned  recon
+pwnedornot  recon
 pwnloris  dos
 pwntools  disassembler
 pybozocrack  cracker
@@ -1440,17 +1447,25 @@ pytacle  sniffer
 pytbull  scanner
 pythem  scanner
 python-capstone  reversing
+python-frida  reversing
 python-ivre  recon
 python-jsbeautifier  reversing
+python-minidump  windows
+python-minikerberos  windows
 python-python-cymruwhois  networking
+python-rekall  forensic
 python-shodan  recon
 python-trackerjacker  wireless
 python-uncompyle6  decompiler
 python-utidylib  misc
 python-yara-rednaga 
 python2-capstone  reversing
+python2-frida  reversing
 python2-ivre  recon
 python2-jsbeautifier  reversing
+python2-minidump  windows
+python2-minikerberos  windows
+python2-rekall  forensic
 python2-shodan  recon
 python2-yara  malware
 qark  mobile
@@ -1492,6 +1507,7 @@ regeorg  automation
 reglookup  forensic
 regreport  windows
 regview  windows
+rekall  forensic
 relay-scanner  scanner
 remot3d  webapp
 replayproxy  forensic
@@ -1726,7 +1742,7 @@ spfmap  recon
 spiderfoot  recon
 spiderpig-pdffuzzer  fuzzer
 spiga  webapp
-spike  fuzzer
+spike-fuzzer  fuzzer
 spike-proxy  webapp
 spiped  networking
 spipscan  webapp
@@ -1783,6 +1799,7 @@ stegdetect  stego
 steghide  anti-forensic
 stegolego  stego
 stegosip  tunnel
+stegoveritas  stego
 stegsolve  stego
 stenographer  sniffer
 stepic  stego
@@ -2011,7 +2028,9 @@ waybackpack  webapp
 wcc  binary
 wce  windows
 web-soul  webapp
+web2ldap  misc
 webacoo  backdoor
+webanalyze  webapp
 webborer  webapp
 webenum  scanner
 webexploitationtool  exploitation
