@@ -19,22 +19,22 @@ PARSING_MODE = 1
 Found_any_opened_port = False
 
 def isPortOpened(host, port):
-    scan = False
-    while not scan:
-        try:
-            scan = socket.socket()
-        except OSError :
-            # Can be opened to many file descriptors.
-            continue
-    # Time to answer us on needed port.
-    scan.settimeout(0.1)
-    try:
-        scan.connect( (host, port) )
-        # If could to connect.
-        return True
-    except socket.error :
-        # Could not connect.
-        return False
+	scan = False
+	while not scan:
+		try:
+			scan = socket.socket()
+		except OSError :
+			# Can be opened to many file descriptors.
+			continue
+	# Time to answer us on needed port.
+	scan.settimeout(0.1)
+	try:
+		scan.connect( (host, port) )
+		# If could to connect.
+		return True
+	except socket.error :
+		# Could not connect.
+		return False
 
 def printScannedPort(host, port, mode):
 	# Getting port status.
@@ -58,7 +58,7 @@ def printScannedPort(host, port, mode):
 	else : raise ValueError("Not any right mode choosed.")
 
 	
-
+	
 def makeParser() :
 	arg_parser = argparse.ArgumentParser (description=
 	"Scans ports you choosed."

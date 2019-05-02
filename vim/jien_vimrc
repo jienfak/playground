@@ -7,14 +7,28 @@ if( has('mouse') )
   set mouse=a
 endif
 
-" Vars.
-
+" Set.
 set nowrap
 set number
+"set cindent
+set autoindent
 set smartindent
-"set noexpandtab
+
+"set smarttab
+
+" Fuck the spaces.
+
+" Especially in the Python...
+" 'ftplugin'(For neovim)
+let g:python_recommended_style=0
+
+imap <S-Tab> <C-V><Tab>
+set noexpandtab
 set tabstop=4
 set shiftwidth=4
+set softtabstop=4
+"imap <C-Return> <CR><CR><C-o>k<Tab>
+
 set showcmd
 set showmatch
 set ignorecase
@@ -23,7 +37,7 @@ set hlsearch
 " set term=ansi
 " List.
 set list
-set listchars=tab:\|.,trail:.
+set listchars=tab:\|\.,trail:.
 " Spell checking.
 "set spell
 match NonText /\t/
@@ -56,6 +70,7 @@ syntax on
 	" Disable highlight.
 	nmap \nl :if &cursorline==1<enter>set nocursorline<enter>else<enter>set cursorline<enter>endif<enter><enter>
 	nmap \nh :nohlsearch<enter>
+	nmap <Return> o<Esc>
 	" Better than ESC.
 	imap <M-a> <Esc>
 	" nmap <M-a> <Esc>
@@ -64,6 +79,14 @@ syntax on
 	" imap <C-f> <Right>
 	" imap <C-n> <Down>
 	" imap <C-p> <Up>
+	nmap + <C-W>+
+	nmap - <C-W>-
+
+	cnoremap <C-A> <Home>
+	cnoremap <C-F> <Right>
+	cnoremap <C-B> <Left>
+	cnoremap <Esc>b <S-Left>
+	cnoremap <Esc>f <S-Right>
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
