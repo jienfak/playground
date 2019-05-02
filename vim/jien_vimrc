@@ -4,7 +4,7 @@
 " By enabling it you can position the cursor,
 " Visually select and scroll with the mouse.
 if( has('mouse') )
-  set mouse=a
+	set mouse=a
 endif
 
 " Set.
@@ -72,7 +72,7 @@ syntax on
 	nmap \nh :nohlsearch<enter>
 	nmap <Return> o<Esc>
 	" Better than ESC.
-	imap <M-a> <Esc>
+	"imap <M-a> <Esc>
 	" nmap <M-a> <Esc>
 	" Emacs-like keys.
 	imap <C-b> <Left>
