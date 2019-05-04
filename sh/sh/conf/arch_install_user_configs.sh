@@ -108,7 +108,7 @@ fi
 
 # Xfe.
 if ask "Should I create your xfe rc(s)?[yn]"; then
-	mkdir -p $XDG_CONFIG_HOME
+	mkdir -p $XDG_CONFIG_HOME/xfe
 	backup $XDG_CONFIG_HOME/xfe/xferc
 	ln -s $S/other/opt/jien_xferc $XDG_CONFIG_HOME/xfe/xferc
 fi
@@ -116,6 +116,7 @@ fi
 # Uzbl.
 if ask "Should I link your uzbl config files?(config etc)[yn]:"; then
 	backup $XDG_CONFIG_HOME/uzbl/config
+	mkdir -p $XDG_CONFIG_HOME/uzbl
 	ln -s  $S/other/opt/jien_uzbl_config $XDG_CONFIG_HOME/uzbl/config
 fi
 
