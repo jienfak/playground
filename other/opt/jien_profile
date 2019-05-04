@@ -17,7 +17,7 @@ export PAGER=$(which more) # Not found any pager
 for pager in most less more ; do
 	if which $pager > /dev/null ; then
 		if [ $pager = most ] ; then
-			export PAGER="$(which $pager) -v"
+			export PAGER="$(which $pager)"
 			break;
 		fi
 		export PAGER=$(which $pager)

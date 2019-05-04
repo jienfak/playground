@@ -2,8 +2,8 @@
 
 
 helpa(){
-	manpager(){
-		eval $MANPAGER
+	helppager(){
+		less -R
 	}
 	# Check manual first.
 	man $argv >/dev/null 2>&1
@@ -33,35 +33,35 @@ helpa(){
 	eval $argv -h > /dev/null 2>&1
 	if [ $status = 0 ] ; then 
 		echo "helpa: Worked with '-h' option."
-		eval $argv -h | manpager 2>&1
+		eval $argv -h | helppager 2>&1
 		return
 	fi
 
 	eval $argv --help > /dev/null 2>&1
 	if [ $status = 0 ] ; then
 		echo "helpa: Worked with '--help' option."
-		eval $argv --help | manpager 2>&1
+		eval $argv --help | helppager 2>&1
 		return
 	fi
 
 	eval $argv -help > /dev/null 2>&1
 	if [ $status = 0 ] ; then
 		echo "helpa: Worked with '-help' option"
-		eval $argv -help | manpager 2>&1
+		eval $argv -help | helppager 2>&1
 		return
 	fi
 
 	eval $argv help > /dev/null 2>&1
 	if [ $status = 0 ] ; then
 		echo "helpa: Worked with 'help' option."
-		eval $argv help | manpager 2>&1
+		eval $argv help | helppager 2>&1
 		return
 	fi
 
 	eval $argv > /dev/null 2>&1
 	if [ $status = 0 ] ; then
 		echo "helpa: Worked without any options."
-		eval $argv | manpager 2>&1
+		eval $argv | helppager 2>&1
 		return
 	fi
 
