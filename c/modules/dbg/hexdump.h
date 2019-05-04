@@ -3,10 +3,11 @@
 
 #include <inttypes.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "../shortypes.h"
 
 #define HEX_TABLE_HEADER \
-"\n%16x| 0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F    0123456789ABCDEF\n \
+"\n0x%p| 0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F    0123456789ABCDEF\n\
 -------------------------------------------------------------------------------------\n"
 
 /* 'hexdump'. */
