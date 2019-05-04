@@ -8,6 +8,7 @@ local config_file = (os.getenv("XDG_CONFIG_HOME") or os.getenv("HOME").."/.confi
 local shell = os.getenv("SHELL")-- or "/usr/bin/zsh"
 local add_blackarch_menu = true
 local sys_stat_program = "htop"
+local nw_program = "wicd-client -n"
 local terminal = os.getenv("TERM") or "uxterm"
 local second_terminal = "urxvt"
 local file_manager = terminal.." -e '".."lf".."'"
@@ -22,6 +23,8 @@ local music_player = terminal.." -e cmus"
 local heavy_music_player = "vlc"
 local video_player = "vlc"
 local max_menu_items = 65
+local sound_control = "pavucontrol"
+local heavy_sound_control = "cadence"
 
 -- Status vars.
 local dvorak = false
@@ -215,6 +218,12 @@ mypersonmenu = {
 			"Sys. Stat.",
 			function()
 				awful.util.spawn_with_shell(terminal.." -e "..sys_stat_program)
+			end
+		},
+		{
+			"NW Stat",
+			function()
+				awful.util.spawn_with_shell(nw_program)
 			end
 		},
 		{
@@ -574,6 +583,10 @@ globalkeys = awful.util.table.join(
 			{modkey, "Shift"}, "b", function() awful.spawn(heavy_browser) end,
 			{description=" - Open heavy browser.", group = "launcher"}
 		),
+		awful.key(
+			{modkey, "Ctrl"}, "n", function() awful.spawn(nw_program) end,
+			{description=" - Open your network setting program.", group="launcher"}
+		),
 		-- File manager.
 		awful.key(
 			{modkey, }, "e",
@@ -622,6 +635,21 @@ globalkeys = awful.util.table.join(
 				awful.spawn(heavy_music_player)
 			end,
 			{description = " - Open heavy music player.", group="launcher"}
+		),
+		-- Sound control.
+		awful.key(
+			{modkey, "Ctrl"}, "m",
+			function()
+				awful.spawn(sound_control)
+			end,
+			{description=" - Open your sound control program.", group="launcher"}
+		),
+		awful.key(
+			{modkey, "Ctrl", "Shift"}, "m",
+			function()
+				awful.spawn(heavy_sound_control)
+			end,
+			{description=" - Open your second sound control program.", group="launcher"}
 		),
 		-- Move mouse without mouse.
 		--[[
@@ -829,7 +857,7 @@ clientkeys = awful.util.table.join(
 		{description = " - Minimize current window.", group = "client"}
 	),
 	awful.key(
-		{ modkey, "Ctrl"}, "m",
+		{ modkey, "Ctrl"}, "#",
 		function (c)
 			c.maximized = not c.maximized
 			c:raise()

@@ -111,7 +111,7 @@ alias "ls"="ls --color=always"
 alias "la"="ls -al --color=always"
 alias "ll"="ls --color -l"
 alias "sctl"="sudo systemctl"
-alias "manpager"="$MANPAGER"
+#alias "manpager"="$MANPAGER"
 
 	alias "ev"="eval" # --description "Evaluate text."
 	alias "py"=$(which "python") # --description "Python interpreter."

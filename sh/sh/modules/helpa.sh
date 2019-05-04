@@ -1,6 +1,10 @@
 #!/usr/bin/sh
 
+
 helpa(){
+	manpager(){
+		eval $MANPAGER
+	}
 	# Check manual first.
 	man $argv >/dev/null 2>&1
 	if [ $status = 0 ] ; then
