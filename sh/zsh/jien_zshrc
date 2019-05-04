@@ -8,6 +8,21 @@ zstyle ':completion:*' menu select
 #zstyle ':completion:*:manuals.*' insert-sections true
 #zstyle ':completion:*:man:*'     menu yes select
 setopt correct
+setopt append_history
+setopt extended_history
+setopt histignorealldups
+setopt histignorespace
+setopt auto_cd
+#setopt extended_glob
+setopt nonomatch
+setopt notify
+setopt hash_list_all
+setopt nohup
+setopt nobeep
+setopt noglobdots
+setopt noshwordsplit
+
+
 
 shpwd() {
   echo ${${:-/${(j:/:)${(M)${(s:/:)${(D)PWD:h}}#(|.)[^.]}}/${PWD:t}}//\/~/\~}
