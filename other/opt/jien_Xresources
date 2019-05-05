@@ -5,10 +5,10 @@
 *utf8Title:            true
 *utf8:                 2
 *locale:               true
-*faceName:             Hack-Regular
-URxvt.font:         xft:Hack-Regular:pixelsize=13,xft:Symbola
-URxvt.boldFont:     xft:Hack-Bold:pixelsize=13:weight=bold,xft:Symbola
-URxvt.italicFont:   xft:Hack-RegularOblique:pixelsize=13:slant=italic,xft:Symbola
+*faceName:             Droid Sans Mono
+URxvt.font:         xft:Droid Sans Mono:pixelsize=13,xft:Symbola
+URxvt.boldFont:     xft:Droid Sans Mono Bold :pixelsize=13:weight=bold,xft:Symbola
+URxvt.italicFont:   xft:Droid Sans Mono Italic:pixelsize=13:slant=italic,xft:Symbola
 !URxvt*faceName:        Droid Sans Mono
 *faceSize:             10
 *fontSize:             10
