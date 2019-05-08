@@ -1,12 +1,21 @@
+# No recursion at first.
+if [ $(expr $PROFILE_IS_SOURCED + 1 ) = 2 ] ; then
+	return
+fi ; export PROFILE_IS_SOURCED=1
+
 # Path to scripts directory.
 export S=$HOME/code/scripts
+export SHMODS=$S/sh/sh/modules
 # Config files directory.
 export XDG_CONFIG_HOME=$HOME/.config
+
+# Shell chore functions.
+source $SHMODS/chores/hasprog.sh
 
 # Default console editor.
 export EDITOR=$(which cat) # Not found any editor.
 for editor in nvim vim vi nano ex; do
-	if which $editor > /dev/null ; then
+	if hasprog $editor  ; then
 		export EDITOR=$( which $editor )
 		break
 	fi
@@ -15,7 +24,7 @@ done
 # Pagers.
 export PAGER=$(which more) # Not found any pager
 for pager in most less more ; do
-	if which $pager > /dev/null ; then
+	if hasprog $pager ; then
 		if [ $pager = most ] ; then
 			export PAGER="$(which $pager)"
 			break;
@@ -25,6 +34,7 @@ for pager in most less more ; do
 	fi
 done
 export MANPAGER=$PAGER
+export HELPPAGER="less -R"
 
 # Less colors
 export LESS_TERMCAP_md=$'\E[01;31m'
@@ -50,7 +60,7 @@ export LESS_TERMCAP_me=$'\E[0m'
 # GUI/Visual editor.
 export VISUAL=$(which gedi) # Not found any.
 for visual in gvim notepadqq leafpad mousepad adie ; do
-	if which $visual > /dev/null ; then
+	if hasprog $visual ; then
 		export VISUAL=$(which $visual)
 		break;
 	fi
@@ -59,7 +69,7 @@ done
 # Shell.
 export SHELL=$(which sh) # Not found any.
 for shell in zsh bash dash ; do
-	if which $shell > /dev/null ; then
+	if hasprog $shell ; then
 		export SHELL=$(which $shell)
 		break;
 	fi
@@ -70,7 +80,7 @@ if [ -n $DISPLAY ] ; then
 	# No display.
 	export BROWSER=$(which lynx)
 	for browser in links2 links ; do
-		if which $browser > /dev/null ; then
+		if hasprog $browser ; then
 			export BROWSER=$(which $browser)
 			break;
 		fi
@@ -78,7 +88,7 @@ if [ -n $DISPLAY ] ; then
 else
 	# Have X.
 	for browser in luakit chromium firefox ; do
-		if which $browser > /dev/null ; then
+		if hasprog $browser ; then
 			export BROWSER=$(which $browser)
 			break;
 		fi

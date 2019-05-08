@@ -1,6 +1,15 @@
 # Jien's zshrc.
 source $HOME/.profile
+
+# Modules.
+source $SHMODS/chores/hasprog.sh
+source $SHMODS/chores/loseall.sh
+source $SHMODS/chores/alifhas.sh
+
+
+
 autoload -Uz compinit promptinit
+
 compinit
 promptinit
 zstyle ':completion:*' menu select
@@ -70,29 +79,34 @@ zle -N zle-keymap-select
 export KEYTIMEOUT=1
 
 
-# Highlight plugin.
-plugin_dir1="/usr/share/zsh/plugins"
-plugin_dir2="/usr/share"
-if [ -f $plugin_dir1/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-	echo "Got it from first."
-	source $plugin_dir1/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-else
-	if [ -f $plugin_dir2/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-		echo  "Got it from second"
-		source $plugin_dir2/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-	else
-		echo "Could not get plugin."
-	fi
-fi
+# Plugins.
+#syntax-highlighting
 
-# Autosuggestion plugin.
-if [ -f $plugin_dir1/zsh-autosuggestions/zsh-autosuggestions.zsh ] ; then
-	source $plugin_dir1/zsh-autosuggestions/zsh-autosuggestions.zsh
-else
-	if [ -f $plugin_dir2/zsh-autosuggestions/zsh-autosuggestions.zsh ] ; then
-		source $plugin_dir2/zsh-autosuggestions/zsh-autosuggesions.zsh
-	fi
-fi
+#autosuggestion
+set plugin_dir1="/usr/share/zsh/plugins"
+set plugin_dir2="/usr/share"
+
+set -A plugin_dirs \
+	"/usr/share/" \
+	"/usr/share/zsh/plugins"
+
+set -A plugins \
+	syntax-highlighting \
+	autosuggestions
+
+for plugin in $plugins ; do
+	for dir in $plugin_dirs ; do
+		file=$dir/zsh-$plugin/zsh-$plugin.zsh
+		if [ -f $file ] ; then
+			echo "Got '$plugin' plugin from '$file';"
+			source $file
+			break
+		fi
+	done
+done
+
+
+
 ZSH_AUTOSUGGEST_STRATEGY="history"
 bindkey '^ ' autosuggest-accept
 
@@ -113,42 +127,41 @@ alias "ll"="ls --color -l"
 alias "sctl"="sudo systemctl"
 #alias "manpager"="$MANPAGER"
 
-	alias "ev"="eval" # --description "Evaluate text."
-	alias "py"=$(which "python") # --description "Python interpreter."
-	alias "py2"=$(which "python2") # --description "Python interpreter version 2."
-	alias "py3"=$(which "python3") # --description "Python interpreter version 3."
-	alias "pl6"=$(which "perl6") # --description "Perl6 interpreter."
-	alias "pl"=$(which "perl") # --description "Perl5 interpreter."
-	alias "rb"=$(which "ruby") # --description "Ruby interpreter."
-	alias "tcl"=$(which "tclsh") # --description "TCL interpreter."
-	alias "lsp"=$(which "clisp") # --description "LISP interpreter."
-	alias "f"=$(which "gfortran") # --description "FORTRAN compiler."
-	alias "c"=$(which "cc")
-	alias "cc"=$(which "g++")
+	alifhas "ev"  "eval" # --description "Evaluate text."
+	alifhas "py"  "python" # --description "Python interpreter."
+	alifhas "py2" "python2" # --description "Python interpreter version 2."
+	alifhas "py3" "python3" # --description "Python interpreter version 3."
+	alifhas "pl6" "perl6" # --description "Perl6 interpreter."
+	alifhas "pl"  "perl" # --description "Perl5 interpreter."
+	alifhas "rb"  "ruby" # --description "Ruby interpreter."
+	alifhas "tcl" "tclsh" # --description "TCL interpreter."
+	alifhas "lsp" "clisp" # --description "LISP interpreter."
+	alifhas "f"   "gfortran" # --description "FORTRAN compiler."
+	alifhas "c"   "cc"
+	alifhas "cc"  "g++"
 
 	alias "mnt"="sudo mount"
 	alias "umnt"="sudo umount"
 
 	alias "sudo"='sudo -p "\$->#_"'
 	alias "info"='info --vi-keys'
-	alias "ipython"="ipython --TerminalInteractiveShell.editing_mode=vi"
+	alias "ipython"="ipython --TerminlInteractiveShell.editing_mode=vi"
 	alias "ipython2"="ipython2 --TerminalInteractiveShell.editing_mode=vi"
 	alias "ipython3"="ipython3 --TerminalInteractiveShell.editing_mode=vi"
 
 # Functions.
-source $S/sh/sh/modules/helpa.sh
+source $SHMODS/interactive/helpa.sh # Automatic help getter.
 
-which kbdrate > /dev/null 2>&1
-if test $status = 0 ; then
+if hasprog kdbrate ; then
 	kbdrate -d 60 -r 300
 fi
 
 # LF.
 #
-LFCD="$XDG_CONFIG_HOME/lf/lfrc"
-#LFCD=""
-if [ -f $LFCD ] ; then
-	source $LFCD
+if hasprog lf ; then
+	set LFCD="$XDG_CONFIG_HOME/lf/lfrc"
+	#LFCD=""
+	loseall srconeof LFCD
 fi
 
 echo  FAK::Freedom:Anarchy:Knowledge::FAK

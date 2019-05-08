@@ -17,3 +17,9 @@ engines.aur          = "https://aur.archlinux.org/packages.php?O=0&K=%s&do_Searc
 engines.aw           = "https://wiki.archlinux.org/index.php/Special:Search?fulltext=Search&search=%s"
 engines.googleseceng = "https://www.google.com/search?name=f&hl=en&q=%s"
 engines.ddg          = "https://duckduckgo.com?q=%s&t=h_&ia=about"
+
+-- Wiki.
+engines.wwr          = "https://ru.wikipedia.org/wiki/%s"
+engines.wwe          = "https://en.wikipedia.org/wiki/%s"
+engines.wde          = "https://en.wiktionary.org/wiki/%s"
+engines.wdr          = "https://ru.wiktionary.org/wiki/%s"

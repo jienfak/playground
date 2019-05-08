@@ -25,7 +25,7 @@ xterm*boldMode:        on
 *dynamicColors:        on
 *colorMode:            on
 *saveLines:            10000
-*visualBell:           true
+*visualBell:           false
 *cursorBlink:          true
 !vt100
 *.bellIsUrgent:        true

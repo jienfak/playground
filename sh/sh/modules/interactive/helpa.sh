@@ -1,9 +1,10 @@
 #!/usr/bin/sh
 
+source $HOME/.profile
 
 helpa(){
 	helppager(){
-		less -R
+		eval $HELPPAGER
 	}
 	# Check manual first.
 	man $argv >/dev/null 2>&1
