@@ -80,11 +80,6 @@ export KEYTIMEOUT=1
 
 
 # Plugins.
-#syntax-highlighting
-
-#autosuggestion
-set plugin_dir1="/usr/share/zsh/plugins"
-set plugin_dir2="/usr/share"
 
 set -A plugin_dirs \
 	"/usr/share/" \
@@ -98,7 +93,7 @@ for plugin in $plugins ; do
 	for dir in $plugin_dirs ; do
 		file=$dir/zsh-$plugin/zsh-$plugin.zsh
 		if [ -f $file ] ; then
-			echo "Got '$plugin' plugin from '$file';"
+			echo "[+]Got '$plugin' plugin from '$file';"
 			source $file
 			break
 		fi

@@ -71,11 +71,9 @@ syntax on
 	nmap \nl :if &cursorline==1<enter>set nocursorline<enter>else<enter>set cursorline<enter>endif<enter><enter>
 	nmap \nh :nohlsearch<enter>
 	nmap <Return> o<Esc>
-	" Better than ESC.
-	imap <M-a> <Esc>
+
 	" nmap <M-a> <Esc>
 	" Emacs-like keys.
-	imap <C-b> <Left>
 	" imap <C-f> <Right>
 	" imap <C-n> <Down>
 	" imap <C-p> <Up>

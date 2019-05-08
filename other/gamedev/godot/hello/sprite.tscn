@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 463.351
+margin_top = 262.95
+margin_right = 536.351
+margin_bottom = 336.95
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 500, 300 )
+texture = ExtResource( 1 )
