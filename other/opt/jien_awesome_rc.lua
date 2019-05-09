@@ -1,7 +1,8 @@
 -- User vars.
 local keyboard_repeat_delay = 300
 local keyaboard_repeat_rate = 57
-local xkb_layout = "us,ru"
+local xkb_layout = " -layout us,ru -option grp:caps_toggle"
+local xkb_dvorak_layout = "-layout us,ru -variant dvorak,  -option grp:caps_toggle"
 local locale = "en_US.UTF-8"
 local xresources = "~/.Xresources"
 local config_file = (os.getenv("XDG_CONFIG_HOME") or os.getenv("HOME").."/.config").."/awesome/rc.lua"
@@ -29,6 +30,18 @@ local heavy_sound_control = "cadence"
 -- Status vars.
 local dvorak = false
 local dvorak_l = false
+
+-- I will make it later.
+--[[function modeExecute(...)
+	for i=1, arg.n do
+		if arg[i] then
+			arg[i]()
+		end
+	end
+end
+local mode = 0
+local modekey = "~"
+--]]
 
 -- My library.
 package.path = package.path..";"..os.getenv("HOME").."/code/scripts/lua/modules/?.lua" ;
@@ -480,11 +493,11 @@ globalkeys = awful.util.table.join(
 			{modkey, "Shift"}, "d",
 			function()
 				if dvorak then
-					awful.util.spawn_with_shell("setxkbmap -layout "..xkb_layout.." -option grp:alt_shift_toggle")
+					awful.util.spawn_with_shell("setxkbmap "..xkb_layout)
 					dvorak = false
 					dvorak_l = false
 				else
-					awful.util.spawn_with_shell("setxkbmap -layout "..xkb_layout.." -variant dvorak, -option grp:alt_shift_toggle")
+					awful.util.spawn_with_shell("setxkbmap "..xkb_dvorak_layout.."")
 					dvorak = true
 					dvorak_l = false
 				end
@@ -500,7 +513,7 @@ globalkeys = awful.util.table.join(
 					dvorak_l = false
 					dvorak   = false
 				else
-					awful.util.spawn_with_shell("setxkbmap -layout "..xkb_layout.." -variant dvorak-l, -option grp:alt_shift_toggle")
+					awful.util.spawn_with_shell("setxkbmap , "..xkb_layout.." -variant dvorak-l")
 					dvorak_l = true
 					dvorak   = false
 				end
@@ -510,10 +523,10 @@ globalkeys = awful.util.table.join(
 			{modkey, "Shift"}, "u",
 			function()
 				if dvorak then
-					awful.util.spawn_with_shell("setxkbmap -layout "..xkb_layout.." -option grp:alt_shift_toggle")
+					awful.util.spawn_with_shell("setxkbmap "..xkb_layout)
 					dvorak = false
 				else
-					awful.util.spawn_with_shell("setxkbmap -layout "..xkb_layout.." -variant dvorak, -option grp:alt_shift_toggle")
+					awful.util.spawn_with_shell("setxkbmap "..xkb_dvorak_layout)
 					dvorak = true
 				end
 			end,
@@ -1071,7 +1084,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- Autostart section.
 awful.util.spawn_with_shell("xset r rate "..tostring(keyboard_repeat_delay).." "..tostring(keyaboard_repeat_rate))
 awful.util.spawn_with_shell("xrdb -load "..xresources)
-awful.util.spawn_with_shell("setxkbmap -layout "..xkb_layout.." -option grp:alt_shift_toggle")
+awful.util.spawn_with_shell("setxkbmap "..xkb_layout)
 awful.util.spawn_with_shell("localectl set-locale LANG="..locale)
 --awful.util.spawn_with_shell("nm-applet")
 --awful.util.spawn_with_shell("xfce4-panel")
