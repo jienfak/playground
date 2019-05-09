@@ -6,9 +6,9 @@
 *utf8:                 2
 *locale:               true
 *faceName:             Droid Sans Mono
-URxvt.font:         xft:Droid Sans Mono:pixelsize=13,xft:Symbola
-URxvt.boldFont:     xft:Droid Sans Mono Bold :pixelsize=13:weight=bold,xft:Symbola
-URxvt.italicFont:   xft:Droid Sans Mono Italic:pixelsize=13:slant=italic,xft:Symbola
+URxvt.font:         xft:DroidSansMono:pixelsize=13,xft:Symbola
+URxvt.boldFont:     xft:DroidSansMono-Bold:pixelsize=13:weight=bold,xft:Symbola
+URxvt.italicFont:   xft:DroidSansMono-Italic:pixelsize=13:slant=italic,xft:Symbola
 !URxvt*faceName:        Droid Sans Mono
 *faceSize:             10
 *fontSize:             10
