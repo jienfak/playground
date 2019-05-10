@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 use strict; 
 use Socket;
 use feature 'say' ;

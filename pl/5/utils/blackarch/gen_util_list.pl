@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 #
 # Simple script getting list of tools for Blackarch(18 March 2019).
 

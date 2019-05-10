@@ -57,16 +57,16 @@ process (jack_nframes_t nframes, void *arg)
 	out2 = (jack_default_audio_sample_t*)jack_port_get_buffer (output_port2, nframes);
 
 	for( i=0; i<nframes; i++ )
-    {
-        out1[i] = data->sine[data->left_phase];  /* left */
-        out2[i] = data->sine[data->right_phase];  /* right */
-        data->left_phase += 1;
-        if( data->left_phase >= TABLE_SIZE ) data->left_phase -= TABLE_SIZE;
-        data->right_phase += 3; /* higher pitch so we can distinguish left and right. */
-        if( data->right_phase >= TABLE_SIZE ) data->right_phase -= TABLE_SIZE;
-    }
-    
-	return 0;      
+	{
+		out1[i] = data->sine[data->left_phase];  /* left */
+		out2[i] = data->sine[data->right_phase];  /* right */
+		data->left_phase += 1;
+		if( data->left_phase >= TABLE_SIZE ) data->left_phase -= TABLE_SIZE;
+		data->right_phase += 3; /* higher pitch so we can distinguish left and right. */
+		if( data->right_phase >= TABLE_SIZE ) data->right_phase -= TABLE_SIZE;
+	}
+	
+	return 0 ;
 }
 
 /**
@@ -79,9 +79,7 @@ jack_shutdown (void *arg)
 	exit (1);
 }
 
-int
-main (int argc, char *argv[])
-{
+int main (int argc, char *argv[]){
 	const char **ports;
 	const char *client_name;
 	const char *server_name = NULL;
@@ -108,7 +106,7 @@ main (int argc, char *argv[])
 
 	for( i=0; i<TABLE_SIZE; i++ ){
 		/* Saw genereation. */
-		data.sine[i] = (double)(0.05 * (i%200)) ;//(float) sin( ((double)i/(double)TABLE_SIZE) * M_PI * 2. );
+		data.sine[i] = (double)(0.0005 * (i%200)) ;//(float) sin( ((double)i/(double)TABLE_SIZE) * M_PI * 2. );
 	}
 	data.left_phase = data.right_phase = 0;
   

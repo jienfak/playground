@@ -96,4 +96,10 @@ else
 fi
 
 # GCC.
-export C_INCLUDE_PATH="$S/c/modules/"
+export C_INCLUDE_PATH="$S/c/modules"
+
+# Perl.
+export PERL5LIB="$S/pl/5/modules"
+
+# Nethack.
+export NETHACKOPTIONS=boulder:0, color, autodig

@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+# This program finds text between 2 lines.
 
 use strict;
 use feature "say" ;
@@ -6,6 +7,7 @@ use feature "say" ;
 if(@ARGV<2){
 	exit do{
 		say "$0: Not enough arguments.";
+		say "Usage: perl between.pl [string1] [string2]";
 		return 1 ;
 	} ;
 }
