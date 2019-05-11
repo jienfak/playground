@@ -82,8 +82,8 @@ yeahconsole*consoleHeight:    25
 yeahconsole*toggleKey:        None+F12
 yeahconsole*restart:          1
 yeahconsole*keyFull:          None+F11
-yeahconsole*keySmaller:       Control+m
-yeahconsole*keyBigger:        Control+n
+yeahconsole*keySmaller:       ControlAlt+y
+yeahconsole*keyBigger:        ControlAlt+x
 yeahconsole*aniDelay:         5
 !yeahconsole*metaSendsEscape:  default(Look '*.metaSendsEscape')
 yeahconsole*externalBorder:   1
