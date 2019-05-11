@@ -1,12 +1,5 @@
-#if defined(linux) || defined(_WIN32)
 
-#include <GL/glut.h> /* For Linux and Windows */
-
-#else
-
-#include <GLUT/GLUT.h> /* For Mac OS */
-
-#endif
+#include <GL/glut.h>
 
 void reshape(int w, int h){
 	glViewport(0, 0, w, h);
@@ -25,22 +18,23 @@ void display(){
 	glBegin(GL_QUADS);
 
 	glColor3f(1.0, 1.0, 1.0);
-	glVertex2i(250, 450);
-	glColor3f(0.0, 0.0, 1.0);
-	glVertex2i(250, 150);
+	glVertex2i(0, 0);
+	glColor3f(0.0, 0.0, 0.1);
+	glVertex2i(0, 500);
 	glColor3f(0.0, 1.0, 0.0);
-	glVertex2i(550, 150);
+	glVertex2i(500, 500);
 	glColor3f(1.0, 0.0, 0.0);
-	glVertex2i(550, 450);
+	glVertex2i(500, 0);
 
 	glEnd();
+
 
 	glutSwapBuffers();
 }
 
 int main(int argc, char **argv){
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA); /* double bufferisation */
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA); /* Double bufferisation. */
 
 	glutInitWindowSize(800, 600);
 	glutCreateWindow("OpenGL test");
