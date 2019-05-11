@@ -6,10 +6,9 @@
 *utf8:                 2
 *locale:               true
 *faceName:             Droid Sans Mono
-URxvt.font:         xft:DroidSansMono:pixelsize=13,xft:Symbola
-URxvt.boldFont:     xft:DroidSansMono-Bold:pixelsize=13:weight=bold,xft:Symbola
-URxvt.italicFont:   xft:DroidSansMono-Italic:pixelsize=13:slant=italic,xft:Symbola
-!URxvt*faceName:        Droid Sans Mono
+URxvt.font:            xft:DroidSansMono:pixelsize=13,xft:Symbola
+URxvt.boldFont:        xft:DroidSansMono-Bold:pixelsize=13:weight=bold,xft:Symbola
+URxvt.italicFont:      xft:DroidSansMono-Italic:pixelsize=13:slant=italic,xft:Symbola
 *faceSize:             10
 *fontSize:             10
 !xterm*boldFont:             Bold Droid Sans Mono
@@ -30,7 +29,7 @@ xterm*boldMode:        on
 !vt100
 *.bellIsUrgent:        true
 !vt100
-*..metaSendsEscape:    true
+*.metaSendsEscape:    true
 
 !==============================================================================
 ! XTerm colors
@@ -74,19 +73,17 @@ xterm*boldMode:        on
 !==========================================================================
 !--->YeahConsole
 !==========================================================================
-yeahconsole*term:xterm
-yeahconsole*consoleHeight:25
-yeahconsole*screenWidth:500
-yeahconsole*xOffset: 400
-yeahconsole*toggleKey:None+F12
-!yeahconsole*background:black
-!yeahconsole*foreground:white
-yeahconsole*restart:1
-yeahconsole*keyFull:None+F11
-!yeahconsole*saveLines:500
-yeahconsole*keySmaller:Control+m
-yeahconsole*keyBigger:Control+n
-yeahconsole*aniDelay: 5
-yeahconsole*metaSendsEscape: true
-!yeahconsole*scrollBar: true
-
+yeahconsole*term:             xterm
+!yeahconsole*transparent:      true
+!yeahconsole*shading:          70
+yeahconsole*consoleHeight:    25
+!yeahconsole*screenWidth:     default(display width)
+!yeahconsole*xOffset:         defalt(0)
+yeahconsole*toggleKey:        None+F12
+yeahconsole*restart:          1
+yeahconsole*keyFull:          None+F11
+yeahconsole*keySmaller:       Control+m
+yeahconsole*keyBigger:        Control+n
+yeahconsole*aniDelay:         5
+!yeahconsole*metaSendsEscape:  default(Look '*.metaSendsEscape')
+yeahconsole*externalBorder:   1

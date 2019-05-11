@@ -158,6 +158,17 @@ local function client_menu_toggle_fn()
 	end
 end
 -- }}}
+--
+local function runOnce(cmd_arr)
+    for _, cmd in ipairs(cmd_arr) do
+        findme = cmd
+        firstspace = cmd:find(" ")
+        if firstspace then
+            findme = cmd:sub(0, firstspace-1)
+        end
+        awful.spawn.with_shell(string.format("pgrep -u $USER -x %s > /dev/null || (%s)", findme, cmd))
+    end
+end
 
 -- {{{ Menu.
 -- Create a launcher widget and a main menu.
@@ -1086,5 +1097,8 @@ awful.util.spawn_with_shell("xset r rate "..tostring(keyboard_repeat_delay).." "
 awful.util.spawn_with_shell("xrdb -load "..xresources)
 awful.util.spawn_with_shell("setxkbmap "..xkb_layout)
 awful.util.spawn_with_shell("localectl set-locale LANG="..locale)
+runOnce({"yeahconsole -e tmux "})
+runOnce({"megasync"})
+runOnce({"wicd-client -t"})
 --awful.util.spawn_with_shell("nm-applet")
 --awful.util.spawn_with_shell("xfce4-panel")
