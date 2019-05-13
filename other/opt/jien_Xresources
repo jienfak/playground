@@ -42,7 +42,7 @@ xterm*boldMode:        on
 ! #333333
 ! #555555
 *color0:      #000000
-*color8:      #444444
+*color8:      #666666
 !#555753
 ! Red.
 *color1:      #DD2222
@@ -64,8 +64,8 @@ xterm*boldMode:        on
 *color6:      cyan
 *color14:     #17ffff
 ! White.
-*color7:      #BBBBBB
-*color15:     #FFFFFF
+*color7:      #FFFFFF
+*color15:     #DDDDDD
 !==========================================================================
 !<---XTerm End;
 !==========================================================================
