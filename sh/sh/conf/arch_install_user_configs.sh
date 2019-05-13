@@ -65,6 +65,11 @@ if ask "Should I link your 'awesome' and configs?(rc.lua etc)[yn]:"; then
 	lns $S/other/opt/jien_awesome_rc.lua $XDG_CONFIG_HOME/awesome/rc.lua
 fi
 
+if ask "Should I link your 'Eterm' files?(~/.Eterm)[yn]:" ; then
+	backup $HOME/.Eterm
+	lns /home/jien/code/scripts/other/opt/jien_Eterm $HOME/.Eterm
+fi
+
 
 if ask "Should I link your mostrc file?(~/.mostc)[yn]"; then
 	backup $HOME/.mostrc

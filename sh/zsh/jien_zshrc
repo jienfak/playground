@@ -151,6 +151,8 @@ alias "sctl"="sudo systemctl"
 
 if hasprog grc ; then
  alias cc="grc --colour=auto cc"
+ alias g++="grc --colour=auto g++"
+ alias gfortran="grc --colour=auto gfortran"
  alias gcc="grc --colour=auto gcc"
  alias irclog="grc --colour=auto irclog"
  alias log="grc --colour=auto log"

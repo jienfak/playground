@@ -1,71 +1,87 @@
 !==============================================================================
 ! XTerm, URxvt
 !==============================================================================
-!cirilica
 *utf8Title:            true
 *utf8:                 2
 *locale:               true
 *faceName:             Droid Sans Mono
-URxvt.font:            xft:DroidSansMono:pixelsize=13,xft:Symbola
-URxvt.boldFont:        xft:DroidSansMono-Bold:pixelsize=13:weight=bold,xft:Symbola
-URxvt.italicFont:      xft:DroidSansMono-Italic:pixelsize=13:slant=italic,xft:Symbola
+*.font:            xft:DroidSansMono:pixelsize=13,xft:Symbola
+*.boldFont:        xft:DroidSansMono-Bold:pixelsize=13:weight=bold,xft:Symbola
+!*alwaysBoldMode:       false
+!*colorBDMode:          true
+*.italicFont:      xft:DroidSansMono-Italic:pixelsize=13:slant=italic,xft:Symbola
 *faceSize:             10
 *fontSize:             10
-!xterm*boldFont:             Bold Droid Sans Mono
-!vt100
 *.scrollBar:           false
 *.alternateScroll:     false
 *.vt100.geometry:      80x30
 *eightBitInput:        true
 *metaSendsEscape:      true
-!xterm*colorBDMode:          true
-xterm*boldMode:        on
-!xterm*alwaysBoldMode:       false
+xterm*boldMode:        true
 *dynamicColors:        on
 *colorMode:            on
 *saveLines:            10000
 *visualBell:           false
+*.bellIsUrgent:        false
 *cursorBlink:          true
-!vt100
-*.bellIsUrgent:        true
-!vt100
 *.metaSendsEscape:    true
 
 !==============================================================================
 ! XTerm colors
 !==============================================================================
 !xterm*colorBD:     white
-*background:  #000000
-*foreground:  #ffffff
-*cursorColor: #ff0000
+*background:  rgb:00/00/00
+*foreground:  rgb:FF/FF/FF
+*cursorColor: rgb:FF/00/00
 ! black
 ! #333333
 ! #555555
-*color0:      #000000
-*color8:      #666666
+*color0:      rgb:00/00/00
+*color8:      rgb:66/66/66
 !#555753
 ! Red.
-*color1:      #DD2222
-*color9:      #FF0000
+*color1:      rgb:DD/22/22
+*color9:      rgb:FF/00/00
 
 ! Green.
-*color2:      #67E300
-*color10:     #A9F16C
+*color2:      rgb:67/E3/00
+*color10:     rgb:A9/F1/6C
 ! Yellow.
-*color3:      #F7FF00
-*color11:     #EBF22C
+*color3:      rgb:F7/FF/00
+*color11:     rgb:EB/F2/2C
 ! Blue.
-*color4:      #5190D0
-*color12:     #346AA1
+*color4:      rgb:51/90/D0
+*color12:     rgb:34/6A/A1
 ! Madgenta.
-*color5:      #FF6E00
-*color13:     #DE6000
+*color5:      rgb:FF/6E/00
+*color13:     rgb:DE/60/00
 ! Cyan.
 *color6:      cyan
-*color14:     #17ffff
+*color14:     rgb:17/FF/FF
 ! White.
-*color7:      #FFFFFF
-*color15:     #DDDDDD
+*color7:      rgb:DD/DD/DD
+*color15:     rgb:FF/FF/FF
+
+
+!*background: rgb:00/00/00
+!*foreground: rgb:ff/ff/ff
+!*color0:     rgb:00/00/00
+!*color1:     rgb:d3/62/65
+!*color2:     rgb:ae/ce/91
+!*color3:     rgb:e7/e1/8c
+!*color4:     rgb:7a/7a/b0
+!*color5:     rgb:96/3c/59
+!*color6:     rgb:41/81/79
+!*color7:     rgb:be/be/be
+!*color8:     rgb:66/66/66
+!*color9:     rgb:ef/81/71
+!*color10:    rgb:e5/f7/79
+!*color11:    rgb:ff/f7/96
+!*color12:    rgb:41/86/be
+!*color13:    rgb:ef/9e/be
+!*color14:    rgb:71/be/be
+!*color15:    rgb:ff/ff/ff
+
 !==========================================================================
 !<---XTerm End;
 !==========================================================================
