@@ -29,10 +29,10 @@ fi
 
 if ask "Should I created directories in '\$HOME'\
  and change 'user-dirs.dirs' for my?[yn]:"; then
-	mkdir $HOME/video $HOME/docs $HOME/temps $HOME/shared \
-	      $HOME/code/ $HOME/progs $HOME/torrent $HOME/bluetooth
+	mkdir -p $HOME/video $HOME/docs $HOME/temps $HOME/shared \
+	         $HOME/code/ $HOME/progs $HOME/torrent $HOME/bluetooth
 	backup $XDG_CONFIG_HOME/user-dirs.dirs
-	lns $S/other/opt/jien_user-dirs.dirs $XDG_CONFIG_HOME/user-dirs.dirs        2>$nil
+	lns $S/other/opt/jien_user-dirs.dirs $XDG_CONFIG_HOME/user-dirs.dirs
 fi
 
 # MEGA.
@@ -47,10 +47,12 @@ fi
 if ask "Should I link you X config files?(Xmodmap, Xresources etc)[yn]:"; then
 	backup $HOME/.Xmodmap
 	backup $HOME/.Xresources
+	backup $HOME/.Xdefaults
 	backup $XDG_CONFIG_HOME/awesome-mimeapps.list
 	backup $XDG_CONFIG_HOME/mimeapps.list
-	lns $S/other/opt/jien_Xmodmap          $HOME/.Xmodmap
-	lns $S/other/opt/jien_Xresources       $HOME/.Xresources
+	lns $S/other/opt/jien_Xmodmap                  $HOME/.Xmodmap
+	lns $S/other/opt/jien_Xresources               $HOME/.Xresources
+	lns $S/other/opt/jien_Xresources               $HOME/.Xdefaults
 	lns $S/other/opt/jien_awesome-mimeapps.list    $XDG_CONFIG_HOME/awesome-mimeapps.list
 	lns $S/other/opt/jien_awesome-mimeapps.list    $XDG_CONFIG_HOME/mimeapps.list
 	# Xinit.
@@ -60,8 +62,8 @@ fi
 
 # Awesome!
 if ask "Should I link your 'awesome' and configs?(rc.lua etc)[yn]:"; then
-	mkdir $XDG_CONFIG_HOME/awesome 2>$nil
-	backup $XDG_CONFIG_HOME/awesome/rc.lua
+	mkdir -p $XDG_CONFIG_HOME/awesome
+	backup   $XDG_CONFIG_HOME/awesome/rc.lua
 	lns $S/other/opt/jien_awesome_rc.lua $XDG_CONFIG_HOME/awesome/rc.lua
 fi
 
@@ -131,15 +133,17 @@ fi
 
 # Luakit.
 if ask "Should I link you luakit config files?(userconf.lua etc)[yn]:"; then
-	mkdir $XDG_CONFIG_HOME/luakit 2> $nil
-	backup $XDG_CONFIG_HOME/luakit/userconf.lua
+	mkdir -p $XDG_CONFIG_HOME/luakit
+	backup   $XDG_CONFIG_HOME/luakit/userconf.lua
 	lns $S/other/opt/jien_luakit_userconf.lua $XDG_CONFIG_HOME/luakit/userconf.lua
 fi
 
 # Tmux.
-if ask "Should I link your tmux config files?(~/.tmux.conf)[yn]:"; then
+if ask "Should I link your 'tmux' and 'screen' config files?(~/.tmux.conf and ~/.screenrc)[yn]:"; then
 	backup $HOME/.tmux.conf
+	backup $HOME/.screenrc
 	lns $S/other/opt/jien_tmux.conf $HOME/.tmux.conf
+	lns $S/other/opt/jien_screenrc  $HOME/.screenrc
 fi
 
 # Git.

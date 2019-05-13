@@ -11,6 +11,7 @@ endif
 set nowrap
 set number
 "set cindent
+set backspace=2
 set autoindent
 set smartindent
 
