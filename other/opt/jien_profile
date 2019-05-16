@@ -101,5 +101,8 @@ export C_INCLUDE_PATH="$S/c/modules"
 # Perl.
 export PERL5LIB="$S/pl/5/modules"
 
+# Python.
+export PYTHONPATH="$S/py/modules"
+
 # Nethack.
-NETHACKOPTIONS="boulder:0, color, autodig"
+export NETHACKOPTIONS="boulder:0, color, autodig"

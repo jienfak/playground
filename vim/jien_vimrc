@@ -11,7 +11,8 @@ endif
 set nowrap
 set number
 "set cindent
-set backspace=2
+"set cinoptions=(0,u0,U0
+"set backspace=2
 set autoindent
 set smartindent
 
@@ -23,11 +24,17 @@ set smartindent
 " 'ftplugin'(For neovim)
 let g:python_recommended_style=0
 
-imap <S-Tab> <C-V><Tab>
-set noexpandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+imap <S-Tab> <Space><Space><Space><Space>
+"imap <S-Backspace> <Esc>xa
+"set smarttab
+"set noexpandtab
+"set tabstop=4
+"set shiftwidth=4
+"set softtabstop=4
+
+set smarttab
+set noet ci pi sw=4 ts=4
+"set noet sts=0 sw=4 ts=4
 "imap <C-Return> <CR><CR><C-o>k<Tab>
 
 set showcmd
