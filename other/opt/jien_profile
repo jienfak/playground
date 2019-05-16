@@ -79,7 +79,7 @@ done
 if [ -n $DISPLAY ] ; then
 	# No display.
 	export BROWSER=$(which lynx)
-	for browser in links2 links ; do
+	for browser in elinks links2 links ; do
 		if hasprog $browser ; then
 			export BROWSER=$(which $browser)
 			break;
@@ -102,4 +102,4 @@ export C_INCLUDE_PATH="$S/c/modules"
 export PERL5LIB="$S/pl/5/modules"
 
 # Nethack.
-export NETHACKOPTIONS=boulder:0, color, autodig
+NETHACKOPTIONS="boulder:0, color, autodig"
