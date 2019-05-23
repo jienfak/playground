@@ -56,14 +56,7 @@ pm_entry:
 	; Outputting cycle.
 	;
 
-	lodsb				; Read next char.
-
-	; Stop if meet '\0'.
-	test al, al		
-	jz .exit
-
-	; Else we put current char
-	;and his attribute to the video-memory.
+	mov al, 'k'           ; Read next char.
 	stosb
 	mov al, 7
 	stosb

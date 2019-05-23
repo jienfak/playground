@@ -1097,6 +1097,7 @@ awful.util.spawn_with_shell("xset r rate "..tostring(keyboard_repeat_delay).." "
 awful.util.spawn_with_shell("xrdb -load "..xresources)
 awful.util.spawn_with_shell("setxkbmap "..xkb_layout)
 awful.util.spawn_with_shell("localectl set-locale LANG="..locale)
+awful.util.spawn_with_shell("")
 runOnce({"yeahconsole -e tmux "})
 runOnce({"megasync"})
 runOnce({"wicd-client -t"})
