@@ -42,7 +42,7 @@ shpwd() {
 
 setopt PROMPT_SUBST
 PROMPT="%F{yellow}%f%F{red}%n%f@%F{blue}%m%f:%F{yellow}%~%f%(!.#.$)"
-RPROMPT="%F{red}[%f%F{brgreen}%T%f%F{red}]%f[%F{yellow}%?%f,%F{blue}%L%f]"
+RPROMPT="%F{red}[%f%F{brgreen}%T%f%F{red}]%f[%F{yellow}%?%f%F{blue}%L%f]"
 
 #source ~/path/to/fsh/fast-syntax-highlighting.plugin.zsh
 #zplugin light zdharma/fast-syntax-highlighting
@@ -119,7 +119,7 @@ alias edg="$VISUAL"
 alias edgsu="$VISUAL"
 alias ed="$EDITOR"
 alias edsu="sudo $EDITOR"
-alias ls="ls     --color=always"
+#alias ls="ls     --color=always"
 alias ll="ls -l  --color=always"
 alias la="ls -la --color=always"
 #alias "manpager"="$MANPAGER"
@@ -147,12 +147,14 @@ alias la="ls -la --color=always"
 	alias "ipython3"="ipython3 --TerminalInteractiveShell.editing_mode=vi"
 
 set -A grc_progs \
-	cc g++ gfortran gcc netstat irclog \
-	ping log proftpd traceroute make \
-	make diff cvs zcat head tail mount \
-	ps mtr zgrep esperanto nping nmap zmap \
-	systemctl git go python python2 python3 
-	perl perl5\
+	cat cvs df digg gcc g++ ls ifconfig \
+	make mount mtr netstat ping ps tail \
+	traceroute wdiff blkid du dnf docker\
+	docker-machine env id ip iostat last\
+	lsattr lsblk lspci lsmod lsof getfacl\
+	getsebool ulimit uptime nmap fdisk findmnt\
+	free semanage sar ss sysctl systemctl stat showmount\
+	tune2fs and tcpdump
 
 if hasprog grc ; then
 	for prog in $grc_progs ; do
