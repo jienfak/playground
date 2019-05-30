@@ -15,13 +15,8 @@ if(@ARGV<2){
 my $start = $ARGV[0] ;
 my $end   = $ARGV[1] ;
 
-my $string;
+my @lines = <STDIN> ;
+my $lines = join("\n", @lines) ;
 
-until( ($string=<STDIN>) =~ m/$start(.*)/g){}
-$string =~ m/$start(.*)/ ;
-say $1 ;
-until( ($string=<STDIN>) =~ m/(.*)$end/){
-	print $string ;
-}
-$string =~ m/(.*)$end/ ;
-print "$1" ;
+$lines =~ m#$start(.*?)$end#m ;
+print $1.$2.$3 ;

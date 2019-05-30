@@ -6,8 +6,6 @@ source $SHMODS/chores/hasprog.sh
 source $SHMODS/chores/loseall.sh
 source $SHMODS/chores/alifhas.sh
 
-
-
 autoload -Uz compinit promptinit
 
 compinit
@@ -121,10 +119,9 @@ alias edg="$VISUAL"
 alias edgsu="$VISUAL"
 alias ed="$EDITOR"
 alias edsu="sudo $EDITOR"
-alias "ls"="ls --color=always"
-alias "la"="ls -al --color=always"
-alias "ll"="ls --color -l"
-alias "sctl"="sudo systemctl"
+alias ls="ls     --color=always"
+alias ll="ls -l  --color=always"
+alias la="ls -la --color=always"
 #alias "manpager"="$MANPAGER"
 
 	#alifhas "ev"  "eval" # --description "Evaluate text."
@@ -149,17 +146,20 @@ alias "sctl"="sudo systemctl"
 	alias "ipython2"="ipython2 --TerminalInteractiveShell.editing_mode=vi"
 	alias "ipython3"="ipython3 --TerminalInteractiveShell.editing_mode=vi"
 
+set -A grc_progs \
+	cc g++ gfortran gcc netstat irclog \
+	ping log proftpd traceroute make \
+	make diff cvs zcat head tail mount \
+	ps mtr zgrep esperanto nping nmap zmap \
+	systemctl git go python python2 python3 
+	perl perl5\
+
 if hasprog grc ; then
- alias cc="grc --colour=auto cc"
- alias g++="grc --colour=auto g++"
- alias gfortran="grc --colour=auto gfortran"
- alias gcc="grc --colour=auto gcc"
- alias irclog="grc --colour=auto irclog"
- alias log="grc --colour=auto log"
- alias netstat="grc --colour=auto netstat"
- alias ping="grc --colour=auto ping"
- alias proftpd="grc --colour=auto proftpd"
- alias traceroute="grc --colour=auto traceroute"
+	for prog in $grc_progs ; do
+		alias $prog="grc --colour=auto $prog"
+	done
+	alias ll="grc --colour=auto ls -l  --color=always"
+	alias la="grc --colour=auto ls -al --color=always"
 fi
 
 # Functions.
