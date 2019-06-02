@@ -5,11 +5,11 @@
 *utf8:                 2
 *locale:               true
 *faceName:             Droid Sans Mono
-*.font:            xft:DroidSansMono:pixelsize=13,xft:Symbola
-*.boldFont:        xft:DroidSansMono-Bold:pixelsize=13:weight=bold,xft:Symbola
+*.font:            xft:DroidSansMono:pixelsize=12,xft:Symbola
+*.boldFont:        xft:DroidSansMono-Bold:pixelsize=12:weight=bold,xft:Symbola
 !*alwaysBoldMode:       false
 !*colorBDMode:          true
-*.italicFont:      xft:DroidSansMono-Italic:pixelsize=13:slant=italic,xft:Symbola
+*.italicFont:      xft:DroidSansMono-Italic:pixelsize=12:slant=italic,xft:Symbola
 *faceSize:             10
 *fontSize:             10
 *.scrollBar:           false
@@ -89,7 +89,7 @@ xterm*boldMode:        true
 !==========================================================================
 !--->YeahConsole
 !==========================================================================
-yeahconsole*term:             xterm
+yeahconsole*term:             uxterm
 !yeahconsole*transparent:      true
 !yeahconsole*shading:          70
 yeahconsole*consoleHeight:    25

@@ -14,8 +14,8 @@ local terminal = os.getenv("TERM") or "uxterm"
 local second_terminal = "urxvt"
 local file_manager = terminal.." -e '".."lf".."'"
 local heavy_file_manager = "xfe"
-local browser = "luakit"
-local heavy_browser = "chromium"
+local browser = "sh "..os.getenv("S").."/sh/sh/fav/browser.sh".."vimb"
+local heavy_browser = "firefox"
 local xresources = "~/.Xresources"
 local editor = os.getenv("EDITOR") or "vim"
 local editor_cmd = terminal .. " -e " .. editor
@@ -26,6 +26,7 @@ local video_player = "vlc"
 local max_menu_items = 65
 local sound_control = "pavucontrol"
 local heavy_sound_control = "cadence"
+local hw_info = "hardinfo"
 
 -- Status vars.
 local dvorak = false
@@ -57,6 +58,7 @@ end
 -- Standard awesome library.
 local gears = require("gears")
 local awful = require("awful")
+awful.util.spawn_with_shell("echo "..os.getenv("S").." > ~/file")
 require("awful.autofocus")
 -- Widget and layout library.
 local wibox = require("wibox")
@@ -236,12 +238,18 @@ mypersonmenu = {
 		{ "H. file manager", heavy_file_manager},
 		{ "CLI editor", editor_cmd },
 		{ "GUI editor", editor_gui },
-		{ "Browser", browser},
+		{ "Browser", function() awful.util.spawn_with_shell(browser) end},
 		{ "H. browser", heavy_browser},
 		{
 			"Sys. Stat.",
 			function()
 				awful.util.spawn_with_shell(terminal.." -e "..sys_stat_program)
+			end
+		},
+		{
+			"HW info",
+			function()
+				awful.spawn(hw_info)
 			end
 		},
 		{
@@ -600,7 +608,7 @@ globalkeys = awful.util.table.join(
 			{description = " - Open another terminal.", group = "launcher"}
 		),
 		awful.key(
-			{modkey, }, "b", function() awful.spawn(browser) end,
+			{modkey, }, "b", function() awful.util.spawn_with_shell(browser) end,
 			{description=" - Open standard broswer.", group = "launcher"}
 		),
 		awful.key(
@@ -642,6 +650,14 @@ globalkeys = awful.util.table.join(
 				awful.spawn(editor_gui)
 			end,
 			{description = " - Open heavy editor.", group = "launcher"}
+		),
+		-- Hardware info.
+		awful.key(
+			{modkey, "Ctrl"}, "i",
+			function()
+				awful.spawn(hw_info)
+			end,
+			{description = " - Open hardware info prorgam.", group = "launcher"}
 		),
 		-- Music player.
 		awful.key(
@@ -881,7 +897,7 @@ clientkeys = awful.util.table.join(
 		{description = " - Minimize current window.", group = "client"}
 	),
 	awful.key(
-		{ modkey, "Ctrl"}, "#",
+		{ modkey, "Ctrl"}, "=",
 		function (c)
 			c.maximized = not c.maximized
 			c:raise()

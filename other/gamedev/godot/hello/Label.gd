@@ -31,3 +31,13 @@ func _on_Panel_mouse_entered():
 func _on_Panel_mouse_exited():
 	self.text = "You are out the panel"
 	pass # Replace with function body.
+
+
+func _on_ColorRect_mouse_entered():
+	self.text = "You are in the rectangle!"
+	pass # Replace with function body.
+
+
+func _on_ColorRect_mouse_exited():
+	self.text = "You are out the rectangle"
+	pass # Replace with function body.

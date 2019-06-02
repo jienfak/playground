@@ -12,27 +12,37 @@ lns(){
 	ln -sf $1 $2
 }
 
+rclikeln(){
+	for i in $@ ; do
+		backup $HOME/.$i
+		lns $MYOPT/$i $HOME/.$i
+	done
+}
+
+conflikeln(){
+	for i in $@ ; do
+		backup $XDG_CONFIG_HOME/$i
+		lns $MYOPT/$i $XDG_CONFIG_HOME/$i
+	done
+}
+
 
 
 # Profile.
 if ask "Should I link you profile files(~/.bash_profile, ~/.zprofile, ~/.profile etc)?[yn]:"; then
-	backup $HOME/.profile
-	lns $S/other/opt/jien_profile $HOME/.profile
 
 	backup $HOME/.bash_profile
-	lns $S/other/opt/jien_profile $HOME/.bash_profile
+	lns $MYOPT/profile $HOME/.bash_profile
 
 	backup $HOME/.zprofile
-	lns $S/other/opt/jien_profile $HOME/.zprofile
-	source $HOME/.profile
+	lns $MYOPT/profile $HOME/.zprofile
 fi
 
 if ask "Should I created directories in '\$HOME'\
  and change 'user-dirs.dirs' for my?[yn]:"; then
 	mkdir -p $HOME/video $HOME/docs $HOME/temps $HOME/shared \
 	         $HOME/code/ $HOME/progs $HOME/torrent $HOME/bluetooth
-	backup $XDG_CONFIG_HOME/user-dirs.dirs
-	lns $S/other/opt/jien_user-dirs.dirs $XDG_CONFIG_HOME/user-dirs.dirs
+	conflikeln user-dirs.dirs
 fi
 
 # MEGA.
@@ -45,50 +55,35 @@ fi
 
 # X-es.
 if ask "Should I link you X config files?(Xmodmap, Xresources etc)[yn]:"; then
-	backup $HOME/.Xmodmap
-	backup $HOME/.Xresources
-	backup $HOME/.Xdefaults
-	backup $XDG_CONFIG_HOME/awesome-mimeapps.list
-	backup $XDG_CONFIG_HOME/mimeapps.list
-	lns $S/other/opt/jien_Xmodmap                  $HOME/.Xmodmap
-	lns $S/other/opt/jien_Xresources               $HOME/.Xresources
-	lns $S/other/opt/jien_Xresources               $HOME/.Xdefaults
-	lns $S/other/opt/jien_awesome-mimeapps.list    $XDG_CONFIG_HOME/awesome-mimeapps.list
-	lns $S/other/opt/jien_awesome-mimeapps.list    $XDG_CONFIG_HOME/mimeapps.list
-	# Xinit.
-	backup $HOME/.xinitrc
-	lns $S/other/opt/jien_xinitrc          $HOME/.xinitrc
+	rclikeln Xmodmap Xresources xinitrc
+	conflikeln awesome-mimeapps.list mimeapps.list
 fi
 
 # Awesome!
 if ask "Should I link your 'awesome' and configs?(rc.lua etc)[yn]:"; then
-	mkdir -p $XDG_CONFIG_HOME/awesome
-	backup   $XDG_CONFIG_HOME/awesome/rc.lua
-	lns $S/other/opt/jien_awesome_rc.lua $XDG_CONFIG_HOME/awesome/rc.lua
+	conflikeln awesome
 fi
 
 if ask "Should I link your 'Eterm' files?(~/.Eterm)[yn]:" ; then
-	backup $HOME/.Eterm
-	lns /home/jien/code/scripts/other/opt/jien_Eterm $HOME/.Eterm
+	rclikeln Eterm
 fi
 
 
-if ask "Should I link your mostrc file?(~/.mostc)[yn]"; then
-	backup $HOME/.mostrc
-	lns $S/other/opt/jien_mostrc $HOME/.mostrc
+if ask "Should I link your mostrc file?(~/.mostrc)[yn]:"; then
+	rclikeln mostrc
 fi
 
 # Fish shell.
 if ask "Should I link your 'fish' and configs?(config.fish etc)[yn]:"; then
 	backup $XDG_CONFIG_HOME/fish
 	lns $S/sh/fish/ $XDG_CONFIG_HOME/fish
-	# ln -s $HOME/code/S/sh/fish/jien_config.fish $XDG_CONFIG_HOME/fish/config.fish
+	# ln -s $HOME/code/S/sh/fish/config.fish $XDG_CONFIG_HOME/fish/config.fish
 fi
 
 # Zsh shell.
 if ask "Should I link your 'zsh' and configs(zshrc etc)[yn]:"; then
 	backup $HOME/.zshrc
-	lns $S/sh/zsh/jien_zshrc $HOME/.zshrc
+	lns $S/sh/zsh/zshrc $HOME/.zshrc
 fi
 
 # sudo cp $HOME/code/S/sh/fish/completions/* /usr/share/fish/completions/
@@ -96,54 +91,50 @@ fi
 
 
 # Editor. Vim. Neovim.
-if ask "Should I link your editor files?(vimrc, init.vim(neovim etc)[yn]:"; then
+if ask "Should I link your editor files?(vim and Neovim)[yn]:"; then
 	# Vim.
 	backup $HOME/.vimrc
-	lns $S/vim/jien_vimrc          $HOME/.vimrc
+	lns $S/vim/vimrc          $HOME/.vimrc
 	backup $HOME/.vim
-	lns $S/vim                     $HOME/.vim
+	lns $S/vim                $HOME/.vim
 	# Neovim.
 	backup $XDG_CONFIG_HOME/nvim
-	lns $S/vim/                 $XDG_CONFIG_HOME/nvim
-	lns $S/vim/jien_vimrc       $XDG_CONFIG_HOME/nvim/init.vim
+	lns $S/vim             $XDG_CONFIG_HOME/nvim
+	lns $S/vim/vimrc       $XDG_CONFIG_HOME/nvim/init.vim
 fi
 
-# Vifm.
+# vifm and lf.
 if ask "Should I link you vifm(lf) file manager files?(~/.vifm)[yn]"; then
+	# vifm.
 	backup $HOME/.vifm
-	mkdir -p $XDG_CONFIG_HOME/lf
-	backup $XDG_CONFIG_HOME/lf/lfrc
 	lns $S/vim $HOME/.vifm
-	lns $S/other/opt/jien_lfrc $XDG_CONFIG_HOME/lf/lfrc
+
+	conflikeln lf
 fi
 
 # Xfe.
 if ask "Should I create your xfe rc(s)?[yn]"; then
-	mkdir -p $XDG_CONFIG_HOME/xfe
-	backup $XDG_CONFIG_HOME/xfe/xferc
-	lns $S/other/opt/jien_xferc $XDG_CONFIG_HOME/xfe/xferc
+	conflikeln xfe
 fi
 
 # Uzbl.
 if ask "Should I link your uzbl config files?(config etc)[yn]:"; then
-	backup $XDG_CONFIG_HOME/uzbl/config
-	mkdir -p $XDG_CONFIG_HOME/uzbl
-	lns  $S/other/opt/jien_uzbl_config $XDG_CONFIG_HOME/uzbl/config
+	conflikeln uzbl
 fi
 
 # Luakit.
 if ask "Should I link you luakit config files?(userconf.lua etc)[yn]:"; then
-	mkdir -p $XDG_CONFIG_HOME/luakit
-	backup   $XDG_CONFIG_HOME/luakit/userconf.lua
-	lns $S/other/opt/jien_luakit_userconf.lua $XDG_CONFIG_HOME/luakit/userconf.lua
+	conflikeln luakit
+fi
+
+if ask "Should I link you vimb config files?(config etc)[yn]:" ; then
+	conflikeln vimb
 fi
 
 # Tmux.
 if ask "Should I link your 'tmux' and 'screen' config files?(~/.tmux.conf and ~/.screenrc)[yn]:"; then
-	backup $HOME/.tmux.conf
-	backup $HOME/.screenrc
-	lns $S/other/opt/jien_tmux.conf $HOME/.tmux.conf
-	lns $S/other/opt/jien_screenrc  $HOME/.screenrc
+	rclikeln screenrc
+	rclikeln tmux.conf
 fi
 
 # Git.

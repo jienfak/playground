@@ -61,8 +61,10 @@ git_custom_status(){
 # Vi Mode.
 bindkey -v
 
-bindkey '^P' up-history
-bindkey '^N' down-history
+#bindkey '^P' up-history
+#bindkey '^N' down-history
+bindkey '^P' history-beginning-search-backward
+bindkey '^N' history-beginning-search-forward
 bindkey '^?' backward-delete-char
 bindkey '^h' backward-delete-char
 #bindkey '^w' backward-kill-word
@@ -119,7 +121,7 @@ alias edg="$VISUAL"
 alias edgsu="$VISUAL"
 alias ed="$EDITOR"
 alias edsu="sudo $EDITOR"
-#alias ls="ls     --color=always"
+alias l="ls      --color=always"
 alias ll="ls -l  --color=always"
 alias la="ls -la --color=always"
 #alias "manpager"="$MANPAGER"

@@ -8,6 +8,7 @@ export C=$HOME/code
 export S=$C/scripts
 export G=$C/git
 export SHMODS=$S/sh/sh/modules
+export MYOPT=$S/other/opt
 # Config files directory.
 export XDG_CONFIG_HOME=$HOME/.config
 
@@ -89,7 +90,7 @@ if [ -n $DISPLAY ] ; then
 	done
 else
 	# Have X.
-	for browser in luakit chromium firefox ; do
+	for browser in firefox chromium opera vimb luakit ; do
 		if hasprog $browser ; then
 			export BROWSER=$(which $browser)
 			break;
