@@ -47,7 +47,7 @@ set font-size=16
 set monospace-font-size=13
 
 # Default Full-Content zoom level in percent. Default is 100.
-set default-zoom=120
+set default-zoom=100
 
 # Shortcuts allow the opening of an URI built up from a named template with
 # additional parameters.
@@ -56,6 +56,13 @@ shortcut-add d=http://dict.cc/?s=$0
 shortcut-add g=https://encrypted.google.com/search?q=$0
 shortcut-add y=http://www.youtube.com/results?search_query=$0
 shortcut-add s=https://www.startpage.com/do/dsearch?query=$0
+shortcut-add wwr=https://ru.wikipedia.org/wiki/$0
+shortcut-add wwe=https://en.wikipedia.org/wiki/$0
+shortcut-add wdr=https://ru.wiktionary.org/wiki/$0
+shortcut-add wde=https://en.wiktionary.org/wiki/$0
+shortcut-add aur=https://aur.archlinux.org/packages.php?O=0&K=$0&do_Search=Go
+shortcut-add aw=https://wiki.archlinux.org/index.php/Special:Search?fulltext=Search&search=$0
+
 
 # Set the shortcut as the default, that is the shortcut to be used if no
 # shortcut is given and the string to open is not an URI.
@@ -77,3 +84,7 @@ set input-error-css=color:#f2777a;background-color:#393939;font:12pt DejaVu Sans
 set status-css=color:#ffcc66;background-color:#393939;font:12pt DejaVu Sans Mono;
 set status-ssl-css=color:#99cc99;background-color:#393939;font:12pt DejaVu Sans Mono;
 set status-ssl-invalid-css=color:#f2777a;background-color:#393939;font:12pt DejaVu Sans Mono;
+
+nnoremap gt :sh! xdotool key --window $VIMB_XID ctrl+shift+l<CR><Esc>
+nnoremap gT :sh! xdotool key --window $VIMB_XID ctrl+shift+h<CR><Esc>
+nnoremap 1gt :sh! xdotool key --window $VIMB_XID ctrl+1<CR><Esc>

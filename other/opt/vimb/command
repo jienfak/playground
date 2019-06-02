@@ -1,2 +1,37 @@
 tabopen suck
 open suck
+tabopen suck
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+tabopen vk.com
+tabopen d suck
+tabopen tab
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+tabopen suck
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+exit
+quit
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+open vk.com
+tabopen aur aur
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+tabopen pony.town
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+q
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
