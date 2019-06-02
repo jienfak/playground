@@ -1,2 +1,8 @@
 *.o
 ./vim/viminfo
+./other/opt/vimb/closed
+./other/opt/vimb/command
+./other/opt/vimb/cookies.db
+./other/opt/vimb/history
+./other/opt/vimb/queue
+./other/opt/vimb/search
