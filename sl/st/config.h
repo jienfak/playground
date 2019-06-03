@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /*
- * appearance
+ * Appearance.
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
@@ -46,7 +46,7 @@ static unsigned int xfps = 120;
 static unsigned int actionfps = 60;
 
 /*
- * blinking timeout (set to 0 to disable blinking) for the terminal blinking
+ * Blinking timeout (set to 0 to disable blinking) for the terminal blinking
  * attribute.
  */
 static unsigned int blinktimeout = 400;
@@ -57,8 +57,8 @@ static unsigned int blinktimeout = 400;
 static unsigned int cursorthickness = 2;
 
 /*
- * bell volume. It must be a value between -100 and 100. Use 0 for disabling
- * it
+ * Bell volume. It must be a value between -100 and 100. Use 0 for disabling
+ * it.
  */
 static int bellvolume = 0;
 
@@ -156,7 +156,7 @@ static unsigned int defaultattr = 11;
  * Beware that overloading Button1 will disable the selection.
  */
 static MouseShortcut mshortcuts[] = {
-	/* button               mask            string */
+	/* Button               Mask            String */
 	{ Button4,              XK_ANY_MOD,     "\031" },
 	{ Button5,              XK_ANY_MOD,     "\005" },
 };
