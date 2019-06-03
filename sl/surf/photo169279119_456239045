@@ -1,0 +1,433 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link rel="shortcut icon" href="/images/icons/favicons/fav_logo.ico?6" />
+
+<link rel="apple-touch-icon" href="/images/safari_60.png?1">
+<link rel="apple-touch-icon" sizes="76x76" href="/images/safari_76.png?1">
+<link rel="apple-touch-icon" sizes="120x120" href="/images/safari_120.png?1">
+<link rel="apple-touch-icon" sizes="152x152" href="/images/safari_152.png?1">
+
+<meta http-equiv="content-type" content="text/html; charset=windows-1251" />
+<meta name="description" content="" />
+
+
+<title>Фотографии с моей страницы &#8211; 1 фотография</title>
+
+<noscript><meta http-equiv="refresh" content="0; URL=/badbrowser.php"></noscript>
+
+<link rel="stylesheet" type="text/css" href="/css/al/common.css?67481712590" /><link rel="stylesheet" type="text/css" href="/css/al/fonts_cnt.css?2660709036" />
+
+<script type="text/javascript">
+var vk = {
+  ads_rotate_interval: 120000,
+  al: parseInt('3') || 4,
+  id: 169279119,
+  intnat: '' ? true : false,
+  host: 'vk.com',
+  lang: 0,
+  rtl: parseInt('') || 0,
+  version: 4607836,
+  stDomains: 0,
+  stDomain: '',
+  stExcludedMasks: ["loader_nav","lang"],
+  zero: false,
+  contlen: 15150,
+  loginscheme: 'https',
+  ip_h: '0c6cfb01529939046f',
+  navPrefix: '/',
+  dt: parseInt('0') || 0,
+  fs: parseInt('13') || 13,
+  ts: 1559593241,
+  tz: 10800,
+  pd: 0,
+  css_dir: '',
+  vcost: 7,
+  time: [2019, 6, 3, 23, 20, 41],
+  sampleUser: -1, spentLastSendTS: new Date().getTime(),
+  a11y: 0,
+  statusExportHash: '777579b70488f92e4a',
+  audioAdsConfig: {"enabled":true,"sections":["my","user_playlists","group_playlists","my_playlists","recent","audio_feed","recs","recs_audio","recs_album","search","global_search","group_list","user_list","user_wall","group_wall","feed","other","recoms_recoms","recoms_new_audios","recoms_new_albums","recoms_communities","recoms_added_recommendation","recoms_top_audios_global","recoms_mood_playlists","games","any_case_playlists","collections","genre_rock","genre_pop","genre_rap","editors_playlists","recoms_recent_recommendation","recoms_new_artists","recoms_friends","recoms_recent_audios","recoms_recent_playlists","recoms_top_audios_global","recoms_artist_promo_playlists","search_suggestions","search_owned_audios","search_owned_playlist","search_global_audios","search_global_communities","search_global_playlist","search_global_albums","search_global_artists","search_videoclips","artist_info","artist_main_albums","artist_main_audios","artist_featured_albums","artist_featured_audios","artist_featured_albums","artist_featured_albums","artist_pages","artist_events","artist_related","artist_new_album","artist_top_audios","artist_top_videos","artist_awards"],"day_limit_reached":false},
+  longViewTestGroup: null,
+  cma: 1,
+  lpConfig: {
+    enabled: 1,
+    key: '47f05c0257a30cb287842e9f70d6b7e49e5108f0',
+    ts: 1627411749,
+    url: 'https://imv4.vk.com/im3119',
+    lpstat: 0
+  },
+
+  pr_tpl: "<div class=\"pr %cls%\" id=\"%id%\"><div class=\"pr_bt\"><\/div><div class=\"pr_bt\"><\/div><div class=\"pr_bt\"><\/div><\/div>",
+
+  audioInlinePlayerTpl: "<div class=\"audio_inline_player _audio_inline_player no_select\">\n  <div class=\"audio_inline_player_right\">\n    <div class=\"audio_inline_player_volume\"><\/div>\n  <\/div>\n  <div class=\"audio_inline_player_left\">\n    <div class=\"audio_inline_player_progress\"><\/div>\n  <\/div>\n<\/div>",
+
+  tnsPixelType: '',
+  tnsPixelSocdem: '22',
+
+  pe: {"search_position_stats":1,"article_podcasts":1,"article_embeds":1,"article_poll":1,"vk_apps_svg_qr":1}
+};;vk.rv="19528";;if (!window.constants) { window.constants = {Groups: {
+  GROUPS_ADMIN_LEVEL_USER: 0,
+  GROUPS_ADMIN_LEVEL_MODERATOR: 1,
+  GROUPS_ADMIN_LEVEL_EDITOR: 2,
+  GROUPS_ADMIN_LEVEL_ADMINISTRATOR: 3,
+  GROUPS_ADMIN_LEVEL_HOST: 4,
+  GROUPS_ADMIN_LEVEL_EVENT_CREATOR: 5,
+  GROUPS_ADMIN_LEVEL_CREATOR: 6,
+  GROUPS_ADMIN_PSEUDO_LEVEL_ADVERTISER: 100
+}}; };
+
+window.locDomain = vk.host.match(/[a-zA-Z]+\.[a-zA-Z]+\.?$/)[0];
+var _ua = navigator.userAgent.toLowerCase();
+if (/opera/i.test(_ua) || !/msie 6/i.test(_ua) || document.domain != locDomain) document.domain = locDomain;
+var ___htest = (location.toString().match(/#(.*)/) || {})[1] || '', ___to;
+___htest = ___htest.split('#').pop();
+if (vk.al != 1 && ___htest.length && ___htest.substr(0, 1) == vk.navPrefix) {
+  if (vk.al != 3 || vk.navPrefix != '!') {
+    ___to = ___htest.replace(/^(\/|!)/, '');
+    if (___to.match(/^([^\?]*\.php|login|mobile)([^a-z0-9\.]|$)/)) ___to = '';
+    location.replace(location.protocol + '//' + location.host + '/' + ___to);
+  }
+}
+
+var StaticFiles = {
+  'cmodules/web/common_web.js' : {v: '53'},
+  'common.css' : {v: 67481712590},'fonts_cnt.css' : {v: 2660709036}
+  ,'cmodules/bundles/audioplayer.js':{v:'538639dad17d475075fc24'},'cmodules/bundles/common.js':{v:'53ca2f3a259d5646d83653'},'lang0_0.js': {v: 25993220},'photos.js':{v:3151850036},'photos.css':{v:27308802357},'photoview.js':{v:770911649},'photoview.css':{v:32332835478},'grid_sorter.js':{v:838514904},'cmodules/web/ui_media_selector.js':{v:"9e20155a6a59fa280b5d162cbad1c65eb"},'ui_media_selector.css':{v:30829183516},'page.css':{v:87685113507},'page.js':{v:"964956f350360fd665e69cda58f1163cb2b"},'post.css':{v:28445816601},'ui_controls.css':{v:17091570287},'ui_controls.js':{v:4261928241},'cmodules/web/emoji.js':{v:"164a5ca20527abfb53fce"},'notifier.css':{v:27286648683},'indexer.js':{v:1700343828},'cmodules/web/photos_module.js':{v:"1adac4c5f4e5da2208c6b"},'ui_common.css':{v:17351638292},'cmodules/bundles/ff578da9047a3433232ff9486c3dfb04.js':{v:'5fbce038bf4854857c6f'},'ui_common.js':{v:"68a739126f898a496eacd54537a07099e"},'time_spent.js':{v:732637085},'mrtarg.js':{v:1146267795},'mrtarg.css':{v:3142794554},'cmodules/web/page_layout.js':{v:"1934362a2c97d1ea072ce"},'cmodules/web/likes.js':{v:"133e59456dfda90955e46"},'cmodules/bundles/37d6fe1fee6fb6accf5867cbca2cda9c.js':{v:'b077b9c053dfe3f2b796'},'notifier.js':{v:"3918f4e21c0029df8529a9873ddf0f2c51f"}
+}
+var abp;
+</script>
+
+<link type="text/css" rel="stylesheet" href="/css/al/photos.css?27308802357" /><link type="text/css" rel="stylesheet" href="/css/al/photoview.css?32332835478" /><link type="text/css" rel="stylesheet" href="/css/al/ui_media_selector.css?30829183516" /><link type="text/css" rel="stylesheet" href="/css/al/page.css?87685113507" /><link type="text/css" rel="stylesheet" href="/css/al/post.css?28445816601" /><link type="text/css" rel="stylesheet" href="/css/ui_controls.css?17091570287" /><link type="text/css" rel="stylesheet" href="/css/al/notifier.css?27286648683" /><link type="text/css" rel="stylesheet" href="/css/al/ui_common.css?17351638292" /><link type="text/css" rel="stylesheet" href="/css/al/mrtarg.css?3142794554" /><script type="text/javascript" src="/js/loader_nav4607836_0.js"></script><script type="text/javascript" src="/js/cmodules/bundles/audioplayer.js?538639dad17d475075fc24"></script><script type="text/javascript" src="/js/cmodules/bundles/common.js?53ca2f3a259d5646d83653"></script><script type="text/javascript" src="/js/cmodules/web/common_web.js?53_19840c49260736644ca89c8b5cd52f08714"></script><script type="text/javascript" src="/js/lang0_0.js?25993220"></script><script type="text/javascript" src="/js/lib/px.js?ch=1"></script><script type="text/javascript" src="/js/lib/px.js?ch=2"></script><link rel="alternate" media="only screen and (max-width: 640px)" href="https://m.vk.com/photo169279119_456239045" /><link rel="alternate" href="android-app://com.vkontakte.android/vkontakte/m.vk.com/photo169279119_456239045" /><meta name="google-site-verification" content="CNjLCRpSR2sryzCC4NQKKCL5WnvmBTaag2J_UlTyYeQ" /><meta name="yandex-verification" content="798f8402854bea07" /><script type="text/javascript" src="/js/al/photos.js?3151850036"></script><script type="text/javascript" src="/js/al/photoview.js?770911649"></script><script type="text/javascript" src="/js/al/grid_sorter.js?838514904"></script><script type="text/javascript" src="/js/cmodules/web/ui_media_selector.js?9e20155a6a59fa280b5d162cbad1c65eb"></script><script type="text/javascript" src="/js/cmodules/web/page.js?964956f350360fd665e69cda58f1163cb2b"></script><script type="text/javascript" src="/js/lib/ui_controls.js?4261928241"></script><script type="text/javascript" src="/js/cmodules/web/emoji.js?164a5ca20527abfb53fce"></script><script type="text/javascript" src="/js/al/indexer.js?1700343828"></script><script type="text/javascript" src="/js/cmodules/web/photos_module.js?1adac4c5f4e5da2208c6b"></script><script type="text/javascript" src="/js/cmodules/bundles/ff578da9047a3433232ff9486c3dfb04.js?5fbce038bf4854857c6f"></script><script type="text/javascript" src="/js/cmodules/web/ui_common.js?68a739126f898a496eacd54537a07099e"></script><script type="text/javascript" src="/js/al/time_spent.js?732637085"></script><script type="text/javascript" src="/js/al/mrtarg.js?1146267795"></script><script type="text/javascript" src="/js/cmodules/web/page_layout.js?1934362a2c97d1ea072ce"></script><script type="text/javascript" src="/js/cmodules/web/likes.js?133e59456dfda90955e46"></script><script type="text/javascript" src="/js/cmodules/bundles/37d6fe1fee6fb6accf5867cbca2cda9c.js?b077b9c053dfe3f2b796"></script><script type="text/javascript" src="/js/cmodules/web/notifier.js?3918f4e21c0029df8529a9873ddf0f2c51f"></script>
+
+</head>
+
+<body onresize="onBodyResize()" class="">
+  <div id="system_msg" class="fixed"></div>
+  <div id="utils"></div>
+
+  <div id="layer_bg" class="fixed"></div><div id="layer_wrap" class="scroll_fix_wrap fixed layer_wrap"><div id="layer"></div></div>
+  <div id="box_layer_bg" class="fixed"></div><div id="box_layer_wrap" class="scroll_fix_wrap fixed"><div id="box_layer"><div id="box_loader"><div class="pr pr_baw pr_medium" id="box_loader_pr"><div class="pr_bt"></div><div class="pr_bt"></div><div class="pr_bt"></div></div><div class="back"></div></div></div></div>
+
+  <div id="stl_left"></div><div id="stl_side"></div>
+
+  <script type="text/javascript">window.domStarted && domStarted();</script>
+
+  <div class="scroll_fix_wrap _page_wrap" id="page_wrap"><div><div class="scroll_fix">
+  
+
+  <div id="page_header_cont" class="page_header_cont">
+    <div class="back"></div>
+    <div id="page_header_wrap" class="page_header_wrap">
+      <a class="top_back_link" href="" id="top_back_link" onclick="if (nav.go(this, event, {back: true}) === false) { showBackLink(); return false; }"></a>
+      <div id="page_header" class="p_head p_head_l0" style="width: 960px">
+        <div class="content">
+          <div id="top_nav" class="head_nav">
+  <div class="head_nav_item fl_l"><a class="top_home_link fl_l" href="/feed" aria-label="На главную" accesskey="1" ><div class="top_home_logo"></div></a></div>
+  <div class="head_nav_item fl_l"><div id="ts_wrap" class="ts_wrap" onmouseover="TopSearch.initFriendsList();">
+  <input name="disable-autofill" style="display: none;" />
+  <input type="text" onmousedown="event.cancelBubble = true;" ontouchstart="event.cancelBubble = true;" class="text ts_input" id="ts_input" autocomplete="off" name="disable-autofill" placeholder="Поиск" aria-label="Поиск" />
+</div></div>
+  <div class="head_nav_item fl_l head_nav_btns"><a id="top_notify_btn" class="top_nav_btn" href="/feed?section=notifications" onmouseover="TopNotifier.preload()" onmousedown="return TopNotifier.onBellMouseDown(event);" onclick="return TopNotifier.onBellClick(event);" aria-haspopup="true" accesskey="2">
+  <span class="blind_label">Уведомления</span>
+  <div class="top_nav_btn_icon"></div>
+  <div id="top_notify_count" class="top_notify_count"></div>
+</a><div id="top_audio_layer_place" class="top_audio_layer_place"></div><div id="top_audio_btn_group" class="top_nav_btn_audio_group" style="display: none;">
+  <a id="top_audio" class="top_nav_btn _top_nav_audio_btn" href="/music" onmouseover="AudioLayer.prepare()" onmousedown="" onclick="return checkEvent(event);" aria-label="Аудиоплеер" aria-haspopup="true" accesskey="3">
+    <span class="blind_label">Аудиоплеер</span>
+    <div class="top_nav_btn_icon"></div>
+  </a><div class="top_audio_play" id="top_audio_play">
+  <button class="top_audio_play__button" aria-label="Воспроизвести " onClick="getAudioPlayer().instantPlay(this, event, '03fe53d3dc8674dbcd')"></button>
+</div>
+</div></div>
+  <div class="head_nav_item fl_r"><a id="top_profile_link" class="top_nav_link top_profile_link" href="/suckmydick122132" onclick="return (checkKeyboardEvent(event) ? TopMenu.clicked : checkEvent)(event);" aria-label="Настройки страницы" aria-haspopup="true" accesskey="4">
+  <span class="blind_label">Настройки страницы</span>
+  <div class="top_profile_name">Андрей</div><img class="top_profile_img" src="https://pp.userapi.com/c841022/v841022726/6cd26/YhWHh_MshQI.jpg?ava=1" alt="Андрей" /><div class="top_profile_arrow"></div>
+</a><div id="top_profile_menu" ontouchstart="event.cancelBubble = true;" onmousedown="event.cancelBubble = true;">
+  <a class="top_profile_mrow" id="top_myprofile_link" href="/suckmydick122132" onclick="return TopMenu.select(this, event);" style="">Моя страница</a>
+  <div class="top_profile_sep" style=""></div>
+  <a class="top_profile_mrow" id="top_edit_link" href="/edit" onclick="return TopMenu.select(this, event);" style="">Редактировать</a>
+  <a class="top_profile_mrow" id="top_settings_link" href="/settings" onclick="return TopMenu.select(this, event);" style="">Настройки</a>
+  <a class="top_profile_mrow" id="top_support_link" href="/support?act=home" onclick="return TopMenu.select(this, event);">Помощь</a>
+  <div class="top_profile_sep" style=""></div>
+  
+  <a class="top_profile_mrow" id="top_logout_link" href="https://login.vk.com/?act=logout&hash=b7c0019dbb6aad0418&reason=tn&_origin=https://vk.com" onclick="if (checkEvent(event) === false) { window.AudioPlayer && AudioPlayer.clearAllCacheKeys(); window.Notifier && Notifier.lcSend('logged_off'); location.href = this.href; return cancelEvent(event); }">Выйти</a>
+</div></div>
+  <div class="head_nav_item_player"><div class="top_audio_player" id="top_audio_player">
+  <button class="top_audio_player_btn top_audio_player_prev" accesskey="j"><div class="blind_label">Предыдущая аудиозапись</div><div class="top_audio_player_btn_icon"></div></button>
+  <button class="top_audio_player_btn top_audio_player_play _top_audio_player_play" accesskey="k"><div class="blind_label _top_audio_player_play_blind_label">Предыдущая аудиозапись</div><div class="top_audio_player_btn_icon"></div></button>
+  <button class="top_audio_player_btn top_audio_player_next" accesskey="l"><div class="blind_label">Следующая аудиозапись</div><div class="top_audio_player_btn_icon"></div></button>
+  <div class="top_audio_player_title_wrap"><div class="top_audio_player_title"></div></div>
+</div></div>
+</div>
+<div id="ts_cont_wrap" class="ts_cont_wrap" ontouchstart="event.cancelBubble = true;" onmousedown="event.cancelBubble = true;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="page_layout" style="width: 960px;">
+    <div id="side_bar" class="side_bar fl_l " style="">
+      <div id="side_bar_inner" class="side_bar_inner">
+        <nav>
+  <ol>
+    <li id="l_pr" class=""><a href="/suckmydick122132" onclick="return nav.go(this, event, {noback: true, params: {_ref: 'left_nav'}});" class="left_row">
+    <span class="left_fixer">
+      <span class="left_count_wrap fl_r left_void"><span class="inl_bl left_count_sign">0</span></span>
+      <span class="left_icon fl_l"></span>
+      <span class="left_label inl_bl">Моя Страница</span>
+    </span>
+  </a>
+  <div class="left_settings" onclick="menuSettings(0)">
+  <div class="left_settings_inner"></div>
+</div>
+</li><li id="l_nwsf" class=""><a href="/feed" onclick="return nav.go(this, event, {noback: true, params: {_ref: 'left_nav'}});" class="left_row">
+    <span class="left_fixer">
+      <span class="left_count_wrap fl_r left_void"><span class="inl_bl left_count_sign">0</span></span>
+      <span class="left_icon fl_l"></span>
+      <span class="left_label inl_bl">Новости</span>
+    </span>
+  </a>
+  <div class="left_settings" onclick="menuSettings(0)">
+  <div class="left_settings_inner"></div>
+</div>
+</li><li id="l_msg" class=""><a href="/im" onclick="return nav.go(this, event, {noback: true, params: {_ref: 'left_nav'}});" class="left_row">
+    <span class="left_fixer">
+      <span class="left_count_wrap fl_r left_void"><span class="inl_bl left_count_sign">0</span></span>
+      <span class="left_icon fl_l"></span>
+      <span class="left_label inl_bl">Сообщения</span>
+    </span>
+  </a>
+  <div class="left_settings" onclick="menuSettings(0)">
+  <div class="left_settings_inner"></div>
+</div>
+</li><li id="l_fr" class=""><a href="/friends" onclick="return nav.go(this, event, {noback: true, params: {_ref: 'left_nav'}});" class="left_row">
+    <span class="left_fixer">
+      <object type="internal/link"><a href="/friends?section=requests" onclick="nav.link && nav.link('/friends?section=requests', event); cancelEvent(event);" class="left_count_wrap fl_r left_void left_count_wrap_hovered"><span class="inl_bl left_count_sign">0</span></a></object>
+      <span class="left_icon fl_l"></span>
+      <span class="left_label inl_bl">Друзья</span>
+    </span>
+  </a>
+  <div class="left_settings" onclick="menuSettings(0)">
+  <div class="left_settings_inner"></div>
+</div>
+</li><li id="l_gr" class=""><a href="/groups" onclick="return nav.go(this, event, {noback: true, params: {_ref: 'left_nav'}});" class="left_row">
+    <span class="left_fixer">
+      <span class="left_count_wrap fl_r left_void"><span class="inl_bl left_count_sign">0</span></span>
+      <span class="left_icon fl_l"></span>
+      <span class="left_label inl_bl">Группы</span>
+    </span>
+  </a>
+  <div class="left_settings" onclick="menuSettings(0)">
+  <div class="left_settings_inner"></div>
+</div>
+</li><li id="l_ph" class=""><a href="/albums169279119" onclick="return nav.go(this, event, {noback: true, params: {_ref: 'left_nav'}});" class="left_row">
+    <span class="left_fixer">
+      <span class="left_count_wrap fl_r left_void"><span class="inl_bl left_count_sign">0</span></span>
+      <span class="left_icon fl_l"></span>
+      <span class="left_label inl_bl">Фотографии</span>
+    </span>
+  </a>
+  <div class="left_settings" onclick="menuSettings(0)">
+  <div class="left_settings_inner"></div>
+</div>
+</li><li id="l_aud" class=""><a href="/audios169279119" onclick="return nav.go(this, event, {noback: true, params: {_ref: 'left_nav'}});" class="left_row">
+    <span class="left_fixer">
+      <span class="left_count_wrap fl_r left_void"><span class="inl_bl left_count_sign">0</span></span>
+      <span class="left_icon fl_l"></span>
+      <span class="left_label inl_bl">Музыка</span>
+    </span>
+  </a>
+  <div class="left_settings" onclick="menuSettings(0)">
+  <div class="left_settings_inner"></div>
+</div>
+</li><li id="l_vid" class=""><a href="/video" onclick="return nav.go(this, event, {noback: true, params: {_ref: 'left_nav'}});" class="left_row">
+    <span class="left_fixer">
+      <span class="left_count_wrap fl_r left_void"><span class="inl_bl left_count_sign">0</span></span>
+      <span class="left_icon fl_l"></span>
+      <span class="left_label inl_bl">Видео</span>
+    </span>
+  </a>
+  <div class="left_settings" onclick="menuSettings(0)">
+  <div class="left_settings_inner"></div>
+</div>
+</li><li id="l_ap" class=""><a href="/apps" onclick="return nav.go(this, event, {noback: true, params: {_ref: 'left_nav'}});" class="left_row">
+    <span class="left_fixer">
+      <object type="internal/link"><a href="/apps?tab=notifications" onclick="nav.link && nav.link('/apps?tab=notifications', event); cancelEvent(event);" class="left_count_wrap fl_r left_count_wrap_hovered"><span class="inl_bl left_count">1</span></a></object>
+      <span class="left_icon fl_l"></span>
+      <span class="left_label inl_bl">Игры</span>
+    </span>
+  </a>
+  <div class="left_settings" onclick="menuSettings(0)">
+  <div class="left_settings_inner"></div>
+</div>
+</li><div class="more_div l_main"></div><li id="l_vkp" class=""><a href="/vkpay" onclick="return nav.go(this, event, {noback: true, params: {_ref: 'left_nav'}});" class="left_row">
+    <span class="left_fixer">
+      <span class="left_count_wrap fl_r left_void"><span class="inl_bl left_count_sign">0</span></span>
+      <span class="left_icon fl_l"></span>
+      <span class="left_label inl_bl">VK Pay</span>
+    </span>
+  </a>
+  <div class="left_settings" onclick="menuSettings(0)">
+  <div class="left_settings_inner"></div>
+</div>
+</li><div class="more_div"></div><li id="l_doc" class=""><a href="/docs" onclick="return nav.go(this, event, {noback: true, params: {_ref: 'left_nav'}});" class="left_row">
+    <span class="left_fixer">
+      <span class="left_count_wrap fl_r left_void"><span class="inl_bl left_count_sign">0</span></span>
+      <span class="left_icon fl_l"></span>
+      <span class="left_label inl_bl">Документы</span>
+    </span>
+  </a>
+  <div class="left_settings" onclick="menuSettings(0)">
+  <div class="left_settings_inner"></div>
+</div>
+</li><div class="more_div"></div><li id="l_mgid140259097" class="l_comm"><a href="/justcodeordie" onclick="return nav.go(this, event, {noback: true, params: {_ref: 'left_nav'}});" class="left_row">
+    <span class="left_fixer">
+      <object type="internal/link"><a href="gim140259097" onclick="nav.link && nav.link('gim140259097', event); cancelEvent(event);" class="left_count_wrap fl_r left_void left_count_wrap_hovered"><span class="inl_bl left_count_sign">0</span></a></object>
+      <span class="left_icon fl_l"></span>
+      <span class="left_label inl_bl">Just Code</span>
+    </span>
+  </a>
+  <div class="left_settings" onclick="menuSettings(1)">
+  <div class="left_settings_inner"></div>
+</div>
+</li>
+  </ol>
+</nav>
+<div id="left_blocks"></div><div id="ads_left" class="ads_left_empty"></div><div class="left_menu_nav_wrap" onclick="window.logLeftMenuClicks && logLeftMenuClicks(event)"><a class="left_menu_nav" href="/blog" data-stats-key="blog">Блог</a> <a class="left_menu_nav" href="/dev" data-stats-key="dev">Разработчикам</a> <a class="left_menu_nav" href="/biz" data-stats-key="biz">Реклама</a> <div class="ui_actions_menu_wrap _ui_menu_wrap " onmouseover="uiActionsMenu.show(this, event, {autopos: true, dy: 6});" onmouseout="uiActionsMenu.hide(this);">
+  <div class="ui_actions_menu_icons"  tabindex="0" aria-label="Действия" role="button" onclick="uiActionsMenu.keyToggle(this, event);"><span class="blind_label">Действия</span><a class="left_menu_nav left_menu_more" id="left_menu_more">Ещё</a></div>
+  <div class="ui_actions_menu _ui_menu" ><a class="ui_actions_menu_item" href="/about" data-stats-key="about">О компании</a><a class="ui_actions_menu_item" href="/jobs" data-stats-key="jobs">Вакансии</a><a class="ui_actions_menu_item" href="/legal" data-stats-key="legal">Правовая информация</a><a class="ui_actions_menu_item" href="/data_protection" data-stats-key="data_protection">Защита данных</a><a class="ui_actions_menu_item" href="/safety" data-stats-key="safety">Центр безопасности</a><a class="ui_actions_menu_item" onclick="window.logLeftMenuClicks && logLeftMenuClicks(event, 'language'); showBox('lang.php', {act: 'lang_dialog'}, {params: {bodyStyle: 'padding: 0'}, noreload: true})" tabindex="0" role="link">Язык: русский</a></div>
+</div></div>
+      </div>
+    </div>
+
+    <div id="page_body" class="fl_r " style="width: 795px;">
+      <div id="header_wrap2">
+        <div id="header_wrap1">
+          <div id="header" style="display: none">
+            <h1 id="title"></h1>
+          </div>
+        </div>
+      </div>
+      <div id="wrap_between"></div>
+      <div id="wrap3"><div id="wrap2">
+  <div id="wrap1">
+    <div id="content"><div class="page_block" id="photos_all_block">
+  <h2 class="page_block_h2">
+<div class="page_block_header clear_fix">
+  <div class="page_block_header_extra_left _header_extra_left"></div>
+  <div class="page_block_header_extra _header_extra"></div>
+  <div class="page_block_header_inner _header_inner"><a class="ui_crumb" href="/albums169279119" onclick="return nav.go(this, event, {back: true});">Мои фотографии</a><div class="ui_crumb_sep"></div><div class="ui_crumb" >Фотографии с моей страницы<span class="ui_crumb_count">1</span></div></div>
+</div>
+</h2><div class="photos_album_intro">
+  <h1>Фотографии с моей страницы</h1>
+  <div class="photos_album_intro_desc" style="display: none"></div>
+  <div class="photos_album_intro_info"><span class="photos_album_info">1 фотография</span><span class="divide">|</span><span class="photos_album_info"><a href="/album169279119_0?act=comments" onclick="return nav.go(this, event)">Комментарии к альбому</a></span></div>
+</div><div class="photos_album_page">
+  <div class="photos_container_grid ">
+    <div id="photos_container_photos" class="photos_container" data-rev="0"></div>
+    
+  </div>
+</div>
+</div></div>
+  </div>
+</div></div>
+    </div>
+
+    <div id="footer_wrap" class="footer_wrap fl_r" style="width: 795px;"></div>
+
+    <div class="clear"></div>
+  </div>
+</div></div><noscript><div style="position:absolute;left:-10000px;">
+<img src="//top-fwz1.mail.ru/counter?id=2579437;pid=169279119;js=na" style="border:0;" height="1" width="1" />
+</div></noscript></div>
+  <div class="progress" id="global_prg"></div>
+
+  <script type="text/javascript">
+    if (parent && parent != window && (browser.msie || browser.opera || browser.mozilla || browser.chrome || browser.safari || browser.iphone)) {
+      document.getElementsByTagName('body')[0].innerHTML = '';
+    } else {
+      window.domReady && domReady();
+      updateMoney(0);
+initPageLayoutUI();
+if (browser.iphone || browser.ipad || browser.ipod) {
+  setStyle(bodyNode, {webkitTextSizeAdjust: 'none'});
+}TopMenu.init();
+initTopAudioPlayer();
+if (0) {
+  hide('support_link_td', 'top_support_link');
+}
+var ts_input = ge('ts_input');
+if (ts_input) {
+  placeholderSetup(ts_input, {back: false, reload: true, phColor: '#8fadc8'});
+}
+TopSearch.init();;window.shortCurrency && shortCurrency();
+window.handlePageParams && handlePageParams({"id":169279119,"leftblocks":"","leftads":"<!--ads_experiment;rb:310200::45891:46:0::jUfvj2o6CuZn0IBl26I3K1D2tMCrT7LlshdUIh2zSrAEMO4FFjpar2eY3pRmlSFi*gQ7XTqxnYWtz6g*SPQklfuotDqDovfqyPu1uv8TkcPxazkmIGe1CWq6qmrMQLvWsKAviQuXpl42VBhr1DHjPyz4hOBn7RH9GcO42RgkniCHjAdWQZ8LgDykXTOnGFBJbPGUz0Xd3alFO\/o1qTqLlB903tApmbUaL9lCSWPYpCkpJmesttFHOdtJxQcNbWcUIqy62hSO9CVPhVX\/0nKvOrhEGExHhtMUvAuutwNjqnAVRpLyBjhImxYz0pfoSejYiUe0qir9qbAa020sYGx44w--;vk:310000:;-->","ads_can_show":"1","ads_showed":"","ads_section":"photos","loc":"photo169279119_456239045","wrap_page":1,"width":960,"width_dec":165,"width_dec_footer":165,"top_home_link_class":"top_home_link fl_l","body_class":"","counters":"0,0,0,0,0,0,0,-1,1,-1,0,-1,0,-1,-1,0","pvbig":1,"pvdark":1});addEvent(document, 'click', onDocumentClick);
+addLangKeys({"global_apps":"Приложения","global_friends":"Друзья","global_communities":"Сообщества","head_search_results":"Результаты поиска","global_chats":"Диалоги","global_show_all_results":"Показать все результаты","global_news_search_results":"Результаты поиска в новостях","global_emoji_cat_recent":"Часто используемые","global_emoji_cat_1":"Эмоции","global_emoji_cat_2":"Животные и растения","global_emoji_cat_3":"Жесты и люди","global_emoji_cat_4":"Еда и напитки","global_emoji_cat_5":"Спорт и активности","global_emoji_cat_6":"Путешествия и транспорт","global_emoji_cat_7":"Предметы","global_emoji_cat_8":"Символы","global_emoji_cat_9":"Флаги","stories_archive_privacy_info":"Истории в архиве видите только Вы","stories_remove_warning":"Вы действительно хотите удалить историю?<br>Отменить действие будет невозможно.","stories_narrative_remove_warning":"Вы действительно хотите удалить сюжет?<br>Отменить действие будет невозможно.","stories_remove_confirm":"Удалить","stories_answer_placeholder":"Ваше сообщение…","stories_answer_sent":"Сообщение отправлено","stories_blacklist_title":"Скрыты из историй","stories_settings":"Настройки","stories_add_blacklist_title":"Скрытие из историй","stories_add_blacklist_message":"Пользователь останется в друзьях, но истории не будут показываться в новостях.","stories_add_blacklist_button":"Скрыть из историй","stories_add_blacklist_message_group":"Вы останетесь подписчиком сообщества, но истории не будут показываться в новостях.","stories_error_cant_load":"Не удалось загрузить историю.","stories_try_again":"Попробовать ещё раз","stories_error_expired":"Историю можно было посмотреть<br>в течение 24 часов после публикации","stories_error_deleted":"История удалена","stories_error_private":"Автор скрыл историю","stories_mask_tooltip":"Попробовать эту маску","stories_mask_sent":"Маска отправлена на телефон","stories_followed":"Вы подписались&#33;","stories_unfollowed":"Вы отписались","stories_is_ad":"Реклама","stories_private_story":"Приватная<br>история","stories_deleted_story":"История<br>удалена","stories_bad_browser":"Истории не поддерживаются в Вашем браузере","stories_delete_all_replies_confirm":"Вы действительно хотите удалить все ответы {name} за последние сутки? <br>Отменить действие будет невозможно.","stories_hide_reply_button":"Скрыть ответ","stories_reply_hidden":"Ответ на историю скрыт.","stories_restore":"Восстановить","stories_hide_reply_continue":"Продолжить просмотр","stories_hide_all_replies":["","Скрыть все его ответы за последние сутки","Скрыть все её ответы за последние сутки"],"stories_reply_add_to_blacklist":"Занести в чёрный список","stories_hide_reply_warning":"Вы действительно хотите скрыть этот ответ?<br>Отменить действие будет невозможно.","stories_replies_more_button":["","Показать ещё %s ответившего","Показать ещё %s ответивших","Показать ещё %s ответивших"],"stories_all_replies_hidden":"Все ответы скрыты","stories_ban_confirm":"Вы действительно хотите добавить в чёрный список {name}?<br>Отменить действие будет невозможно.","stories_banned":"Пользователь в чёрном списке","stories_share":"Поделиться","stories_follow":"Подписаться","stories_unfollow":"Отписаться","stories_report":"Пожаловаться","stories_report_sent":"Жалоба отправлена","stories_narrative_show":"Посмотреть cюжет","stories_narrative_bookmark_added":"Сюжет сохранён в {link}закладках{\/link}","stories_narrative_bookmark_deleted":"Сюжет удалён из закладок","stories_narrative_edit_button":"Редактировать сюжет","stories_narrative_add_bookmark_button":"Сохранить в закладках","stories_narrative_remove_bookmark_button":"Удалить из закладок","stories_show_hashtag_link":"Поиск по хештегу","stories_go_to_group":"Открыть сообщество","stories_go_to_profile":"Открыть профиль","stories_live_ended_title":"Спасибо за просмотр&#33;","stories_live_ended_desc_club":"Сообщество {name} <br>завершило трансляцию.","stories_live_ended_desc_user":["","{name} завершил трансляцию.","{name} завершила трансляцию."],"stories_live_ended_open_club":"Открыть сообщество","stories_live_ended_open_user":"Открыть профиль","stories_live_ended_watch_next":"Смотреть далее","stories_live_N_watching":["","%s смотрит сейчас","%s смотрят сейчас","%s смотрят сейчас"],"stories_live_chat_msg_too_long":"Сообщение слишком длинное "}, true);
+addLangKeys({"global_X_post_views":["","просмотр","просмотра","просмотров"],"global_like":"Нравится","global_X_shared":["","поделился","поделились","поделились"],"global_emoji_cat_1":"Эмоции","global_emoji_cat_2":"Животные и растения","global_emoji_cat_3":"Жесты и люди","global_emoji_cat_4":"Еда и напитки","global_emoji_cat_5":"Спорт и активности","global_emoji_cat_6":"Путешествия и транспорт","global_emoji_cat_7":"Предметы","global_emoji_cat_8":"Символы","global_emoji_cat_9":"Флаги","global_emoji_cat_recent":"Часто используемые","global_error":"Ошибка","global_store_stickers":"Магазин стикеров","global_store_stickers_new_available":"Доступны новые стикеры","purchases_stickers_favorite_add_tt":null,"purchases_stickers_favorite_rm_tt":null,"box_loading":"Загрузка...","box_no":"Нет","box_yes":"Да","photos_tags_dropdown_placeholder":"Отметить человека...","photos_tags_not_found_tag_text":"Пользователь не найден, хотите отметить {tagName}?","photos_tags_suggestion_question":"Это {userName}{tag_span}?{\/tag_span}","photos_tags_user_you":"Вы"});
+addTemplates({"_":"_","stickers_sticker_url":"https:\/\/vk.com\/sticker\/1-%id%-%size%"});
+addLangKeys({"wall_post_copyright_source_text":"Источник","wall_post_copyright_edit_button":"Изменить источник","wall_post_copyright_add_button":"Указать источник","audio_podcast_attach_media":"Подкаст","audio_podcast_episode_time_hour":"{hour} ч","audio_podcast_episode_time_min":"{min} мин","audio_podcast_episode_time_sec":"{sec} сек","events_media_type":"Мероприятие","global_emoji_cat_1":"Эмоции","global_emoji_cat_2":"Животные и растения","global_emoji_cat_3":"Жесты и люди","global_emoji_cat_4":"Еда и напитки","global_emoji_cat_5":"Спорт и активности","global_emoji_cat_6":"Путешествия и транспорт","global_emoji_cat_7":"Предметы","global_emoji_cat_8":"Символы","global_emoji_cat_9":"Флаги","global_emoji_cat_recent":"Часто используемые","global_error":"Ошибка","global_store_stickers":"Магазин стикеров","global_store_stickers_new_available":"Доступны новые стикеры","purchases_stickers_favorite_add_tt":null,"purchases_stickers_favorite_rm_tt":null});
+window.cur = window.cur || {};
+cur['emojiHintsSendLogHash']="5eb1933f33ca9ecc6b";
+cur.pvPreloaded = "<div id=\"photo_row_169279119_456239045\" data-id=\"169279119_456239045\" class=\"photos_row \" style=\"background-image: url(https:\/\/pp.userapi.com\/c841022\/v841022726\/6cd1e\/mgReOkxAjOk.jpg); width: 185px; height: 127px\" aria-label=\"Фотография\">\n  <a href=\"\/photo169279119_456239045\" onclick=\"if (cur.cancelClick) return (cur.cancelClick = false); return showPhoto('169279119_456239045', 'album169279119_0', {img: this, root: 1, noHistory: false}, event)\"><\/a>\n<\/div>";extend(cur, {"postTo":169279119,"offset":40,"count":1,"totalCount":1,"moreFrom":"album169279119_0","moreOpts":{"rev":""},"reorderHash":"6457028f84837b9d82"});
+
+cur.lang = extend(cur.lang || {}, {
+  photos_deleting_album: 'Удаление альбома',
+  photos_sure_del_album: 'Вы уверены, что хотите удалить альбом?',
+  photos_stop_uploading: 'Прервать загрузку',
+  photos_uploading_warning: 'Загрузка фотографий ещё продолжается. Вы уверены, что хотите покинуть страницу и прервать загрузку?',
+  photos_add_description_placeholder: 'Добавьте описание…',
+});
+
+if (vk.version) {
+  addEvent(window, 'load', photos.initScroll);
+} else {
+  photos.initScroll();
+}
+var preload = [80,""];
+
+ajax.preload(cur.moreFrom, extend({offset: cur.offset, part: 1}, cur.moreOpts || {}), preload);
+photos.registerDragZone({
+  on: function() {
+    if (cur.pvEditorMode) { return; }
+    if (window.layers && layers.visible) {
+      return;
+    }
+    addClass(ge('photos_upload_area_drop'), 'photos_upload_area_enter');
+    if (ge('lite_photo_uploader')) setStyle(ge('lite_photo_uploader'), {width: '1px', height: '1px'});
+  },
+  un: function() {
+    removeClass(ge('photos_upload_area_drop'), 'photos_upload_area_enter');
+    if (ge('lite_photo_uploader')) setStyle(ge('lite_photo_uploader'), {width: '100%', height: '100%'});
+  },
+  drop: function(files) {
+    if (cur.uplId !== undefined && window.Upload && Upload.checked && Upload.checked[cur.uplId]) {
+      Upload.onFileApiSend(cur.uplId, files);
+    } else {
+      photos.onUploadSelect(files);
+    }
+  }
+});cur.cansort = 1; cur.photoSorter = new GridSorter('photos_container_photos', { dragThreshold: 0, onReorder: photos.reorderPhotos });
+ajax.preload('al_photos.php', {"act":"show","list":"album169279119_0","photo":"169279119_456239045","module":"photos"}, ["album169279119_0",1,0.000000,[{"id":"169279119_456239045","base":"https:\/\/pp.userapi.com\/","commcount":2,"commshown":2,"comments":"<div id=\"pv_comments\" class=\"pv_comments wall_module\">\n  <div id=\"pv_comments_header\" onclick=\"Photoview.comments();\" class=\"pv_comments_header unshown\"><\/div>\n  <div id=\"pv_comments_list\" class=\"pv_comments_list \"><div id=\"post169279119photo_116\" class=\"reply reply_dived clear  reply_replieable _post\" data-post-id=\"169279119photo_116\"  onclick=\"Wall.replyClick('169279119_photo456239045', 116, event, 536152488)\">\n  <div class=\"reply_wrap _reply_content _post_content clear_fix\">\n    \n    <a class=\"reply_image\" href=\"\/id536152488\">\n      <img src=\"\/images\/deactivated_50.png?ava=1\" width=\"40\" height=\"40\" class=\"reply_img\" alt=\"Римма Гаврилова\" \/>\n    <\/a>\n    <div class=\"reply_content\" >\n      <div class=\"fl_r post_actions_wrap\"><div class=\"post_actions\"><div id=\"reply_delete169279119_116\" class=\"reply_delete_button reply_action fl_r\" data-title=\"Удалить\" onclick=\"Photoview.commAction('delete', this, '169279119_116', '48ac92ad768a25d9de');\" onmouseover=\"showTitle(this);\" aria-label=\"Удалить\" tabindex=\"0\" role=\"link\"><\/div><\/div><\/div>\n      <div class=\"reply_author\">\n        <a class=\"author\" href=\"\/id536152488\" data-from-id=\"536152488\">Римма Гаврилова<\/a>\n      <\/div>\n      <div class=\"reply_text\" ><div id=\"wpt169279119photo_116\"><div class=\"wall_reply_text\">Андрей <\/div><\/div><\/div>\n      <div class=\"reply_footer clear_fix\" id=\"wpe_bottom169279119photo_116\">\n        <div class=\"like_wrap _like_photo_comment169279119_116  lite\">\n  <div class=\"like_cont tt_noappend\">\n    <div class=\"like_btns\">\n      <a class=\"like_btn like _like empty\"  onclick=\"Likes.toggle(this, event, 'photo_comment169279119_116', 'c1a7776cdc6a434162');\"onmouseover=\"Likes.showLikes(this, 'photo_comment169279119_116', {})\" data-count=\"0\" href=\"#\" title=\"Нравится\">\n  <div class=\"like_button_icon\"><\/div>\n  <div class=\"like_button_label\"><\/div>\n  <div class=\"like_button_count\"><\/div>\n  <span class=\"blind_label\">Нравится<\/span>\n<\/a>\n<span class=\"blind_label\" tabindex=\"0\" role=\"link\" onclick=\"Likes.showLikesList(this, 'photo_comment169279119_116')\">Показать список оценивших<\/span>\n      \n    <\/div>\n    <div class=\"like_views _views\" onmouseover=\"Likes.updateViews('photo_comment169279119_116');\"><\/div>\n    \n  <\/div>\n<\/div>\n        <div class=\"reply_date\"><span class=\"rel_date\">17 мар в 3:23<\/span><\/div>\n        <div class=\"reply_link_wrap\">\n  <a class=\"reply_link _reply_lnk\" tabindex=\"0\" role=\"link\">Ответить<\/a>\n<\/div>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/div><div id=\"post169279119photo_117\" class=\"reply reply_dived clear  reply_replieable _post\" data-post-id=\"169279119photo_117\"  onclick=\"Wall.replyClick('169279119_photo456239045', 117, event, 169279119)\">\n  <div class=\"reply_wrap _reply_content _post_content clear_fix\">\n    \n    <a class=\"reply_image\" href=\"\/suckmydick122132\">\n      <img src=\"https:\/\/pp.userapi.com\/c841022\/v841022726\/6cd26\/YhWHh_MshQI.jpg?ava=1\" width=\"40\" height=\"40\" class=\"reply_img\" alt=\"Андрей Чижих\" \/>\n    <\/a>\n    <div class=\"reply_content\" >\n      <div class=\"fl_r post_actions_wrap\"><div class=\"post_actions\"><div id=\"reply_delete169279119_117\" class=\"reply_delete_button reply_action fl_r\" data-title=\"Удалить\" onclick=\"Photoview.commAction('delete', this, '169279119_117', '1ecfbb0772f13f09c0');\" onmouseover=\"showTitle(this);\" aria-label=\"Удалить\" tabindex=\"0\" role=\"link\"><\/div><\/div><\/div>\n      <div class=\"reply_author\">\n        <a class=\"author\" href=\"\/suckmydick122132\" data-from-id=\"169279119\">Андрей Чижих<\/a> <a href=\"\/id536152488\" class=\"reply_to\" onclick=\"return wall.showReply(this, '169279119_0', '169279119photo_116', event)\" rid=\"536152488\" data-root-id=\"169279119photo_photo456239045\">Римме<\/a>\n      <\/div>\n      <div class=\"reply_text\" ><div id=\"wpt169279119photo_117\"><div class=\"wall_reply_text\"><a class=\"wall_reply_greeting\" href=\"\/id536152488\" onclick=\"return wall.showReply(this, '169279119_0', '169279119photo_116', event)\">Римма<\/a>, Что-с?<\/div><\/div><\/div>\n      <div class=\"reply_footer clear_fix\" id=\"wpe_bottom169279119photo_117\">\n        <div class=\"like_wrap _like_photo_comment169279119_117  lite\">\n  <div class=\"like_cont tt_noappend\">\n    <div class=\"like_btns\">\n      <a class=\"like_btn like _like empty\"  onclick=\"Likes.toggle(this, event, 'photo_comment169279119_117', '27a18448430d9b2472');\"onmouseover=\"Likes.showLikes(this, 'photo_comment169279119_117', {})\" data-count=\"0\" href=\"#\" title=\"Нравится\">\n  <div class=\"like_button_icon\"><\/div>\n  <div class=\"like_button_label\"><\/div>\n  <div class=\"like_button_count\"><\/div>\n  <span class=\"blind_label\">Нравится<\/span>\n<\/a>\n<span class=\"blind_label\" tabindex=\"0\" role=\"link\" onclick=\"Likes.showLikesList(this, 'photo_comment169279119_117')\">Показать список оценивших<\/span>\n      \n    <\/div>\n    <div class=\"like_views _views\" onmouseover=\"Likes.updateViews('photo_comment169279119_117');\"><\/div>\n    \n  <\/div>\n<\/div>\n        <div class=\"reply_date\"><span class=\"rel_date\">17 мар в 3:25<\/span><\/div>\n        \n      <\/div>\n    <\/div>\n  <\/div>\n<\/div><\/div>\n  <div class=\"pv_no_commments_placeholder_wrap\">\n    <div class=\"pv_no_commments_placeholder no_rows unshown\">Будьте первым, кто оставит комментарий к этой фотографии.<\/div>\n    <div class=\"pv_closed_commments_placeholder no_rows unshown\">Возможность комментирования этой фотографии ограничена.<\/div>\n  <\/div>\n<\/div>","reply_form":"<div id=\"pv_reply_form_wrap\" class=\"pv_reply_form_wrap\">\n  <div id=\"pv_reply_form\" class=\"pv_reply_form wall_module _post_wrap\">\n    <div id=\"reply_box169279119_photo456239045\" class=\"submit_post_box reply_box clear_fix _submit_post_box\" data-from-oid=\"169279119\" data-oid=\"169279119\" data-owner-name=\"\" data-owner-photo=\"\" data-owner-href=\"\" onclick=\"return cancelEvent(event)\">\n  <div class=\"reply_form\">\n    <div class=\"reply_text_wrapper\">\n      <input type=\"hidden\" id=\"reply_to169279119_photo456239045\" value=\"\" \/>\n      <a class=\"post_field_user_link _post_field_author\" href=\"\/suckmydick122132\" onclick=\"if (!checkEvent(event)) return nav.go(this, event); event.cancelBubble = true;\">\n  <img class=\"post_field_user_image _post_field_image\" src=\"https:\/\/pp.userapi.com\/c841022\/v841022726\/6cd26\/YhWHh_MshQI.jpg?ava=1\" \/>\n  <img class=\"post_field_user_image post_field_image_secondary _post_field_image\" src=\"https:\/\/pp.userapi.com\/c841022\/v841022726\/6cd26\/YhWHh_MshQI.jpg?ava=1\" \/>\n<\/a>\n      <div class=\"reply_field_wrap _emoji_field_wrap\">\n        <div id=\"reply_smile169279119_photo456239045\" class=\"emoji_smile_wrap  _emoji_wrap\">\n  <div class=\"emoji_smile _emoji_btn\" title=\"Используйте TAB, чтобы быстрее открывать смайлы\" onmouseover=\"return Emoji.show(this, event);\" onmouseout=\"return Emoji.hide(this, event);\" onclick=\"return cancelEvent(event);\">\n    <div class=\"emoji_smile_icon\"><\/div>\n  <\/div>\n<\/div>\n        <div id=\"reply_field169279119_photo456239045\" class=\"reply_field submit_post_field\" onfocus=\"return Wall.showEditReply('169279119_photo456239045', event);\" contenteditable=\"true\" placeholder=\"Написать комментарий...\" role=\"textbox\" aria-multiline=\"true\"><\/div>\n      <\/div>\n    <\/div>\n    <div id=\"submit_reply169279119_photo456239045\" class=\"submit_post clear_fix\">\n      <div class=\"submit_reply_wrapper\">\n        <div class=\"reply_warn clear\" id=\"reply_warn169279119_photo456239045\"><\/div>\n        <div id=\"reply_media_preview169279119_photo456239045\" class=\"reply_media_preview clear_fix media_preview\"><\/div>\n        <div class=\"addpost_button_wrap\">\n          <button class=\"flat_button addpost_button\" id=\"reply_button169279119_photo456239045\" onclick=\"wall.sendReply('169279119_photo456239045', event, {});\" onmouseover=\"wall.replySubmitTooltip('169279119_photo456239045', 1, this);\" onmouseout=\"wall.replySubmitTooltip('169279119_photo456239045', 0, this);\">Отправить<\/button>\n        <\/div>\n        <div class=\"pv_reply_cancel_button button_cancel fl_r\" onclick=\"Wall.hideEditReply('169279119_photo456239045', true);\"><div class=\"flat_button secondary\">Отмена<\/div><\/div>\n        <div class=\"page_add_media\" id=\"reply_add_media_169279119_photo456239045\"><\/div>\n        <div id=\"reply_to_title169279119_photo456239045\" class=\"reply_to_title addpost_popt\"><\/div>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/div>\n  <\/div>\n<\/div>","reply_options":{"rmedia_types":[["photo","Фотография"],["video","Видеозапись"],["audio","Аудиозапись"],["doc","Документ"],["map","Карта"],["graffiti","Граффити"],["market","Товар",{"tt_text":"Теперь Вы можете <a onclick=\"showBox('al_market.php', {act: 'a_edit_item_box', attach: 1, from_wall: 1}); return false\">прикрепить товар<\/a> к своей записи.","tt_words":["sell","продаю","продаем","продаём","продам","продадим","продать","продажа","отдаю","отдаем","отдаём","отдам","отдадим","отдать","аренда","аренды","аренде","аренду","арендой","сдам квартиру","сдадим квартиру","сдаю квартиру","сдаем квартиру","сдаём квартиру","сдавать квартиру","сдам комнату","сдадим комнату","сдаю комнату","сдаем комнату","сдаём комнату","сдавать комнату"]}],["article","Статья"],["poll","Опрос",{"poll_answers_limit":10,"poll_question_length":80,"lang":{"question":"Тема опроса","question_length":["","Остался %s символ","Осталось %s символа","Осталось %s символов"],"answers":"Варианты ответа","answer_add":"Добавить вариант","answer_remove":"Удалить вариант","background":"Фон","settings":"Настройки опроса","anonymous":"Анонимный опрос","until":"Ограниченное время голосования","at":"в","multy":"Выбор нескольких вариантов","voting":"Опрос"},"poll_backgrounds":[[1,"gradient",225,[[0,"f24973"],[1,"3948e6"]]],[2,"gradient",180,[[0,"679945"],[1,"2f733f"]]],[3,"gradient",225,[[0,"2eb3b3"],[1,"2552b3"]]],[4,"gradient",225,[[0,"d93650"],[1,"d99817"]]],[6,"gradient",270,[[0,"2aa691"],[1,"13806d"]]],[8,"gradient",180,[[0,"707c8c"],[1,"4d5565"]]],[9,"gradient",225,[[0,"31408c"],[1,"526fcc"]]]]}],["postpone","Таймер",{"lang":{"profile_choose_timer":"Время публикации","profile_wall_postpone_at":"в","wall_publication_now":"Сейчас","wall_post_timer_reset":"Сбросить","export_to_twitter":"экспорт в Twitter","export_to_facebook":"экспорт в Facebook","friends_only":"Видно друзьям","wall_post_access_all":"Видно всем","profile_wall_postpone_btn":"В очередь"},"date":1559596840,"postpone_item_hidden":false}]]},"date":"<span class=\"rel_date\">30 янв 2018<\/span>","tags":[0],"tagged":[],"album":"<a href=\"\/album169279119_0\" onclick=\"return nav.go(this, event)\">Фотографии с моей страницы<\/a>","author":"<a class=\"mem_link\" href=\"\/suckmydick122132\">Андрей Чижих<\/a>","author_photo":"https:\/\/pp.userapi.com\/c841022\/v841022726\/6cd26\/YhWHh_MshQI.jpg?ava=1","author_href":"\/suckmydick122132","likes":10,"shares":0,"likes_tpl":"<div class=\"like_wrap _like_photo169279119_456239045 \">\n  <div class=\"like_cont %like_cont_class%\">\n    <div class=\"like_btns\">\n      <a class=\"like_btn like _like %like_active% %like_class_name%\"  onclick=\"Likes.toggle(this, event, 'photo169279119_456239045', 'f2ff0714ac66564e6d');\"onmouseover=\"Likes.showLikes(this, 'photo169279119_456239045', %like_opts%)\" data-count=\"%likes_count%\" href=\"#\" title=\"Нравится\">\n  <div class=\"like_button_icon\"><\/div>\n  <div class=\"like_button_label\"><\/div>\n  <div class=\"like_button_count\">%likes_formatted_count%<\/div>\n  <span class=\"blind_label\">Нравится<\/span>\n<\/a>\n<span class=\"blind_label\" tabindex=\"0\" role=\"link\" onclick=\"Likes.showLikesList(this, 'photo169279119_456239045')\">Показать список оценивших<\/span><a class=\"like_btn share _share %share_active% %share_class_name%\"  onClick=\"Likes.share('photo169279119_456239045', %share_opts%); return false;\"onmouseover=\"Likes.showShare(this, 'photo169279119_456239045');\" data-count=\"%share_count%\" href=\"#\" title=\"Поделиться\">\n  <div class=\"like_button_icon\"><\/div>\n  <div class=\"like_button_label\"><\/div>\n  <div class=\"like_button_count\">%share_formatted_count%<\/div>\n  <span class=\"blind_label\">Поделиться<\/span>\n<\/a>\n<span class=\"blind_label\" tabindex=\"0\" role=\"link\" onclick=\"Likes.showSharesList(this, 'photo169279119_456239045')\">Показать список поделившихся<\/span>\n      \n    <\/div>\n    <div class=\"like_views _views\" onmouseover=\"Likes.updateViews('photo169279119_456239045');\"><\/div>\n    \n  <\/div>\n<\/div>","pe_type":7,"pe_hash":"a0e27cab63bd7f9067","actions":{"tag":1,"edit":8,"place":true,"del":1,"comm":1,"prof":1,"cover":true},"desc":"","hash":"f2ff0714ac66564e6d","o_src":"https:\/\/pp.userapi.com\/c841022\/v841022726\/6cd1d\/oP4Bf5yxE-8.jpg","o_":["c841022\/v841022726\/6cd1d\/oP4Bf5yxE-8",130,122],"p_src":"https:\/\/pp.userapi.com\/c841022\/v841022726\/6cd1e\/mgReOkxAjOk.jpg","p_":["c841022\/v841022726\/6cd1e\/mgReOkxAjOk",200,188],"q_src":"https:\/\/pp.userapi.com\/c841022\/v841022726\/6cd1f\/1r68rX0Bpfw.jpg","q_":["c841022\/v841022726\/6cd1f\/1r68rX0Bpfw",320,300],"r_src":"https:\/\/pp.userapi.com\/c841022\/v841022726\/6cd20\/o-na9Q1OnRk.jpg","r_":["c841022\/v841022726\/6cd20\/o-na9Q1OnRk",510,478],"w_src":"https:\/\/pp.userapi.com\/c841022\/v841022726\/6cd1c\/EENz7dQswTs.jpg","w_":["c841022\/v841022726\/6cd1c\/EENz7dQswTs",2048,1920],"x_src":"https:\/\/pp.userapi.com\/c841022\/v841022726\/6cd19\/2UAkT2DKpD0.jpg","x_":["c841022\/v841022726\/6cd19\/2UAkT2DKpD0",604,567],"y_src":"https:\/\/pp.userapi.com\/c841022\/v841022726\/6cd1a\/IDfD9eHD5QI.jpg","y_":["c841022\/v841022726\/6cd1a\/IDfD9eHD5QI",807,757],"z_src":"https:\/\/pp.userapi.com\/c841022\/v841022726\/6cd1b\/ggEEA2ghXUo.jpg","z_":["c841022\/v841022726\/6cd1b\/ggEEA2ghXUo",1152,1080]}],{"captionlimit":2048,"commlimit":16384,"lang":{"wall_reply_to_post":"Комментировать...","wall_more_replies":["","ещё %s комментарий","ещё %s комментария","ещё %s комментариев"],"wall_all_replies":"все комментарии","wall_M_replies_of_N":["","%s комментарий из {link}{all}{\/link}","%s последних комментария из {link}{all}{\/link}","%s последних комментариев из {link}{all}{\/link}"],"wall_reply_as_group":"от имени сообщества","photos_X_comms":["","%s комментарий","%s комментария","%s комментариев"],"photos_onthisphoto":"На этой фотографии","photos_yourcomment":"Ваш комментарий","photos_reply_emoji_hint":"Используйте TAB, чтобы быстрее открывать смайлы","photos_tagperson":"Отметить человека","photos_select_tag_area":"Выделите область, где изображён человек, и он будет подписан на фотографии.","photos_typename":"Введите имя","photos_tags_me":"Я","photos_confirm_tag":"Подтвердить","photos_delete_tag":"Удалить отметку","photos_load_to_profile":"Поместить на мою страницу","photos_load_to_dialog":"Сделать обложкой беседы","photos_in_closed_album":"Комментарии к этой фотографии скрыты настройками приватности.","photos_edit":"Действия","photos_rotate":"Повернуть:","photos_album_name":"Альбом:","photos_author":"Отправитель:","photos_added":"Добавлена","photos_i_like":"Нравится","photos_show_likes_list":"Показать список оценивших","photos_download_hq":"Загрузить оригинал на диск","photos_larger":"Увеличить фотографию","photos_smaller":"Уменьшить фотографию","photos_photo_num_of_N":"Фотография %s из {count}","photos_photo_counter_num_of_N":"%s из {count}","photos_actions_more":"Ещё","photos_view_one_photo":"Просмотр фотографии","photos_show_prev_comments":["","Показать предыдущий %s комментарий","Показать предыдущие %s комментария","Показать предыдущие %s комментариев"],"photos_edit_desc":"Редактировать описание","photos_edit_desc_intro":"Введите описание","photos_share_from_view":"Поделиться","photos_report":"Пожаловаться","photos_show_full_desc":null,"photos_send_to_fr":"Отправить другу","photos_save_to_alb":"Сохранить к себе в альбом","photos_repeat_album":"Смотреть ещё раз","photos_place_label":"Место:","photos_edit_add_place":"Указать место","photos_fullscreen":"На весь экран","photos_slideshow":"Показ слайдов","photos_seconds":["","%s секунда","%s секунды","%s секунд"],"global_add_media":"Прикрепить","dont_attach":"Не прикреплять","profile_mention_not_found":"Страница не найдена","profile_mention_start_typing":"Начните вводить имя друга или название сообщества","photos_pv_act_save":"Сохранить к себе","photos_pv_act_save_saved":"Сохранено","photos_pv_act_delete":"Удалить","photos_pv_act_rotate_cw":"Повернуть вправо","photos_pv_act_rotate_ccw":"Повернуть влево","photos_pv_act_move_to_album":"Перенести в альбом","photos_pv_act_to_avatar":"Сделать фотографией профиля","photos_pv_act_open_original":"Открыть оригинал","photos_pv_act_set_place":"Указать место","photos_pv_act_photoeditor":"Фоторедактор","photos_album_to_cover":"Сделать обложкой альбома","photos_move_to_album_success":"Фотография перенесена в альбом {album}","photos_tag_restore":"Восстановить","photos_tag_deleted":"Отметка удалена.","photo_marked_as_spam_restore":"Фотография отмечена как спам и удалена.","photo_deleted":"Фотография удалена.","photos_was_edited":"Фотография отредактирована","photos_first_comment_intro":"Будьте первым, кто оставит комментарий к этой фотографии.","photos_tags_not_found_tag_text":"Пользователь не найден, хотите отметить {tagName}?","photos_tags_user_you":"Вы","photos_tags_suggestion_question":"Это {userName}<div>?<\/div>","photos_tags_dropdown_placeholder":"Отметить человека...","box_yes":"Да","box_no":"Нет","box_loading":"Загрузка..."},"maxtags":35,"hash":"df9b77b976f3cf234f","ask_for_autotag":true,"wallTpl":{"reply_multiline":false,"reply_multiline_hint":"<div class=\"reply_submit_hint_wrap\"  onclick=\"stopEvent(event);\">\n  <div class=\"reply_submit_hint_title\">Настройки отправки<\/div>\n  <div class=\"reply_submit_hint_opts\" id=\"reply_submit_hint_opts\">\n    <div class=\"radiobtn %disabled% \" data-val=\"0\" onclick=\"radiobtn(this, 0, 'reply_submit'); wall.onReplySubmitChanged(0);\"><div class=\"radiobtn_label\"><b>Enter<\/b> — отправка сообщения<br><b>Shift+Enter<\/b> — перенос строки<\/div><\/div>\n    <div class=\"radiobtn %enabled% \" data-val=\"1\" onclick=\"radiobtn(this, 1, 'reply_submit'); wall.onReplySubmitChanged(1);\"><div class=\"radiobtn_label\"><b>Ctrl+Enter<\/b> — отправка сообщения<br><b>Enter<\/b> — перенос строки<\/div><\/div>\n  <\/div>\n<\/div>","profileData":[169279119,"https:\/\/pp.userapi.com\/c841022\/v841022726\/6cd26\/YhWHh_MshQI.jpg?ava=1","\/suckmydick122132","Андрей Чижих"],"abs_timestamp":1559600440,"poll_hash":"1559593240_69e792512689710d72"},"reasons":[[0,"Спам"],[6,"Оскорбление"],[5,"Материал для взрослых"],[1,"Детская порнография"],[4,"Пропаганда наркотиков"],[11,"Продажа оружия"],[3,"Насилие"],[10,"Призыв к травле"],[8,"Призыв к суициду"],[13,"Жестокое обращение с животными"],[9,"Введение в заблуждение"],[12,"Мошенничество"],[2,"Экстремизм"]],"share":{"url":"https:\/\/pu.vk.com\/c855624\/upload.php","hash":"b3a3da4ff0380df27938dae5331b0c42","rhash":"9737eea88a6fee47b617c54a3760727d","timehash":"1559593240_0975cd43cd9e312b28","allow_custom_photo":true,"allow_edit_title":true,"max_title_len":100},"names":{"536152488":["Римме","Римма, "],"169279119":["Андрей","Андрей, "]},"rmedia_types":[["photo","Фотографию"],["video","Видеозапись"],["audio","Аудиозапись"],["doc","Документ"]],"qparams":false}]);
+showPhoto('169279119_456239045', 'album169279119_0', {root: 1, noHistory: 1}); window.TimeSpent && TimeSpent.setTimers && TimeSpent.setTimers(3000, 10000); TimeSpent && TimeSpent.update && TimeSpent.update(false);  ;(function () {
+    var cb = function () {Notifier.init({"queue_id":"events_queue169279119","timestamp":870308927,"key":"YWTVnaWyrYySGffNuwdjmXqpM5hXAl07FE1FavwFxnpZtard5QCGeS955TkKgHgw","uid":169279119,"version":10,"debug":false,"instance_id":"OTE4NTI4","server_url":"https:\/\/queuev4.vk.com\/im119","frame_path":"https:\/\/queuev4.vk.com\/q_frame.php?7","frame_url":"im119","refresh_url":"https:\/\/vk.com\/notifier.php","mutedPeers":[-91050183,223610117,2000000123,2000000125,2000000126,2000000130,2000000134,2000000138],"fc":{"version":23,"state":{"clist":{"min":true,"x":false,"y":false},"tabs":{"499234435_":{"min":false,"fx":true}},"version":23},"state_hash":"1559593240_b117baa2ee5996dc90"}})}
+    if (window.vk && window.vk.loaded) cb(); else addEvent(window, 'DOMContentLoaded load', cb);
+  })();
+  if (!window.__dev) {
+    (new Image).src="https://r3.mail.ru/k?vk_id=169279119&src=desktop";
+  }
+;(function (d, w) {
+if (w.__dev) {
+  return
+}
+var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true;
+ts.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//top-fwz1.mail.ru/js/code.js";
+var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window);
+    }
+  </script>
+</body>
+
+</html>

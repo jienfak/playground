@@ -58,7 +58,6 @@ end
 -- Standard awesome library.
 local gears = require("gears")
 local awful = require("awful")
-awful.util.spawn_with_shell("echo "..os.getenv("S").." > ~/file")
 require("awful.autofocus")
 -- Widget and layout library.
 local wibox = require("wibox")
