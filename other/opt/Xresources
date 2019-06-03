@@ -89,7 +89,7 @@ xterm*boldMode:        true
 !==========================================================================
 !--->YeahConsole
 !==========================================================================
-yeahconsole*term:             uxterm
+yeahconsole*term:             st
 !yeahconsole*transparent:      true
 !yeahconsole*shading:          70
 yeahconsole*consoleHeight:    25
