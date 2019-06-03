@@ -35,3 +35,32 @@ q
 sh! xdotool key --window $VIMB_XID ctrl+shift+l
 sh! xdotool key --window $VIMB_XID ctrl+shift+l
 sh! xdotool key --window $VIMB_XID ctrl+shift+l
+tabopen tcc
+tabopen translate.google.com
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+tabopen dwb
+q
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+open dwb
+open dvm
+open vk.com
+open vk.com
+tabopen suckless dwm git
+tabopen why cpp is bad language
+tabopen translate.google.com
+tabopen make prograim
+tabopen dwm config.h
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+sh! xdotool key --window $VIMB_XID ctrl+shift+l
+tabopen dwm wayland
+tabopen suckless rt
+tabopen st configuration
+tabopen st config.h
+tabopen software that sucks less
+tabopen radare2 suckless
+tabopen zsh suckless
