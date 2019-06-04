@@ -93,7 +93,6 @@ static const char *colorname[] = {
 	/* "magenta3" */ "#FF6E00",
 	/* "cyan3"    */ "cyan",
 	/* "gray90"   */ "#DDDDDD",
-	
 
 	/* 8 bright colors. */
 	/* "gray50"  */ "#666666",
@@ -119,8 +118,8 @@ static const char *colorname[] = {
  */
 unsigned int defaultfg = 7;
 unsigned int defaultbg = 0;
-static unsigned int defaultcs = 256;
-static unsigned int defaultrcs = 257;
+static unsigned int defaultcs  = 9;
+static unsigned int defaultrcs = 12;
 
 /*
  * Default shape of cursor

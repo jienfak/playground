@@ -1,6 +1,10 @@
 # Jien's zshrc.
 source $HOME/.profile
 
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+
+# Xinit.
+
 # Modules.
 source $SHMODS/chores/hasprog.sh
 source $SHMODS/chores/loseall.sh
@@ -124,6 +128,8 @@ alias edsu="sudo $EDITOR"
 alias l="ls      --color=always"
 alias ll="ls -l  --color=always"
 alias la="ls -la --color=always"
+alias asdf="sudo loadkeys dvorak"
+alias aoeu="sudo loadkeys us"
 #alias "manpager"="$MANPAGER"
 
 	#alifhas "ev"  "eval" # --description "Evaluate text."
@@ -176,9 +182,11 @@ fi
 # LF.
 #
 if hasprog lf ; then
-	set LFCD="$XDG_CONFIG_HOME/lf/lfrc"
+	LFCD="$XDG_CONFIG_HOME/lf/lfrc"
 	#LFCD=""
-	loseall srconeof LFCD
+	if [ -f $LFCD ]; then
+		source $LFCD
+	fi
 fi
 
 echo  FAK::Freedom:Anarchy:Knowledge::FAK
