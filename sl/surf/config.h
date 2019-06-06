@@ -14,7 +14,7 @@ static char *cookiefile     = "~/.surf/cookies.txt";
  * Command parameters are priority 2
  */
 static Parameter defconfig[ParameterLast] = {
-	/* Parameter                    Arg value       Priority */
+	/* parameter                    Arg value       priority */
 	[AcceleratedCanvas]   =       { { .i = 1 },     },
 	[AccessMicrophone]    =       { { .i = 0 },     },
 	[AccessWebcam]        =       { { .i = 0 },     },
@@ -57,7 +57,7 @@ static UriParameters uriparams[] = {
 	}, },
 };
 
-/* Default window size: width, height. */
+/* default window size: width, height */
 static int winsize[] = { 800, 600 };
 
 static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
@@ -102,7 +102,7 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
         } \
 }
 
-/* Styles. */
+/* styles */
 /*
  * The iteration will stop at the first match, beginning at the beginning of
  * the list.
@@ -123,13 +123,13 @@ static SiteSpecific certs[] = {
 
 #define MODKEY GDK_CONTROL_MASK
 
-/* Hotkeys. */
+/* hotkeys */
 /*
  * If you use anything else but MODKEY and GDK_SHIFT_MASK, don't forget to
  * edit the CLEANMASK() macro.
  */
 static Key keys[] = {
-	/* Modifier              Keyval          Function    Arg */
+	/* modifier              keyval          function    arg */
 	{ MODKEY,                GDK_KEY_g,      spawn,      SETPROP("_SURF_URI", "_SURF_GO", PROMPT_GO) },
 	{ MODKEY,                GDK_KEY_f,      spawn,      SETPROP("_SURF_FIND", "_SURF_FIND", PROMPT_FIND) },
 	{ MODKEY,                GDK_KEY_slash,  spawn,      SETPROP("_SURF_FIND", "_SURF_FIND", PROMPT_FIND) },
@@ -143,7 +143,7 @@ static Key keys[] = {
 	{ MODKEY,                GDK_KEY_l,      navigate,   { .i = +1 } },
 	{ MODKEY,                GDK_KEY_h,      navigate,   { .i = -1 } },
 
-	/* Vertical and horizontal scrolling, in viewport percentage. */
+	/* vertical and horizontal scrolling, in viewport percentage */
 	{ MODKEY,                GDK_KEY_j,      scrollv,    { .i = +10 } },
 	{ MODKEY,                GDK_KEY_k,      scrollv,    { .i = -10 } },
 	{ MODKEY,                GDK_KEY_space,  scrollv,    { .i = +50 } },
@@ -182,8 +182,8 @@ static Key keys[] = {
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_m,      toggle,     { .i = Style } },
 };
 
-/* Button definitions. */
-/* Target can be OnDoc, OnLink, OnImg, OnMedia, OnEdit, OnBar, OnSel, OnAny. */
+/* button definitions */
+/* target can be OnDoc, OnLink, OnImg, OnMedia, OnEdit, OnBar, OnSel, OnAny */
 static Button buttons[] = {
 	/* target       event mask      button  function        argument        stop event */
 	{ OnLink,       0,              2,      clicknewwindow, { .i = 0 },     1 },
