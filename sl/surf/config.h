@@ -78,9 +78,14 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
 
 /* DOWNLOAD(URI, referer) */
 #define DOWNLOAD(u, r) { \
-        .v = (const char *[]){ "st", "-e", "/bin/sh", "-c",\
+        .v = (const char *[]){ "st", "-e", "/bin/sh", "-c"\
+        	 ,/* Script to download. */\
+             "cd $(xdg-user-dir DOWNLOAD) ;"\
              "curl -g -L -J -O -A \"$1\" -b \"$2\" -c \"$2\"" \
-             " -e \"$3\" \"$4\"; read", \
+             " -e \"$3\" \"$4\" ;" \
+             "echo Download is done. ;" \
+             "read" \
+             ,/*----------------------*/\
              "surf-download", useragent, cookiefile, r, u, NULL \
         } \
 }
