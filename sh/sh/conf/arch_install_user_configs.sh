@@ -1,7 +1,7 @@
 #!/bin/sh
 source $HOME/.profile
 # Ask module.
-source $SHMODS/interactive/ask.sh
+source $SHMODS/interactive/iaskyn.sh
 source $SHMODS/chores/loseall.sh
 
 backup(){
@@ -29,8 +29,9 @@ conflikeln(){
 
 
 # Profile.
-if ask "Should I link you profile files(~/.bash_profile, ~/.zprofile, ~/.profile etc)?[yn]:"; then
-
+if iaskyn "Should I link you profile files[but before you have to link your '~/.profile' to get env. variables]\
+	(~/.bash_profile, ~/.zprofile, etc)?";
+		then
 	backup $HOME/.bash_profile
 	lns $MYOPT/profile $HOME/.bash_profile
 
@@ -38,15 +39,15 @@ if ask "Should I link you profile files(~/.bash_profile, ~/.zprofile, ~/.profile
 	lns $MYOPT/profile $HOME/.zprofile
 fi
 
-if ask "Should I created directories in '\$HOME'\
- and change 'user-dirs.dirs' for my?[yn]:"; then
+if iaskyn "Should I created directories in '\$HOME'\
+ and change 'user-dirs.dirs' for my?"; then
 	mkdir -p $HOME/video $HOME/docs $HOME/temps $HOME/shared \
 	         $HOME/code/ $HOME/progs $HOME/torrent $HOME/bluetooth
 	conflikeln user-dirs.dirs
 fi
 
 # MEGA.
-if ask "Should I link to MEGA disk?[yn]:"; then
+if iaskyn "Should I link to MEGA disk?"; then
 	backup $HOME/imgs
 	lns $HOME/MEGA/faksoc/imgs  $HOME/imgs
 	backup $HOME/audio
@@ -54,34 +55,34 @@ if ask "Should I link to MEGA disk?[yn]:"; then
 fi
 
 # X-es.
-if ask "Should I link you X config files?(Xmodmap, Xresources etc)[yn]:"; then
+if iaskyn "Should I link you X config files?(Xmodmap, Xresources etc)"; then
 	rclikeln Xmodmap Xresources xinitrc
 	conflikeln awesome-mimeapps.list mimeapps.list
 fi
 
 # Awesome!
-if ask "Should I link your 'awesome' and configs?(rc.lua etc)[yn]:"; then
+if iaskyn "Should I link your 'awesome' and configs?(rc.lua etc)"; then
 	conflikeln awesome
 fi
 
-if ask "Should I link your 'Eterm' files?(~/.Eterm)[yn]:" ; then
+if iaskyn "Should I link your 'Eterm' files?(~/.Eterm)" ; then
 	rclikeln Eterm
 fi
 
 
-if ask "Should I link your mostrc file?(~/.mostrc)[yn]:"; then
+if iaskyn "Should I link your mostrc file?(~/.mostrc)"; then
 	rclikeln mostrc
 fi
 
 # Fish shell.
-if ask "Should I link your 'fish' and configs?(config.fish etc)[yn]:"; then
+if iaskyn "Should I link your 'fish' and configs?(config.fish etc)"; then
 	backup $XDG_CONFIG_HOME/fish
 	lns $S/sh/fish/ $XDG_CONFIG_HOME/fish
 	# ln -s $HOME/code/S/sh/fish/config.fish $XDG_CONFIG_HOME/fish/config.fish
 fi
 
 # Zsh shell.
-if ask "Should I link your 'zsh' and configs(zshrc etc)[yn]:"; then
+if iaskyn "Should I link your 'zsh' and configs(zshrc etc)"; then
 	backup $HOME/.zshrc
 	lns $S/sh/zsh/zshrc $HOME/.zshrc
 fi
@@ -91,7 +92,7 @@ fi
 
 
 # Editor. Vim. Neovim.
-if ask "Should I link your editor files?(vim and Neovim)[yn]:"; then
+if iaskyn "Should I link your editor files?(vim and Neovim)"; then
 	# Vim.
 	backup $HOME/.vimrc
 	lns $S/vim/vimrc          $HOME/.vimrc
@@ -104,7 +105,7 @@ if ask "Should I link your editor files?(vim and Neovim)[yn]:"; then
 fi
 
 # vifm and lf.
-if ask "Should I link you vifm(lf) file manager files?(~/.vifm)[yn]"; then
+if iaskyn "Should I link you vifm(lf) file manager files?(~/.vifm)"; then
 	# vifm.
 	backup $HOME/.vifm
 	lns $S/vim $HOME/.vifm
@@ -113,33 +114,33 @@ if ask "Should I link you vifm(lf) file manager files?(~/.vifm)[yn]"; then
 fi
 
 # Xfe.
-if ask "Should I create your xfe rc(s)?[yn]"; then
+if iaskyn "Should I create your xfe rc(s)?"; then
 	conflikeln xfe
 fi
 
 # Uzbl.
-if ask "Should I link your uzbl config files?(config etc)[yn]:"; then
+if iaskyn "Should I link your uzbl config files?(config etc)"; then
 	conflikeln uzbl
 fi
 
 # Luakit.
-if ask "Should I link you luakit config files?(userconf.lua etc)[yn]:"; then
+if iaskyn "Should I link you luakit config files?(userconf.lua etc)"; then
 	conflikeln luakit
 fi
 
-if ask "Should I link you vimb config files?(config etc)[yn]:" ; then
+if iaskyn "Should I link you vimb config files?(config etc)" ; then
 	conflikeln vimb
 fi
 
 # Tmux.
-if ask "Should I link your 'tmux' and 'screen' config files?(~/.tmux.conf and ~/.screenrc)[yn]:"; then
+if iaskyn "Should I link your 'tmux' and 'screen' config files?(~/.tmux.conf and ~/.screenrc)"; then
 	rclikeln screenrc
 	rclikeln tmux.conf
 fi
 
 # Git.
-if ask "Should I configure git as you want?[yn]:" ; then
-	if ask "\tMaybe I can use protonmail and your OS-username that for?[yn]:"; then
+if iaskyn "Should I configure git as you want?:" ; then
+	if iaskyn "\tMaybe I can use protonmail and your OS-username that for?"; then
 		git config --global  user.email $(whoami)@protonmail.com
 		git config --global user.name $(whoami)
 	fi
