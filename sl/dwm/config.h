@@ -1,5 +1,13 @@
 /* See LICENSE file for copyright and license details. */
 
+/* Programs which this config needs:
+ * tmux
+ * cmus
+ * lf
+ * dmenu
+ * st
+ */
+
 /* appearance */
 static const unsigned int borderpx  = 1;        /* Border pixel of windows. */
 static const unsigned int snap      = 32;       /* Snap pixel.              */
@@ -46,42 +54,49 @@ static const Layout layouts[] = {
 /* Key definitions. */
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, /* Change view to this tag. */ \
+	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, /* Add this tag to current view. */\
+	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, /* Move current window to this tag. */\
+	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, /* Link current wiwond to this tag. */
 
 /* Helper for spawning shell commands in the pre dwm-5.0 fashion. */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* Commands. */
 static char dmenumon[2] = "0"; /* Component of dmenucmd, manipulated in spawn(). */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
-static const char *fmcmd[] = {"st", "-e", "lf", NULL };
-
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL }; /* DMenu. */
+static const char *termcmd[]  = { "st", "-e", "tmux", "new-session", NULL };    /*Terminal. */
+static const char *fmcmd[] = {"st", "-e", "tmux", "new-session",  "lf", NULL }; /* File manager. */
+static const char *mpcmd[] = {"st", "-e", "tmux", "new-session", "cmus", NULL}; /* Music player. */
+static const char *kblcmd[]= {"sh", "-c", "if setxkbmap -print | grep dvorak ; then\n" /* Toggle dvorak layout.*/
+                                              "setxkbmap -layout us,ru -option grp:caps_toggle\n"
+                                          "else\n"
+                                              "setxkbmap -layout us,ru -variant dvorak, -option grp:caps_toggle\n"
+                                          "fi", NULL};
 static Key keys[] = {
 	/* Modifier                     Key        Function        Argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_f,      spawn,          {.v = fmcmd} },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } }, /* Spawn menu to launch program. */
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },  /* Spawn terminal.     */
+	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = fmcmd } },     /* Spawn file manager. */
+	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mpcmd} },     /* Spawn music player. */
+	{ MODKEY,                       XK_a,      spawn,          {.v = kblcmd} },    /* Toggle dvorak. */
+	{ MODKEY,                       XK_b,      togglebar,      {0} },              /* Toggle bar with tags and other. */
+	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },       /* Change focus via keyboard(Next). */
+	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },       /* Change focus via keyboard(Previous). */
+	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },       /* Increase size of window table stack. */
+	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },       /* Decrease size of window table stack. */
+	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },     /* Decrease master window size. */
+	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },     /* Increase master window size. */
+	{ MODKEY,                       XK_Return, zoom,           {0} },              /* Current choosen window master. */
+	{ MODKEY,                       XK_Tab,    view,           {0} },              /* Change current choosen window to master. */
+	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },              /* Close current window. */
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, /* Tabbed layout.    */
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} }, /* Floating layout.  */
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} }, /* Maximized layout. */
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+	{ MODKEY,                       XK_space,  setlayout,      {0} },                /* Next layout. */
+	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },                /* Change between floated and unfloated statement. */
+	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } }, /* Toggle all tags. */
+	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } }, /* */
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
