@@ -1,9 +1,14 @@
 #!/bin/sh
-#
-# See the LICENSE file for copyright and license details. 
-#
 
-xidfile="$HOME/.surf/tabbed-surf.xid"
+MAX_SURF_WINDOWS=100
+
+for i in $(seq $MAX_SURF_WINDOWS) ; do
+	curfile="$HOME/.surf/tabbed-surf.$i.xid"
+	if [ ! -f  "$curfile" ] ; then
+		xidfile="$curfile"
+	fi
+done
+
 uri=""
 
 if [ "$#" -gt 0 ];
@@ -26,7 +31,8 @@ else
 	then
 		runtabbed
 	else
-		surf -e "$xid" "$uri" >/dev/null 2>&1 &
+		surf -e "$xid" "$uri" >/dev/null 2>&1 
+		rm $xidfile
 	fi
 fi
 

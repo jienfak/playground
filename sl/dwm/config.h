@@ -73,6 +73,7 @@ static const char *kblcmd[]= {"sh", "-c", "if setxkbmap -print | grep dvorak ; t
                                           "else\n"
                                               "setxkbmap -layout us,ru -variant dvorak, -option grp:caps_toggle\n"
                                           "fi", NULL};
+static const char *ibcmd[] = {"surft", NULL}; /* Browser opening. */
 static Key keys[] = {
 	/* Modifier                     Key        Function        Argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } }, /* Spawn menu to launch program. */
