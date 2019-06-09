@@ -1,11 +1,14 @@
 #!/bin/sh
+# Simply lets you run surf being tabbed.
 
 MAX_SURF_WINDOWS=100
 
+# Find next xid file to use.
 for i in $(seq $MAX_SURF_WINDOWS) ; do
 	curfile="$HOME/.surf/tabbed-surf.$i.xid"
 	if [ ! -f  "$curfile" ] ; then
 		xidfile="$curfile"
+		break
 	fi
 done
 
