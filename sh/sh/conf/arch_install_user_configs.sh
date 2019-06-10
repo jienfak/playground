@@ -54,10 +54,11 @@ if iaskyn "Should I link to MEGA disk?"; then
 	lns $HOME/MEGA/faksoc/audio $HOME/audio
 fi
 
-# X-es.
+# X.
 if iaskyn "Should I link you X config files?(Xmodmap, Xresources etc)"; then
 	rclikeln Xmodmap Xresources xinitrc
 	conflikeln awesome-mimeapps.list mimeapps.list
+	ln -sf /etc/X11/xinit/xserverrc ~/.xserverrc
 fi
 
 # Awesome!
@@ -85,6 +86,9 @@ fi
 if iaskyn "Should I link your 'zsh' and configs(zshrc etc)"; then
 	backup $HOME/.zshrc
 	lns $S/sh/zsh/zshrc $HOME/.zshrc
+
+	backup $HOME/.zlogin
+	lns $S/sh/zsh/zlogin $HOME/.zlogin
 fi
 
 # sudo cp $HOME/code/S/sh/fish/completions/* /usr/share/fish/completions/

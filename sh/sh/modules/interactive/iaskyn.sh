@@ -3,7 +3,7 @@ source $SHMODS/interactive/iask.sh
 
 iaskyn(){
 	while true ; do
-		echo -n "$1"
+		echo -n "$1[yYnN]"
 		ans=$(iask)
 		[ "$ans" == "y" ] && return 0
 		[ "$ans" == "Y" ] && return 0
