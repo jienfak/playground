@@ -1,9 +1,6 @@
 # Jien's zshrc.
 source $HOME/.profile
 
-
-# Xinit.
-
 # Modules.
 source $SHMODS/chores/hasprog.sh
 source $SHMODS/chores/loseall.sh
