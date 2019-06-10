@@ -124,8 +124,21 @@ alias edsu="sudo $EDITOR"
 alias l="ls      --color=always"
 alias ll="ls -l  --color=always"
 alias la="ls -la --color=always"
-alias asdf="sudo loadkeys dvorak"
-alias aoeu="sudo loadkeys us"
+asdf(){
+	if [ -n $DISPLAY ] ; then
+		loadkeys dvorak
+	else
+		echo Use your X-skills, Idiot!
+	fi
+}
+
+aoeu(){
+	if [ -n $DISPLAY ] ; then
+		loadkeys us
+	else
+		echo Use your X-ability, $USER!
+	fi
+}
 #alias "manpager"="$MANPAGER"
 
 	#alifhas "ev"  "eval" # --description "Evaluate text."
@@ -171,8 +184,14 @@ fi
 # Functions.
 source $SHMODS/interactive/helpa.sh # Automatic help getter.
 
-if hasprog kdbrate ; then
-	kbdrate -d 60 -r 300
+if [ -n $DISPLAY ] ; then
+	echo Handling vconsole!
+	if hasprog kbdrate ; then
+		echo Setting kbdrate!
+		kbdrate -d 60 -r 300
+	fi
+	setfont drdos8x16
+	loadkeys dvorak
 fi
 
 # LF.
