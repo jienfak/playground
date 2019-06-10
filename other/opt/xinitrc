@@ -1,6 +1,7 @@
 setxkbmap -layout us,ru -variant dvorak, -option grp:caps_toggle
 xrdb -load ~/.Xresources
 xset r rate 300 57
+slstatus &
 
 session=${1:-dwm}
 
