@@ -80,7 +80,8 @@ syntax on
 	nmap \nh :nohlsearch<enter>
 	nmap <Return> o<Esc>
 
-	" nmap <M-a> <Esc>
+	imap <M-a> <Esc>
+	imap <C-Space> <Esc>
 	" Emacs-like keys.
 	" imap <C-f> <Right>
 	" imap <C-n> <Down>

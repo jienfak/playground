@@ -1,4 +1,5 @@
 #!/bin/sh
 
-sudo mv /etc/default/locale /etc/default/locale.backup
+source $HOME/.profile
+source $SHMODS/chores/backup
 sudo ln -s /home/jien/code/scripts/other/opt/jien_locale /etc/default/locale

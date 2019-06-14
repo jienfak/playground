@@ -23,6 +23,7 @@ for editor in nvim vim vi nano ex; do
 		break
 	fi
 done
+export GIT_EDITOR="$EDITOR"
 
 # Pagers.
 export PAGER="$(which more)" # Not found any pager
@@ -71,7 +72,7 @@ done
 
 # GUI/Visual editor.
 export VISUAL="$(which gedi)" # Not found any.
-for visual in nvim vim gvim notepadqq leafpad mousepad adie ; do
+for visual in gvim notepadqq leafpad mousepad adie ; do
 	if hasprog $visual ; then
 		export VISUAL="$(which $visual)"
 		break;

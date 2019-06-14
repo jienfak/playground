@@ -6,7 +6,44 @@ source $SHMODS/chores/hasprog.sh
 source $SHMODS/chores/loseall.sh
 source $SHMODS/chores/alifhas.sh
 
+if [ "$TERM" = "linux" ] ; then
+	# Running from virtual console.
+
+	echo -en "\e]P0000000" #black
+	echo -en "\e]P8666666" #darkgrey
+	echo -en "\e]P1DD2222" #darkred
+	echo -en "\e]P9FF0000" #red
+	echo -en "\e]P267E300" #darkgreen
+	echo -en "\e]PAA9F16C" #green
+	echo -en "\e]P3F7FF00" #brown
+	echo -en "\e]PBEBF22C" #yellow
+	echo -en "\e]P45190D0" #darkblue
+	echo -en "\e]PC346AA1" #blue
+	echo -en "\e]P5FF6E00" #darkmagenta
+	echo -en "\e]PDDE6000" #magenta
+	echo -en "\e]P600CFCF" #darkcyan
+	echo -en "\e]PE00FFFF" #cyan
+	echo -en "\e]P7DDDDDD" #lightgrey
+	echo -en "\e]PFFFFFFF" #white
+	clear #for background artifacting
+
+	r="300"
+	d="60"
+	font="drdos8x16"
+	keys="dvorak"
+	echo
+	print -P "Handling %F{cyan}'virtual console'%f..."
+	if hasprog kbdrate ; then
+		print -P "\tSetting %F{cyan}'kbdrate'%f:\n\t\t%F{red}rate%f=%F{cyan}'$r'%f;\n\t\t%F{red}delay%f=%F{cyan}'$d'%f;"
+		echo "(" $(kbdrate -d $d -r $r) ")"
+	fi
+	print -Pn "\tSetting %F{red}font%f=%F{green}'$font'%f(";echo $(setfont $font) ")"
+	print -Pn "\tSetting %F{red}keys%f=%F{green}'$keys'%f(";echo $(loadkeys $keys) ")"
+
+fi
+
 autoload -Uz compinit promptinit
+bindkey "<Shift-Tab>" undo
 
 compinit
 promptinit
@@ -19,6 +56,7 @@ setopt correct
 zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
 HISTFILE=~/.zhistory
 HISTSIZE=SAVEHIST=10000
+setopt MENU_COMPLETE
 setopt append_history
 setopt extended_history
 setopt histignorealldups
@@ -43,10 +81,6 @@ shpwd() {
 setopt PROMPT_SUBST
 PROMPT="%F{yellow}%f%F{red}%n%f@%F{blue}%m%f:%F{yellow}%~%f%(!.#.$)"
 RPROMPT="%F{red}[%f%F{brgreen}%T%f%F{red}]%f[%F{yellow}%?%f%F{blue}%L%f]"
-
-#source ~/path/to/fsh/fast-syntax-highlighting.plugin.zsh
-#zplugin light zdharma/fast-syntax-highlighting
-
 
 my-backward-delete-word() {
     local WORDCHARS=${WORDCHARS/\//}
@@ -98,7 +132,7 @@ for plugin in $plugins ; do
 	for dir in $plugin_dirs ; do
 		file=$dir/zsh-$plugin/zsh-$plugin.zsh
 		if [ -f $file ] ; then
-			echo "[+]Got '$plugin' plugin from '$file';"
+			print -P "[%F{green}+%f]Got %F{cyan}'$plugin'%f plugin from %F{red}'$file'%f;"
 			source $file
 			break
 		fi
@@ -109,6 +143,7 @@ done
 
 ZSH_AUTOSUGGEST_STRATEGY="history"
 bindkey '^ ' autosuggest-accept
+bindkey "^o" lfcd
 
 #vi_mode_plugin="~/code/scripts/sh/zsh/plugins/vi-mode.plugin.zsh"
 #if [ -f $vi_mode_plugin ] ; then
@@ -117,6 +152,7 @@ bindkey '^ ' autosuggest-accept
 
 # Aliases.
 #
+print "Alias section. Aliasing..."
 alias edg="$VISUAL"
 alias edgsu="$VISUAL"
 alias ed="$EDITOR"
@@ -139,20 +175,6 @@ aoeu(){
 		echo Use your X-ability, $USER!
 	fi
 }
-#alias "manpager"="$MANPAGER"
-
-	#alifhas "ev"  "eval" # --description "Evaluate text."
-	#alifhas "py"  "python" # --description "Python interpreter."
-	#alifhas "py2" "python2" # --description "Python interpreter version 2."
-	#alifhas "py3" "python3" # --description "Python interpreter version 3."
-	#alifhas "pl6" "perl6" # --description "Perl6 interpreter."
-	#alifhas "pl"  "perl" # --description "Perl5 interpreter."
-	#alifhas "rb"  "ruby" # --description "Ruby interpreter."
-	#alifhas "tcl" "tclsh" # --description "TCL interpreter."
-	#alifhas "lsp" "clisp" # --description "LISP interpreter."
-	#alifhas "f"   "gfortran" # --description "FORTRAN compiler."
-	#alifhas "c"   "cc"
-	#alifhas "cc"  "g++"
 
 	alias "mnt"="sudo mount"
 	alias "umnt"="sudo umount"
@@ -171,28 +193,21 @@ set -A grc_progs \
 	lsattr lsblk lspci lsmod lsof getfacl\
 	getsebool ulimit uptime nmap fdisk findmnt\
 	free semanage sar ss sysctl systemctl stat showmount\
-	tune2fs and tcpdump
+	tune2fs tcpdump
 
 if hasprog grc ; then
+	print -P "We have %F{cyan}'grc'%f here! Aliasing colors..."
 	for prog in $grc_progs ; do
+		
 		alias $prog="grc --colour=auto $prog"
 	done
 	alias ll="grc --colour=auto ls -l  --color=always"
 	alias la="grc --colour=auto ls -al --color=always"
+	print -Pn "%F{yellow}$grc_progs%f"
 fi
 
 # Functions.
 source $SHMODS/interactive/helpa.sh # Automatic help getter.
-
-if [ -n $DISPLAY ] ; then
-	echo Handling vconsole!
-	if hasprog kbdrate ; then
-		echo Setting kbdrate!
-		kbdrate -d 60 -r 300
-	fi
-	setfont drdos8x16
-	loadkeys dvorak
-fi
 
 # LF.
 #
@@ -204,5 +219,10 @@ if hasprog lf ; then
 	fi
 fi
 
-echo  FAK::Freedom:Anarchy:Knowledge::FAK
-echo 'FAKYOU... why are you using zsh? Fish is better.'
+print -P "\n%F{red}F%f%F{green}A%f%F{blue}K%f::%F{red}Freedom%f:%F{green}Anarchy%f:%F{blue}Knowledge%f::%F{red}F%f%F{green}A%f%F{blue}K%f"
+print -P " %F{red}#--------------------------------------------------#%f"
+if hasprog screenfetch ; then
+	screenfetch
+fi
+print -P " %F{red}#--------------------------------------------------#%f"
+print -P '%F{red}F%f%F{green}A%f%F{blue}K%f%F{yellow}YOU%f... why are you using zsh? Fish is better.'
