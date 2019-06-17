@@ -2,7 +2,9 @@ setxkbmap -layout us,ru -variant dvorak, -option grp:alt_space_toggle
 xrdb -load ~/.Xresources
 xset r rate 300 57
 slstatus &
-xmodmap ~/.Xmodmap
+if [ -s ~/.Xmodmap ] ; then
+	xmodmap ~/.Xmodmap
+fi
 
 session=${1:-dwm}
 
