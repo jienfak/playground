@@ -45,13 +45,13 @@ if iaskyn "Should I created directories in '\$HOME'\
 	         $HOME/code/ $HOME/progs $HOME/torrent $HOME/bluetooth
 	conflikeln user-dirs.dirs
 fi
-
+##
 # MEGA.
 if iaskyn "Should I link to MEGA disk?"; then
 	backup $HOME/imgs
-	lns $HOME/MEGA/faksoc/imgs  $HOME/imgs
+	lns $HOME/MEGA/neij/imgs  $HOME/imgs
 	backup $HOME/audio
-	lns $HOME/MEGA/faksoc/audio $HOME/audio
+	lns $HOME/MEGA/neij/audio $HOME/audio
 fi
 
 # X.
