@@ -45,6 +45,10 @@ if iaskyn "Should I created directories in '\$HOME'\
 	         $HOME/code/ $HOME/progs $HOME/torrent $HOME/bluetooth
 	conflikeln user-dirs.dirs
 fi
+
+if iaskyn "Should I link you dictionary directory? " ; then
+	rclikeln "dict"
+fi
 ##
 # MEGA.
 if iaskyn "Should I link to MEGA disk?"; then

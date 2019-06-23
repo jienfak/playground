@@ -79,6 +79,8 @@ syntax on
 	nmap \nl :if &cursorline==1<enter>set nocursorline<enter>else<enter>set cursorline<enter>endif<enter><enter>
 	nmap \nh :nohlsearch<enter>
 	nmap <Return> o<Esc>
+	nmap <Space> i<Space><Esc>
+	nmap <Backspace> hx
 
 	imap <M-a> <Esc>
 	imap <C-Space> <Esc>
