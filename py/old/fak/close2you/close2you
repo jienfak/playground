@@ -1,0 +1,3 @@
+#!/bin/sh
+
+python3 /usr/share/close2you/src/close2you.py
