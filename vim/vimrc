@@ -53,6 +53,7 @@ match NonText /\t/
 " Folding.
 set foldenable
 set foldmethod=indent
+set foldnestmax=10
 
 hi CursorLine gui=bold cterm=bold
 " Cursor line in GUI(It works too slow in terminal).
@@ -80,7 +81,7 @@ syntax on
 	nmap \nh :nohlsearch<enter>
 	nmap <Return> o<Esc>
 	nmap <Space> i<Space><Esc>
-	nmap <Backspace> hx
+	nmap <Backspace> i<Backspace><Esc>
 
 	imap <M-a> <Esc>
 	imap <C-Space> <Esc>

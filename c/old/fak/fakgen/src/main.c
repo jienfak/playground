@@ -7,7 +7,7 @@ void help(void){
 \n\
 Usage:fakgen [keywords] [options]\n\
 Options:\n\
-\t{--help|t-h} - show this message.\n\
+\t{--help|-h} - show this message.\n\
 \t{--version|-v} - show version of program.\n\
 \t{--out|-o} [file] - write dictionary to 'file' or to 'dict.txt'\n\
 \t\tif file is not speciefed.\n\
