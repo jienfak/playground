@@ -1,58 +1,42 @@
--- User vars.
-local keyboard_repeat_delay = 300
-local keyaboard_repeat_rate = 57
-local xkb_layout = " -layout us,ru -option grp:caps_toggle"
-local xkb_dvorak_layout = "-layout us,ru -variant dvorak,  -option grp:caps_toggle"
-local locale = "en_US.UTF-8"
-local xresources = "~/.Xresources"
-local config_file = (os.getenv("XDG_CONFIG_HOME") or os.getenv("HOME").."/.config").."/awesome/rc.lua"
-local shell = os.getenv("SHELL")-- or "/usr/bin/zsh"
-local add_blackarch_menu = true
-local sys_stat_program = "htop"
-local nw_program = "wicd-client -n"
-local terminal = os.getenv("TERM") or "uxterm"
-local second_terminal = "urxvt"
-local file_manager = terminal.." -e '".."lf".."'"
-local heavy_file_manager = "xfe"
-local browser = "sh "..os.getenv("S").."/sh/sh/fav/browser.sh ".."vimb"
-local heavy_browser = "firefox"
-local xresources = "~/.Xresources"
-local editor = os.getenv("EDITOR") or "vim"
-local editor_cmd = terminal .. " -e " .. editor
-local editor_gui = os.getenv("VISUAL") or "gvim"
-local music_player = terminal.." -e cmus"
-local heavy_music_player = "vlc"
-local video_player = "vlc"
-local max_menu_items = 65
-local sound_control = "pavucontrol"
-local heavy_sound_control = "cadence"
-local hw_info = "hardinfo"
-
--- Status vars.
-local dvorak = false
-local dvorak_l = false
-
--- I will make it later.
---[[function modeExecute(...)
-	for i=1, arg.n do
-		if arg[i] then
-			arg[i]()
-		end
-	end
-end
-local mode = 0
-local modekey = "~"
---]]
+-- user vars.
+local xresources             = os.getenv("HOME").."/.Xresources"
+local xkbdelay = 300
+local xkbrate  = 60
+local xkbcmd                = "setxkbmap -layout us,ru -option grp:alt_space_toogle"
+local dvorakcmd             = "setxkbmap -layout us,ru -variant dvorak,  -option grp:alt_space_toggle"
+local conf                  = (os.getenv("xdg_config_home") or os.getenv("HOME").."/.config").."/awesome/rc.lua"
+local sh                    = os.getenv("shell")-- or "/usr/bin/zsh"
+local nwcmd                 = "wicd-client -n"
+local termcmd               = "termite"
+local syscmd                = termcmd .. " -e htop"
+local fmcmd                 = "xfe"
+local ibcmd                 = "firefox"
+local edcmd                 = "oni"
+local mpcmd                 = "deadbeef"
+local vecmd                 = "openshot-qt"
+local sndcmd                = "pavucontrol"
+local hwcmd                 = "hardinfo"
+local dawcmd                = "lmms"
+local toggledvorakcmd  = 
+                "if setxkbmap -print | grep dvorak ; then\n"..
+                    xkbcmd.."\n"..
+                "else\n"..
+                    dvorakcmd.."\n"..
+                "fi\n"
 
 -- My library.
 package.path = package.path..";"..os.getenv("HOME").."/code/scripts/lua/modules/?.lua" ;
-local blackarch = require("blackarch")
-local blackarch_list_path = os.getenv("HOME").."/code/scripts/pl/5/utils/blackarch/utils.lst"
-local blackarchmenu = {}
-if add_blackarch_menu then
-	ret = blackarch.awesome.getUtilList(blackarch_list_path, max_menu_items)
+
+-- Blackarch.
+local addbamenu = true -- Should I add menu.
+local bamaxmenu = 65   -- Maximum items in one column.
+local balist = os.getenv("HOME").."/code/scripts/pl/5/utils/blackarch/utils.lst" -- Path to the list of utils.
+local ba = require("blackarch")
+local bamenu = {}
+if addbamenu then
+	ret = ba.awesome.getUtilList(balist, bamaxmenu)
 	for _, cat in pairs(ret[2]) do
-		table.insert(blackarchmenu, cat)
+		table.insert(bamenu, cat)
 	end
 end
 -- Standard awesome library.
@@ -173,7 +157,7 @@ end
 
 -- {{{ Menu.
 -- Create a launcher widget and a main menu.
-myawesomemenu = {
+awesomemenu = {
 		{
 			"Hotkeys",
 			function()
@@ -183,13 +167,13 @@ myawesomemenu = {
 		{
 			"Manual",
 			function()
-				awful.util.spawn_with_shell(terminal .. " -e 'man awesome'")
+				awful.util.spawn_with_shell(termcmd .. " -e 'man awesome'")
 			end
 		},
 		{
 			"Edit config",
 			function()
-				awful.util.spawn_with_shell(editor_cmd .." ".. config_file)		--awesome.conffile
+				awful.util.spawn_with_shell(edcmd .." ".. conf)--awesome.conffile
 			end
 		},
 		{
@@ -209,97 +193,77 @@ myawesomemenu = {
 	}
 ;
 
-mymachinemenu = {
-		{
-			"Shutdown",
+pcmenu = {
+		{ "Shutdown",
 			function()
 				awful.util.spawn_with_shell("shutdown --poweroff now")
-			end
-		},{
-			"Reboot",
+			end },
+		{ "Reboot",
 			function()
 				awful.util.spawn_with_shell("shutdown --reboot now")
-			end
-		},{
-			"Halt",
+			end },
+		{ "Halt",
 			function()
 				awful.util.spawn_with_shell("shutdown --halt now")
-			end
-		}
+			end }
 	}
-;
 
-mypersonmenu = {
+mymenu = {
 		-- { "Debian", debian.menu.Debian_menu.Debian },
-		{ "Terminal", terminal },
-		{ "Second terminal", second_terminal},
-		{ "File manager", file_manager},
-		{ "H. file manager", heavy_file_manager},
-		{ "CLI editor", editor_cmd },
-		{ "GUI editor", editor_gui },
-		{ "Browser", function() awful.util.spawn_with_shell(browser) end},
-		{ "H. browser", heavy_browser},
-		{
-			"Sys. Stat.",
+		{ "Terminal", termcmd},
+		{ "File manager", fmcmd},
+		{ "Editor", edcmd },
+		{ "Browser", function() awful.util.spawn_with_shell(ibcmd) end},
+		{ "Sys. Stat.",
 			function()
-				awful.util.spawn_with_shell(terminal.." -e "..sys_stat_program)
-			end
-		},
-		{
-			"HW info",
+				awful.util.spawn_with_shell(termcmd.." -e "..syscmd)
+			end},
+		{ "HW info",
 			function()
-				awful.spawn(hw_info)
-			end
-		},
-		{
-			"NW Stat",
+				awful.spawn(hwcmd)
+			end },
+		{ "NW Stat",
 			function()
-				awful.util.spawn_with_shell(nw_program)
-			end
-		},
+				awful.util.spawn_with_shell(nwcmd)
+			end },
 		{
 			"Mus. Player",
-			music_player
+			mpcmd
 		},
-		{
-			"H.Mus.Player",
-			heavy_music_player
-		}
 	}
-;
 
-mymainmenu = awful.menu(
+mainmenu = awful.menu(
 		{
 			items = {
-				{ "Person", mypersonmenu},
-				{ "Awesome", myawesomemenu, beautiful.awesome_icon },
-				{ "Machine", mymachinemenu },
-				{ "Blackarch", blackarchmenu },
+				{ "Person", mymenu},
+				{ "Awesome", awesomemenu, beautiful.awesome_icon },
+				{ "Machine", pcmenu },
+				{ "Blackarch", bamenu },
 			}
 		}
 	)	
 ;
 
-myseparator = wibox.widget.textbox(',') ;
+separator = wibox.widget.textbox(',') ;
 
-mylauncher = awful.widget.launcher(
+launcher = awful.widget.launcher(
 		{
 			image = beautiful.awesome_icon,
-			menu = mymainmenu
+			menu = mainmenu
 		}
 	)
 ;
 
 -- Menu bar configuration.
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it.
+menubar.utils.terminal = termcmd -- Set the terminal for applications that require it.
 -- }}}
 
 -- Keyboard map indicator and switcher.
-mykeyboardlayout = awful.widget.keyboardlayout()
+kblayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar.
 -- Create a text clock widget.
-mytextclock = wibox.widget.textclock()
+textclock = wibox.widget.textclock()
 
 -- Create battery widget.
 --[[
@@ -401,11 +365,11 @@ awful.screen.connect_for_each_screen(
 		awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
 		-- Create a promptbox for each screen
-		s.mypromptbox = awful.widget.prompt()
+		s.promptbox = awful.widget.prompt()
 		-- Create an imagebox widget which will contains an icon indicating which layout we're using.
 		-- We need one layoutbox per screen.
-		s.mylayoutbox = awful.widget.layoutbox(s)
-		s.mylayoutbox:buttons(
+		s.layoutbox = awful.widget.layoutbox(s)
+		s.layoutbox:buttons(
 			awful.util.table.join(
 				awful.button({ }, 1, function () awful.layout.inc( 1) end),
 				awful.button({ }, 3, function () awful.layout.inc(-1) end),
@@ -414,34 +378,34 @@ awful.screen.connect_for_each_screen(
 			)
 		)
 		-- Create a taglist widget.
-		s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
+		s.taglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
 
 		-- Create a tasklist widget.
-		s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
+		s.tasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
 
 		-- Create the wibox.
-		s.mywibox = awful.wibar({ position = "top", screen = s })
+		s.wibox = awful.wibar({ position = "top", screen = s })
 
 		-- Add widgets to the wibox
-		s.mywibox:setup {
+		s.wibox:setup {
 			layout = wibox.layout.align.horizontal,
 			{ -- Left widgets.
 				layout = wibox.layout.fixed.horizontal,
-				mylauncher,
-				s.mytaglist,
-				s.mypromptbox,
+				launcher,
+				s.taglist,
+				s.promptbox,
 			},
-			s.mytasklist,-- Middle widget.
+			s.tasklist,-- Middle widget.
 			{ -- Right widgets.
 				layout = wibox.layout.fixed.horizontal,
-				mykeyboardlayout,
-				myseparator,
+				kblayout,
+				separator,
 				awful.widget.watch('bash -c \'acpi -b | awk "/.*/ { print \\$4 \\$3}"\'', 15),
 				wibox.widget.systray(),
-				mytextclock,
+				textclock,
 				-- wibox.widget.textbox(' | '),
-				myseparator,
-				s.mylayoutbox,
+				separator,
+				s.layoutbox,
 			},
 		}
 	end
@@ -451,7 +415,7 @@ awful.screen.connect_for_each_screen(
 -- {{{ Mouse bindings
 root.buttons(
 	awful.util.table.join(
-		awful.button({ }, 3, function () mymainmenu:toggle() end),
+		awful.button({ }, 3, function () mainmenu:toggle() end),
 		awful.button({ }, 4, awful.tag.viewnext),
 		awful.button({ }, 5, awful.tag.viewprev)
 	)
@@ -460,7 +424,7 @@ root.buttons(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-		awful.key({ modkey, }, "s",hotkeys_popup.show_help,
+		awful.key({ modkey, "Control"}, "h",hotkeys_popup.show_help,
 				{description=" - Show help.", group="awesome"}),
 		--[[
 		awful.key({ modkey, }, "Left", awful.tag.viewprev,
@@ -471,32 +435,12 @@ globalkeys = awful.util.table.join(
 				{description = " - Go back.", group = "tag"}),
 		--]]
 		awful.key(
-			{ modkey, }, "f",
-			function()
-				awful.client.focus.byidx(1)
-				xdotool_mouse_move = true
-				awful.util.spawn_with_shell("xdotool mousemove --window $(xdotool getactivewindow) 20 20")
-				xdotool_mouse_move = false
-			end,
-			{description = " - Focus next by index.", group = "client"}
-		),
-		awful.key(
 			{ modkey, }, "j",
 			function()
 				awful.client.focus.byidx(1)
 				-- awful.util.spawn_with_shell("xdotool mousemove --window $(xdotool getactivewindow) 20 20")
 			end,
 			{description = " - Focus next by index.", group = "client"}
-		),
-		awful.key(
-			{ modkey, }, "d",
-			function()
-				awful.client.focus.byidx(-1)
-				xdotool_mouse_move = true
-				awful.util.spawn_with_shell("xdotool mousemove --window $(xdotool getactivewindow) 20 20")
-				xdotool_mouse_move = false
-			end,
-			{description = " - Focus previous by index.", group = "client"}
 		),
 		awful.key(
 			{ modkey, }, "k",
@@ -508,68 +452,23 @@ globalkeys = awful.util.table.join(
 		),
 		-- Dvorak.
 		awful.key(
-			{modkey, "Shift"}, "d",
+			{modkey, }, "a",
 			function()
-				if dvorak then
-					awful.util.spawn_with_shell("setxkbmap "..xkb_layout)
-					dvorak = false
-					dvorak_l = false
-				else
-					awful.util.spawn_with_shell("setxkbmap "..xkb_dvorak_layout.."")
-					dvorak = true
-					dvorak_l = false
-				end
+				awful.util.spawn_with_shell(toggledvorakcmd)
 			end,
-			{description = "- Switch to dvorak.", group = "keyboard"}
-		),
-		-- Dvorak-l.
-		awful.key(
-			{modkey, "Shift"}, "y",
-			function()
-				if dvorak_l then
-					awful.util.spawn_with_shell("setxkbmap -layout "..xkb_layout.." -option grp:alt_shift_toggle")
-					dvorak_l = false
-					dvorak   = false
-				else
-					awful.util.spawn_with_shell("setxkbmap , "..xkb_layout.." -variant dvorak-l")
-					dvorak_l = true
-					dvorak   = false
-				end
-			end
+			{description = "- Toggle Dvorak.", group = "keyboard"}
 		),
 		awful.key(
-			{modkey, "Shift"}, "u",
-			function()
-				if dvorak then
-					awful.util.spawn_with_shell("setxkbmap "..xkb_layout)
-					dvorak = false
-				else
-					awful.util.spawn_with_shell("setxkbmap "..xkb_dvorak_layout)
-					dvorak = true
-				end
-			end,
-			{description = "- Switch to dvorak.", group = "keyboard"}
-		),
-		--[[
-		awful.key(
-			{modkey, "Alt"}, "h",
-			function()
-				awful.util.spawn_with_shell("xdotool key Left")
-			end,
-			{description=" - Move cursor left.", group="moves"}
-		),
-		--]]
-		awful.key(
-			{ modkey, }, "w", function() mymainmenu:show() end,
+			{ modkey, }, "w", function() mainmenu:show() end,
 			{description = " - Show main menu.", group = "awesome"}
 		),
 		-- Layout manipulation
 		awful.key(
-			{ modkey, "Shift"}, "j", function() awful.client.swap.byidx(		1)	end,
+			{ modkey, }, "e", function() awful.client.swap.byidx(1)	end,
 			{description = " - Swap with next client by index.", group = "client"}
 		),
 		awful.key(
-			{ modkey, "Shift" }, "k", function() awful.client.swap.byidx( -1)	end,
+			{ modkey,  }, "o", function() awful.client.swap.byidx( -1)	end,
 			{description = " - Swap with previous client by index.", group = "client"}
 		),
 		awful.key(
@@ -584,178 +483,81 @@ globalkeys = awful.util.table.join(
 			{ modkey, }, "u", awful.client.urgent.jumpto,
 			{description = " - Jump to urgent client.", group = "client"}
 		),
-		--[[
+		-- Terminal.
 		awful.key(
-			{ modkey, }, "Tab",
-			function()
-				awful.client.focus.history.previous()
-				if client.focus then
-					client.focus:raise()
-				end
-			end,
-			{description = " - Go back.", group = "client"}
-		),
-		--]]
-		-- Standard terminal.
-		awful.key(
-			{ modkey, }, "Return", function() awful.spawn(terminal) end,
+			{ modkey, "Shift"}, "Return", function() awful.spawn(termcmd) end,
 			{description = " - Open a terminal.", group = "launcher"}
 		),
-		-- Second terminal.
 		awful.key(
-			{modkey, "Shift"}, "Return", function() awful.spawn(second_terminal) end,
-			{description = " - Open another terminal.", group = "launcher"}
-		),
-		awful.key(
-			{modkey, }, "b", function() awful.util.spawn_with_shell(browser) end,
+			{modkey, "Shift"}, "b", function() awful.util.spawn_with_shell(ibcmd) end,
 			{description=" - Open standard broswer.", group = "launcher"}
 		),
 		awful.key(
-			{modkey, "Shift"}, "b", function() awful.spawn(heavy_browser) end,
-			{description=" - Open heavy browser.", group = "launcher"}
-		),
-		awful.key(
-			{modkey, "Ctrl"}, "n", function() awful.spawn(nw_program) end,
+			{modkey, "Shift"}, "n", function() awful.spawn(nwcmd) end,
 			{description=" - Open your network setting program.", group="launcher"}
 		),
 		-- File manager.
 		awful.key(
-			{modkey, }, "e",
+			{modkey, "Shift"}, "f",
 			function()
-				awful.util.spawn_with_shell(file_manager)
+				awful.util.spawn_with_shell(fmcmd)
 			end,
 			{description = " - Open file manager", group = "launcher"}
 		),
-		-- Heavy file manager.
-		awful.key(
-			{modkey, "Shift"}, "e",
-			function()
-				awful.spawn(heavy_file_manager)
-			end,
-			{description = " - Open heavy file manager.", group = "launcher"}
-		),
 		-- Editor.
-		awful.key(
-			{modkey, }, "i",
-			function()
-				awful.spawn(editor_cmd)
-			end,
-			{description = " - Open editor.", group = "launcher"}
-		),
-		-- Heavy editor.
 		awful.key(
 			{modkey, "Shift"}, "i",
 			function()
-				awful.spawn(editor_gui)
+				awful.spawn(edcmd)
 			end,
-			{description = " - Open heavy editor.", group = "launcher"}
+			{description = " - Open editor.", group = "launcher"}
 		),
 		-- Hardware info.
 		awful.key(
-			{modkey, "Ctrl"}, "i",
+			{modkey, "Shift"}, "h",
 			function()
-				awful.spawn(hw_info)
+				awful.spawn(hwcmd)
 			end,
 			{description = " - Open hardware info prorgam.", group = "launcher"}
 		),
 		-- Music player.
 		awful.key(
-			{modkey, }, "m",
-			function()
-				awful.spawn(music_player)
-			end,
-			{description = " - Open music player.", group="launcher"}
-
-		),
-		-- Heavy music player.
-		awful.key(
 			{modkey, "Shift"}, "m",
 			function()
-				awful.spawn(heavy_music_player)
+				awful.spawn(mpcmd)
 			end,
-			{description = " - Open heavy music player.", group="launcher"}
+			{description = " - Open music player.", group="launcher"}
 		),
 		-- Sound control.
 		awful.key(
-			{modkey, "Ctrl"}, "m",
+			{modkey, "Shift"}, "s",
 			function()
-				awful.spawn(sound_control)
+				awful.spawn(sndcmd)
 			end,
 			{description=" - Open your sound control program.", group="launcher"}
 		),
 		awful.key(
-			{modkey, "Ctrl", "Shift"}, "m",
+			{ modkey, "Shift"}, "v",
 			function()
-				awful.spawn(heavy_sound_control)
+				awful.util.spawn_with_shell(vecmd)
 			end,
-			{description=" - Open your second sound control program.", group="launcher"}
-		),
-		-- Move mouse without mouse.
-		--[[
-		-- Up.
-		awful.key(
-			{modkey, "Alt"}, "k",
-			function()
-				awful.util.spawn_with_shell("xdotool mousemove_relative -- 0 -15")
-			end,
-			{description = " - Move mouse up.", group="Moves"}
-		),
-		-- Down.
-		awful.key(
-			{modkey, "Alt"}, "j",
-			function()
-				awful.util.spawn_with_shell("xdotool mousemove_relative 0 15")
-			end,
-			{description = " - Move mouse down.", group="Moves"}
-		),
-		-- Left.
-		awful.key(
-			{modkey, "Alt"}, "h",
-			function()
-				awful.util.spawn_with_shell("xdotool mousemove_relative -- -15 0")
-			end,
-			{description = " - Move mouse left.", group="Moves"}
-		),
-		-- Right.
-		awful.key(
-			{modkey, "Alt"}, "l",
-			function()
-				awful.util.spawn_with_shell("xdotool mousemove_relative 15 0")
-			end,
-			{description = " - Move mouse right.", group="Moves"}
-		),
-		-- End 'mouse without mouse'.
-		--]]
-		--[-[
-		awful.key(
-			{modkey, }, "[",
-			function()
-				awful.util.spawn_with_shell("xdotool keyup Super")
-				awful.util.spawn_with_shell("xdotool key Left")
-				awful.util.spawn_with_shell("xdotool keydown Super")
-			end,
-			{description=" - Left button on keyboard.", group="move"}
-			
+			{description = " - Launch video editor.", group="launcher"}
 		),
 		awful.key(
-			{modkey, }, "]",
+			{ modkey, "Shift"}, "o",
 			function()
-				awful.util.spawn_with_shell("xdotool keyup Super")
-				awful.util.spawn_with_shell("xdotool key Right")
+				awful.util.spawn_with_shell(syscmd)
 			end,
-			{description = " - Right button on keyboard.", group="move"}
+			{ description = " - Launch sys. stat. program.", group="launcher"}
 		),
-		--]]
-
 		awful.key(
-			{ modkey, "Control" }, "r", awesome.restart,
+			{ modkey, "Control", "Shift" }, "r", awesome.restart,
 			{description = " - Reload awesome.", group = "awesome"}
 		),
 		awful.key(
-			{ modkey, "Shift"		 }, "q", awesome.quit,
+			{ modkey, "Control", "Shift"}, "q", awesome.quit,
 			{description = " - Quit awesome(!!!).", group = "awesome"}
 		),
-
 		awful.key(
 			{ modkey, }, "l", function() awful.tag.incmwfact( 0.05) end,
 			{description = " - Increase master width factor.", group = "layout"}
@@ -765,39 +567,27 @@ globalkeys = awful.util.table.join(
 			{description = " - Decrease master width factor.", group = "layout"}
 		),
 		awful.key(
-			{ modkey, "Shift"		 }, "h", function() awful.tag.incnmaster( 1, nil, true) end,
+			{ modkey, }, "i", function() awful.tag.incnmaster( 1, nil, true) end,
 			{description = " - Increase the number of master clients.", group = "layout"}
 		),
 		awful.key(
-			{ modkey, "Shift"		 }, "l", function() awful.tag.incnmaster(-1, nil, true) end,
+			{ modkey, }, "d", function() awful.tag.incnmaster(-1, nil, true) end,
 			{description = " - Decrease the number of master clients.", group = "layout"}
 		),
 		awful.key(
-			{ modkey, "Control" }, "h", function() awful.tag.incncol( 1, nil, true) end,
+			{ modkey, }, ".", function() awful.tag.incncol( 1, nil, true) end,
 			{description = " - Increase the number of columns.", group = "layout"}),
 		awful.key(
-			{ modkey, "Control" }, "l", function() awful.tag.incncol(-1, nil, true)	end,
+			{ modkey, },",", function() awful.tag.incncol(-1, nil, true)	end,
 			{description = " - Decrease the number of columns.", group = "layout"}
 		),
-		awful.key({ modkey, }, "space", function() awful.layout.inc(1) end,
+		awful.key({ modkey, }, "t", function() awful.layout.inc(1) end,
 			{description = " - Select next.", group = "layout"}),
-		awful.key({ modkey, "Shift" }, "space", function() awful.layout.inc(-1) end,
+		awful.key({ modkey, }, "n", function() awful.layout.inc(-1) end,
 			{description = " - Select previous.", group = "layout"}
 		),
 		awful.key(
-			{ modkey, "Shift" }, "n",
-			function()
-				local c = awful.client.restore()
-				-- Focus restored client
-				if c then
-					client.focus = c
-					c:raise()
-				end
-			end,
-			{description = " - Restore minimized.", group = "client"}
-		),
-		awful.key(
-			{modkey, "Shift"}, "g",
+			{modkey, }, "r",
 			function()
 				local c =awful.client.restore()
 				if c then
@@ -805,82 +595,76 @@ globalkeys = awful.util.table.join(
 					c:raise()
 				end
 			end,
-			{description = " - Resotre minimized.", group = "client"}
+			{description = " - Restore minimized.", group = "client"}
 		),
 		-- Prompt
 		awful.key(
-			{ modkey, }, "r", function() awful.screen.focused().mypromptbox:run() end,
+			{ modkey, "Shift"}, "r", function() awful.screen.focused().promptbox:run() end,
 			{description = " - Run prompt.", group = "launcher"}
 		),
 		
 		awful.key(
+		--[[
 			{ modkey }, "x",
 			function()
 				awful.prompt.run {
 					prompt = "Run Lua code: ",
-					textbox= awful.screen.focused().mypromptbox.widget,
+					textbox= awful.screen.focused().promptbox.widget,
 					exe_callback = awful.util.eval,
 					history_path = awful.util.get_cache_dir() .. "/history_eval"
 				}
 			end,
 			{description = " - Lua execute prompt.", group = "awesome"}
+			--]]
 		),
 		-- Menubar
 		awful.key(
-			{ modkey }, "p", function() menubar.show() end,
-			{description = " - Show the menubar.", group = "launcher"}
+			{ modkey, "Shift"}, "p", function() menubar.show() end,
+			{descript;on = " - Show the menubar.", group = "launcher"}
 		)
 	)
-;
 
 clientkeys = awful.util.table.join(
 	awful.key(
-		{ modkey,}, "v",
+		{ modkey,}, "f",
 		function(c)
 			c.fullscreen = not c.fullscreen
 			c:raise()
 		end,
 		{description = " - Toggle fullscreen.", group = "client"}
 	),
-	awful.key(
-		{ modkey, "Shift"}, "v",
-		function()
-			awful.util.spawn_with_shell(video_player)
-		end,
-		{description = " - Launch video player.", group="launcher"}
-	),
-	awful.key({ modkey, "Shift"}, "c",
+	awful.key({ modkey, }, "c",
 		function(c)
 			c:kill()
 		end,
 		{description = " - Close currently targeted window.", group = "client"}),
 	awful.key(
-		{ modkey, }, "a", awful.client.floating.toggle,
-		{description = " - Toggle floating.", group = "client"}
+		{ modkey, }, "space", awful.client.floating.toggle,
+		{descriptio  = " - Toggle floating.", group = "client"}
 	),
 	awful.key(
-		{ modkey, "Control" }, "Return",
+		{ modkey, }, "Return",
 		function(c)
 			c:swap(awful.client.getmaster())
 		end,
 		{description = " - Move to master.", group = "client"}
 	),
-	awful.key(
+	--[[awful.key(
 		{ modkey, }, "o",
 		function(c)
 			c:move_to_screen()
 		end,
 		{description = " - Move to screen.", group = "client"}
-	),
+	), --]]
 	awful.key(
-		{ modkey, }, "t",
+		{ modkey, }, "v",
 		function(c)
 			c.ontop = not c.ontop
 		end,
 		{description = " - Toggle keep on top.", group = "client"}
 	),
 	awful.key(
-		{ modkey, }, "n",
+		{ modkey, }, "x",
 		function(c)
 			-- The client currently has the input focus, so it cannot be
 			-- minimized, since minimized clients can't have the focus.
@@ -889,19 +673,12 @@ clientkeys = awful.util.table.join(
 		{description = " - Minimize current window.", group = "client"}
 	),
 	awful.key(
-		{modkey, }, "g",
-		function(c)
-			c.minimized = true
-		end,
-		{description = " - Minimize current window.", group = "client"}
-	),
-	awful.key(
-		{ modkey, "Ctrl"}, "=",
+		{ modkey, }, "m",
 		function (c)
 			c.maximized = not c.maximized
 			c:raise()
 		end ,
-		{description = " - Maximize.", group = "client"}
+		{description = " - Maximize current window.", group = "client"}
 	)
 )
 
@@ -1094,11 +871,9 @@ client.connect_signal(
 client.connect_signal(
 	"mouse::enter",
 	function(c)
-		if not xdotool_mouse_move then
-			if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
-					and awful.client.focus.filter(c) then
-				client.focus = c
-			end
+		if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
+				and awful.client.focus.filter(c) then
+			client.focus = c
 		end
 	end
 )
@@ -1108,13 +883,10 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Autostart section.
-awful.util.spawn_with_shell("xset r rate "..tostring(keyboard_repeat_delay).." "..tostring(keyaboard_repeat_rate))
+awful.util.spawn_with_shell("xset r rate "..xkbdelay..xkbrate)
 awful.util.spawn_with_shell("xrdb -load "..xresources)
-awful.util.spawn_with_shell("setxkbmap "..xkb_layout)
-awful.util.spawn_with_shell("localectl set-locale LANG="..locale)
-awful.util.spawn_with_shell("")
-runOnce({"yeahconsole -e tmux "})
+awful.util.spawn_with_shell(dvorakcmd)
+awful.util.spawn_with_shell("[ -s ~/.Xmodmap ] && xmodmap ~/.Xmodmap")
+runOnce({"yeahconsole"})
 runOnce({"megasync"})
 runOnce({"wicd-client -t"})
---awful.util.spawn_with_shell("nm-applet")
---awful.util.spawn_with_shell("xfce4-panel")

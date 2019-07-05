@@ -146,6 +146,10 @@ if iaskyn "Should I link your 'tmux' and 'screen' config files?(~/.tmux.conf and
 	rclikeln tmux.conf
 fi
 
+if iaskyn "Should I link your 'termite' config files?(config etc)" ; then
+	conflikeln termite
+fi
+
 # Git.
 if iaskyn "Should I configure git as you want?:" ; then
 	if iaskyn "\tMaybe I can use protonmail and your OS-username that for?"; then

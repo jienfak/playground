@@ -56,7 +56,7 @@ xterm*boldMode:        true
 *color5:      rgb:FF/6E/00
 *color13:     rgb:DE/60/00
 ! Cyan.
-*color6:      cyan
+*color6:      rgb:00/FF/FF
 *color14:     rgb:17/FF/FF
 ! White.
 *color7:      rgb:DD/DD/DD
