@@ -11,8 +11,8 @@ local termcmd               = "termite"
 local syscmd                = termcmd .. " -e htop"
 local fmcmd                 = "xfe"
 local ibcmd                 = "firefox"
-local edcmd                 = "oni"
-local mpcmd                 = "deadbeef"
+local edcmd                 = "gvim"
+local mpcmd                 = "vlc"
 local vecmd                 = "openshot-qt"
 local sndcmd                = "pavucontrol"
 local hwcmd                 = "hardinfo"
@@ -25,12 +25,12 @@ local toggledvorakcmd  =
                 "fi\n"
 
 -- My library.
-package.path = package.path..";"..os.getenv("HOME").."/code/scripts/lua/modules/?.lua" ;
+package.path = package.path..";"..os.getenv("S").."/lua/modules/?.lua" ;
 
 -- Blackarch.
 local addbamenu = true -- Should I add menu.
 local bamaxmenu = 65   -- Maximum items in one column.
-local balist = os.getenv("HOME").."/code/scripts/pl/5/utils/blackarch/utils.lst" -- Path to the list of utils.
+local balist = os.getenv("S").."/pl/5/utils/blackarch/utils.lst" -- Path to the list of utils.
 local ba = require("blackarch")
 local bamenu = {}
 if addbamenu then
@@ -883,7 +883,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Autostart section.
-awful.util.spawn_with_shell("xset r rate "..xkbdelay..xkbrate)
+awful.util.spawn_with_shell("xset r rate "..xkbdelay.." "..xkbrate)
 awful.util.spawn_with_shell("xrdb -load "..xresources)
 awful.util.spawn_with_shell(dvorakcmd)
 awful.util.spawn_with_shell("[ -s ~/.Xmodmap ] && xmodmap ~/.Xmodmap")

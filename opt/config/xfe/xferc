@@ -1,41 +1,49 @@
 [OPTIONS]
-height=621
+height=577
 toolstoolbar=1
 folder_warn=1
 panel_view=0
-width=897
+width=1281
+confirm_drag_and_drop=1
 use_startup_notification=1
 preserve_date_warn=1
 confirm_delete=1
-treepanel_tree_pct=0.319
+treepanel_tree_pct=0.33
 use_trash_can=1
 auto_save_layout=1
 use_trash_bypass=0
 mount_warn=1
 root_mode=1
-treetwopanels_lpanel_pct=0.4
-xfv_replaced=1
 confirm_overwrite=1
 paneltoolbar=1
 confirm_delete_emptydir=1
 startdir_mode=0
 ask_before_copy=1
 mount_messages=1
+confirm_execute=1
 confirm_properties=1
 twopanels_lpanel_pct=0.5
 vert_panels=1
 root_warn=0
 confirm_trash=1
-confirm_execute=1
+treetwopanels_lpanel_pct=0.4
 status=1
 treetwopanels_tree_pct=0.2
 generaltoolbar=1
 locationbar=1
-confirm_drag_and_drop=1
+xfv_replaced=1
 
 [HISTORY]
 open=ardour5:gimp:vlc:mplayer:
 filter=*:
+
+[PROGS]
+imgviewer=vimiv
+txtviewer=gvim -R
+txteditor=gvim
+audioplayer=vlc
+xterm=xterm
+videoplayer=vlc
 
 [KEYBINDINGS]
 search_prev=Shift-Ctrl-G
@@ -117,8 +125,8 @@ deldate_size=150
 origpath_size=200
 liststyle=0
 attr_size=100
-size_size=60
 user_size=50
+hiddenfiles=0
 dirs_first=1
 ext_size=100
 grou_size=50
@@ -127,8 +135,8 @@ ignore_case=1
 sort_func=ascendingCase
 showthumbnails=0
 name_size=200
-lastdir=/root
-hiddenfiles=0
+lastdir=/home/jien
+size_size=60
 
 [DIR PANEL]
 hidden_dir=0
@@ -140,42 +148,34 @@ deldate_size=150
 origpath_size=200
 liststyle=0
 attr_size=0
-size_size=10
-user_size=6
+user_size=7
+hiddenfiles=0
 dirs_first=1
-ext_size=9
-grou_size=37
-modd_size=14
+ext_size=10
+grou_size=42
+modd_size=16
 ignore_case=1
 sort_func=ascendingCase
 showthumbnails=0
-name_size=75
-lastdir=/home/jien/downloads/1234
-hiddenfiles=0
-
-[PROGS]
-imgviewer=vimiv
-txtviewer=gvim -R
-txteditor=gvim
-audioplayer=vlc
-xterm=xterm
-videoplayer=vlc
+name_size=86
+lastdir=/home/jien
+size_size=11
 
 [SETTINGS]
-file_tooltips=1
-show_pathlinker=1
 iconpath=/usr/share/xfe/icons/gnomeblue-theme
-basecolor=#ede9e3
+scrollbarsize=15
 time_format=%x %X
 single_click=0
+show_pathlinker=1
 wheellines=5
 smooth_scroll=1
 use_clearlooks=1
-scrollbarsize=15
+basecolor=#ede9e3
 tiptime=10000
 relative_resize=1
-save_win_pos=0
 tippause=500
+save_win_pos=0
+file_tooltips=1
 
 [FILETYPES]
 sdw=lowriter,lowriter,lowriter;Starwriter 5.0 Document;sxw_32x32.png;sxw_16x16.png;;

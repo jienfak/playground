@@ -4,11 +4,11 @@ if [ $(expr $PROFILE_IS_SOURCED + 1 ) = 2 ] ; then
 fi ; export PROFILE_IS_SOURCED=1
 
 # Path to scripts directory.
-export C="$HOME/code"
+export C=`cat $HOME/.codepath`
 export S="$C/scripts"
 export G="$C/git"
-export SHMODS="$S/sh/sh/modules"
-export MYOPT="$S/other/opt"
+export SHMODS="$/sh/modules"
+export OPT="$S/other/opt"
 # Config files directory.
 export XDG_CONFIG_HOME=$HOME/.config
 

@@ -6,7 +6,7 @@ allow_bold = true
 #cell_width_scale = 1.0
 clickable_url = true
 dynamic_title = true
-font = DroidSansMono 10
+font = Consolas 11
 #fullscreen = true
 icon_name = terminal
 #mouse_autohide = false
@@ -54,12 +54,12 @@ cursor_shape = block
 #background = rgba(63, 63, 63, 0.8)
 
 # If unset, will reverse foreground and background
-highlight = #2f2f2f
+#highlight = #2f2f2f
 
 # Colors from color0 to color254 can be set
 color0  = #000000
 color1  = #DD2222
-color2  = #67E#00
+color2  = #67E300
 color3  = #F7FF00
 color4  = #5190D0
 color5  = #FF6E00
@@ -75,7 +75,7 @@ color14 = #17FFFF
 color15 = #FFFFFF
 
 [hints]
-font = DroidSansMono 10
+#font = DroidSansMono 10
 #foreground = #dcdccc
 #background = #3f3f3f
 #active_foreground = #e68080
@@ -84,5 +84,3 @@ font = DroidSansMono 10
 #border = #3f3f3f
 #border_width = 0.5
 #roundness = 2.0
-
-# vim: ft=dosini cms=#%s
